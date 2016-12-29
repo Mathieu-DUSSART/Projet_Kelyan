@@ -19,7 +19,7 @@
 
 <?php
 //Affiche les logos des partenaires
-foreach ($managerImage->getAllImage("/projet/image/partenaire/") as $image) {
+foreach ($managerImage->getAllImage("/Projet_Kelyan/image/partenaire/") as $image) {
     echo "<a href=\"" . $image->getLien() . "\"><img class=\"imgPartenaire\" src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
 }
 ?>
