@@ -2,7 +2,7 @@
 
 <?php
 //Affiche toutes les images de la page Galerie
-foreach ($managerImage->getAllImage("/projet/image/galerie/") as $image) {?>
+foreach ($managerImage->getAllImage("/Projet_Kelyan/image/galerie/") as $image) {?>
     <div class="img">
         <?php
         echo "<a class=\"imgGalerie\" href=\"#\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
@@ -72,7 +72,7 @@ if(!empty($_POST)){
                      if(move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET.$nomImage))
                      {
                          $tabImg=Array();
-                         $tabImg["img_src"]="/projet/image/galerie/";
+                         $tabImg["img_src"]="/Projet_Kelyan/image/galerie/";
                          $tabImg["img_nom"]=$nomImage;
                          $tabImg["img_description"]=null;
                          $tabImg["img_lien"]=null;
