@@ -327,9 +327,10 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
  }
 
 #ajouterEvenement form input[type=date], #ajouterEvenement form input[type=time]{
+    display: block;
     width: 14%;
     min-width: 125px;
-    margin: 15px 42%;
+    margin: 0px auto;
     padding: 5px 1%;
     border-radius:5px;
     border:1px solid #D3D3D3;
@@ -350,9 +351,11 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
 }
 #ajouterArticle input[type=submit], #ajouterEvenement input[type=submit]{
+    display: block;
     width: 15%;
+    min-width: 180px;
     padding:10px 0;
-    margin: 15px 42.5%;
+    margin: 15px auto;
     background-color:#FF7E65;
     color:#3E454C;
     font-size:110%;
