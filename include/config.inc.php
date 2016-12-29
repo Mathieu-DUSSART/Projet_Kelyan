@@ -1,7 +1,4 @@
 <?php
-// Paramètres de l'application Covoiturage
-// A modifier en fonction de la configuration
-
 define('DBHOST', "localhost");
 define('DBNAME', "kelyan");
 define('DBUSER', "root");

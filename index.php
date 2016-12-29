@@ -14,7 +14,7 @@
         <title>Association Kelyan</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="js/function.js"></script
+        <script src="js/function.js"></script>
     </head>
     <body>
         <header>
