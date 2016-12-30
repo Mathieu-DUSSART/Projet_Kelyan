@@ -5,10 +5,11 @@
     require_once("include/autoLoad.inc.php");
     require_once("include/pages/function.inc.php");
     $pdo=new Mypdo();
-    $managerPage=new PageManager($pdo);
-    $managerArticle=new ArticleManager($pdo);
-    $managerImage=new ImageManager($pdo);
-    $managerEvenement=new EvenementManager($pdo);
+    $managerPage = new PageManager($pdo);
+    $managerArticle = new ArticleManager($pdo);
+    $managerImage = new ImageManager($pdo);
+    $managerEvenement = new EvenementManager($pdo);
+    $managerAdministrateur = new AdministrateurManager($pdo);
     ?>
     <head>
         <title>Association Kelyan</title>

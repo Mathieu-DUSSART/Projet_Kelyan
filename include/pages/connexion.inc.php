@@ -12,6 +12,10 @@
 
 <?php
 if(isset($_POST["login"])){
-    
+    if($managerAdministrateur->checkLoginPassword("Admin1", "test")){
+        echo "Correcte";
+    }else{
+        echo "Incorrecte";
+    }
 }
 ?>
