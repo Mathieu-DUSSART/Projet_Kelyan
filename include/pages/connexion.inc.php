@@ -1,6 +1,6 @@
 <h1>Se connecter</h1>
 
-<form method="POST" action="#">
+<form method="POST" action="#" autocomplete="off">
     <label>Login :</label>
     <input  type="text" name="login" required>
     <br>
@@ -12,8 +12,12 @@
 
 <?php
 if(isset($_POST["login"])){
-    if($managerAdministrateur->checkLoginPassword("Admin1", "test")){
-        echo "Correcte";
+    $login = $_POST["login"];
+    $password = $_POST["password"];
+    if($managerAdministrateur->checkLoginPassword($login, $password)){
+        $_SESSION["login"] = $login;
+        header("Location: index.php");
+        exit;
     }else{
         echo "Incorrecte";
     }

@@ -13,6 +13,7 @@ else{
         }else{
             echo "<li><a href=\"index.php?page=" . $page->getNum() . "\"><p class=\"page" . $page->getNum()%5 . "\">" . $page->getNom() . "</p></a>";
         }
+        if(isset($_SESSION["login"])){
             if($page->getNum()>5){?>
                 <div class="divSupprimerPage">
                     <form class="supprimerArticle" method="POST" action="#">
@@ -21,20 +22,23 @@ else{
                     </form>
                 </div>
             <?php
-            }?>
+            }
+        }?>
 
         </li>
     <?php
     }
-    ?>
-    <li id="ongletAjoutPage"><input id="boutonAjoutPage" type="button" value="">
-        <div id="divAjoutPage">
-            <form action="#" method="POST">
-                <input name="nomPage" type="text" placeholder="Nom de la page..." required>
-                <input type="submit" value="Valider">
-            </form>
-        </div>
-    </li>
+    if(isset($_SESSION["login"])){?>
+        <li id="ongletAjoutPage"><input id="boutonAjoutPage" type="button" value="">
+            <div id="divAjoutPage">
+                <form action="#" method="POST">
+                    <input name="nomPage" type="text" placeholder="Nom de la page..." required>
+                    <input type="submit" value="Valider">
+                </form>
+            </div>
+        </li>
+    <?php
+    } ?>
 </ul>
 
 <?php

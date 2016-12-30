@@ -13,31 +13,39 @@ foreach ($managerArticle->getAllArticle(2) as $article) {
         echo "<p>" . $article->getTexte() . "</p>";
         ?>
     </article>
-    <div class="voletGestionArticle">
-        <form class="supprimerArticle" method="POST" action="#">
-            <input name="supprimerArticle" type="submit" value="X">
-            <input name="numArticleASupprimer" type="hidden" value="<?php echo $article->getNum(); ?>">
-        </form>
-        <form class="modifierArticle" method="POST" action="#">
-            <input name="modifierArticle" type="submit" value="M">
-            <input name="numArticleAModifier" type="hidden" value="<?php echo $article->getNum(); ?>">
+
+    <?php
+    if(isset($_SESSION["login"])){?>
+        <div class="voletGestionArticle">
+            <form class="supprimerArticle" method="POST" action="#">
+                <input name="supprimerArticle" type="submit" value="X">
+                <input name="numArticleASupprimer" type="hidden" value="<?php echo $article->getNum(); ?>">
+            </form>
+            <form class="modifierArticle" method="POST" action="#">
+                <input name="modifierArticle" type="submit" value="M">
+                <input name="numArticleAModifier" type="hidden" value="<?php echo $article->getNum(); ?>">
+            </form>
+        </div>
+        <?php
+    }
+}
+
+if(isset($_SESSION["login"])){?>
+    <div id="ajouterArticle">
+        <form method="POST" action="#">
+            <label>Titre de l'article:</label>
+            <input  type="text" name="titre" placeholder="Titre de l'article..." required>
+            <br>
+            <label>Texte:</label>
+            <textarea name="texte" placeholder="Ecrivez votre article ici..." rows="8" required></textarea>
+            <br>
+            <input class="bouton" type="submit" value="Ajouter l'article">
         </form>
     </div>
 <?php
 }
-?>
-<div id="ajouterArticle">
-    <form method="POST" action="#">
-        <label>Titre de l'article:</label>
-        <input  type="text" name="titre" placeholder="Titre de l'article..." required>
-        <br>
-        <label>Texte:</label>
-        <textarea name="texte" placeholder="Ecrivez votre article ici..." rows="8" required></textarea>
-        <br>
-        <input class="bouton" type="submit" value="Ajouter l'article">
-    </form>
-</div>
-<?php
+
+
 //Récupère la date d'aujourd'hui au format SQL (2016-04-19 14:59:59)
 $date = date('Y-m-d H:i:s');
 //Ajoute un article

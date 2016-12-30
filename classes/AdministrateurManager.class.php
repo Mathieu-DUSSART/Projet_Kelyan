@@ -14,7 +14,7 @@ class AdministrateurManager{
         $req->execute();
         $resu = $req->fetch(PDO::FETCH_OBJ);
 
-        return isset($resu->admin_num);
+        return (isset($resu->admin_num));
     }
 
 }

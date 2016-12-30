@@ -13,10 +13,12 @@ class PageManager{
 	Retourne : rien
 	*/
 	public function add($page){
-        $sql="INSERT INTO page VALUES(:num, :nom)";
+        $sql="INSERT INTO page VALUES(:num, :nom, :hidden, :supprimable)";
         $req=$this->db->prepare($sql);
         $req->bindValue(':num', $page->getNum(), PDO::PARAM_INT);
         $req->bindValue(':nom', $page->getNom(), PDO::PARAM_STR);
+		$req->bindValue(':hidden', $page->getHidden(), PDO::PARAM_INT);
+		$req->bindValue(':supprimable', $page->getSupprimable(), PDO::PARAM_INT);
         $req->execute();
 	}
 
@@ -34,13 +36,13 @@ class PageManager{
 	}
 
 	/*
-	Fonction qui récupère toutes les Pages de la BD
+	Fonction qui récupère toutes les Pages de la BD qui doivent apparaitre dans la barre de navigation
 	Paramètre : aucun
 	Retourne : un tableau qui contient les Pages
 	*/
 	public function getAllPage(){
 		$tabObj=Array();
-		$sql="SELECT * FROM page";
+		$sql="SELECT * FROM page WHERE page_hidden=0";
 		$req=$this->db->query($sql);
 		while($ligne=$req->fetch(PDO::FETCH_OBJ)){
 			$tabObj[]=new Page($ligne);
