@@ -4,7 +4,7 @@
 //Affiche les articles de la page Article
 foreach ($managerArticle->getAllArticle(2) as $article) {
     //Récupère la date de l'article au format 23/09/2016
-    $date = date_format( date_create($article->getDate()), 'd/m/Y');
+    $date = date_format(date_create($article->getDate()), 'd/m/Y H:i');
     ?>
     <article>
         <?php
