@@ -37,6 +37,19 @@ class EvenementManager{
 		$req->execute();
 	}
 
+	public function modifierEvenement($event){
+        $sql="UPDATE evenement SET event_titre=:titre, event_date=:dateEvent, event_heure=:heure, event_texte=:texte, event_ville=:ville, point_num=:pointNum WHERE event_num=:num";
+        $req=$this->db->prepare($sql);
+        $req->bindValue(':titre', $event->getTitre(), PDO::PARAM_STR);
+        $req->bindValue(':dateEvent', $event->getDate(), PDO::PARAM_STR);
+        $req->bindValue(':heure', $event->getHeure(), PDO::PARAM_STR);
+        $req->bindValue(':texte', $event->getTexte(), PDO::PARAM_STR);
+        $req->bindValue(':ville', $event->getVille(), PDO::PARAM_STR);
+		$req->bindValue(':pointNum', $event->getPointNum(), PDO::PARAM_INT);
+		$req->bindValue(':num', $event->getNum(), PDO::PARAM_INT);
+        $req->execute();
+	}
+
 	/*
 	Fonction qui permet de récupérer tous les Evènements de la BD
 	Paramètre : aucun
