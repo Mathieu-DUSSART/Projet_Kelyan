@@ -3,7 +3,7 @@ class Ville{
   private $vilnum;
   private $vilnom;
 
-  public function __construct($values = array()){
+  public function __construct($valeurs = array()){
     if(!empty($valeurs)){
         $this->affecte($valeurs);
     }
