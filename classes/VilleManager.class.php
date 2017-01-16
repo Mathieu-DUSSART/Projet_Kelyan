@@ -50,7 +50,7 @@ class VilleManager{
 	}
 
 	public function getVilNomByNum($num){
-		$sql="SELECT vil_num 	FROM 	ville WHERE vil_num=:num";
+		$sql="SELECT vil_nom 	FROM 	ville WHERE vil_num=:num";
 		$req = $this->db->prepare($sql);
 		$req->bindValue(':num', $num, PDO::PARAM_INT);
 		$req->execute();
