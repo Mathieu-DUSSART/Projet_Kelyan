@@ -11,10 +11,10 @@ foreach ($managerArticle->getAllArticle(2) as $article) {
             <div id="ajouterArticle">
                 <form method="POST" action="#">
                     <label>Titre de l'article:</label>
-                    <input  type="text" name="titre" value="<?php echo $article->getTitre(); ?>" required>
+                    <input  type="text" name="titreModifie" value="<?php echo $article->getTitre(); ?>" required>
                     <br>
                     <label>Texte:</label>
-                    <textarea name="texte" rows="8" required><?php echo $article->getTexte(); ?></textarea>
+                    <textarea name="texteModifie" rows="8" required><?php echo $article->getTexte(); ?></textarea>
                     <br>
                     <input class="bouton" type="submit" value="Modifier l'article">
                 </form>
@@ -82,6 +82,20 @@ if(isset($_POST["titre"])){
     header('Location: index.php?page=2');
     exit;
 }
+
+//Modifie un article
+if(isset($_POST["titreModifie"])){
+    $tab=array();
+    $tab["art_titre"]=$_POST["titre"];
+    $tab["art_date"]=$date;
+    $tab["art_texte"]=$_POST["texte"];
+    $tab["page_num"]=$_GET["page"];
+    $article=new Article($tab);
+    $managerArticle->modifieArticle($article);
+    header('Location: index.php?page=2');
+    exit;
+}
+
 //Supprime un article
 if(isset($_POST["supprimerArticle"])){
     $managerArticle->deleteArticle($_POST["numArticleASupprimer"]);
