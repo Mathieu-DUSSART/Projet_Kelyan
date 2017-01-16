@@ -7,7 +7,7 @@ foreach($villeTab as $ville){
   $AllPoint = array();
   $AllPoint = $managerPointsDeCollecte->getPointByVille($ville->getVilNom());
   foreach($AllPoint as $point){
-      echo "<p>" . $point->getLieu() ."</p>";
+      echo "<p>" . $point->getPointLieu() ."</p>";
   }
 }
 //(1) On inclut la classe de Google Maps pour générer ensuite la carte.

@@ -16,9 +16,9 @@ class PointsdecollecteManager{
   		return $tabObj;
   	}
 
-    public function getPointByVille($nom){
+    public function getPointByVille($num){
   		$tabObj=Array();
-  		$sql="SELECT * FROM pointsdecollecte WHERE point_ville = :nom";
+  		$sql="SELECT * FROM pointdecollecte WHERE vil_num = :num";
       $req=$this->db->prepare($sql);
       $req->bindValue(':num', $num, PDO::PARAM_INT);
       $req->execute();
@@ -29,7 +29,7 @@ class PointsdecollecteManager{
   	}
 
     public function add($point){
-          $sql="INSERT INTO pointsdecollecte(point_num,point_lieu,point_ville,point_visibilite) VALUES(:num, :lieu, :ville, :visibilite)";
+          $sql="INSERT INTO pointdecollecte(point_num,point_lieu,vil_num,point_visibilite) VALUES(:num, :lieu, :ville, :visibilite)";
           $req=$this->db->prepare($sql);
           $req->bindValue(':num', $point->getNum(), PDO::PARAM_INT);
           $req->bindValue(':lieu', $point->getLieu(), PDO::PARAM_STR);
