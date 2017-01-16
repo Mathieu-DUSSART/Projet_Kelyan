@@ -2,6 +2,7 @@
 <?php
 $villeTab = array();
 $villeTab = $managerVille->getAllVille();
+echo $villeTab[0]->getVilNom();
 foreach($villeTab as $ville){
   echo "<h2>" . $ville->getVilNom() . "</h2>";
   $AllPoint = array();

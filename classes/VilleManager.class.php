@@ -13,7 +13,9 @@ class VilleManager{
 		while($ligne=$req->fetch(PDO::FETCH_OBJ)){
 			$tabObj[]=new Ville($ligne);
 		}
+		print_r($tabObj);
 		return $tabObj;
+
 	}
 
 	public function add($ville){
