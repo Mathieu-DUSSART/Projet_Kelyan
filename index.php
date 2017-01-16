@@ -12,6 +12,7 @@
     $managerEvenement = new EvenementManager($pdo);
     $managerAdministrateur = new AdministrateurManager($pdo);
     $managerPointsDeCollecte = new Pointsdecollectemanager($pdo);
+    $managerVille = new VilleManager($pdo);
     ?>
     <head>
         <title>Association Kelyan</title>

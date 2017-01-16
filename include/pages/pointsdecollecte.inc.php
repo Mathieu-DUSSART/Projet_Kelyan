@@ -1,5 +1,7 @@
 <h1>Liste des points de collecte</h1>
 <?php
+
+$villeTab = $managerVille->getAllVille();
 //(1) On inclut la classe de Google Maps pour générer ensuite la carte.
 require('classes/GoogleMapAPI.class.php');
 
