@@ -289,6 +289,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 }
 
 #ajouterArticle, #ajouterEvenement{
+    display: inline-block;
     background-color: #E5E5E5;
     width:80vw;
     margin-top: 2vh;

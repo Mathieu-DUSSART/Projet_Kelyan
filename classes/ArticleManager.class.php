@@ -36,6 +36,21 @@ class ArticleManager{
 	}
 
 	/*
+	Fonction qui modifie un Article de la BD
+	Paramètre :
+		- $article : l'Article à modifier
+	Retourne : rien
+	*/
+	public function modifierArticle($article)	{
+		$sql="UPDATE article SET art_titre=:titre, art_texte=:texte WHERE art_num=:num";
+		$req=$this->db->prepare($sql);
+		$req->bindValue(':titre', $article->getTitre(), PDO::PARAM_STR);
+		$req->bindValue(':texte', $article->getTexte(), PDO::PARAM_STR);
+		$req->bindValue(':num', $article->getNum(), PDO::PARAM_INT);
+		$req->execute();
+	}
+
+	/*
 	Fonction qui permet de récupérer tous les Articles de la BD qui correspondent à une certaine page
 	Paramètre :
 		- $numPage : le numéro de la page qui doit contenir les Articles
