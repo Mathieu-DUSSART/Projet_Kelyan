@@ -45,4 +45,14 @@ class PointsdecollecteManager{
       $req->execute();
     }
 
+		public function getAllLieux(){
+			$sql="SELECT lieu FROM pointsdecollecte";
+			$req=$this->db->query($sql);
+			while($ligne=$req->fetch(PDO::FETCH_OBJ)){
+				$tabObj[]=new Pointsdecollecte($ligne);
+			}
+
+			return $tabObj;
+		}
+
 	}
