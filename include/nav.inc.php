@@ -14,7 +14,7 @@ else{
             echo "<li><a href=\"index.php?page=" . $page->getNum() . "\"><p class=\"page" . $page->getNum()%5 . "\">" . $page->getNom() . "</p></a>";
         }
         if(isset($_SESSION["login"])){
-            if($page->getNum()>5){?>
+            if($managerPage->estSupprimable($page->getNum())){?>
                 <div class="divSupprimerPage">
                     <form class="supprimerArticle" method="POST" action="#">
                         <input name="supprimerPage" type="submit" value="X">

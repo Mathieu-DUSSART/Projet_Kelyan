@@ -66,4 +66,18 @@ class PageManager{
 
 		return $page;
 	}
+
+	public function estSupprimable($num){
+			$sql='SELECT page_supprimable FROM page WHERE page_supprimable = 1 AND page_num = "'.$num.'"';
+			$req = $this->db->query($sql);
+			$resu = $req->fetch(PDO::FETCH_OBJ);
+			if($resu != NULL){
+				return true;
+			}
+			else {
+				{
+					return false;
+				}
+			}
+		}
 }
