@@ -107,7 +107,7 @@ if( !empty($message) ){
 foreach ($managerImage->getAllImage("/Projet_Kelyan/image/galerie/") as $image) {?>
     <div class="img">
         <?php
-        echo "<a class=\"imgGalerie\" href=\"#\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
+        echo "<a class=\"imgGalerie\" href=\"#\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\" width=\"600\" height=\"300\"></a>";
         if(isset($_SESSION["login"])){?>
             <div class="supprimerImage">
                 <form method="POST" action="#">
