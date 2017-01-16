@@ -8,10 +8,23 @@ else{
 <ul>
     <?php
     foreach($managerPage->getAllPage() as $page){
-        if($numPage==$page->getNum()){
-            echo "<li><a href=\"index.php?page=" . $page->getNum() . "\" class=\"active\"><p class=\"page" . $page->getNum()%5 . "\">" . $page->getNom() . "</p></a>";
+        if(isset($_POST["modifierPage"]) && $_POST['numPageAModifier'] == $page->getNum()){
+            $_SESSION["numPageAModifier"]=$page->getNum();
+            $_SESSION["nomPageAvantModif"]=$page->getNom();
+            ?>
+            <li>
+                <form action="#" method="POST">
+                    <input name="nomPageModifie" type="text" value=" <?php echo $page->getNom();?>" required><br>
+                    <input type="submit" value="Valider">
+                </form>
+            </li>
+        <?php
         }else{
-            echo "<li><a href=\"index.php?page=" . $page->getNum() . "\"><p class=\"page" . $page->getNum()%5 . "\">" . $page->getNom() . "</p></a>";
+            if($numPage==$page->getNum()){
+                echo "<li><a href=\"index.php?page=" . $page->getNum() . "\" class=\"active\"><p class=\"page" . $page->getNum()%5 . "\">" . $page->getNom() . "</p></a>";
+            }else{
+                echo "<li><a href=\"index.php?page=" . $page->getNum() . "\"><p class=\"page" . $page->getNum()%5 . "\">" . $page->getNom() . "</p></a>";
+            }
         }
         if(isset($_SESSION["login"])){
             if($managerPage->estSupprimable($page->getNum())){?>
@@ -19,6 +32,10 @@ else{
                     <form class="supprimerArticle" method="POST" action="#">
                         <input name="supprimerPage" type="submit" value="X">
                         <input name="numPageASupprimer" type="hidden" value="<?php echo $page->getNum(); ?>">
+                    </form>
+                    <form class="modifierArticle" method="POST" action="#">
+                        <input name="modifierPage" type="submit" value="M">
+                        <input name="numPageAModifier" type="hidden" value="<?php echo $page->getNum(); ?>">
                     </form>
                 </div>
             <?php
@@ -52,6 +69,16 @@ if(isset($_POST["nomPage"])){
     $manip = fopen("include/pages/" .  str_replace(' ','',strtolower(strRemoveAccent($_POST["nomPage"]))) . ".inc.php", "w+");
     if($manip==false)
     die("La création du fichier a échoué");
+}
+
+//Permet de modifier une page
+if(isset($_POST["nomPageModifie"])){
+    $tab= Array();
+    $tab["page_num"]=$_SESSION["numPageAModifier"];
+    $tab["page_nom"]=$_POST["nomPageModifie"];
+    $page=new Page($tab);
+    $managerPage->modifierPage($page);
+    rename("include/pages/" . str_replace(' ','',strtolower(strRemoveAccent($_SESSION["nomPageAvantModif"]))) . ".inc.php", "include/pages/" . str_replace(' ','',strtolower(strRemoveAccent($page->getNom()))) . ".inc.php");
 }
 
 //Permet de supprimer une page
