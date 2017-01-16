@@ -58,7 +58,7 @@ if(isset($_POST["nomPage"])){
 if(isset($_POST["supprimerPage"])){
     $page = $managerPage->getPage($_POST["numPageASupprimer"]);
     $managerPage->deletePage($page->getNum());
-    $fichier = "include/pages/" .  strtolower(strRemoveAccent($page->getNom())) . ".inc.php";
+    $fichier = "include/pages/" .  str_replace(' ','',strtolower(strRemoveAccent($page->getNom()))) . ".inc.php";
     //Supprime le fichier s'il existe
     if(file_exists ( $fichier)){
         unlink( $fichier );
