@@ -6,6 +6,7 @@ class Evenement{
     private $heure;
     private $texte;
     private $ville;
+    private $pointNum;
 
     public function __construct($valeurs = array()){
         if(!empty($valeurs)){
@@ -27,6 +28,8 @@ class Evenement{
                 case 'event_texte' : $this->setTexte($valeurs);
 					break;
                 case 'event_ville' : $this->setVille($valeurs);
+                    break;
+                case 'point_num' : $this->setPointNum($valeurs);
                     break;
 			}
 		}
@@ -56,6 +59,10 @@ class Evenement{
         $this->ville=$ville;
     }
 
+    public function setPointNum($pointNum){
+        $this->pointNum=$pointNum;
+    }
+
     //-------------
 
     public function getNum(){
@@ -81,5 +88,10 @@ class Evenement{
     public function getVille(){
         return $this->ville;
     }
+
+    public function getPointNum(){
+		return $this->pointNum;
+	}
+
 }
 ?>

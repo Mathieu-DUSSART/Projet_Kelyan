@@ -13,13 +13,14 @@ class EvenementManager{
 	Retourne : rien
 	*/
 	public function add($event){
-        $sql="INSERT INTO evenement(event_titre, event_date, event_heure, event_texte, event_ville) VALUES(:titre, :dateEvent, :heure, :texte, :ville)";
+        $sql="INSERT INTO evenement(event_titre, event_date, event_heure, event_texte, event_ville, point_num) VALUES(:titre, :dateEvent, :heure, :texte, :ville, :pointNum)";
         $req=$this->db->prepare($sql);
         $req->bindValue(':titre', $event->getTitre(), PDO::PARAM_STR);
         $req->bindValue(':dateEvent', $event->getDate(), PDO::PARAM_STR);
         $req->bindValue(':heure', $event->getHeure(), PDO::PARAM_STR);
         $req->bindValue(':texte', $event->getTexte(), PDO::PARAM_STR);
         $req->bindValue(':ville', $event->getVille(), PDO::PARAM_STR);
+		$req->bindValue(':pointNum', $event->getPointNum(), PDO::PARAM_INT);
         $req->execute();
 	}
 
