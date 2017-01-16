@@ -18,21 +18,25 @@ class VilleManager{
 	}
 
 	public function add($ville){
-				$sql="INSERT INTO ville(vil_nom) VALUES($ville)";
+				$sql="INSERT INTO ville(vil_nom) VALUES(:nom)";
 				$req=$this->db->prepare($sql);
 				$req->bindValue(':nom', $ville, PDO::PARAM_STR);
 				$req->execute();
 	}
 
 	public function existe($nom){
-		$sql="SELECT * FROM ville WHERE vil_nom = :nom";
-		$req = $this->db->prepare($sql);
-		$req->bindValue(':nom', $nom, PDO::PARAM_STR);
-		$req->execute();
-		$ligne=$req->fetch(PDO::FETCH_OBJ);
-		echo "existe : 0";
+		$sql="SELECT * FROM ville WHERE vil_nom ='".$nom."' ";
+		$req = $this->db->query($sql);
+	/*	$req->bindValue(':nom', $nom, PDO::PARAM_STR);
+		$req->execute();*/
 		print_r($req);
-		return (isset($ligne));
+		$resu=$req->fetch(PDO::FETCH_OBJ);
+		//$ligne=$req->fetch(PDO::FETCH_OBJ);
+		if($resu == NULL){
+			return false;
+		}else{
+			return true;
+		}
 	}
 
 	public function getVilNumByNom($nom){
