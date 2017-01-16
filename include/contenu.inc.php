@@ -6,7 +6,7 @@ else{
 }
 
 $page=$managerPage->getPage($pageNum);
-include_once('pages/' . strtolower(strRemoveAccent($page->getNom())) . ".inc.php");
+include_once('pages/' . str_replace(' ','',strtolower(strRemoveAccent($page->getNom()))) . ".inc.php");
 
 
 

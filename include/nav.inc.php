@@ -49,7 +49,7 @@ if(isset($_POST["nomPage"])){
     $tab["page_nom"]=$_POST["nomPage"];
     $page=new Page($tab);
     $managerPage->add($page);
-    $manip = fopen("include/pages/" .  strtolower(strRemoveAccent($_POST["nomPage"])) . ".inc.php", "w+");
+    $manip = fopen("include/pages/" .  str_replace(' ','',strtolower(strRemoveAccent($_POST["nomPage"]))) . ".inc.php", "w+");
     if($manip==false)
     die("La création du fichier a échoué");
 }
