@@ -19,6 +19,9 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <script src="js/function.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+        <script type="text/javascript" src="D:\application\fancbox\fancyBox-master\source\jquery.fancybox-1.3.4.pack.js"></script>
+        <script type="text/javascript" src="D:\application\fancbox\fancyBox-master\lib\jquery.mousewheel-3.0.4.pack.js"></script>
     </head>
     <body>
         <header>
