@@ -43,7 +43,7 @@ foreach ($managerArticle->getAllArticle(1) as $article) {
   if(isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]==$article->getNum()){
       $_SESSION["numArticleAModifier"]=$article->getNum();
       ?>
-      <div id="ajouterArticle">
+      <div id="formulaireAjoutArticle">
           <form method="POST" action="#">
               <label>Titre de l'article:</label>
               <input  type="text" name="titreModifie" value="<?php echo $article->getTitre(); ?>" required>
@@ -84,7 +84,7 @@ if(isset($_SESSION["login"])){
 }
 
 if(isset($_SESSION["login"])){?>
-<div id="ajouterArticle">
+<div id="formulaireAjoutArticle">
     <form method="POST" action="#">
         <label>Titre de l'article:</label>
         <input  type="text" name="titre" placeholder="Titre de l'article..." required>

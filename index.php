@@ -4,7 +4,7 @@
     session_start();
     require_once("include/config.inc.php");
     require_once("include/autoLoad.inc.php");
-    require_once("include/pages/function.inc.php");
+    require_once("include/function.inc.php");
     $pdo=new Mypdo();
     $managerPage = new PageManager($pdo);
     $managerArticle = new ArticleManager($pdo);
