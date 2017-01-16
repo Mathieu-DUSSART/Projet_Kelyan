@@ -48,5 +48,15 @@ class VilleManager{
 		$obj=new Ville($ligne);
 		return $obj;
 	}
+
+	public function getVilNomByNum($num){
+		$sql="SELECT vil_num 	FROM 	ville WHERE vil_num=:num";
+		$req = $this->db->prepare($sql);
+		$req->bindValue(':num', $num, PDO::PARAM_INT);
+		$req->execute();
+		$ligne=$req->fetch(PDO::FETCH_OBJ);
+		$obj=new Ville($ligne);
+		return $obj;
+	}
 }
 ?>
