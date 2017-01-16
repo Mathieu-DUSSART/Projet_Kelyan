@@ -7,6 +7,7 @@ class AdministrateurManager{
     }
 
     public function checkLoginPassword($login, $password){
+        $password = crypterPassword($password);
         $sql = "SELECT admin_num FROM administrateur WHERE admin_login = :login AND admin_password = :password";
         $req = $this->db->prepare($sql);
         $req->bindValue(':login', $login, PDO::PARAM_STR);

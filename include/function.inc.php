@@ -44,4 +44,17 @@ function strRemoveAccent($string){
 
     return str_replace($accent, $sansAccent, $string);
 }
+
+/*
+Fonction qui crypte un mot de passe
+Paramètre :
+    -$password : le mot de passe à crypter
+Retourne : le mot de passe crypté
+*/
+function crypterPassword($password){
+    $salt="48@!alsd";
+    $password_crypte = sha1(sha1($password).$salt);
+
+    return $password_crypte;
+}
 ?>
