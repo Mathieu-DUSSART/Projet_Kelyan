@@ -1,3 +1,41 @@
+<?php
+//Ajoute un évènement
+if(isset($_POST["titre"])){
+    $tabEvent=Array();
+    $tabEvent["event_titre"]=$_POST["titre"];
+    $tabEvent["event_date"]=$_POST["date"];
+    $tabEvent["event_heure"]=$_POST["heure"];
+    $tabEvent["event_texte"]=$_POST["texte"];
+    $tabEvent["event_ville"]=$_POST["ville"];
+    $evenement=new Evenement($tabEvent);
+    $managerEvenement->add($evenement);
+    header("Location: index.php?page=3");
+    exit;
+}
+
+//Modifie un évènement
+if(isset($_POST["titreModifie"])){
+    $tabEvent=Array();
+    $tabEvent["event_num"]=$_SESSION["numArticleAModifier"];
+    $tabEvent["event_titre"]=$_POST["titreModifie"];
+    $tabEvent["event_date"]=$_POST["dateModifie"];
+    $tabEvent["event_heure"]=$_POST["heureModifie"];
+    $tabEvent["event_texte"]=$_POST["texteModifie"];
+    $tabEvent["event_ville"]=$_POST["villeModifie"];
+    $evenement=new Evenement($tabEvent);
+    $managerEvenement->modifierEvenement($evenement);
+    header("Location: index.php?page=3");
+    exit;
+}
+
+//Supprime un évènement
+if(isset($_POST["supprimerArticle"])){
+    $managerEvenement->deleteEvenement($_POST["numArticleASupprimer"]);
+    header("Location: index.php?page=3");
+    exit;
+}
+?>
+
 <h1 class="titreVert">Evènement</h1>
 
 <?php
@@ -89,41 +127,4 @@ if(isset($_SESSION["login"])){?>
         </form>
     </div>
 <?php
-}
-
-//Ajoute un évènement
-if(isset($_POST["titre"])){
-    $tabEvent=Array();
-    $tabEvent["event_titre"]=$_POST["titre"];
-    $tabEvent["event_date"]=$_POST["date"];
-    $tabEvent["event_heure"]=$_POST["heure"];
-    $tabEvent["event_texte"]=$_POST["texte"];
-    $tabEvent["event_ville"]=$_POST["ville"];
-    $evenement=new Evenement($tabEvent);
-    $managerEvenement->add($evenement);
-    header("Location: index.php?page=3");
-    exit;
-}
-
-//Modifie un évènement
-if(isset($_POST["titreModifie"])){
-    $tabEvent=Array();
-    $tabEvent["event_num"]=$_SESSION["numArticleAModifier"];
-    $tabEvent["event_titre"]=$_POST["titreModifie"];
-    $tabEvent["event_date"]=$_POST["dateModifie"];
-    $tabEvent["event_heure"]=$_POST["heureModifie"];
-    $tabEvent["event_texte"]=$_POST["texteModifie"];
-    $tabEvent["event_ville"]=$_POST["villeModifie"];
-    $evenement=new Evenement($tabEvent);
-    $managerEvenement->modifierEvenement($evenement);
-    header("Location: index.php?page=3");
-    exit;
-}
-
-//Supprime un évènement
-if(isset($_POST["supprimerArticle"])){
-    $managerEvenement->deleteEvenement($_POST["numArticleASupprimer"]);
-    header("Location: index.php?page=3");
-    exit;
-}
-?>
+}?>

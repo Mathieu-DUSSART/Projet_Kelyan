@@ -1,41 +1,10 @@
-<h1 class="titreOrange">Galerie</h1>
-
 <?php
-//Affiche toutes les images de la page Galerie
-foreach ($managerImage->getAllImage("/Projet_Kelyan/image/galerie/") as $image) {?>
-    <div class="img">
-        <?php
-        echo "<a class=\"imgGalerie\" href=\"#\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
-        if(isset($_SESSION["login"])){?>
-            <div class="supprimerImage">
-                <form method="POST" action="#">
-                    <input name="supprimerImage" type="submit" value="X">
-                    <input name="numImageASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
-                </form>
-            </div>
-        <?php
-        }?>
-    </div>
-<?php
-}
-
 // Constantes
 define('TARGET', 'image/galerie/');    // Repertoire cible
 define('MAX_SIZE', 10000000);    // Taille max en octets du fichier
 define('WIDTH_MAX', 50000);    // Largeur max de l'image en pixels
 define('HEIGHT_MAX', 50000);    // Hauteur max de l'image en pixels
 
-if(isset($_SESSION["login"])){?>
-    <div id="ajouterImage">
-        <form enctype="multipart/form-data" action="#" method="post">
-            <label for="fichier_a_uploader" title="Recherchez le fichier à uploader !">Envoyer le fichier</label>
-            <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_SIZE; ?>" />
-            <input name="fichier" type="file" id="fichier_a_uploader" />
-            <input class="bouton" type="submit" name="submit" value="Uploader" />
-        </form>
-    </div>
- <?php
- }
 
  /************************************************************
   * Definition des constantes / tableaux et variables
@@ -129,5 +98,37 @@ if( !empty($message) ){
     echo '<p>',"\n";
     echo "\t\t<strong>", htmlspecialchars($message) ,"</strong>\n";
     echo "\t</p>\n\n";
+}?>
+
+<h1 class="titreOrange">Galerie</h1>
+
+<?php
+//Affiche toutes les images de la page Galerie
+foreach ($managerImage->getAllImage("/Projet_Kelyan/image/galerie/") as $image) {?>
+    <div class="img">
+        <?php
+        echo "<a class=\"imgGalerie\" href=\"#\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
+        if(isset($_SESSION["login"])){?>
+            <div class="supprimerImage">
+                <form method="POST" action="#">
+                    <input name="supprimerImage" type="submit" value="X">
+                    <input name="numImageASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
+                </form>
+            </div>
+        <?php
+        }?>
+    </div>
+<?php
 }
-?>
+
+if(isset($_SESSION["login"])){?>
+    <div id="ajouterImage">
+        <form enctype="multipart/form-data" action="#" method="post">
+            <label for="fichier_a_uploader" title="Recherchez le fichier à uploader !">Envoyer le fichier</label>
+            <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_SIZE; ?>" />
+            <input name="fichier" type="file" id="fichier_a_uploader" />
+            <input class="bouton" type="submit" name="submit" value="Uploader" />
+        </form>
+    </div>
+ <?php
+ }?>
