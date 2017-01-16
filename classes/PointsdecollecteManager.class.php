@@ -29,12 +29,10 @@ class PointsdecollecteManager{
   	}
 
     public function add($point){
-          $sql="INSERT INTO pointdecollecte(point_num,point_lieu,vil_num,point_visibilite) VALUES(:num, :lieu, :ville, :visibilite)";
+          $sql="INSERT INTO pointdecollecte(point_lieu,vil_num,point_visibilite) VALUES( :lieu, :ville, 0)";
           $req=$this->db->prepare($sql);
-          $req->bindValue(':num', $point->getPointNum(), PDO::PARAM_INT);
           $req->bindValue(':lieu', $point->getPointLieu(), PDO::PARAM_STR);
           $req->bindValue(':ville', $point->getPointVille(), PDO::PARAM_INT);
-          $req->bindValue(':visibilite', $point->getPointVisibilite(), PDO::PARAM_INT);
           $req->execute();
   	}
 

@@ -10,18 +10,25 @@ foreach($villeTab as $ville){
       echo "<p>" . $point->getPointLieu() ."</p>";
   }
 }
-
 //Ajoute un point de collecte
-if(isset($_POST["ville"]&&isset($_Post["adresse"]))){
+if(isset($_POST["ville"])){
     $tab=array();
-    $ville=$_POST["adresse"]->getVilNom();
-    $tab["vil_num"]=$_POST["titre"];
-    $tab["art_date"]=$date;
-    $tab["art_texte"]=$_POST["texte"];
-    $tab["page_num"]=$_GET["page"];
-    $article=new Article($tab);
-    $managerArticle->add($article);
-    header('Location: index.php?page=2');
+    echo "0";
+    print_r($_POST["ville"]);
+    if(!($managerVille->existe($_POST["ville"]))){
+      echo"0.5";
+      $managerVille->add($_POST["ville"]);
+    }
+
+    $ville=$managerVille->getVilNumByNom($_POST["ville"])->getVilNum();
+    echo "1";
+    print_r($ville);
+    echo "2";
+    $tab["vil_num"]=$ville;
+    $tab['point_lieu']=$_POST["adresse"];
+    $pointdecollecte=new pointsdecollecte($tab);
+    $managerPointsDeCollecte->add($pointdecollecte);
+    header('Location: index.php?page=8');
     exit;
 }
 
@@ -33,7 +40,7 @@ if(isset($_POST["titreModifie"])){
     $tab["art_texte"]=$_POST["texteModifie"];
     $article=new Article($tab);
     $managerArticle->modifierArticle($article);
-    header('Location: index.php?page=2');
+    header('Location: index.php?page=8');
     exit;
 }
 
