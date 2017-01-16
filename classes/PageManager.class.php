@@ -23,6 +23,19 @@ class PageManager{
 	}
 
 	/*
+	Fonction qui modifie une page de la BD
+	Paramètre :
+		- $page : la page à modifier
+	*/
+	public function modifierPage($page)	{
+		$sql="UPDATE page SET page_nom=:page_nom WHERE page_num=:page_num";
+		$req=$this->db->prepare($sql);
+		$req->bindValue(':page_nom', $page->getNom(), PDO::PARAM_STR);
+		$req->bindValue(':page_num', $page->getNum(), PDO::PARAM_INT);
+		$req->execute();
+	}
+
+	/*
 	Fonction qui supprime une Page de la BD en fonction de son numéro
 	Paramètre :
 		- $num : le numéro de la Page à supprimer
