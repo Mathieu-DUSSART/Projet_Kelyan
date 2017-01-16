@@ -80,17 +80,33 @@ class PageManager{
 		return $page;
 	}
 
+	/*
+	Fonction qui vérifie si une page est suppimable ou non.
+	Paramètre :
+		- $num : le numéro de la page
+	Retourne : VRAI si la page est supprimable, FAUX sinon
+	*/
 	public function estSupprimable($num){
-			$sql='SELECT page_supprimable FROM page WHERE page_supprimable = 1 AND page_num = "'.$num.'"';
-			$req = $this->db->query($sql);
-			$resu = $req->fetch(PDO::FETCH_OBJ);
-			if($resu != NULL){
-				return true;
-			}
-			else {
-				{
-					return false;
-				}
-			}
+		$sql='SELECT page_supprimable FROM page WHERE page_supprimable = 1 AND page_num = "'.$num.'"';
+		$req = $this->db->query($sql);
+		$resu = $req->fetch(PDO::FETCH_OBJ);
+		if($resu != NULL){
+			return true;
+		}else{
+			return false;
 		}
+	}
+
+	public function existePage($page){
+		$sql="SELECT page_num FROM page WHERE page_nom=:nom";
+		$req=$this->db->prepare($sql);
+		$nom = str_replace(' ','',strtolower(strRemoveAccent($page->getNom())));
+		$req->bindValue(':nom', $nom, PDO::PARAM_STR);
+		$req->execute();
+		if(isset($req->page_num)){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

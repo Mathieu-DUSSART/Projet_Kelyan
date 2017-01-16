@@ -97,4 +97,12 @@ if(isset($_POST["supprimerPage"])){
     header('Location: index.php?page=' . $_GET["page"]);
     exit;
 }
+$tabt=Array();
+$tabt["page_nom"]="qsdsq";
+$pageT=new Page($tabt);
+if($managerPage->existePage($pageT)==true){
+    echo "VRAI";
+}else{
+    echo "FAUX";
+}
 ?>
