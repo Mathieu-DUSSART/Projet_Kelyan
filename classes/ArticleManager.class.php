@@ -35,6 +35,17 @@ class ArticleManager{
 		$req->execute();
 	}
 
+	public function modifierArticle($article)	{
+		$sql="UPDATE article SET art_titre=:titre, art_date=:dateArt, art_texte=:texte, page_num=:pageNum WHERE art_num=:num";
+		$req=$this->db->prepare($sql);
+		$req->bindValue(':titre', $article->getTitre(), PDO::PARAM_STR);
+		$req->bindValue(':dateArt', $article->getDate(), PDO::PARAM_STR);
+		$req->bindValue(':texte', $article->getTexte(), PDO::PARAM_STR);
+		$req->bindValue(':pageNum', $article->getPageNum(), PDO::PARAM_INT);
+		$req->bindValue(':num', $article->getNum(), PDO::PARAM_INT);
+		$req->execute();
+	}
+
 	/*
 	Fonction qui permet de récupérer tous les Articles de la BD qui correspondent à une certaine page
 	Paramètre :
