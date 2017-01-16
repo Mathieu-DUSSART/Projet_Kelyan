@@ -12,9 +12,9 @@ class Ville{
   public function affecte($tab = array()){
   foreach($tab as $id => $valeurs){
     switch ($id){
-      case 'vil_num' : $this->setNum($valeurs);
+      case 'vil_num' : $this->setVilNum($valeurs);
         break;
-      case 'vil_nom' : $this->setTitre($valeurs);
+      case 'vil_nom' : $this->setVilNom($valeurs);
         break;
       }
     }
