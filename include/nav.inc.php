@@ -62,15 +62,20 @@ else{
 //Permet d'ajouter la nouvelle page dans la BD et de créer
 //le fichier correspondant dans le dossier "include/pages"
 if(isset($_POST["nomPage"])){
-    $tab= Array();
-    $tab["page_nom"]=$_POST["nomPage"];
-    $page=new Page($tab);
-    $managerPage->add($page);
-    $manip = fopen("include/pages/" .  str_replace(' ','',strtolower(strRemoveAccent($_POST["nomPage"]))) . ".inc.php", "w+");
-    if($manip==false)
-    die("La création du fichier a échoué");
-    header('Location: index.php?page=' . $_GET["page"]);
-    exit;
+    if($managerPage->existePage($_POST["nomPage"])){
+        echo "La page existe déjà";
+    }else{
+        $tab= Array();
+        $tab["page_nom"]=$_POST["nomPage"];
+        $page=new Page($tab);
+        $managerPage->add($page);
+        $manip = fopen("include/pages/" .  str_replace(' ','',strtolower(strRemoveAccent($_POST["nomPage"]))) . ".inc.php", "w+");
+        if($manip==false)
+        die("La création du fichier a échoué");
+        header('Location: index.php?page=' . $_GET["page"]);
+        exit;
+    }
+
 }
 
 //Permet de modifier une page
@@ -96,13 +101,5 @@ if(isset($_POST["supprimerPage"])){
     }
     header('Location: index.php?page=' . $_GET["page"]);
     exit;
-}
-$tabt=Array();
-$tabt["page_nom"]="qsdsq";
-$pageT=new Page($tabt);
-if($managerPage->existePage($pageT)==true){
-    echo "VRAI";
-}else{
-    echo "FAUX";
 }
 ?>

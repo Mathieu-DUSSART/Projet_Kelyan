@@ -97,13 +97,10 @@ class PageManager{
 		}
 	}
 
-	public function existePage($page){
-		$sql="SELECT page_num FROM page WHERE page_nom=:nom";
-		$req=$this->db->prepare($sql);
-		$nom = str_replace(' ','',strtolower(strRemoveAccent($page->getNom())));
-		$req->bindValue(':nom', $nom, PDO::PARAM_STR);
-		$req->execute();
-		if(isset($req->page_num)){
+	public function existePage($nomPage){
+		$nom = "include/pages/" . str_replace(' ','',strtolower(strRemoveAccent($nomPage))) . ".inc.php";
+
+		if(file_exists($nom)){
 			return true;
 		}else{
 			return false;
