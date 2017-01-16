@@ -91,7 +91,7 @@ if(isset($_POST["titreModifie"])){
     $tab["art_texte"]=$_POST["texte"];
     $tab["page_num"]=$_GET["page"];
     $article=new Article($tab);
-    $managerArticle->modifieArticle($article);
+    $managerArticle->modifierArticle($article);
     header('Location: index.php?page=2');
     exit;
 }
