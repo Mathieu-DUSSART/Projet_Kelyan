@@ -9,8 +9,8 @@
 }
 body{
     font-family: Verdana;
-    /*background-color: #d8f0ff;*/
-    background-color: #F1F1F1;
+    background-color: #d8f0ff;
+    /*background-color: #F1F1F1;*/
     color:#3E454C;
     margin:0;
 }
@@ -22,10 +22,10 @@ header{
     background-color:#F1F1F1;
     width:100%;
     height:25vh;
-/*    background-image: url("../image/bouchons3.jpg");
+    background-image: url("../image/bouchons3.jpg");
     background-repeat: no-repeat;
     background-position: center right;
-    background-size:90vw auto;*/
+    background-size:90vw auto;
 }
 header #logoFB{
     position: absolute;
@@ -46,10 +46,10 @@ header h1{
     /*font-family: Aclonica;*/
     width:70vw;
     font-size:250%;
-    color:#3E454C;
-    /*color: white;*/
-    text-shadow: -1px 0 0 rgba(255,255,255,1), 1px 0 0 rgba(255,255,255,1), 0 -1px 0 rgba(255,255,255,1), 0 1px 0 rgba(255,255,255,1);
-    /*text-shadow: -1px 0 0 rgba(0,0,0,0.8), 1px 0 0 rgba(0,0,0,0.8), 0 -1px 0 rgba(0,0,0,0.8), 0 1px 0 rgba(0,0,0,0.8);*/
+    /*color:#3E454C;*/
+    color: white;
+    /*text-shadow: -1px 0 0 rgba(255,255,255,1), 1px 0 0 rgba(255,255,255,1), 0 -1px 0 rgba(255,255,255,1), 0 1px 0 rgba(255,255,255,1);*/
+    text-shadow: -1px 0 0 rgba(0,0,0,0.8), 1px 0 0 rgba(0,0,0,0.8), 0 -1px 0 rgba(0,0,0,0.8), 0 1px 0 rgba(0,0,0,0.8);
 }
 
 /* ---NAV--- */
@@ -58,7 +58,7 @@ nav{
     z-index:9;
     height:8vh;
     background-color: white;
-    background-color: #2185C5;
+    /*background-color: #2185C5;*/
     box-shadow: 0px 2px 5px black;
 }
 
