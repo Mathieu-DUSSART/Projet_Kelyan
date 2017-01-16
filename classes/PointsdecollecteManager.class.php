@@ -8,7 +8,7 @@ class PointsdecollecteManager{
 
     public function getAllPoint(){
   		$tabObj=Array();
-  		$sql="SELECT * FROM Pointsdecollecte ";
+  		$sql="SELECT * FROM pointsdecollecte ";
   		$req=$this->db->query($sql);
   		while($ligne=$req->fetch(PDO::FETCH_OBJ)){
   			$tabObj[]=new Pointsdecollecte($ligne);
@@ -18,7 +18,7 @@ class PointsdecollecteManager{
 
     public function getPointByVille($nom){
   		$tabObj=Array();
-  		$sql="SELECT * FROM Pointsdecollecte WHERE point_ville = :nom";
+  		$sql="SELECT * FROM pointsdecollecte WHERE point_ville = :nom";
       $req=$this->db->prepare($sql);
       $req->bindValue(':num', $num, PDO::PARAM_INT);
       $req->execute();

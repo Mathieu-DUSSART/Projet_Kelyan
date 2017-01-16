@@ -14,48 +14,48 @@ class Pointsdecollecte{
     public function affecte($tab = array()){
         foreach($tab as $id => $valeurs){
             switch ($id){
-                case 'point_num' : $this->setNum($valeurs);
+                case 'point_num' : $this->setPointNum($valeurs);
                     break;
-                case 'point_lieu' : $this->setLieu($valeurs);
+                case 'point_lieu' : $this->setPointLieu($valeurs);
                     break;
-                case 'point_ville' : $this->setVille($valeurs);
+                case 'vil_num' : $this->setPointVille($valeurs);
                     break;
-                case 'point_visibilite' : $this->setVisibilite($valeurs);
+                case 'point_visibilite' : $this->setPointVisibilite($valeurs);
                     break;
             }
         }
     }
 
-    public function setNum($num){
+    public function setPointNum($num){
         $this->num = $num;
     }
 
-    public function setLieu($lieu){
+    public function setPointLieu($lieu){
         $this->lieu = $lieu;
     }
 
-    public function setVille($ville){
+    public function setPointVille($ville){
         $this->ville = $ville;
     }
 
-    public function setVisibilite($visibilite){
+    public function setPointVisibilite($visibilite){
         $this->visibilite = $visibilite;
     }
 
 
-    public function getNum(){
+    public function getPointNum(){
         return $this->num;
     }
 
-    public function getLieu(){
+    public function getPointLieu(){
         return $this->lieu;
     }
 
-    public function getVille(){
+    public function getPointVille(){
         return $this->ville;
     }
 
-    public function getVisibilite(){
+    public function getPointVisibilite(){
         return $this->visibilite;
     }
 }

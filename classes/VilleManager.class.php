@@ -8,7 +8,7 @@ class VilleManager{
 
 	public function getAllVille(){
 		$tabObj=Array();
-		$sql="SELECT * FROM Ville ";
+		$sql="SELECT * FROM ville ";
 		$req=$this->db->query($sql);
 		while($ligne=$req->fetch(PDO::FETCH_OBJ)){
 			$tabObj[]=new Ville($ligne);
@@ -17,7 +17,7 @@ class VilleManager{
 	}
 
 	public function add($ville){
-				$sql="INSERT INTO Ville(vil_num,vil_nom) VALUES(:num,:nom)";
+				$sql="INSERT INTO ville(vil_num,vil_nom) VALUES(:num,:nom)";
 				$req=$this->db->prepare($sql);
 				$req->bindValue(':num', $ville->getVilNum(), PDO::PARAM_INT);
 				$req->bindValue(':nom', $ville->getVilNom(), PDO::PARAM_STR);
