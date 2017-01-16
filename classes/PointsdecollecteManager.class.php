@@ -8,7 +8,7 @@ class PointsdecollecteManager{
 
     public function getAllPoint(){
   		$tabObj=Array();
-  		$sql="SELECT * FROM pointsdecollecte ";
+  		$sql="SELECT * FROM pointdecollecte ";
   		$req=$this->db->query($sql);
   		while($ligne=$req->fetch(PDO::FETCH_OBJ)){
   			$tabObj[]=new Pointsdecollecte($ligne);

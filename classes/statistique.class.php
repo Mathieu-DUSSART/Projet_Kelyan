@@ -1,5 +1,5 @@
 <?php
-public class Statistique {
+class Statistique {
   private $statistique;
   private $point;
 
