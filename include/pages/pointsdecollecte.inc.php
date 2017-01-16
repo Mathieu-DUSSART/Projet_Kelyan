@@ -2,6 +2,13 @@
 <?php
 
 $villeTab = $managerVille->getAllVille();
+foreach($villetab as $ville){
+  echo "<h2>" . $ville->getVilNom() . "</h2>";
+  $AllPoint = $managerPointsDeCollecte->getPointByVille($ville->getVilNom());
+  foreach($AllPoint as $point){
+
+  }
+}
 //(1) On inclut la classe de Google Maps pour générer ensuite la carte.
 require('classes/GoogleMapAPI.class.php');
 
