@@ -1,6 +1,7 @@
 <?php
 public class Statistique {
   private $statistique;
+  private $point;
 
   public function __construct($valeurs = array()){
     if(!empty($valeurs)){
@@ -13,11 +14,25 @@ public class Statistique {
       switch($attribut){
         case "statistique" : $this->setStatistique($donnee);
           break;
+        case "point" : $this->setPoint($donnee);
+          break;
       }
     }
   }
 
   public function setStatistique($num){
     $this->statistique = $num;
+  }
+
+  public function getStatistique(){
+    return $this->statistique;
+  }
+
+  public function setPoint($point){
+    $this->point=$point;
+  }
+
+  public function getPoint(){
+    return $this->point;
   }
 }?>
