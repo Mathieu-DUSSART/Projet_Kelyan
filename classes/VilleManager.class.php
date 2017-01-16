@@ -11,7 +11,7 @@ class VilleManager{
 		$sql="SELECT * FROM Ville ";
 		$req=$this->db->query($sql);
 		while($ligne=$req->fetch(PDO::FETCH_OBJ)){
-			$tabObj[]=new Page($ligne);
+			$tabObj[]=new Ville($ligne);
 		}
 		return $tabObj;
 	}
