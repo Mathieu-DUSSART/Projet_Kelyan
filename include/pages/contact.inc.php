@@ -1,9 +1,4 @@
 <?php
-// Constantes
-define('TARGET', 'image/partenaire/');    // Repertoire cible
-define('MAX_SIZE', 10000000);    // Taille max en octets du fichier
-define('WIDTH_MAX', 50000);    // Largeur max de l'image en pixels
-define('HEIGHT_MAX', 50000);    // Hauteur max de l'image en pixels
 
 // Tableaux de donnees
 $tabExt = array('jpg','gif','png','jpeg');    // Extensions autorisees
