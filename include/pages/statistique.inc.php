@@ -2,7 +2,10 @@
 <?php
 $tabPoint = $managerPointDeCollecte->getAllPoint();
 foreach ($tabPoint as $point) {
-  $tabStatistique
-  # code...
+  echo "<h2>" . $point->getPointVille() . " : " . $point->getPointLieu() . " : </h2>";
+  $tabStatistique=$managerStatistique->getStatistiqueByPoint($point->getPointNum());
+  foreach ($tabStatistique as $stat) {
+    echo "<p>" . $stat->getStatistique() . "</p>";
+  }
 }
  ?>

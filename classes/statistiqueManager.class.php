@@ -1,5 +1,5 @@
 <?php
-public class StatistiqueManager{
+class StatistiqueManager{
   private $db;
 
   public function __construct($db){
