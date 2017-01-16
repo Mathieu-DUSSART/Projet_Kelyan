@@ -8,7 +8,7 @@ class PointsdecollecteManager{
 
     public function getAllPoint(){
   		$tabObj=Array();
-  		$sql="SELECT * FROM Pointsdecollecte WHERE ";
+  		$sql="SELECT * FROM Pointsdecollecte ";
   		$req=$this->db->query($sql);
   		while($ligne=$req->fetch(PDO::FETCH_OBJ)){
   			$tabObj[]=new Page($ligne);
