@@ -1,31 +1,15 @@
-<<<<<<< HEAD
-=======
+
 <h1>Liste des points de collecte</h1>
 <?php
-$villeTab = array();
-$villeTab = $managerVille->getAllVille();
-foreach($villeTab as $ville){
-  echo "<h2>" . $ville->getVilNom() . "</h2>";
-  $AllPoint = array();
-  $AllPoint = $managerPointsDeCollecte->getPointByVille($ville->getVilNum());
-  foreach($AllPoint as $point){
-      echo "<p>" . $point->getPointLieu() ."</p>";
-  }
-}
+
+
 //Ajoute un point de collecte
 if(isset($_POST["ville"])){
     $tab=array();
-    echo "0";
-    print_r($_POST["ville"]);
     if(!($managerVille->existe($_POST["ville"]))){
-      echo"0.5";
       $managerVille->add($_POST["ville"]);
     }
-
     $ville=$managerVille->getVilNumByNom($_POST["ville"])->getVilNum();
-    echo "1";
-    print_r($ville);
-    echo "2";
     $tab["vil_num"]=$ville;
     $tab['point_lieu']=$_POST["adresse"];
     $pointdecollecte=new pointsdecollecte($tab);
@@ -35,36 +19,76 @@ if(isset($_POST["ville"])){
 }
 
 //Modifie un article
-if(isset($_POST["titreModifie"])){
-    $tab=array();
-    $tab["art_num"]=$_SESSION["numArticleAModifier"];
-    $tab["art_titre"]=$_POST["titreModifie"];
-    $tab["art_texte"]=$_POST["texteModifie"];
-    $article=new Article($tab);
-    $managerArticle->modifierArticle($article);
+
+//Supprime un article
+if(isset($_POST["supprimerPointDeCollecte"])){
+    $managerPointsDeCollecte->deletePointDeCollecte($_POST["numPointDeCollecteASupprimer"]);
     header('Location: index.php?page=8');
     exit;
 }
 
-//Supprime un article
+$villeTab = array();
+$villeTab = $managerVille->getAllVille();
+foreach($villeTab as $ville){
+  echo "<h2>" . $ville->getVilNom() . "</h2>";
+  $AllPoint = array();
+  $AllPoint = $managerPointsDeCollecte->getPointByVille($ville->getVilNum());
 
-if(isset($_SESSION["login"])){?>
-  <h2> Ajouter un point de collecte </h2>
-    <div id="ajouterPointDeCollecte">
-        <form method="POST" action="#">
-            <label>Ville du point de Collecte :</label>
-            <input  type="text" name="ville" placeholder="Ville ..." required>
-            <br>
-            <label>Adresse du point de Collecte:</label>
-            <input  type="text" name="adresse" placeholder="Adresse ..." required>
-            <br>
-            <input class="bouton" type="submit" value="Ajouter point de collecte">
-        </form>
-    </div>
-<?php
-}?>
+  foreach($AllPoint as $point){
+    if(isset($_POST["modifierPointDeCollecte"]) && $_POST["numPointDeCollecteAModifier"]==$point->getPointNum()){
+        $_SESSION["numPointDeCollecteAModifier"]=$point->getPointNum();
+        ?>
+        <div id="ajouterArticle">
+            <form method="POST" action="#">
+                <label>Ville du point de collecte:</label>
+                <input  type="text" name="VilleModifie" value="<?php echo $point->getPointVille(); ?>" required>
+                <br>
+                <label>Visibilité:</label>
+                <input name="visibilitePointDeCollecteModifier" type="radio" value="0" <?php if($point->getPointVisibilite()==0){echo "cheched";}?>>non</input>
+                <input name="visibilitePointDeCollecteModifier" type="radio" value="1"   <?php if($point->getPointVisibilite()==1){echo "cheched";}?>>oui</input>
+                <textarea name="lieuModifie" rows="8" required><?php echo $point->getPointLieu(); ?></textarea>
+                <br>
 
-<?php
+                <input class="bouton" type="submit" value="Modifier le point de collecte">
+            </form>
+        </div>
+    <?php
+    }else{
+      echo "<p>" . $point->getPointLieu() ."</p>";
+
+      if(isset($_SESSION["login"])){
+          if(!isset($_POST["modifierPointDeCollecte"]) || (isset($_POST["modifierPointDeCollecte"]) && $_POST["numPointDeCollecteAModifier"]!=$point->getPointNum())){?>
+              <div class="voletGestionPointdeCollecte">
+                  <form class="supprimerPointDeCollecte" method="POST" action="#">
+                      <input name="supprimerPointDeCollecte" type="submit" value="X">
+                      <input name="numPointDeCollecteASupprimer" type="hidden" value="<?php echo $point->getPointNum(); ?>">
+                  </form>
+                  <form class="modifierPointDeCollecte" method="POST" action="#">
+                      <input name="modifierPointDeCollecte" type="submit" value="M">
+                      <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $point->getPointNum() ;?>">
+                  </form>
+              </div>
+          <?php
+          }
+          if(isset($_POST["modifierPointDeCollecte"])){
+              $tab=array();
+              $tab['point_num']=$_SESSION["numPointDeCollecteAModifier"];
+              $tab["vil_num"]=$_POST["VilleModifie"];
+              $tab["point_visibilite"]=$_POST["visibilitePointDeCollecteModifier"];
+              $tab["point_lieu"]=$_POST["lieuModifie"];
+              $pointdecollecte=new pointsdecollecte($tab);
+
+              $managerPointsDeCollecte->modifierPointDeCollecte($pointdecollecte);
+              header('Location: index.php?page=8');
+              exit;
+          }
+
+        }
+      }
+}
+
+}
+
 //(1) On inclut la classe de Google Maps pour générer ensuite la carte.
 require('classes/GoogleMapAPI.class.php');
 
@@ -85,4 +109,3 @@ $map->setZoomLevel (5);
 
 $map->printMap();
 ?>
->>>>>>> 0314827eefaff5606ac123c7722ed8d3cb87e6af

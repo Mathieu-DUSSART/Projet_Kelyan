@@ -53,4 +53,22 @@ class PointsdecollecteManager{
 			return $tabObj;
 		}
 
+
+		public function modifierPointDeCollecte($point)	{
+			$sql="UPDATE pointdecollecte SET vil_num=:ville, point_visibilite=:visibilite ,point_lieu=:lieu WHERE point_num=:num";
+			$req=$this->db->prepare($sql);
+			$req->bindValue(':lieu', $point->getPointLieu(), PDO::PARAM_STR);
+			$req->bindValue(':ville', $point->getPointVille(), PDO::PARAM_STR);
+			$req->bindValue(':visibilite', $point->getPointVisibilite(), PDO::PARAM_STR);
+			$req->bindValue(':num', $point->getPointNum(), PDO::PARAM_INT);
+			$req->execute();
+		}
+
+		public function deletePointDeCollecte($num){
+			$sql="DELETE FROM pointdecollecte WHERE point_num=:num";
+			$req=$this->db->prepare($sql);
+			$req->bindValue(':num', $num, PDO::PARAM_INT);
+			$req->execute();
+		}
+
 	}
