@@ -7,7 +7,9 @@ foreach ($managerArticle->getAllArticle(2) as $article) {
     $date = date_format(date_create($article->getDate()), 'd/m/Y H:i');?>
 
         <?php
-        if(isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]==$article->getNum()){?>
+        if(isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]==$article->getNum()){
+            $_SESSION["numArticleAModifier"]=$article->getNum();
+            ?>
             <div id="ajouterArticle">
                 <form method="POST" action="#">
                     <label>Titre de l'article:</label>
@@ -86,10 +88,9 @@ if(isset($_POST["titre"])){
 //Modifie un article
 if(isset($_POST["titreModifie"])){
     $tab=array();
-    $tab["art_titre"]=$_POST["titre"];
-    $tab["art_date"]=$date;
-    $tab["art_texte"]=$_POST["texte"];
-    $tab["page_num"]=$_GET["page"];
+    $tab["art_num"]=$_SESSION["numArticleAModifier"];
+    $tab["art_titre"]=$_POST["titreModifie"];
+    $tab["art_texte"]=$_POST["texteModifie"];
     $article=new Article($tab);
     $managerArticle->modifierArticle($article);
     header('Location: index.php?page=2');
