@@ -288,7 +288,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     background-color: blue;
 }
 
-#ajouterArticle, #ajouterEvenement{
+#formulaireAjoutArticle, #formulaireAjoutEvenement{
     display: inline-block;
     background-color: #E5E5E5;
     width:80vw;
@@ -301,17 +301,17 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
 }
 
-#ajouterArticle form, #ajouterEvenement form{
+#formulaireAjoutArticle form, #formulaireAjoutEvenement form{
     position:relative;
     width: 100%;
 }
-#ajouterArticle form label, #ajouterEvenement form label{
+#formulaireAjoutArticle form label, #formulaireAjoutEvenement form label{
     position:absolute;
     right:67%;
     margin-top:15px;
     display:none;
 }
-#ajouterArticle form input[type=text], #ajouterEvenement form input[type=text]{
+#formulaireAjoutArticle form input[type=text], #formulaireAjoutEvenement form input[type=text]{
     width: 28%;
     margin: 15px 35%;
     padding: 5px 1%;
@@ -322,12 +322,12 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
 }
 
-#ajouterEvenement form input[type=text]:nth-of-type(1){
+#formulaireAjoutEvenement form input[type=text]:nth-of-type(1){
     width: 34%;
     margin: 15px 32%;
  }
 
-#ajouterEvenement form input[type=date], #ajouterEvenement form input[type=time]{
+#formulaireAjoutEvenement form input[type=date], #formulaireAjoutEvenement form input[type=time]{
     display: block;
     width: 14%;
     min-width: 125px;
@@ -340,7 +340,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
 }
 
-#ajouterArticle form textarea, #ajouterEvenement form textarea{
+#formulaireAjoutArticle form textarea, #formulaireAjoutEvenement form textarea{
     width: 68%;
     margin-left: 15%;
     padding: 5px 1%;
@@ -351,7 +351,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
 }
-#ajouterArticle input[type=submit], #ajouterEvenement input[type=submit]{
+#formulaireAjoutArticle input[type=submit], #formulaireAjoutEvenement input[type=submit]{
     display: block;
     width: 15%;
     min-width: 180px;

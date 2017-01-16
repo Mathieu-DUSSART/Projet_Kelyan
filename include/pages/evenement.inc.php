@@ -106,7 +106,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
 }
 
 if(isset($_SESSION["login"])){?>
-    <div id="ajouterEvenement">
+    <div id="formulaireAjoutEvenement">
         <form method="POST" action="#">
             <label>Titre de l'évènement:</label>
             <input type="text" name="titre" placeholder="Titre de l'évènement..." required>

@@ -26,8 +26,8 @@ else{
                 echo "<li><a href=\"index.php?page=" . $page->getNum() . "\"><p class=\"page" . $page->getNum()%5 . "\">" . $page->getNom() . "</p></a>";
             }
         }
-        if(isset($_SESSION["login"])){
-            if($managerPage->estSupprimable($page->getNum())){?>
+        if(isset($_SESSION["login"]) && $managerPage->estSupprimable($page->getNum())){
+            if(!isset($_POST["modifierPage"]) || (isset($_POST["modifierPage"]) && $_POST["numPageAModifier"]!=$page->getNum())){?>
                 <div class="divSupprimerPage">
                     <form class="supprimerArticle" method="POST" action="#">
                         <input name="supprimerPage" type="submit" value="X">
