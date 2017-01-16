@@ -1,12 +1,13 @@
 <h1>Liste des points de collecte</h1>
 <?php
-
+$villeTab = array();
 $villeTab = $managerVille->getAllVille();
-foreach($villetab as $ville){
+foreach($villeTab as $ville){
   echo "<h2>" . $ville->getVilNom() . "</h2>";
+  $AllPoint = array();
   $AllPoint = $managerPointsDeCollecte->getPointByVille($ville->getVilNom());
   foreach($AllPoint as $point){
-      
+      echo "<p>" . $point->getLieu() ."</p>";
   }
 }
 //(1) On inclut la classe de Google Maps pour générer ensuite la carte.
