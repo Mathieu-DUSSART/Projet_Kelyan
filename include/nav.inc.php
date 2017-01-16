@@ -69,6 +69,8 @@ if(isset($_POST["nomPage"])){
     $manip = fopen("include/pages/" .  str_replace(' ','',strtolower(strRemoveAccent($_POST["nomPage"]))) . ".inc.php", "w+");
     if($manip==false)
     die("La création du fichier a échoué");
+    header('Location: index.php?page=' . $_GET["page"]);
+    exit;
 }
 
 //Permet de modifier une page
@@ -79,6 +81,8 @@ if(isset($_POST["nomPageModifie"])){
     $page=new Page($tab);
     $managerPage->modifierPage($page);
     rename("include/pages/" . str_replace(' ','',strtolower(strRemoveAccent($_SESSION["nomPageAvantModif"]))) . ".inc.php", "include/pages/" . str_replace(' ','',strtolower(strRemoveAccent($page->getNom()))) . ".inc.php");
+    header('Location: index.php?page=' . $_GET["page"]);
+    exit;
 }
 
 //Permet de supprimer une page
@@ -90,5 +94,7 @@ if(isset($_POST["supprimerPage"])){
     if(file_exists ( $fichier)){
         unlink( $fichier );
     }
+    header('Location: index.php?page=' . $_GET["page"]);
+    exit;
 }
 ?>

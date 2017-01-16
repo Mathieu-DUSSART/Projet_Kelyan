@@ -1,3 +1,39 @@
+<?php
+//Récupère la date d'aujourd'hui au format SQL (2016-04-19 14:59:59)
+$date = date('Y-m-d H:i:s');
+//Ajoute un article
+if(isset($_POST["titre"])){
+$tab=array();
+$tab["art_titre"]=$_POST["titre"];
+$tab["art_date"]=$date;
+$tab["art_texte"]=$_POST["texte"];
+$tab["page_num"]=$_GET["page"];
+$article=new Article($tab);
+$managerArticle->add($article);
+header('Location: index.php?page=1');
+exit;
+}
+
+//Modifie un article
+if(isset($_POST["titreModifie"])){
+$tab=array();
+$tab["art_num"]=$_SESSION["numArticleAModifier"];
+$tab["art_titre"]=$_POST["titreModifie"];
+$tab["art_texte"]=$_POST["texteModifie"];
+$article=new Article($tab);
+$managerArticle->modifierArticle($article);
+header('Location: index.php?page=1');
+exit;
+}
+
+//Supprime un article
+if(isset($_POST["supprimerArticle"])){
+$managerArticle->deleteArticle($_POST["numArticleASupprimer"]);
+header('Location: index.php?page=1');
+exit;
+}
+?>
+
 <h1 class="titreJaune">Présentation de l'association</h1>
 
 <?php
@@ -28,9 +64,8 @@ foreach ($managerArticle->getAllArticle(1) as $article) {
     </article>
 <?php
 }
-?>
 
-<?php
+
 if(isset($_SESSION["login"])){
     if(!isset($_POST["modifierArticle"]) || (isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]!=$article->getNum())){?>
         <div class="voletGestionArticle">
@@ -61,40 +96,4 @@ if(isset($_SESSION["login"])){?>
     </form>
 </div>
 <?php
-}
-
-
-//Récupère la date d'aujourd'hui au format SQL (2016-04-19 14:59:59)
-$date = date('Y-m-d H:i:s');
-//Ajoute un article
-if(isset($_POST["titre"])){
-$tab=array();
-$tab["art_titre"]=$_POST["titre"];
-$tab["art_date"]=$date;
-$tab["art_texte"]=$_POST["texte"];
-$tab["page_num"]=$_GET["page"];
-$article=new Article($tab);
-$managerArticle->add($article);
-header('Location: index.php?page=2');
-exit;
-}
-
-//Modifie un article
-if(isset($_POST["titreModifie"])){
-$tab=array();
-$tab["art_num"]=$_SESSION["numArticleAModifier"];
-$tab["art_titre"]=$_POST["titreModifie"];
-$tab["art_texte"]=$_POST["texteModifie"];
-$article=new Article($tab);
-$managerArticle->modifierArticle($article);
-header('Location: index.php?page=2');
-exit;
-}
-
-//Supprime un article
-if(isset($_POST["supprimerArticle"])){
-$managerArticle->deleteArticle($_POST["numArticleASupprimer"]);
-header('Location: index.php?page=2');
-exit;
-}
-?>
+}?>
