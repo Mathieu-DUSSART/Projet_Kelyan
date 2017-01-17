@@ -58,13 +58,13 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
     if(isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]==$evenement->getNum()){
         $_SESSION["numArticleAModifier"]=$evenement->getNum();
         ?>
-        <div id="ajouterEvenement">
+        <div id="formulaireAjoutEvenement">
             <form method="POST" action="#">
                 <label>Titre de l'évènement:</label>
                 <input type="text" name="titreModifie" value="<?php echo $evenement->getTitre();?>" required>
                 <br>
                 <label>Date de l'évènement:</label>
-                <input type="date" name="dateModifie" min="<?php echo date('Y-m-j'); ?>" value="<?php echo $evenement->getDate();?>" required>
+                <input type="text" class="datepicker" name="dateModifie" min="<?php echo date('Y-m-j'); ?>" value="<?php echo $evenement->getDate();?>" required>
                 <br>
                 <label>Heure de l'évènement:</label>
                 <input type="time" name="heureModifie" value="<?php echo $evenement->getHeure();?>" required>
@@ -129,7 +129,7 @@ if(isset($_SESSION["login"])){?>
             <input type="text" name="titre" placeholder="Titre de l'évènement..." required>
             <br>
             <label>Date de l'évènement:</label>
-            <input type="date" name="date" min="<?php echo date('Y-m-j'); ?>"required>
+            <input type="text" class="datepicker" name="date" required>
             <br>
             <label>Heure de l'évènement:</label>
             <input type="time" name="heure" value="00:00" required>

@@ -30,6 +30,10 @@ function fancyboxQuiMarche(){
     $('.fancybox').fancybox();
 }
 
+$( function() {
+  $( ".datepicker" ).datepicker({ dateFormat: "dd/mm/yy" });
+} );
+
 window.onload=function(){
    fancyboxQuiMarche();
     clickBoutonAjoutPage();
