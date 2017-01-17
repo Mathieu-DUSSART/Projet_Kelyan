@@ -20,6 +20,11 @@
         <title>Association Kelyan</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="/Projet_Kelyan/js/jquery-3.1.1.min.js"></script>
+        <script src="/Projet_Kelyan/js/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="/Projet_Kelyan/js/jquery-ui.min.css">
+
         <script src="js/function.js"></script>
         <!-- lib jquery -->
         <script type="text/javascript" src="fancyBox\fancyBox-master\lib\jquery-1.10.2.min.js"></script>
