@@ -1,10 +1,10 @@
 <?php
 class PointsDeCollecteManager{
-	private $db;
+		private $db;
 
-	public function __construct($db){
-		$this->db=$db;
-  }
+		public function __construct($db){
+			$this->db=$db;
+	  }
 
     public function getAllPoint(){
   		$tabObj=Array();
@@ -49,7 +49,6 @@ class PointsDeCollecteManager{
 			while($ligne=$req->fetch(PDO::FETCH_OBJ)){
 				$tabObj[]=new PointsDeCollecte($ligne);
 			}
-
 			return $tabObj;
 		}
 
@@ -73,17 +72,13 @@ class PointsDeCollecteManager{
 
 		public function getNbLieuParVille($num){
 			$sql = "SELECT count(point_lieu)as nbLieu FROM pointdecollecte WHERE vil_num=:num ";
-
 			$req=$this->db->prepare($sql);
-
 			$req->bindValue(':num', $num, PDO::PARAM_INT);
-
 			$req->execute();
-			
       $resu = $req->fetch(PDO::FETCH_OBJ);
-        if($resu != NULL){
-            return $resu->nbLieu;
-        }
+      if($resu != NULL){
+        return $resu->nbLieu;
+      }
     }
 
 
