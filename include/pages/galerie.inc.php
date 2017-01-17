@@ -34,7 +34,7 @@ if(!empty($_POST)){
                     // On renomme le fichier
                     $nomImage = md5(uniqid()) .'.'. $extension;
                      // Si c'est OK, on teste l'upload
-                     if(move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET.$nomImage))
+                     if(move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET_GALERIE.$nomImage))
                      {
                          $tabImg=Array();
                          $tabImg["img_src"]="/Projet_Kelyan/image/galerie/";
@@ -71,14 +71,12 @@ if(!empty($_POST)){
      $message = 'Veuillez remplir le formulaire svp !';
     }
 }
-?>
-<?php
  //Supprime une image
 if(isset($_POST["supprimerImage"])){
     $image=$managerImage->getImage($_POST["numImageASupprimer"]);
     $managerImage->deleteImage($image->getNum());
     //Fichier à supprimer
-    $fichier = TARGET . $image->getNom();
+    $fichier = TARGET_GALERIE . $image->getNom();
     //Si le fichier existe, on le supprime
     if(file_exists($fichier)){
      unlink($fichier);
@@ -128,6 +126,36 @@ if(isset($_SESSION["login"])){?>
 
  <?php
  }?>
- <h2>Vidéo :</h2>
+<!-------------------------------------------------------------------Video------------------------------------------------------------------------------------------------>
 
- 
+ <h2>Vidéo :</h2>
+ <?php
+ foreach($managerVideo->getAllVideo("/Projet_Kelyan/video/") as $video){?>
+   <div class="vid">
+     <?php
+     echo "<video controls src=\"" . $video->getSrc() . $video->getNom() . "\">" . $video->getDescription() . "</video>";
+     if(isset($_SESSION["login"])){?>
+         <div class="supprimerVideo">
+             <form method="POST" action="#">
+                 <input name="supprimerVideo" type="submit" value="X">
+                 <input name="numVideoASupprimer" type="hidden" value="<?php echo $video->getNum(); ?>">
+             </form>
+         </div>
+     <?php
+     }?>
+   </div>
+ <?php
+ }
+
+ if(isset($_SESSION["login"])){?>
+     <div id="ajouterVideo">
+         <form enctype="multipart/form-data" action="#" method="post">
+             <label for="fichier_a_uploader" title="Recherchez le fichier à uploader !">Envoyer le fichier</label>
+             <input type="hidden" name="MAX_FILE_SIZE_VIDEO" value="<?php echo MAX_SIZE; ?>" />
+             <input name="fichierVideo" type="file" id="fichier_a_uploader" />
+             <input class="bouton" type="submit" name="submit" value="Uploader" />
+         </form>
+     </div>
+ <?php
+ }
+?>

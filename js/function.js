@@ -14,6 +14,22 @@ function clickBoutonAjoutPage(){
   }
 }
 
+function ajouterLogoReseauxSociaux(){
+    var div = document.getElementById("divAjouterLogo");
+    if(div.style.display=="block"){
+        div.style.display="none";
+    }else{
+        div.style.display="block";
+    }
+}
+
+function clickBoutonAjoutLogoReseauxSociaux(){
+    var bouton = document.getElementById("boutonAjoutReseauSocial");
+     if(bouton != null){
+    bouton.addEventListener("click", ajouterLogoReseauxSociaux, false);
+  }
+}
+
 /*$(document).ready(function()
 {
    // On cache la zone de texte
@@ -35,6 +51,7 @@ $( function() {
 } );
 
 window.onload=function(){
-   fancyboxQuiMarche();
+    fancyboxQuiMarche();
     clickBoutonAjoutPage();
+    clickBoutonAjoutLogoReseauxSociaux()
 }
