@@ -25,8 +25,6 @@
         <link rel="stylesheet" href="/Projet_Kelyan/js/jquery-ui.min.css">
 
         <script src="js/function.js"></script>
-        <!-- lib jquery -->
-        <script type="text/javascript" src="fancyBox\fancyBox-master\lib\jquery-1.10.2.min.js"></script>
 
           <!-- Add mousewheel plugin (this is optional) -->
           <script type="text/javascript" src="fancyBox\fancyBox-master\lib\jquery.mousewheel.pack.js?v=3.1.3"></script>
