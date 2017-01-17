@@ -59,7 +59,7 @@ class VideoManager{
 	Retourne : l'Image qui correspond au numéro
 	*/
 	public function getVideo($num){
-		$sql="SELECT * FROM video WHERE img_num=:num";
+		$sql="SELECT * FROM video WHERE video_num=:num";
 		$req=$this->db->prepare($sql);
         $req->bindValue(':num', $num, PDO::PARAM_INT);
         $req->execute();

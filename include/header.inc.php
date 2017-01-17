@@ -27,23 +27,23 @@
   $nomImage = '';
   if(!empty($_POST)){
       // On verifie si le champ est rempli
-      if( !empty($_FILES['fichier']['name']) ){
+      if( !empty($_FILES['fichierReseauxSociaux']['name']) ){
           // Recuperation de l'extension du fichier
-          $extension  = pathinfo($_FILES['fichier']['name'], PATHINFO_EXTENSION);
+          $extension  = pathinfo($_FILES['fichierReseauxSociaux']['name'], PATHINFO_EXTENSION);
           // On verifie l'extension du fichier
           if(in_array(strtolower($extension),$tabExt)){
               // On recupere les dimensions du fichier
-              $infosImg = getimagesize($_FILES['fichier']['tmp_name']);
+              $infosImg = getimagesize($_FILES['fichierReseauxSociaux']['tmp_name']);
               // On verifie le type de l'image
               if($infosImg[2] >= 1 && $infosImg[2] <= 14){
                   // On verifie les dimensions et taille de l'image
-                  if(($infosImg[0] <= WIDTH_MAX) && ($infosImg[1] <= HEIGHT_MAX) && (filesize($_FILES['fichier']['tmp_name']) <= MAX_SIZE)){
+                  if(($infosImg[0] <= WIDTH_MAX) && ($infosImg[1] <= HEIGHT_MAX) && (filesize($_FILES['fichierReseauxSociaux']['tmp_name']) <= MAX_SIZE)){
                     // Parcours du tableau d'erreurs
-                    if(isset($_FILES['fichier']['error']) && UPLOAD_ERR_OK === $_FILES['fichier']['error']){
+                    if(isset($_FILES['fichierReseauxSociaux']['error']) && UPLOAD_ERR_OK === $_FILES['fichierReseauxSociaux']['error']){
                       // On renomme le fichier
                       $nomImage = md5(uniqid()) .'.'. $extension;
                        // Si c'est OK, on teste l'upload
-                       if(move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET_RESEAUX_SOCIAUX.$nomImage))
+                       if(move_uploaded_file($_FILES['fichierReseauxSociaux']['tmp_name'], TARGET_RESEAUX_SOCIAUX.$nomImage))
                        {
                            $tabImg=Array();
                            $tabImg["img_src"]="/Projet_Kelyan/image/reseaux_sociaux/";
@@ -117,7 +117,7 @@
 			<div id="divAjouterLogo">
 				<form enctype="multipart/form-data" id="ajouterArticle" method="POST" action="#">
 					<label>Logo:</label>
-					<input name="fichier" type="file" id="fichier_a_uploader" />
+					<input name="fichierReseauxSociaux" type="file" id="fichier_a_uploader" />
 					<label>Lien: </label>
 					<input type="url" name="lien">
 					<input type="submit" value="Valider">
