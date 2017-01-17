@@ -34,7 +34,7 @@ if(!empty($_POST)){
                     // On renomme le fichier
                     $nomImage = md5(uniqid()) .'.'. $extension;
                      // Si c'est OK, on teste l'upload
-                     if(move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET.$nomImage))
+                     if(move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET_GALERIE.$nomImage))
                      {
                          $tabImg=Array();
                          $tabImg["img_src"]="/Projet_Kelyan/image/galerie/";
@@ -71,81 +71,12 @@ if(!empty($_POST)){
      $message = 'Veuillez remplir le formulaire svp !';
     }
 }
-
-
-$infosVideo = array();
-$tabExtVideo = array('mp4','avi','mkv');     // Extensions video autorisees
-
-// Variables
-$extension = '';
-$message = '';
-$nomVideo = '';
-
-/************************************************************
- * Script d'upload Video
- *************************************************************/
-if(!empty($_POST)){
-   // On verifie si le champ est rempli
-   if( !empty($_FILES['fichierVideo']['name']) ){
-       // Recuperation de l'extension du fichier
-       $extension  = pathinfo($_FILES['fichierVideo']['name'], PATHINFO_EXTENSION);
-       // On verifie l'extension du fichier
-       if(in_array(strtolower($extension),$tabExtVideo)){
-           // On recupere les dimensions du fichier
-           // $infosVideo = getimagesize($_FILES['fichierVideo']['tmp_name']);
-           // On verifie le type de l'image
-         //  if($infosImg[2] >= 1 && $infosImg[2] <= 14){
-               // On verifie les dimensions et taille de l'image
-           //  if(($infosImg[0] <= WIDTH_MAX) && ($infosImg[1] <= HEIGHT_MAX) && (filesize($_FILES['fichier']['tmp_name']) <= MAX_SIZE)){//
-                 // Parcours du tableau d'erreurs
-                 if(isset($_FILES['fichierVideo']['error']) && UPLOAD_ERR_OK === $_FILES['fichierVideo']['error']){
-                   // On renomme le fichier
-                   $nomVideo = md5(uniqid()) .'.'. $extension;
-                    // Si c'est OK, on teste l'upload
-                    if(move_uploaded_file($_FILES['fichierVideo']['tmp_name'], TARGET.$nomVideo))
-                    {
-                        $tabVideo=Array();
-                        $tabVideo["video_src"]="/Projet_Kelyan/video/";
-                        $tabVideo["video_nom"]=$nomVideo;
-                        $tabVideo["video_description"]=null;
-                        $video=new Video($tabVideo);
-                        $managerVideo->add($video);
-                        $message = 'Upload réussi !';
-
-                        header('Location: index.php?page=4');
-                        exit;
-                    }else{
-                      // Sinon on affiche une erreur systeme
-                      $message = 'Problème lors de l\'upload !';
-                    }
-                  }else{
-                    $message = 'Une erreur interne a empêché l\'uplaod de l\'image';
-                  }
-                //}else{
-                  // Sinon erreur sur les dimensions et taille de l'image
-                  //$message = 'Erreur dans les dimensions de l\'image !';
-                //}
-              //}else{
-                // Sinon erreur sur le type de l'image
-             //   $message = 'Le fichier à uploader n\'est pas une image !';
-             //  }
-           }else{
-           // Sinon on affiche une erreur pour l'extension
-           $message = 'L\'extension du fichier est incorrecte !';
-           }
-   }else{
-    // Sinon on affiche une erreur pour le champ vide
-    $message = 'Veuillez remplir le formulaire svp !';
-   }
-}
-?>
-<?php
  //Supprime une image
 if(isset($_POST["supprimerImage"])){
     $image=$managerImage->getImage($_POST["numImageASupprimer"]);
     $managerImage->deleteImage($image->getNum());
     //Fichier à supprimer
-    $fichier = TARGET . $image->getNom();
+    $fichier = TARGET_GALERIE . $image->getNom();
     //Si le fichier existe, on le supprime
     if(file_exists($fichier)){
      unlink($fichier);
@@ -196,6 +127,7 @@ if(isset($_SESSION["login"])){?>
  <?php
  }?>
 <!-------------------------------------------------------------------Video------------------------------------------------------------------------------------------------>
+
  <h2>Vidéo :</h2>
  <?php
  foreach($managerVideo->getAllVideo("/Projet_Kelyan/video/") as $video){?>
@@ -214,6 +146,7 @@ if(isset($_SESSION["login"])){?>
    </div>
  <?php
  }
+
  if(isset($_SESSION["login"])){?>
      <div id="ajouterVideo">
          <form enctype="multipart/form-data" action="#" method="post">
