@@ -14,7 +14,7 @@ function clickBoutonAjoutPage(){
   }
 }
 
-$(document).ready(function()
+/*$(document).ready(function()
 {
    // On cache la zone de texte
    $('fieldset').hide();
@@ -24,7 +24,7 @@ $(document).ready(function()
       $('fieldset').toggle(400);
       return false;
    });
-});
+});*/
 
 function fancyboxQuiMarche(){
     $('.fancybox').fancybox();
