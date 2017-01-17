@@ -10,7 +10,9 @@
 
   <?php
   // Constantes
-  define('TARGET', 'image/reseaux_sociaux/');    // Repertoire cible
+  define('TARGET_RESEAUX_SOCIAUX', 'image/reseaux_sociaux/');    // Repertoire cible
+  define('TARGET_GALERIE', 'image/galerie/');    // Repertoire cible
+  define('TARGET_VIDEO', 'video/');    // Repertoire cible
   define('MAX_SIZE', 10000000);    // Taille max en octets du fichier
   define('WIDTH_MAX', 50000);    // Largeur max de l'image en pixels
   define('HEIGHT_MAX', 50000);    // Hauteur max de l'image en pixels
@@ -90,21 +92,29 @@
      }
      header('Location: index.php?page=' . $_GET["page"]);
      exit;
-  }
-  foreach ($managerImage->getAllImage("/Projet_Kelyan/image/reseaux_sociaux/") as $image) { ?>
-    <?php  echo "<a href=\"" . $image->getLien() . "\"><img id=\"logoFB\" src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
-      if(isset($_SESSION["login"])){ ?>
-          <div class="supprimerImage">
-              <form method="POST" action="#">
-                  <input name="supprimerImage" type="submit" value="X">
-                  <input name="numImageASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
-              </form>
-          </div>
-      <?php
-    } ?>
-    <?php }
+ }?>
+  <div id="divReseauxSociaux">
+	  <?php
+	  foreach ($managerImage->getAllImage("/Projet_Kelyan/image/reseaux_sociaux/") as $image) { ?>
+		<div class="divLogoReseauxSociaux">
+	    	<?php
+			echo "<a href=\"" . $image->getLien() . "\"><img class=\"logoReseauxSociaux\" src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
+			if(isset($_SESSION["login"])){ ?>
+				<div class="supprimerLogo">
+					<form method="POST" action="#">
+						<input name="supprimerLogo" type="submit" value="X">
+						<input name="numLogoASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
+					</form>
+				</div>
+		    <?php
+			} ?>
+		</div>
+    	<?php
+		} ?>
+	</div>
 
-  /*  if(isset($_SESSION["login"])){?>
+	<?php
+    if(isset($_SESSION["login"])){?>
       <input id="boutonAjoutReseauSocial" type="button" value="">
       <div id="ajouterLogo">
         <form enctype="multipart/form-data" id="ajouterArticle" method="POST" action="#">
@@ -115,7 +125,7 @@
           <input type="submit" value="Valider">
         </form>
       </div>
-    <?php } */?>
+    <?php } ?>
 
   <img id="logo" src="image/logo.jpeg" alt="">
   <h1>Association Kélyan</h1>

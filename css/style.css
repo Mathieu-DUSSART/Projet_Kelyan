@@ -27,13 +27,6 @@ header{
     background-position: center right;
     background-size:90vw auto;
 }
-header #logoFB{
-    position: absolute;
-    top:8vh;
-    right:3vw;
-    width:3vw;
-}
-
 #logo{
     display:inline-block;
     height:25vh;
@@ -585,4 +578,60 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 
 fieldset{
   display: hidden;
+}
+
+#divReseauxSociaux{
+    position: absolute;
+    top:0;
+    right:0;
+    width: 200px;
+    height: 25vh;
+    border: 1px solid red;
+}
+
+.divLogoReseauxSociaux{
+    position: relative;
+    display:inline-block;
+    width: 25%;
+    height: auto;
+    margin-top: 8vh;
+    margin-left: 5%;
+    border: 1px solid blue;
+}
+
+.logoReseauxSociaux{
+    width: 100%;
+
+
+}
+
+.supprimerLogo{
+    position: absolute;
+    display: inline-block;
+    vertical-align: top;
+    z-index: 10;
+    width:45%;
+    height:25px;
+    top: 0;
+    right: 3vw;
+    transition: right 0.3s;
+}
+
+.img:hover .supprimerImage, .supprimerLogo:hover{
+    right: -2vw;
+}
+
+.supprimerLogo form{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.supprimerLogo input{
+    display:block;
+    width: 100%;
+    height: 100%;
+    padding-left: 40%;
+    border:none;
+    background-color: red;
 }
