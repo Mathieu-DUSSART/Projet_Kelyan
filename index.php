@@ -20,8 +20,7 @@
         <title>Association Kelyan</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="/Projet_Kelyan/js/jquery-3.1.1.min.js"></script>
+        <script src="/Projet_Kelyan/js/jquery.js"></script>
         <script src="/Projet_Kelyan/js/jquery-ui.min.js"></script>
         <link rel="stylesheet" href="/Projet_Kelyan/js/jquery-ui.min.css">
 
