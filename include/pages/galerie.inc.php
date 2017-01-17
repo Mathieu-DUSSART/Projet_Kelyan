@@ -96,7 +96,7 @@ if( !empty($message) ){
 <h1 class="titreOrange">Galerie</h1>
 
 <link rel="stylesheet" type="text/css" href="fancyBox\fancyBox-master\source\jquery.fancybox.css?v=2.1.5" media="screen" />
-
+<h2>Images :</h2>
 <?php
 //Affiche toutes les images de la page Galerie
 foreach ($managerImage->getAllImage("/Projet_Kelyan/image/galerie/") as $image) {?>
@@ -128,3 +128,6 @@ if(isset($_SESSION["login"])){?>
 
  <?php
  }?>
+ <h2>Vidéo :</h2>
+
+ 
