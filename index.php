@@ -14,6 +14,7 @@
     $managerPointsDeCollecte = new PointsDeCollecteManager($pdo);
     $managerVille = new VilleManager($pdo);
     $managerStatistique = new StatistiqueManager($pdo);
+    $managerVideo = new VideoManager($pdo);
     ?>
     <head>
         <title>Association Kelyan</title>

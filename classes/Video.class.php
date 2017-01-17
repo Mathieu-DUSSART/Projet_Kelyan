@@ -14,13 +14,13 @@ class Video{
   public function affecte($tab = array()){
   foreach($tab as $id => $valeurs){
     switch ($id){
-      case 'img_num' : $this->setNum($valeurs);
+      case 'video_num' : $this->setNum($valeurs);
         break;
-      case 'img_src' : $this->setSrc($valeurs);
+      case 'video_src' : $this->setSrc($valeurs);
         break;
-              case 'img_nom' : $this->setNom($valeurs);
+              case 'video_nom' : $this->setNom($valeurs);
         break;
-              case 'img_description' : $this->setDescription($valeurs);
+              case 'video_description' : $this->setDescription($valeurs);
         break;
     }
   }
@@ -40,6 +40,24 @@ class Video{
 
   public function setDescription($description){
       $this->description=$description;
+  }
+
+  //-------------
+
+  public function getNum(){
+    return $this->num;
+  }
+
+  public function getSrc(){
+      return $this->src;
+  }
+
+  public function getNom(){
+    return $this->nom;
+  }
+
+  public function getDescription(){
+    return $this->description;
   }
 }
  ?>
