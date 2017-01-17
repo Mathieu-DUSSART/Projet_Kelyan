@@ -1,5 +1,5 @@
 <?php
-class PointsdecollecteManager{
+class PointsDeCollecteManager{
 	private $db;
 
 	public function __construct($db){
@@ -11,7 +11,7 @@ class PointsdecollecteManager{
   		$sql="SELECT * FROM pointdecollecte ";
   		$req=$this->db->query($sql);
   		while($ligne=$req->fetch(PDO::FETCH_OBJ)){
-  			$tabObj[]=new Pointsdecollecte($ligne);
+  			$tabObj[]=new PointsDeCollecte($ligne);
   		}
   		return $tabObj;
   	}
@@ -23,7 +23,7 @@ class PointsdecollecteManager{
       $req->bindValue(':num', $num, PDO::PARAM_INT);
       $req->execute();
   		while($ligne=$req->fetch(PDO::FETCH_OBJ)){
-  			$tabObj[]=new Pointsdecollecte($ligne);
+  			$tabObj[]=new PointsDeCollecte($ligne);
   		}
   		return $tabObj;
   	}
@@ -47,7 +47,7 @@ class PointsdecollecteManager{
 			$sql="SELECT lieu FROM pointsdecollecte";
 			$req=$this->db->query($sql);
 			while($ligne=$req->fetch(PDO::FETCH_OBJ)){
-				$tabObj[]=new Pointsdecollecte($ligne);
+				$tabObj[]=new PointsDeCollecte($ligne);
 			}
 
 			return $tabObj;

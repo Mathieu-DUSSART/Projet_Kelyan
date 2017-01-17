@@ -12,7 +12,7 @@ if(isset($_POST["ville"])){
     $ville=$managerVille->getVilNumByNom($_POST["ville"])->getVilNum();
     $tab["vil_num"]=$ville;
     $tab['point_lieu']=$_POST["adresse"];
-    $pointdecollecte=new pointsdecollecte($tab);
+    $pointdecollecte=new PointsDeCollecte($tab);
     $managerPointsDeCollecte->add($pointdecollecte);
     header('Location: index.php?page=8');
     exit;
@@ -76,7 +76,7 @@ foreach($villeTab as $ville){
               $tab["vil_num"]=$_POST["VilleModifie"];
               $tab["point_visibilite"]=$_POST["visibilitePointDeCollecteModifier"];
               $tab["point_lieu"]=$_POST["lieuModifie"];
-              $pointdecollecte=new pointsdecollecte($tab);
+              $pointdecollecte=new PointsDeCollecte($tab);
 
               $managerPointsDeCollecte->modifierPointDeCollecte($pointdecollecte);
               header('Location: index.php?page=8');

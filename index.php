@@ -11,7 +11,7 @@
     $managerImage = new ImageManager($pdo);
     $managerEvenement = new EvenementManager($pdo);
     $managerAdministrateur = new AdministrateurManager($pdo);
-    $managerPointsDeCollecte = new Pointsdecollectemanager($pdo);
+    $managerPointsDeCollecte = new PointsDeCollecteManager($pdo);
     $managerVille = new VilleManager($pdo);
     $managerStatistique = new StatistiqueManager($pdo);
     ?>

@@ -1,5 +1,5 @@
 <?php
-class Pointsdecollecte{
+class PointsDeCollecte{
     private $num;
     private $lieu;
     private $ville;
