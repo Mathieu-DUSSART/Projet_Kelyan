@@ -57,4 +57,19 @@ function crypterPassword($password){
 
     return $password_crypte;
 }
+
+function getEnglishDate($date){
+    $membres = explode('/', $date);
+    $date = $membres[2].'-'.$membres[1].'-'.$membres[0];
+    return $date;
+}
+
+//On définie le fuseau horaire sur Europe/Paris.
+date_default_timezone_set('Europe/Paris');
+
+function getFrenchDate($date){
+    $membres = explode('-', $date);
+    $date = $membres[2].'/'.$membres[1].'/'.$membres[0];
+    return $date;
+}
 ?>

@@ -3,7 +3,8 @@
 if(isset($_POST["titre"])){
     $tabEvent=Array();
     $tabEvent["event_titre"]=$_POST["titre"];
-    $tabEvent["event_date"]=$_POST["date"];
+    $date= getEnglishDate($_POST["date"]);
+    $tabEvent["event_date"]=$date;
     $tabEvent["event_heure"]=$_POST["heure"];
     $tabEvent["event_texte"]=$_POST["texte"];
     $tabEvent["event_ville"]=$_POST["ville"];
@@ -18,7 +19,8 @@ if(isset($_POST["titreModifie"])){
     $tabEvent=Array();
     $tabEvent["event_num"]=$_SESSION["numArticleAModifier"];
     $tabEvent["event_titre"]=$_POST["titreModifie"];
-    $tabEvent["event_date"]=$_POST["dateModifie"];
+    $date= getEnglishDate($_POST["dateModifie"]);
+    $tabEvent["event_date"]=$date;
     $tabEvent["event_heure"]=$_POST["heureModifie"];
     $tabEvent["event_texte"]=$_POST["texteModifie"];
     $tabEvent["event_ville"]=$_POST["villeModifie"];
@@ -64,7 +66,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                 <input type="text" name="titreModifie" value="<?php echo $evenement->getTitre();?>" required>
                 <br>
                 <label>Date de l'évènement:</label>
-                <input type="text" class="datepicker" name="dateModifie" min="<?php echo date('Y-m-j'); ?>" value="<?php echo $evenement->getDate();?>" required>
+                <input type="text" class="datepicker" name="dateModifie" min="<?php echo date('Y-m-j'); ?>" value="<?php echo getFrenchDate($evenement->getDate());?>" required>
                 <br>
                 <label>Heure de l'évènement:</label>
                 <input type="time" name="heureModifie" value="<?php echo $evenement->getHeure();?>" required>
