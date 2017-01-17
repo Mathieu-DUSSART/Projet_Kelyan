@@ -34,6 +34,11 @@ if(isset($_POST["supprimerArticle"])){
     header("Location: index.php?page=3");
     exit;
 }
+
+//Ajouter une personne à un event
+if(!isset($_SESSION["login"]) && isset($_POST["boutonInscrire"])){ ?>
+  <label>bravo vous êtes inscrit !</label>
+<?php }
 ?>
 
 <h1 class="titreVert">Evènement</h1>
@@ -83,7 +88,15 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
             echo "<p class=\"detailEvenement\">" . "À " . $evenement->getVille() . "</p>";
             echo "<p>" . $evenement->getTexte() . "</p>";
             ?>
-        </article>
+            <a href="" id="boutonInscrire">s'inscrire</a>
+            <fieldset>
+            <form id="formInscription">
+              <label>Nom :</label>
+              <label>Prenom :</label>
+              <label>Mail :</label>
+            </form>
+          </fieldset>
+          </article>
     <?php
     }?>
 

@@ -582,3 +582,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     background-position: center center;
     background-size: 100%;
 }
+
+fieldset{
+  display: hidden;
+}

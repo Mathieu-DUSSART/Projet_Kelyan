@@ -115,7 +115,7 @@ foreach ($managerImage->getAllImage("/Projet_Kelyan/image/partenaire/") as $imag
   <?php }
 
 if(isset($_SESSION["login"])){?>
-<div id="ajouterImagePartenaire">
+<div id="ajouterImage">
   <form enctype="multipart/form-data" id="ajouterArticle" method="POST" action="#">
     <label>Image du partenaire :</label>
     <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_SIZE; ?>" />

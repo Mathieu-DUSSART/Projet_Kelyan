@@ -14,21 +14,17 @@ function clickBoutonAjoutPage(){
   }
 }
 
-function ajouterReseauSocial(){
-    var div = document.getElementById("divAjouterLogo");
-    if(div.style.display=="block"){
-        div.style.display="none";
-    }else{
-        div.style.display="block";
-    }
-}
-
-function clickBoutonAjoutLogo(){
-    var bouton = document.getElementById("boutonAjoutReseauSocial");
-     if(bouton != null){
-    bouton.addEventListener("click", ajouterReseauSocial, false);
-  }
-}
+jQuery(document).ready(function()
+{
+   // On cache la zone de texte
+   jQuery('fieldset').hide();
+   // toggle() lorsque le lien avec l'ID #toggler est cliqué
+   jQuery('a#boutonInscrire').click(function()
+  {
+      jQuery('fieldset').toggle(400);
+      return false;
+   });
+});
 
 function fancyboxQuiMarche(){
     $('.fancybox').fancybox();
@@ -37,5 +33,4 @@ function fancyboxQuiMarche(){
 window.onload=function(){
    fancyboxQuiMarche();
     clickBoutonAjoutPage();
-    clickBoutonAjoutLogo();
 }
