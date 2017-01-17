@@ -58,5 +58,12 @@ class VilleManager{
 		$obj=new Ville($ligne);
 		return $obj;
 	}
+
+	public function delete($num){
+		$sql="DELETE FROM  Ville where vil_num =:num";
+		$req = $this->db->prepare($sql);
+		$req->bindValue(':num', $num, PDO::PARAM_INT);
+		$req->execute();
+	}
 }
 ?>

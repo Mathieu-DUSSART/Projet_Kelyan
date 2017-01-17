@@ -71,4 +71,31 @@ class PointsDeCollecteManager{
 			$req->execute();
 		}
 
+		public function getNbLieuParVille($num){
+			$sql = "SELECT count(point_lieu)as nbLieu FROM pointdecollecte WHERE vil_num=:num ";
+
+			$req=$this->db->prepare($sql);
+
+			$req->bindValue(':num', $num, PDO::PARAM_INT);
+
+			$req->execute();
+			
+      $resu = $req->fetch(PDO::FETCH_OBJ);
+        if($resu != NULL){
+            return $resu->nbLieu;
+        }
+    }
+
+
+		public function getVilleParPointNum($num){
+			$sql="SELECT vil_num FROM pointdecollecte WHERE point_num = :num";
+			$req=$this->db->prepare($sql);
+			$req->bindValue(':num', $num, PDO::PARAM_INT);
+			$req->execute();
+			$res=$req->fetch(PDO::FETCH_OBJ);
+			$obj=new PointsDeCollecte($res);
+			return $obj;
+		}
+
+
 	}
