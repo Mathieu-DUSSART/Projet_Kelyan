@@ -14,14 +14,14 @@ function clickBoutonAjoutPage(){
   }
 }
 
-jQuery(document).ready(function()
+$(document).ready(function()
 {
    // On cache la zone de texte
-   jQuery('fieldset').hide();
+   $('fieldset').hide();
    // toggle() lorsque le lien avec l'ID #toggler est cliqué
-   jQuery('a#boutonInscrire').click(function()
+   $('a#boutonInscrire').click(function()
   {
-      jQuery('fieldset').toggle(400);
+      $('fieldset').toggle(400);
       return false;
    });
 });
