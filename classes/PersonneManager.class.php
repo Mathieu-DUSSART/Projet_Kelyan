@@ -29,6 +29,37 @@ class PersonneManager{
     $req->execute();
   }
 
+  public function existe($mail){
+    $sql="SELECT * FROM personne WHERE per_mail=:mail";
+    $req = $this->db->prepare($sql);
+    $req-> bindValue(':mail',$mail, PDO::PARAM_STR);
+    $req->execute();
+    $resu=$req->fetch(PDO::FETCH_OBJ);
+    return isset($resu->per_num);
+  }
+
+  public function dejaInscrit($per_num, $event_num){
+    $sql="SELECT * FROM inscritevent WHERE per_num =:per_num AND event_num=:event";
+    $req = $this->db->prepare($sql);
+    $req-> bindValue(':per_num',$per_num, PDO::PARAM_INT);
+    $req-> bindValue(':event',$event_num, PDO::PARAM_INT);
+    $req->execute();
+    $resu=$req->fetch(PDO::FETCH_OBJ);
+    return isset($resu->per_num);
+  }
+
+	public function getPersonne($mail){
+	$sql = "SELECT * FROM personne WHERE per_mail=:mail";
+	$req=$this->db->prepare($sql);
+	$req-> bindValue(':mail',$mail, PDO::PARAM_STR);
+	$req->execute();
+	$resu = $req->fetch(PDO::FETCH_OBJ);
+	$personne = new Personne($resu);
+
+	return $personne;
+}
+
+
 public function getPersonneInscriteEvent($num_event){
   $tabObj = array();
   $sql="SELECT per_nom, per_prenom, per_mail FROM personne p JOIN inscritevent i ON p.per_num=i.per_num WHERE event_num = $num_event";

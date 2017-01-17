@@ -42,10 +42,24 @@ if(!isset($_SESSION["login"]) && isset($_POST["inscription"])){
    $tab=array();
    $tab["per_nom"]=$_POST["nomParticipant"];
    $tab["per_prenom"]=$_POST["prenomParticipant"];
-   $tab["per_mail"]=$_POST["emailParticipant"];
+   $tab["per_mail"]=$_POST["mailParticipant"];
    $personne = new Personne($tab);
-   $managerPersonne->add($personne);
-   $managerPersonne->ajouterUneInscription($personne->getPerNum(),$_POST["numEventInscription"]);
+   echo $personne->getPerNum();
+   if(!($managerPersonne->existe($_POST["mailParticipant"]))){
+     echo "cette personne n'existe pas";
+     $managerPersonne->add($personne);
+     $managerPersonne->ajouterUneInscription($personne->getPerNum(),$_POST["numEventInscription"]);
+   }else{
+     echo "cette personne existe";
+     $personne = $managerPersonne->getPersonne($_POST["mailParticipant"]);
+     if(!($managerPersonne->dejaInscrit($personne->getPerNum(),$_POST["numEventInscription"]))){
+      $managerPersonne->ajouterUneInscription($personne->getPerNum(),$_POST["numEventInscription"]);
+     }else{
+       echo "cette personne est déjà inscrite !";
+     }
+   }
+
+  /* $managerPersonne->ajouterUneInscription($personne->getPerNum(),$_POST["numEventInscription"]);*/
  }
 ?>
 
@@ -104,7 +118,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                 <label>Prenom :</label>
                 <input type="text" name="prenomParticipant" required><br>
                 <label>Mail :</label>
-                <input type="email" name="emailParticipant" required>
+                <input type="email" name="mailParticipant" required>
                 <input name="numEventInscription" type="hidden" value="<?php echo $evenement->getNum(); ?>">
                 <input type="submit" name="inscription">
               </form>
