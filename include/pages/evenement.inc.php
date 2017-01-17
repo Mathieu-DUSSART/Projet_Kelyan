@@ -92,8 +92,12 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
             <fieldset>
             <form id="formInscription">
               <label>Nom :</label>
+              <input type="text" required><br>
               <label>Prenom :</label>
+              <input type="text" required><br>
               <label>Mail :</label>
+              <input type="email" required>
+              <input type="submit" name="inscription">
             </form>
           </fieldset>
           </article>
