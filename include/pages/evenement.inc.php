@@ -17,7 +17,7 @@ if(isset($_POST["titre"])){
 //Modifie un évènement
 if(isset($_POST["titreModifie"])){
     $tabEvent=Array();
-    $tabEvent["event_num"]=$_SESSION["numArticleAModifier"];
+    $tabEvent["event_num"]=$_SESSION["numEventAModifier"];
     $tabEvent["event_titre"]=$_POST["titreModifie"];
     $date= getEnglishDate($_POST["dateModifie"]);
     $tabEvent["event_date"]=$date;
@@ -38,9 +38,15 @@ if(isset($_POST["supprimerArticle"])){
 }
 
 //Ajouter une personne à un event
-if(!isset($_SESSION["login"]) && isset($_POST["boutonInscrire"])){ ?>
-  <label>bravo vous êtes inscrit !</label>
-<?php }
+if(!isset($_SESSION["login"]) && isset($_POST["inscription"])){
+   $tab=array();
+   $tab["per_nom"]=$_POST["nomParticipant"];
+   $tab["per_prenom"]=$_POST["prenomParticipant"];
+   $tab["per_mail"]=$_POST["emailParticipant"];
+   $personne = new Personne($tab);
+   $managerPersonne->add($personne);
+   $managerPersonne->ajouterUneInscription($personne->getPerNum(),$_POST["numEventInscription"]);
+ }
 ?>
 
 <h1 class="titreVert">Evènement</h1>
@@ -57,8 +63,8 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
     //Récupère l'heure de l'évènement au format 14h59
     $heure= date_format($heureEvent, 'H:i');
 
-    if(isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]==$evenement->getNum()){
-        $_SESSION["numArticleAModifier"]=$evenement->getNum();
+    if(isset($_POST["modifierArticle"]) && $_POST["numEventAModifier"]==$evenement->getNum()){
+      $_SESSION["numEventAModifier"]=$evenement->getNum();
         ?>
         <div id="formulaireAjoutEvenement">
             <form method="POST" action="#">
@@ -89,26 +95,27 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
             echo "<p class=\"detailEvenement\">" . "À partir de " . $heure . "</p>";
             echo "<p class=\"detailEvenement\">" . "À " . $evenement->getVille() . "</p>";
             echo "<p>" . $evenement->getTexte() . "</p>";
-            ?>
-            <a href="" id="boutonInscrire">s'inscrire</a>
-            <fieldset>
-            <form id="formInscription">
-              <label>Nom :</label>
-              <input type="text" required><br>
-              <label>Prenom :</label>
-              <input type="text" required><br>
-              <label>Mail :</label>
-              <input type="email" required>
-              <input type="submit" name="inscription">
-            </form>
-          </fieldset>
+            if(!isset($_SESSION["login"])){ ?>
+              <a href="" id="boutonInscrire">s'inscrire</a>
+              <fieldset>
+              <form id="formInscription" method="POST" action="#">
+                <label>Nom :</label>
+                <input type="text" name="nomParticipant" required><br>
+                <label>Prenom :</label>
+                <input type="text" name="prenomParticipant" required><br>
+                <label>Mail :</label>
+                <input type="email" name="emailParticipant" required>
+                <input name="numEventInscription" type="hidden" value="<?php echo $evenement->getNum(); ?>">
+                <input type="submit" name="inscription">
+              </form>
+            </fieldset>
+        <?php } ?>
           </article>
     <?php
-    }?>
+    }
 
-    <?php
     if(isset($_SESSION["login"])){
-        if(!isset($_POST["modifierArticle"]) || (isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]!=$evenement->getNum())){?>
+        if(!isset($_POST["modifierArticle"]) || (isset($_POST["modifierArticle"]) && $_POST["numEventAModifier"]!=$evenement->getNum())){?>
             <div class="voletGestionArticle">
                 <form class="supprimerArticle" method="POST" action="#">
                     <input name="supprimerArticle" type="submit" value="X">
@@ -116,7 +123,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                 </form>
                 <form class="modifierArticle" method="POST" action="#">
                     <input name="modifierArticle" type="submit" value="M">
-                    <input name="numArticleAModifier" type="hidden" value="<?php echo $evenement->getNum(); ?>">
+                    <input name="numEventAModifier" type="hidden" value="<?php echo $evenement->getNum(); ?>">
                 </form>
             </div>
         <?php
