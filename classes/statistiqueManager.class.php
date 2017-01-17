@@ -21,7 +21,7 @@ class StatistiqueManager{
     $req->bindValue(":num", $num,PDO::PARAM_INT);
     $req->execute();
     while($ligne=$req->fetch(PDO::FETCH_OBJ)){
-      $tabObj = new Statistique($ligne);
+      $tabObj[] = new Statistique($ligne);
     }
     return $tabObj;
   }

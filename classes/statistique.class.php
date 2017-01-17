@@ -14,7 +14,7 @@ class Statistique {
       switch($attribut){
         case "statistique" : $this->setStatistique($donnee);
           break;
-        case "point" : $this->setPoint($donnee);
+        case "point_num" : $this->setPoint($donnee);
           break;
       }
     }
