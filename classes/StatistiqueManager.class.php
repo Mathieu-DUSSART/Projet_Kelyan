@@ -7,10 +7,11 @@ class StatistiqueManager{
   }
 
   public function add($statistique){
-    $sql="INSERT INTO statistique VALUES(:num, :pointCollecte)";
+    $sql="INSERT INTO statistique VALUES(:num, :pointCollecte,:stat_date)";
     $req=$this->db->prepare($sql);
     $req->bindValue(":num", $statistique->getStatistique(),PDO::PARAM_STR);
     $req->bindValue(":pointCollecte", $statistique->getPoint(),PDO::PARAM_INT);
+    $req->bindValue(":stat_date", $statistique->getDate(),PDO::PARAM_STR);
     $req->execute();
   }
 

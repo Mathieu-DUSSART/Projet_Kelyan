@@ -92,5 +92,14 @@ class PointsDeCollecteManager{
 			return $obj;
 		}
 
+		public function getLieuByPointNum($num){
+			$sql="SELECT point_lieu FROM pointdecollecte WHERE point_num = :num";
+			$req=$this->db->prepare($sql);
+			$req->bindValue(':num', $num, PDO::PARAM_INT);
+			$req->execute();
+			$res=$req->fetch(PDO::FETCH_OBJ);
+			$obj=new PointsDeCollecte($res);
+			return $obj;
 
 	}
+}

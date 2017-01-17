@@ -2,6 +2,7 @@
 class Statistique {
   private $statistique;
   private $point;
+  private $date;
 
   public function __construct($valeurs = array()){
     if(!empty($valeurs)){
@@ -16,6 +17,8 @@ class Statistique {
           break;
         case "point_num" : $this->setPoint($donnee);
           break;
+        case "statistique_date" : $this->setDate($donnee);
+          break;
       }
     }
   }
@@ -28,11 +31,19 @@ class Statistique {
     return $this->statistique;
   }
 
+  public function getDate(){
+    return $this->date;
+  }
+
   public function setPoint($point){
     $this->point=$point;
   }
 
   public function getPoint(){
     return $this->point;
+  }
+
+  public function setDate($date){
+    $this->date =$date ;
   }
 }?>
