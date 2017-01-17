@@ -43,7 +43,7 @@
                       // On renomme le fichier
                       $nomImage = md5(uniqid()) .'.'. $extension;
                        // Si c'est OK, on teste l'upload
-                       if(move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET.$nomImage))
+                       if(move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET_RESEAUX_SOCIAUX.$nomImage))
                        {
                            $tabImg=Array();
                            $tabImg["img_src"]="/Projet_Kelyan/image/reseaux_sociaux/";
@@ -80,12 +80,12 @@
        $message = 'Veuillez remplir le formulaire svp !';
       }
   }
-  //Supprime une image
-  if(isset($_POST["supprimerImage"])){
-     $image=$managerImage->getImage($_POST["numImageASupprimer"]);
+  //Supprime un logo
+  if(isset($_POST["supprimerLogo"])){
+     $image=$managerImage->getImage($_POST["numLogoASupprimer"]);
      $managerImage->deleteImage($image->getNum());
      //Fichier à supprimer
-     $fichier = TARGET . $image->getNom();
+     $fichier = TARGET_RESEAUX_SOCIAUX . $image->getNom();
      //Si le fichier existe, on le supprime
      if(file_exists($fichier)){
       unlink($fichier);
@@ -109,23 +109,24 @@
 		    <?php
 			} ?>
 		</div>
-    	<?php
-		} ?>
+		<?php
+	}
+	if(isset($_SESSION["login"])){?>
+		<div id="divAjoutReseauxSociaux">
+			<input id="boutonAjoutReseauSocial" type="button" value="+">
+			<div id="divAjouterLogo">
+				<form enctype="multipart/form-data" id="ajouterArticle" method="POST" action="#">
+					<label>Logo:</label>
+					<input name="fichier" type="file" id="fichier_a_uploader" />
+					<label>Lien: </label>
+					<input type="url" name="lien">
+					<input type="submit" value="Valider">
+				</form>
+			</div>
+		</div>
+		<?php
+	}?>
 	</div>
 
-	<?php
-    if(isset($_SESSION["login"])){?>
-      <input id="boutonAjoutReseauSocial" type="button" value="">
-      <div id="ajouterLogo">
-        <form enctype="multipart/form-data" id="ajouterArticle" method="POST" action="#">
-          <label>Image du reseau social :</label>
-          <input name="fichier" type="file" id="fichier_a_uploader" />
-          <label>Lien vers le reseau social : </label>
-          <input type="url" name="lien">
-          <input type="submit" value="Valider">
-        </form>
-      </div>
-    <?php } ?>
-
-  <img id="logo" src="image/logo.jpeg" alt="">
-  <h1>Association Kélyan</h1>
+	<img id="logo" src="image/logo.jpeg" alt="">
+	<h1>Association Kélyan</h1>

@@ -584,25 +584,22 @@ fieldset{
     position: absolute;
     top:0;
     right:0;
-    width: 200px;
+    width: 15vw;
     height: 25vh;
-    border: 1px solid red;
 }
 
 .divLogoReseauxSociaux{
     position: relative;
     display:inline-block;
     width: 25%;
-    height: auto;
     margin-top: 8vh;
     margin-left: 5%;
-    border: 1px solid blue;
 }
 
 .logoReseauxSociaux{
+    position: relative;
+    z-index: 11;
     width: 100%;
-
-
 }
 
 .supprimerLogo{
@@ -613,12 +610,12 @@ fieldset{
     width:45%;
     height:25px;
     top: 0;
-    right: 3vw;
+    right: 10%;
     transition: right 0.3s;
 }
 
-.img:hover .supprimerImage, .supprimerLogo:hover{
-    right: -2vw;
+.divLogoReseauxSociaux:hover .supprimerLogo, .supprimerLogo:hover{
+    right: -40%;
 }
 
 .supprimerLogo form{
@@ -634,4 +631,30 @@ fieldset{
     padding-left: 40%;
     border:none;
     background-color: red;
+}
+
+#divAjoutReseauxSociaux{
+    position: relative;
+    display:inline-block;
+    vertical-align: top;
+    width: 25%;
+    height: 25%;
+    margin-top: 8vh;
+    margin-left: 5%;
+}
+
+#boutonAjoutReseauSocial{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+#divAjouterLogo{
+    display:none;
+    position: absolute;
+    z-index: 50;
+    right:0;
+    padding: 5px;
+    color:white;
+    background-color: blue;
 }
