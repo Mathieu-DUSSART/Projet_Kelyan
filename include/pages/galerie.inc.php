@@ -95,12 +95,14 @@ if( !empty($message) ){
 
 <h1 class="titreOrange">Galerie</h1>
 
+<link rel="stylesheet" type="text/css" href="fancyBox\fancyBox-master\source\jquery.fancybox.css?v=2.1.5" media="screen" />
+
 <?php
 //Affiche toutes les images de la page Galerie
 foreach ($managerImage->getAllImage("/Projet_Kelyan/image/galerie/") as $image) {?>
     <div class="img">
         <?php
-        echo "<a class=\"imgGalerie\" href=\"#\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\" width=\"600\" height=\"300\"></a>";
+      echo "<a class="fancybox" href="" . $image->getSrc() . $image->getNom() . "" data-fancybox-group="gallery"><img src="" . $image->getSrc() . $image->getNom() . ""alt="" width="400" height="150"></a>";
         if(isset($_SESSION["login"])){?>
             <div class="supprimerImage">
                 <form method="POST" action="#">

@@ -9,7 +9,9 @@ function ajouterPage(){
 
 function clickBoutonAjoutPage(){
     var bouton = document.getElementById("boutonAjoutPage");
+     if(bouton != null){
     bouton.addEventListener("click", ajouterPage, false);
+  }
 }
 
 function ajouterReseauSocial(){
@@ -23,10 +25,17 @@ function ajouterReseauSocial(){
 
 function clickBoutonAjoutLogo(){
     var bouton = document.getElementById("boutonAjoutReseauSocial");
+     if(bouton != null){
     bouton.addEventListener("click", ajouterReseauSocial, false);
+  }
+}
+
+function fancyboxQuiMarche(){
+    $('.fancybox').fancybox();
 }
 
 window.onload=function(){
+   fancyboxQuiMarche();
     clickBoutonAjoutPage();
     clickBoutonAjoutLogo();
 }
