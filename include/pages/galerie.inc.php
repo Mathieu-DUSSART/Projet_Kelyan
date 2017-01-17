@@ -102,7 +102,7 @@ if( !empty($message) ){
 foreach ($managerImage->getAllImage("/Projet_Kelyan/image/galerie/") as $image) {?>
     <div class="img">
         <?php
-      echo "<a class="fancybox" href="" . $image->getSrc() . $image->getNom() . "" data-fancybox-group="gallery"><img src="" . $image->getSrc() . $image->getNom() . ""alt="" width="400" height="150"></a>";
+      echo "<a class=\"fancybox\" href=\"" . $image->getSrc() . $image->getNom() . "\" data-fancybox-group=\"gallery\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\" width=\"400\" height=\"150\"></a>";
         if(isset($_SESSION["login"])){?>
             <div class="supprimerImage">
                 <form method="POST" action="#">
