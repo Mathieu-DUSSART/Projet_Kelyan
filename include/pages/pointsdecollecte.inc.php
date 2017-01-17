@@ -45,7 +45,7 @@ foreach($villeTab as $ville){
                 <br>
                 <label>Visibilité:</label>
                 <input name="visibilitePointDeCollecteModifier" type="radio" value="0" <?php if($point->getPointVisibilite()==0){echo "cheched";}?>>non</input>
-                <input name="visibilitePointDeCollecteModifier" type="radio" value="1"   <?php if($point->getPointVisibilite()==1){echo "cheched";}?>>oui</input>
+                <input name="visibilitePointDeCollecteModifier" type="radio" value="1"  <?php if($point->getPointVisibilite()==1){echo "cheched";}?>>oui</input>
                 <textarea name="lieuModifie" rows="8" required><?php echo $point->getPointLieu(); ?></textarea>
                 <br>
 
@@ -87,6 +87,20 @@ foreach($villeTab as $ville){
       }
 }
 
+}
+if(isset($_SESSION["login"])){?>
+    <div id="formulaireAjoutArticle">
+        <form method="POST" action="#">
+            <label>Ville:</label>
+            <input  type="text" name="ville" placeholder="Ville du point de collecte ..." required>
+            <br>
+            <label>lieu:</label>
+            <textarea name="adresse" placeholder="lieu ..." rows="2" required></textarea>
+            <br>
+            <input class="bouton" type="submit" value="Ajouter le point de collecte">
+        </form>
+    </div>
+<?php
 }
 
 //(1) On inclut la classe de Google Maps pour générer ensuite la carte.
