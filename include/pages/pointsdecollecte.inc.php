@@ -79,8 +79,8 @@ foreach($villeTab as $ville){
               <input  type="text" name="VilleModifie" value="<?php echo $managerVille->getVilNomByNum($point->getPointVille())->getVilNom(); ?>" required>
               <br>
               <label>Visibilité:</label>
-              <input name="visibilitePointDeCollecteModifier" type="radio" value="0" <?php if($point->getPointVisibilite()===0){echo "cheched";}?>>non</input>
-              <input name="visibilitePointDeCollecteModifier" type="radio" value="1"  <?php if($point->getPointVisibilite()===1){echo "cheched";}?>>oui</input>
+              <input name="visibilitePointDeCollecteModifier" type="radio" value="0" <?php if($point->getPointVisibilite()==0){echo "checked";}?>>non</input>
+              <input name="visibilitePointDeCollecteModifier" type="radio" value="1"  <?php if($point->getPointVisibilite()==1){echo "checked";}?>>oui</input>
               <textarea name="lieuModifie" rows="8" required><?php echo $point->getPointLieu(); ?></textarea>
               <br>
               <input class="bouton" type="submit" value="Modifier le point de collecte">
