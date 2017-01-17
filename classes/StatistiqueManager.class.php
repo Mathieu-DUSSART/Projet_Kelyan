@@ -26,5 +26,14 @@ class StatistiqueManager{
     }
     return $tabObj;
   }
+
+  public function deleteStatistique($stat){
+    $sql="DELETE FROM statistique WHERE statistique_date=:dateStat AND statistique=:stat AND point_num =:point_num";
+    $req=$this->db->prepare($sql);
+    $req->bindValue(":dateStat", $stat->getDate(),PDO::PARAM_STR);
+    $req->bindValue(":stat", $stat->getStatistique(),PDO::PARAM_STR);
+    $req->bindValue(":point_num", $stat->getPoint(),PDO::PARAM_INT);
+    $req->execute();
+  }
 }
  ?>
