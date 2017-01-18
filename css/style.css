@@ -375,7 +375,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     margin-top:3px;
 }
 
-#formContact input[type=text]{
+#formContact input[type=text], #formContact input[type=email]{
     width:50%;
     height:15px;
     margin:5px 25%;
@@ -682,4 +682,8 @@ fieldset{
     box-shadow:
     0px 2px 2px 0px rgba(0, 0, 0, 0.5) inset,
     0px 2px 2px 0px rgba(255, 255, 255, 0.5);
+}
+
+#boutonInscription{
+    margin-top: 20px;
 }

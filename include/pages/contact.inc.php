@@ -84,7 +84,7 @@ if(isset($_POST["supprimerImage"])){
     <input  type="text" name="nomContact" required>
     <br>
     <label>Email:</label>
-    <input  type="text" name="mailContact" required>
+    <input  type="email" name="mailContact" required>
     <br>
     <label>Sujet:</label>
     <input  type="text" name="sujetContact" required>

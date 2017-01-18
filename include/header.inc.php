@@ -128,7 +128,7 @@
 			</div>
 			<?php
 		}?>
-		<input id="boutonInscrireNews" type="button" value="S'inscrire à la newsletter">
+		<a href="index.php?page=10"><input id="boutonInscrireNews" type="button" value="S'inscrire à la newsletter"></a>
 	</div>
 
 	<img id="logo" src="image/logo.jpeg" alt="">
