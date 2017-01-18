@@ -49,25 +49,42 @@ class PersonneManager{
   }
 
 	public function getPersonne($mail){
-	$sql = "SELECT * FROM personne WHERE per_mail=:mail";
-	$req=$this->db->prepare($sql);
-	$req-> bindValue(':mail',$mail, PDO::PARAM_STR);
-	$req->execute();
-	$resu = $req->fetch(PDO::FETCH_OBJ);
-	$personne = new Personne($resu);
+		$sql = "SELECT * FROM personne WHERE per_mail=:mail";
+		$req=$this->db->prepare($sql);
+		$req-> bindValue(':mail',$mail, PDO::PARAM_STR);
+		$req->execute();
+		$resu = $req->fetch(PDO::FETCH_OBJ);
+		$personne = new Personne($resu);
 
-	return $personne;
-}
+		return $personne;
+	}
 
 
-public function getPersonneInscriteEvent($num_event){
-  $tabObj = array();
-  $sql="SELECT per_nom, per_prenom, per_mail FROM personne p JOIN inscritevent i ON p.per_num=i.per_num WHERE event_num = $num_event";
-  $req=$this->db->prepare($sql);
-  $req->execute();
-  while($ligne=$req->fetch(PDO::FETCH_OBJ)){
-    $tabObj[]=new Personne($ligne);
-  }
-  return $tabObj;
-}
+	public function getPersonneInscriteEvent($num_event){
+		$tabObj = array();
+		$sql="SELECT per_nom, per_prenom, per_mail FROM personne p JOIN inscritevent i ON p.per_num=i.per_num WHERE event_num = $num_event";
+		$req=$this->db->prepare($sql);
+		$req->execute();
+		while($ligne=$req->fetch(PDO::FETCH_OBJ)){
+			$tabObj[]=new Personne($ligne);
+		}
+		return $tabObj;
+	}
+
+	public function personneDejaInscriteNews($personne){
+		$sql="SELECT per_inscrit_news FROM personne WHERE per_num=:num";
+		$req=$this->db->prepare($sql);
+		$req->bindValue(':num', $personne->getPerNum(), PDO::PARAM_INT);
+		$req->execute();
+		$resu=$req->fetch(PDO::FETCH_OBJ);
+
+		return $resu->per_inscrit_news;
+	}
+
+	public function inscrireNews($personne){
+		$sql="UPDATE personne SET per_inscrit_news = 1 WHERE per_num= :num";
+		$req=$this->db->prepare($sql);
+		$req->bindValue(':num', $personne->getPerNum(), PDO::PARAM_INT);
+		$req->execute();
+	}
 }
