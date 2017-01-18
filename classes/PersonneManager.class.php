@@ -62,13 +62,23 @@ class PersonneManager{
 
 	public function getPersonneInscriteEvent($num_event){
 		$tabObj = array();
-		$sql="SELECT per_nom, per_prenom, per_mail FROM personne p JOIN inscritevent i ON p.per_num=i.per_num WHERE event_num = $num_event";
+		$sql="SELECT per_nom, per_prenom, per_mail FROM personne p JOIN inscritevent i ON p.per_num=i.per_num WHERE event_num = :num_event";
 		$req=$this->db->prepare($sql);
+		$req->bindValue(':num_event', $num_event, PDO::PARAM_INT);
 		$req->execute();
 		while($ligne=$req->fetch(PDO::FETCH_OBJ)){
 			$tabObj[]=new Personne($ligne);
 		}
 		return $tabObj;
+	}
+
+	public function getNbPersonneInscrite($num_event){
+		$sql = "SELECT COUNT(*) AS nbPersonne FROM inscritevent WHERE event_num=:num_event";
+		$req = $this->db->prepare($sql);
+		$req->bindValue(':num_event', $num_event, PDO::PARAM_INT);
+		$req->execute();
+		$ligne = $req->fetch(PDO::FETCH_OBJ);
+		return $ligne->nbPersonne;
 	}
 
 	public function personneDejaInscriteNews($personne){

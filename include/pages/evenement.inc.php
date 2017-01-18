@@ -131,7 +131,31 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                 <input type="submit" name="inscription">
               </form>
             </fieldset>
-        <?php } ?>
+        <?php }
+        if(isset($_SESSION["login"])){ ?>
+          <a href="" id="boutonInscrire">Voir les personnes inscrite</a><br>
+          <label>Il y a <?php echo $managerPersonne->getNbPersonneInscrite($evenement->getNum()); ?> personnes inscrites.</label>
+          <?php
+          if($managerPersonne->getNbPersonneInscrite($evenement->getNum()) > 0){
+          ?>
+          <table>
+            <tr>
+              <th>Prenom</th>
+              <th>Nom</th>
+              <th>Mail</th>
+            </tr>
+          <?php foreach ($managerPersonne->getPersonneInscriteEvent($evenement->getNum()) as $personne){ ?>
+              <tr>
+                <td><?php echo $personne->getPerPrenom(); ?></td>
+                <td><?php echo $personne->getPerNom(); ?></td>
+                <td><?php echo $personne->getPerMail(); ?></td>
+              </tr>
+
+        <?php  } ?>
+        </table>
+      <?php  }
+    }
+      ?>
           </article>
     <?php
     }
