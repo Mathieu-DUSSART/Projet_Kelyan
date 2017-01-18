@@ -31,27 +31,36 @@ foreach ($tabVille as $ville) {
     }
 }
 
-if(isset($_SESSION["login"]) && empty($_POST["numPointDeCollecteAModifier"]) ){?>
+if(isset($_SESSION["login"]) && empty($_POST["numPointDeCollecteAModifier"]) ){
 
+  if(empty($_POST['selectVilleAjout'])){
+
+  ?>
   <div id="ajouterStatistique">
   <form method="POST" action="#">
 
     <label>Ville : <label>
-    <select id="selectVille" name="selectVille"><?php
+    <select id="selectVilleAjout" name="selectVilleAjout"><?php
         foreach ($tabVille as $ville) {
 
-          echo "<option value=\"" . $ville->getVilNum() ."\">" .  $ville->getVilNom() . "</option>";
+          echo "<option name=\"numVilleAjouter\" value=\"" . $ville->getVilNum() ."\">" .  $ville->getVilNom() . "</option>";
         }
-          ?></select><?php
-        $tabPointAjout=$managerPointsDeCollecte->getAllPoint();
 
+          ?>  <input name="validerStatistique" type="submit" value="valider">
+        </select>
+    </form><?php
+  }
+    if(isset($_POST['selectVilleAjout'])){
+
+        $tabPointAjout=$managerPointsDeCollecte->getPointByVille($_POST['selectVilleAjout']);
+        $_SESSION['numVilleAjouter']=$_POST['selectVilleAjout'];
         ?>
+          <div id="ajouterStatistique">
+            <form method="POST" action="#">
           <label>Point de collecte : <label>
           <select id="selectPoint" name="selectPoint">
           <?php
           foreach ($tabPointAjout as $point) {
-
-
 
             echo "<option value=\"" . $point->getPointNum() ."\"> " . $point->getPointLieu() . "</option>";
           }
@@ -66,6 +75,7 @@ if(isset($_SESSION["login"]) && empty($_POST["numPointDeCollecteAModifier"]) ){?
   </form>
   </div>
 <?php
+}
 }
 if(isset($_SESSION["login"]) && isset($_POST["selectPoint"]) && empty($_POST["numPointDeCollecteASupprimer"]) && empty($_POST["numPointDeCollecteAModifier"]) ){
 
