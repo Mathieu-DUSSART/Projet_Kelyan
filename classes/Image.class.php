@@ -5,6 +5,7 @@ class Image{
     private $nom;
     private $description;
     private $lien;
+    private $type;
 
     public function __construct($valeurs = array()){
         if(!empty($valeurs)){
@@ -25,6 +26,8 @@ class Image{
 					break;
                 case 'img_lien' : $this->setLien($valeurs);
 					break;
+                case 'img_type' : $this->setType($valeurs);
+          break;
 			}
 		}
 	}
@@ -49,6 +52,10 @@ class Image{
         $this->lien=$lien;
     }
 
+    public function setType($type){
+        $this->type=$type;
+    }
+
     //-------------
 
     public function getNum(){
@@ -69,6 +76,10 @@ class Image{
 
     public function getLien(){
         return $this->lien;
+    }
+
+    public function getType(){
+        return $this->type;
     }
 }
 ?>

@@ -42,6 +42,7 @@ if(isset($_POST["formAjoutImage"])){
                          $tabImg["img_nom"]=$nomImage;
                          $tabImg["img_description"]=null;
                          $tabImg["img_lien"]=null;
+                         $tabImg["img_type"]=0;
                          $image=new Image($tabImg);
                          $managerImage->add($image);
                          $message = 'Upload réussi !';
@@ -93,10 +94,13 @@ if(isset($_POST["formAjoutVideo"])){
                      if(move_uploaded_file($_FILES['fichierVideo']['tmp_name'], TARGET_VIDEO.$nomImage))
                      {
                          $tabVideo=Array();
-                         $tabVideo["video_src"]="/Projet_Kelyan/video/";
-                         $tabVideo["video_nom"]=$nomImage;
-                         $image=new Video($tabVideo);
-                         $managerVideo->add($image);
+                         $tabVideo["img_src"]="/Projet_Kelyan/video/";
+                         $tabVideo["img_nom"]=$nomImage;
+                         $tabVideo["img_description"]=null;
+                         $tabVideo["img_lien"]=null;
+                         $tabVideo["img_type"]=1;
+                         $image=new Image($tabVideo);
+                         $managerImage->add($image);
                          $message = 'Upload réussi !';
 
                          header('Location: index.php?page=4');
@@ -137,8 +141,8 @@ if(isset($_POST["supprimerImage"])){
 }
 //Supprime une vidéo
 if(isset($_POST["supprimerVideo"])){
-    $video=$managerVideo->getVideo($_POST["numVideoASupprimer"]);
-    $managerVideo->deleteVideo($video->getNum());
+    $video=$managerImage->getImage($_POST["numVideoASupprimer"]);
+    $managerImage->deleteImage($video->getNum());
     //Fichier à supprimer
     $fichier = TARGET_VIDEO . $video->getNom();
     //Si le fichier existe, on le supprime
@@ -154,11 +158,39 @@ if( !empty($message) ){
     echo "\t\t<strong>", htmlspecialchars($message) ,"</strong>\n";
     echo "\t</p>\n\n";
 }?>
+<?php
+  $groupTab=$managerGroup->getAllGroup();
+
+  foreach($groupTab as $group){
+    echo "<h2>" . $group->getGroupNom() . "</h2>";
+    $contenuTab=$managerContenu->getAllContenu($group->getGroupNum());
+    foreach($contenuTab as $contenu){
+      $image=$managerImage->getImage($contenu->getImgNum());
+      if(!$image->getType()){
+        echo "<a class=\"fancybox\" href=\"" . $image->getSrc() . $image->getNom() . "\" data-fancybox-group=\"gallery\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\" width=\"300\" height=\"200\"></a>";
+      }else{
+         echo "<video controls src=\"" . $image->getSrc() . $image->getNom() . "\">" . $image->getDescription() . "</video>";
+      }
+    }
+  }
+  if(isset($_SESSION["login"])){
+  ?>
+  <h3>Ajouter un groupe </h3>
+  <form method="POST" action="#">
+    <input type="text" name="AjoutGroupe" >
+    <input name="AjoutGroupeB" type="submit" value="Ajouter un groupe">
+  </form>
+
+  <?php
+  }
+  ?>
+
+
 
 <h1 class="titreOrange">Galerie</h1>
 
 <link rel="stylesheet" type="text/css" href="fancyBox\fancyBox-master\source\jquery.fancybox.css?v=2.1.5" media="screen" />
-<h2>Images :</h2>
+<h2></h2>
 <?php
 //Affiche toutes les images de la page Galerie
 foreach ($managerImage->getAllImage("/Projet_Kelyan/image/galerie/") as $image) {?>
@@ -195,7 +227,7 @@ if(isset($_SESSION["login"])){?>
 
  <h2>Vidéo :</h2>
  <?php
- foreach($managerVideo->getAllVideo("/Projet_Kelyan/video/") as $video){?>
+ foreach($managerImage->getAllImage("/Projet_Kelyan/video/") as $video){?>
    <div class="vid">
      <?php
      echo "<video controls src=\"" . $video->getSrc() . $video->getNom() . "\">" . $video->getDescription() . "</video>";
@@ -222,5 +254,13 @@ if(isset($_SESSION["login"])){?>
          </form>
      </div>
  <?php
+ }
+
+ if(isset($_POST["AjoutGroupe"]) && isset($_SESSION["login"])){
+   print_r($_POST);
+   $newGroup=array();
+   $newGroup["group_nom"]=$_POST["AjoutGroupe"];
+   $group=new Groupe($newGroup);
+   $managerGroup->add($group);
  }
 ?>
