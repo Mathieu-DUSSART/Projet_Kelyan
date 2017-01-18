@@ -44,7 +44,9 @@ else{
 
         </li>
     <?php
-    }
+    }?>
+    <li id="menu">v</li>
+    <?php
     if(isset($_SESSION["login"])){?>
         <li id="ongletAjoutPage"><input id="boutonAjoutPage" type="button" value="">
             <div id="divAjoutPage">

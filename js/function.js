@@ -30,14 +30,14 @@ function clickBoutonAjoutLogoReseauxSociaux(){
   }
 }
 
-function changerCouleur(){
+/*function changerCouleur(){
   var couleurBackGround = document.getElementById("couleurFontPage").value;
   var couleurFooter = document.getElementById("couleurFooter").value;
   var body = document.getElementTagName("body");
   var footer = document.getElementTagName("footer");
   footer.style.background-color=couleurFooter;
   body.style.background-color=couleurBackGround;
-}
+}*/
 
 function clickBoutonChangerCouleur(){
   var bouton = document.getElementById("changerCouleur");
@@ -67,8 +67,28 @@ $( function() {
 } );
 
 
-}
+/*$(function(){
+    var sommeLargeur = 0;
+    var nbElem = $('nav ul li').length;
+    var largeurNav =  $('nav').width();
+    $('nav ul li').each(function(i){
+        sommeLargeur = sommeLargeur + $(this).width();
+        if(sommeLargeur > largeurNav){
+            //alert(sommeLargeur + " coucou " + $('nav').width());
+            test(i,  $(this).width());
+        }else{
+            //alert("oops");
+        }
+    })
+});*/
+
+/*function test(var i, var onglet){
+    alert(onglet.width());
+}*/
+
+
 window.onload=function(){
+    //test();
     fancyboxQuiMarche();
     clickBoutonAjoutPage();
     clickBoutonAjoutLogoReseauxSociaux();

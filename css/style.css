@@ -687,3 +687,9 @@ fieldset{
 #boutonInscription{
     margin-top: 20px;
 }
+
+#menu{
+    vertical-align: top;
+    width: 3vw;
+    border: 1px solid red;
+}
