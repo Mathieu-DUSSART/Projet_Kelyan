@@ -58,8 +58,6 @@ if(!isset($_SESSION["login"]) && isset($_POST["inscription"])){
        echo "cette personne est déjà inscrite !";
      }
    }
-
-  /* $managerPersonne->ajouterUneInscription($personne->getPerNum(),$_POST["numEventInscription"]);*/
  }
 ?>
 
@@ -109,7 +107,17 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
             echo "<p class=\"detailEvenement\">" . "À partir de " . $heure . "</p>";
             echo "<p class=\"detailEvenement\">" . "À " . $evenement->getVille() . "</p>";
             echo "<p>" . $evenement->getTexte() . "</p>";
-            if(!isset($_SESSION["login"])){ ?>
+
+            $now = date('Y-m-d');
+            $next = $evenement->getDate();
+
+            // test
+            $now = new DateTime( $now );
+            $now = $now->format('Ymd');
+            $next = new DateTime( $next );
+            $next = $next->format('Ymd');
+
+            if(!isset($_SESSION["login"]) && ($next > $now)){ ?>
               <a href="" id="boutonInscrire">s'inscrire</a>
               <fieldset>
               <form id="formInscription" method="POST" action="#">
