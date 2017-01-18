@@ -95,6 +95,7 @@
  }?>
   <div id="divReseauxSociaux">
 	  <?php
+	  //Récupère tous les logos des réseaux sociaux
 	  foreach ($managerImage->getAllImage("/Projet_Kelyan/image/reseaux_sociaux/") as $image) { ?>
 		<div class="divLogoReseauxSociaux">
 	    	<?php
@@ -110,22 +111,24 @@
 			} ?>
 		</div>
 		<?php
-	}
-	if(isset($_SESSION["login"])){?>
-		<div id="divAjoutReseauxSociaux">
-			<input id="boutonAjoutReseauSocial" type="button" value="+">
-			<div id="divAjouterLogo">
-				<form enctype="multipart/form-data" id="ajouterArticle" method="POST" action="#">
-					<label>Logo:</label>
-					<input name="fichierReseauxSociaux" type="file" id="fichier_a_uploader" />
-					<label>Lien: </label>
-					<input type="url" name="lien">
-					<input type="submit" value="Valider">
-				</form>
+		}
+		//Si on est connecté en admin, on peut ajouter un réseau social
+		if(isset($_SESSION["login"])){?>
+			<div id="divAjoutReseauxSociaux">
+				<input id="boutonAjoutReseauSocial" type="button" value="+">
+				<div id="divAjouterLogo">
+					<form enctype="multipart/form-data" id="ajouterArticle" method="POST" action="#">
+						<label>Logo:</label>
+						<input name="fichierReseauxSociaux" type="file" id="fichier_a_uploader" />
+						<label>Lien: </label>
+						<input type="url" name="lien">
+						<input type="submit" value="Valider">
+					</form>
+				</div>
 			</div>
-		</div>
-		<?php
-	}?>
+			<?php
+		}?>
+		<input id="boutonInscrireNews" type="button" value="S'inscrire à la newsletter">
 	</div>
 
 	<img id="logo" src="image/logo.jpeg" alt="">
