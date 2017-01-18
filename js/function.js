@@ -30,6 +30,22 @@ function clickBoutonAjoutLogoReseauxSociaux(){
   }
 }
 
+function changerCouleur(){
+  var couleurBackGround = document.getElementById("couleurFontPage").value;
+  var couleurFooter = document.getElementById("couleurFooter").value;
+  var body = document.getElementTagName("body");
+  var footer = document.getElementTagName("footer");
+  footer.style.background-color=couleurFooter;
+  body.style.background-color=couleurBackGround;
+}
+
+function clickBoutonChangerCouleur(){
+  var bouton = document.getElementById("changerCouleur");
+  if(bouton != null){
+    bouton.addEventListener("click", changerCouleur, false);
+  }
+}
+
 /*$(document).ready(function()
 {
    // On cache la zone de texte
@@ -55,5 +71,6 @@ $( function() {
 window.onload=function(){
     fancyboxQuiMarche();
     clickBoutonAjoutPage();
-    clickBoutonAjoutLogoReseauxSociaux()
+    clickBoutonAjoutLogoReseauxSociaux();
+    clickBoutonChangerCouleur();
 }

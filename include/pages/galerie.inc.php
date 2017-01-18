@@ -76,7 +76,7 @@ if(isset($_POST["formAjoutImage"])){
 
     // On verifie si le champ est rempli
 if(isset($_POST["formAjoutVideo"])){
-        if( !empty($_FILES['fichierVideo']['name']) ){
+          if( !empty($_FILES['fichierVideo']['name']) ){
         // Recuperation de l'extension du fichier
         $extension  = pathinfo($_FILES['fichierVideo']['name'], PATHINFO_EXTENSION);
         echo "Ext =" . $extension;
