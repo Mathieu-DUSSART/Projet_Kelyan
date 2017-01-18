@@ -50,8 +50,7 @@ $( function() {
   $( ".datepicker" ).datepicker({ dateFormat: "dd/mm/yy" });
 } );
 
-function blabla(){
-  
+
 }
 window.onload=function(){
     fancyboxQuiMarche();
