@@ -1,42 +1,59 @@
 <h1>Statistique</h1>
 <?php
 //Listage des statistique par Point de Collecte
-$tabPoint = $managerPointsDeCollecte->getAllPoint();
-foreach ($tabPoint as $point) {
-  $num = $point->getPointVille();
-  $ville=$managerVille->getVilNomByNum($num);
-  echo "<h2>" . $ville->getVilNom() . " : " . $point->getPointLieu() . " : </h2>";
-  $tabStatistique=$managerStatistique->getStatistiqueByPoint($point->getPointNum());
-  foreach ($tabStatistique as $stat) {
-    echo "<p> statistique du ".$stat->getDate()." nombre de bouchons récoltés : " . $stat->getStatistique() . "</p>";
-    ?>
-    <form class="supprimerStatistique" method="POST" action="#">
-        <input name="supprimerStatistique" type="submit" value="X">
-        <input name="numPointDeCollecteASupprimer" type="hidden" value="<?php echo $stat->getPoint();?>">
-        <input name="dateStatASupprimer" type="hidden" value="<?php echo $stat->getDate(); ?>">
-        <input name="statSupprimer" type="hidden" value="<?php echo $stat->getStatistique(); ?>">
-    </form>
-    <form class="modifierPointDeCollecte" method="POST" action="#">
-        <input name="modifierPointDeCollecte" type="submit" value="M">
-        <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $stat->getPoint();?>">
-        <input name="dateStatAModifier" type="hidden" value="<?php echo $stat->getDate(); ?>">
-        <input name="statModifier" type="hidden" value="<?php echo $stat->getStatistique(); ?>">
+$tabVille = $managerVille->getAllVille();
 
-    </form>
-    <?php
-  }
+foreach ($tabVille as $ville) {
+  echo "<h2>".$ville->getVilNom()." : </h2>";
+  echo "<br / >";
+  $tabPoint = $managerPointsDeCollecte->getPointByVille($ville->getVilNum());
+  foreach ($tabPoint as $point) {
+    echo "<dd> <h3>". $point->getPointLieu() . " : </h2>";
+    $tabStatistique=$managerStatistique->getStatistiqueByPoint($point->getPointNum());
+    foreach ($tabStatistique as $stat) {
+      echo "<dd> <p> statistique du ".$stat->getDate()." nombre de bouchons récoltés : " . $stat->getStatistique() . "</p>";
+      ?>
+      <form class="supprimerStatistique" method="POST" action="#">
+          <input name="supprimerStatistique" type="submit" value="X">
+          <input name="numPointDeCollecteASupprimer" type="hidden" value="<?php echo $stat->getPoint();?>">
+          <input name="dateStatASupprimer" type="hidden" value="<?php echo $stat->getDate(); ?>">
+          <input name="statSupprimer" type="hidden" value="<?php echo $stat->getStatistique(); ?>">
+        </form>
+        <form class="modifierPointDeCollecte" method="POST" action="#">
+          <input name="modifierPointDeCollecte" type="submit" value="M">
+          <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $stat->getPoint();?>">
+          <input name="dateStatAModifier" type="hidden" value="<?php echo $stat->getDate(); ?>">
+          <input name="statModifier" type="hidden" value="<?php echo $stat->getStatistique(); ?>">
+
+        </form>
+        <?php
+      }
+    }
 }
 
 if(isset($_SESSION["login"]) && empty($_POST["numPointDeCollecteAModifier"]) ){?>
+
   <div id="ajouterStatistique">
   <form method="POST" action="#">
-    <label>Point de collecte : <label>
-      <select id="selectPointCollecte" name="selectPoint">
-        <?php
-          foreach ($tabPoint as $point) {
-            $num = $point->getPointVille();
-            $ville=$managerVille->getVilNomByNum($num);
-            echo "<option value=\"" . $point->getPointVille() ."\">" .  $ville->getVilNom() . " : " . $point->getPointLieu() . "</option>";
+
+    <label>Ville : <label>
+    <select id="selectVille" name="selectVille"><?php
+        foreach ($tabVille as $ville) {
+
+          echo "<option value=\"" . $ville->getVilNum() ."\">" .  $ville->getVilNom() . "</option>";
+        }
+          ?></select><?php
+        $tabPointAjout=$managerPointsDeCollecte->getAllPoint();
+
+        ?>
+          <label>Point de collecte : <label>
+          <select id="selectPoint" name="selectPoint">
+          <?php
+          foreach ($tabPointAjout as $point) {
+
+
+
+            echo "<option value=\"" . $point->getPointNum() ."\"> " . $point->getPointLieu() . "</option>";
           }
         ?>
       </select>
