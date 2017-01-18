@@ -124,5 +124,5 @@
 		<a href="index.php?page=10"><input id="boutonInscrireNews" type="button" value="S'inscrire à la newsletter"></a>
 	</div>
 
-	<img id="logo" src="image/logo.jpeg" alt="">
+	<a href="index.php?page=1"><img id="logo" src="image/logo.jpeg" alt=""></a>
 	<h1>Association Kélyan</h1>
