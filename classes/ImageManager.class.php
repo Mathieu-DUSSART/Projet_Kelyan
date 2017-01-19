@@ -13,12 +13,13 @@ class ImageManager{
 	Retourne : rien
 	*/
 	public function add($image){
-        $sql="INSERT INTO image(img_src, img_nom, img_description, img_lien) VALUES(:src, :nom, :description, :lien)";
+        $sql="INSERT INTO image(img_src, img_nom, img_description, img_lien,img_type) VALUES(:src, :nom, :description, :lien,:type)";
         $req=$this->db->prepare($sql);
         $req->bindValue(':src', $image->getSrc(), PDO::PARAM_STR);
         $req->bindValue(':nom', $image->getNom(), PDO::PARAM_STR);
         $req->bindValue(':description', $image->getDescription(), PDO::PARAM_STR);
         $req->bindValue(':lien', $image->getLien(), PDO::PARAM_STR);
+				$req->bindValue(':type', $image->getType(), PDO::PARAM_INT);
         $req->execute();
 	}
 
@@ -69,6 +70,17 @@ class ImageManager{
 		$image=new Image($res);
 
 		return $image;
+	}
+
+	public function getImageByNom($nom){
+		$sql = "SELECT img_num FROM image WHERE img_nom=:nom";
+		$req=$this->db->prepare($sql);
+		$req->bindValue(':nom', $nom, PDO::PARAM_STR);
+		$req->execute();
+		$resu = $req->fetch(PDO::FETCH_OBJ);
+		if($resu != NULL){
+			return $resu->img_num;
+		}
 	}
 }
 ?>
