@@ -764,3 +764,13 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     font-size: 80%;
     color: red;
 }
+
+.fixNavigation{
+ z-index: 9999;
+ position: fixed;
+ top: 0;
+ }
+
+.fixNavigationHeader{
+    padding-top: 7vh;
+}

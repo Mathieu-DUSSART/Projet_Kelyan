@@ -143,6 +143,18 @@ function test(onglet){
     $("#menuDeroulant").append(onglet3);*/
 }
 
+//Fonction pour fixer la nav quand on scroll
+$(function(){
+  $(window).scroll(function () {//Au scroll dans la fenetre on déclenche la fonction
+     if ($(this).scrollTop() > $('header').height()) { //si on a défilé de plus de 150px du haut vers le bas
+         $('nav').addClass("fixNavigation"); //on ajoute la classe "fixNavigation" à <div id="navigation">
+         $('#corps').addClass("fixNavigationHeader");
+     } else {
+         $('nav').removeClass("fixNavigation");//sinon on retire la classe "fixNavigation" à <div id="navigation">
+         $('#corps').removeClass("fixNavigationHeader");
+     }
+  });
+});
 
 window.onload=function(){
     //test();
