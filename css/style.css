@@ -710,3 +710,57 @@ fieldset{
     right: 0;
     border: 1px solid blue;
 }
+
+
+
+#formConnexion{
+    position:relative;
+    width:30vw;
+    margin-left:35vw;
+    margin-bottom:100px;
+}
+
+#formConnexion label{
+    position:absolute;
+    right:72%;
+    margin-top:3px;
+}
+
+#formConnexion input[type=text], #formConnexion input[type=password]{
+    width:40%;
+    height:15px;
+    margin:5px 30%;
+    border-radius:5px;
+    border:1px solid #D3D3D3;
+    box-shadow:
+    0px 2px 2px 0px rgba(0, 0, 0, 0.5),
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+#formConnexion input[type=submit]{
+    width:30%;
+    padding:10px 0;
+    margin-top: 25px;
+    margin-left:35%;
+    background-color:#FF7F66;
+    color:#3E454C;
+    font-size:110%;
+    font-weight:bold;
+    border-radius:5px;
+    border:none;
+    box-shadow:
+    0px 2px 2px 0px rgba(0, 0, 0, 0.5),
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+#formConnexion input[type=submit]:hover{
+    box-shadow:
+    0px 2px 2px 0px rgba(0, 0, 0, 0.5) inset,
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5);
+}
+
+.messageErreurLoginPassword{
+    text-align: center;
+    font-size: 80%;
+    color: red;
+}
