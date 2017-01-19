@@ -104,30 +104,44 @@ function initEditText(){
 
 
 
+function centrerNav(){
+    var largeur_fenetre = $(window).width();
 
-$(function(){
-    var sommeLargeur = 0;
-    var nbElem = $('nav ul li').length;
-    var largeurNav = $('nav').width();
-    var largeurBouton = $('#ongletAjoutPage').width() + $('#menu').width();
+    if(largeur_fenetre > "1000"){
+        var paddingGauche = largeurNav - (sommeLargeur-largeurBouton);
+        $("nav ul").css( "padding-left", paddingGauche/2 );
+    }else{
+        $("nav ul").css( "padding-left", "0");
+    }
+}
+
+function calculNav(){
+    sommeLargeur = 0;
+    nbElem = $('nav ul li').length;
+    largeurNav = $('nav').width();
+    largeurBouton = $('#ongletAjoutPage').width() + $('#menu').width();
+
     $("nav li").each(function(){
         sommeLargeur = sommeLargeur + $(this).width();
-        //alert(sommeLargeur + " tet " + (largeurNav))
+
         if(sommeLargeur > (largeurNav-largeurBouton) && $(this).attr("id")!="menu" && $(this).attr("id")!="ongletAjoutPage"){
-            //alert(sommeLargeur + " tet " + (largeurNav-largeurBouton));
-            //alert(sommeLargeur + " coucou " + $('nav').width());
-            //alert(sommeLargeur);
-            //alert(compteur);
-            test(this);
+            //test(this);
         }else{
-            //alert(sommeLargeur);
-            //alert("oops");
-            //test(compteur);
+
         }
     });
+}
 
-    var paddingGauche = largeurNav - (sommeLargeur-largeurBouton);
-    $("nav ul").css( "padding-left", paddingGauche/2 );
+$(function(){
+
+
+    calculNav();
+    centrerNav();
+});
+
+$(window).resize(function(){
+    calculNav();
+    centrerNav();
 });
 
 function test(onglet){
@@ -155,6 +169,22 @@ $(function(){
      }
   });
 });
+
+//Fonction pour cacher ou afficher la nav en version mobile
+$(function(){
+    $("#boutonMenu").bind("click", function(){
+        var nav = $("nav");
+
+
+        if(nav.hasClass("cacherNav")){
+            nav.removeClass("cacherNav");
+        }else{
+            nav.addClass("cacherNav");
+        }
+    });
+});
+
+
 
 window.onload=function(){
     //test();

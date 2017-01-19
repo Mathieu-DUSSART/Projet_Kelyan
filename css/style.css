@@ -28,16 +28,17 @@ header{
     background-size:90vw auto;
 }
 #logo{
-    display:inline-block;
+    position: absolute;
     height:25vh;
 }
 
 header h1{
     display:inline-block;
-    vertical-align: 100%;
-    text-align: center;
     /*font-family: Aclonica;*/
-    width:70vw;
+    width: 70vw;
+    margin-top: 10vh;
+    margin-left: 15vw;
+    text-align: center;
     font-size:250%;
     /*color:#3E454C;*/
     color: white;
@@ -46,7 +47,19 @@ header h1{
 }
 
 /* ---NAV--- */
+#barreNav{
+    display: none;
+    width: 100%;
+    height: 10vh;
+    background-color: white;
+}
+
+.cacherNav{
+    display: block;
+}
+
 nav{
+    display: block;
     position: relative;
     z-index:9;
     height:7vh;

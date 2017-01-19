@@ -99,11 +99,11 @@ if(isset($_POST["supprimerPage"])){
             }
         }
     }?>
-    <li id="menu">v
+    <!--<li id="menu">v
         <div id="menuDeroulant">
 
         </div>
-    </li>
+    </li>-->
 
     <?php
     if(isset($_SESSION["login"])){?>

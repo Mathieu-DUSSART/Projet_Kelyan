@@ -22,6 +22,9 @@
         <title>Association Kelyan</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" media="only screen and (max-width: 1000px)" href="css/style_responsive.css" type="text/css" />
+
+        <meta name="viewport" content="width=device-width" />
         <script src="/Projet_Kelyan/js/jquery.js"></script>
         <script src="/Projet_Kelyan/js/jquery-ui.min.js"></script>
         <link rel="stylesheet" href="/Projet_Kelyan/js/jquery-ui.min.css">
@@ -42,7 +45,10 @@
             require_once("include/header.inc.php");
             ?>
         </header>
-        <nav>
+        <div id="barreNav">
+            <input type="button" id="boutonMenu">
+        </div>
+        <nav class="cacherNav">
             <?php
             require_once("include/nav.inc.php");
             ?>
