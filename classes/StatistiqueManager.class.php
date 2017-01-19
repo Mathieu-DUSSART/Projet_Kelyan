@@ -35,5 +35,13 @@ class StatistiqueManager{
     $req->bindValue(":point_num", $stat->getPoint(),PDO::PARAM_INT);
     $req->execute();
   }
+
+  public function modifierStatistique($statistique,$point_num,$dateStat,$point_numPrecedant,$datePrecedant)	{
+		$sql="UPDATE statistique SET statistique=:statistique ,point_num=:point_num , statistique_date=:dateStat  WHERE point_num=:point_numPrecedant AND statistique_date=datePrecedant";
+		$req=$this->db->prepare($sql);
+		$req->bindValue(':num', $num, PDO::PARAM_INT);
+		$req->bindValue(':nom', $nom, PDO::PARAM_STR);
+		$req->execute();
+	}
 }
  ?>

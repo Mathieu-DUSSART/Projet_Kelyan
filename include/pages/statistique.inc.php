@@ -118,22 +118,17 @@ if(isset($_SESSION["login"]) && empty($_POST["selectPoint"]) && empty($_POST["nu
 
       <label>Statistique :</label>
        <?php echo $_POST["statModifier"]; ?>
-      <input type="number" name="valeurStatistique"  value ="<?php echo $_POST["statModifier"] ; ?>">
+      <input type="number" name="valeurStatistiqueModif"  value ="<?php echo $_POST["statModifier"] ; ?>">
 
       <label>Date : </label>
-      <input type="text" class="datepicker" name="date" value ="<?php echo $_POST["dateStatAModifier"] ;?>">
+      <input type="text" class="datepicker" name="dateModif" value ="<?php echo $_POST["dateStatAModifier"] ;?>">
       <input name="validerStatistique" type="submit" value="valider">
   </form>
   </div>
 
 <?php
 
-  /*$tabSuppr=array();
-  $tabSuppr["statistique"]=$_POST["statModifier"];
-  $tabSuppr["point_num"]=$_POST["numPointDeCollecteAModifier"];
-  $tabSuppr["statistique_date"]=$_POST["dateStatAModifier"];
-  $statistiqueSuppr = new Statistique($tabSuppr);
-  $managerStatistique->deleteStatistique($statistiqueSuppr);*/
+if(isset($_SESSION["login"]) && isset($_POST["selectPoint"]) && isset($_POST["numPointDeCollecteAModifier"]) && isset($_POST["dateModif"])){
 
 
 }

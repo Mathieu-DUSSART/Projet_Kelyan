@@ -136,6 +136,21 @@ if( !empty($message) ){
   $groupTab=$managerGroup->getAllGroup();
 
   foreach($groupTab as $group){
+    if(isset($_SESSION["login"])){?>
+      <div class="supprimerGroup">
+            <form method="POST" action="#">
+                <input name="supprimerGroup" type="submit" value="X">
+                <input name="numGroupASupprimer" type="hidden" value="<?php echo $group->getGroupNum(); ?>">
+            </form>
+        </div>
+        <div class="modifierGroup">
+              <form method="POST" action="#">
+                  <input name="modifierGroup" type="submit" value="M">
+                  <input name="numGroupAModifier" type="hidden" value="<?php echo $group->getGroupNum(); ?>">
+              </form>
+        </div>
+    <?php
+    }
     echo "<h2>" . $group->getGroupNom() . "</h2>";
     $contenuTab=$managerContenu->getAllContenu($group->getGroupNum());
     foreach($contenuTab as $contenu){
@@ -174,9 +189,18 @@ if( !empty($message) ){
   if(isset($_SESSION["login"])){
   ?>
   <h3>Ajouter un groupe </h3>
-  <form method="POST" action="#">
-    <input type="text" name="AjoutGroupe" >
-    <input name="AjoutGroupeB" type="submit" value="Ajouter un groupe">
+  <form method="POST" action="#"><?php
+    if(isset($_POST["numGroupAModifier"]) && isset($_SESSION["login"])){
+      $group=$managerGroup->getGroupByNum($_POST["numGroupAModifier"]);
+        ?><input type="text" name="ModifierGroup" value="<?php echo $group->getGroupNom() ?>" >
+        <input type="hidden" name="ModifierGroupNum" value="<?php echo $group->getGroupNum() ?>" >
+        <input name="AjoutGroupeB" type="submit" value="Modifier un groupe"><?php
+    }
+    else{
+      echo"<input type=\"text\" name=\"AjoutGroupe\" >";
+      echo "<input name=\"AjoutGroupeB\" type=\"submit\" value=\"Ajouter un groupe\">";
+    }?>
+
   </form>
 
   <?php
@@ -189,26 +213,6 @@ if( !empty($message) ){
 
 
 <?php
-/*
-//Affiche toutes les images de la page Galerie
-
-foreach ($managerImage->getAllImage("/Projet_Kelyan/image/galerie/") as $image) {?>
-    <div class="img">
-        <?php
-      echo "<a class=\"fancybox\" href=\"" . $image->getSrc() . $image->getNom() . "\" data-fancybox-group=\"gallery\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\" width=\"300\" height=\"200\"></a>";
-        if(isset($_SESSION["login"])){?>
-            <div class="supprimerImage">
-                <form method="POST" action="#">
-                    <input name="supprimerImage" type="submit" value="X">
-                    <input name="numImageASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
-                </form>
-            </div>
-        <?php
-        }?>
-    </div>
-<?php
-}
-*/
 
 if(isset($_SESSION["login"])){?>
     <div id="ajouterImage">
@@ -234,52 +238,24 @@ if(isset($_SESSION["login"])){?>
 <!-------------------------------------------------------------------Video------------------------------------------------------------------------------------------------>
 
  <?php
- /*
- foreach($managerImage->getAllImage("/Projet_Kelyan/video/") as $video){?>
-   <div class="vid">
-     <?php
-     echo "<video controls src=\"" . $video->getSrc() . $video->getNom() . "\">" . $video->getDescription() . "</video>";
-     if(isset($_SESSION["login"])){?>
-         <div class="supprimerVideo">
-             <form method="POST" action="#">
-                 <input name="supprimerVideo" type="submit" value="X">
-                 <input name="numVideoASupprimer" type="hidden" value="<?php echo $video->getNum(); ?>">
-             </form>
-         </div>
-     <?php
-     }?>
-   </div>
- <?php
- }
- */
-/*
- if(isset($_SESSION["login"])){?>
-     <div id="ajouterVideo">
-         <form enctype="multipart/form-data" action="#" method="post">
-             <label for="fichier_a_uploader" title="Recherchez le fichier à uploader !">Envoyer le fichier</label>
-             <input type="hidden" name="MAX_FILE_SIZE_VIDEO" value="<?php echo MAX_SIZE; ?>" />
-             <input name="fichierVideo" type="file" id="fichier_a_uploader" />
-             <label>choisir le groupe</label>
-             <select name="groupePourVideo">
-               <?php
-               $groupTab1=$managerGroup->getAllGroup();
-               foreach ($groupTab1 as $groupe) {
-                 echo "<option name=\"GroupePourVideo\" value=\"" . $groupe->getGroupNum() ."\">" .  $groupe->getGroupNom() . "</option>";
-               }
-               echo "</select>";
-                ?>
-             <input class="bouton" type="submit" name="formAjoutVideo" value="Uploader" />
-         </form>
-     </div>
- <?php
- }
- */
 
  if(isset($_POST["AjoutGroupe"]) && isset($_SESSION["login"])){
-   print_r($_POST);
    $newGroup=array();
    $newGroup["group_nom"]=$_POST["AjoutGroupe"];
    $group=new Groupe($newGroup);
    $managerGroup->add($group);
  }
+
+ if(isset($_POST["ModifierGroup"]) && isset($_SESSION["login"])){
+   $group=$managerGroup->getGroupByNum($_POST["ModifierGroupNum"]);
+   echo "test modifier";
+   echo $group->getGroupNum();
+   echo $_POST["ModifierGroup"];
+   $managerGroup->modifierGroupe($group->getGroupNum(),$_POST["ModifierGroup"]);
+ }
+if(isset($_POST["numGroupASupprimer"]) && isset($_SESSION["login"])){
+
+  $managerGroup->deleteGroup($_POST["numGroupASupprimer"]);
+}
+
 ?>

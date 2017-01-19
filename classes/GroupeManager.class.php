@@ -24,5 +24,31 @@ class GroupeManager{
     $req->bindValue(':group_nom', $groupe->getGroupNom(), PDO::PARAM_STR);
     $req->execute();
   }
+
+	public function deleteGroup($num){
+		$sql="DELETE FROM groupe WHERE group_num=:num";
+		$req=$this->db->prepare($sql);
+		$req->bindValue(':num', $num, PDO::PARAM_INT);
+		$req->execute();
+	}
+
+	public function getGroupByNum($num){
+		$sql="SELECT * FROM groupe WHERE group_num=:num";
+		$req=$this->db->prepare($sql);
+				$req->bindValue(':num', $num, PDO::PARAM_INT);
+				$req->execute();
+		$res=$req->fetch(PDO::FETCH_OBJ);
+		$group=new Groupe($res);
+
+		return $group;
+	}
+
+	public function modifierGroupe($num,$nom)	{
+		$sql="UPDATE groupe SET group_nom=:nom WHERE group_num=:num";
+		$req=$this->db->prepare($sql);
+		$req->bindValue(':num', $num, PDO::PARAM_INT);
+		$req->bindValue(':nom', $nom, PDO::PARAM_STR);
+		$req->execute();
+	}
 }
 ?>
