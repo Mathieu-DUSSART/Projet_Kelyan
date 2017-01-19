@@ -14,7 +14,8 @@
     $managerPointsDeCollecte = new PointsDeCollecteManager($pdo);
     $managerVille = new VilleManager($pdo);
     $managerStatistique = new StatistiqueManager($pdo);
-    $managerVideo = new VideoManager($pdo);
+    $managerContenu = new ContenuManager($pdo);
+    $managerGroup = new GroupeManager($pdo);
     $managerPersonne = new PersonneManager($pdo);
     ?>
     <head>

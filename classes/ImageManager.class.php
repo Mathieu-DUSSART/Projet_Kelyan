@@ -53,6 +53,7 @@ class ImageManager{
 		return $tabObj;
     }
 
+
 	/*
 	Fonction qui permet de récupérer une Image de la BD en fonction de son numéro
 	Paramètre :
