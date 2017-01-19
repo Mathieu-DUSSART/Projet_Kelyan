@@ -46,14 +46,14 @@ function clickBoutonAfficherMenuDeroulant(){
   }
 }
 
-/*function changerCouleur(){
+function changerCouleur(){
   var couleurBackGround = document.getElementById("couleurFontPage").value;
   var couleurFooter = document.getElementById("couleurFooter").value;
-  var body = document.getElementTagName("body");
-  var footer = document.getElementTagName("footer");
-  footer.style.background-color=couleurFooter;
-  body.style.background-color=couleurBackGround;
-}*/
+  //var body = document.getElementTagName("body");
+  //var footer = document.getElementTagName("footer");
+  document.footer.style.backgroundColor=couleurFooter;
+  document.body.style.backgroundColor=couleurBackGround;
+}
 
 function clickBoutonChangerCouleur(){
   var bouton = document.getElementById("changerCouleur");
