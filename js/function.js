@@ -74,6 +74,8 @@ function clickBoutonChangerCouleur(){
    });
 });*/
 
+
+
 function fancyboxQuiMarche(){
     $('.fancybox').fancybox();
 }
@@ -81,6 +83,26 @@ function fancyboxQuiMarche(){
 $( function() {
   $( ".datepicker" ).datepicker({ dateFormat: "dd/mm/yy" });
 } );
+
+function initEditText(){
+  tinymce.init({
+    selector : '.texteArea',
+    plugins: [
+      'advlist autosave autolink link image lists charmap preview hr emoticons spellchecker colorpicker ',
+      'searchreplace wordcount visualchars fullscreen media imagetools',
+      ' directionality emoticons template paste textcolor autoresize'
+    ],
+    images_upload_url: 'postAcceptor.php',
+     automatic_uploads: true,
+    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image | preview media fullpage | forecolor backcolor emoticons',
+    autosave_ask_before_unload: false,
+    spellchecker_language: 'fr',
+
+  });
+
+}
+
+
 
 
 $(function(){
@@ -129,4 +151,5 @@ window.onload=function(){
     clickBoutonAjoutPage();
     clickBoutonAjoutLogoReseauxSociaux();
     clickBoutonChangerCouleur();
+    initEditText();
 }

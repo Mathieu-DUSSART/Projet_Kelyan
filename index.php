@@ -26,6 +26,8 @@
         <script src="/Projet_Kelyan/js/jquery-ui.min.js"></script>
         <link rel="stylesheet" href="/Projet_Kelyan/js/jquery-ui.min.css">
 
+        <script src='tinymce/js/tinymce/tinymce.min.js'></script>
+
         <script src="js/function.js"></script>
 
           <!-- Add mousewheel plugin (this is optional) -->
