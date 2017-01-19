@@ -54,7 +54,7 @@
             ?>
         </div>
 
-        <footer>
+        <footer id="footer">
             <?php
             require_once("include/footer.inc.php");
             ?>
