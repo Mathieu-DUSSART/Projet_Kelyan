@@ -140,20 +140,24 @@ if( !empty($message) ){
     $contenuTab=$managerContenu->getAllContenu($group->getGroupNum());
     foreach($contenuTab as $contenu){
       $image=$managerImage->getImage($contenu->getImgNum());
+
       if(!$image->getType()){
+          echo"<div class=\"img\">";
+        echo "<a class=\"fancybox\" href=\"" . $image->getSrc() . $image->getNom() . "\" data-fancybox-group=\"gallery\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\" width=\"300\" height=\"200\"></a>";
         if(isset($_SESSION["login"])){?>
-            <div class="supprimerImage">
+          <div class="supprimerImage">
                 <form method="POST" action="#">
                     <input name="supprimerImage" type="submit" value="X">
                     <input name="numImageASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
                 </form>
             </div>
         <?php
-      }
-        echo "<a class=\"fancybox\" href=\"" . $image->getSrc() . $image->getNom() . "\" data-fancybox-group=\"gallery\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\" width=\"300\" height=\"200\"></a>";
+        }
+        echo"</div>";
       }else{
+          echo" <div class=\"img\">";
         if(isset($_SESSION["login"])){?>
-            <div class="supprimerVideo">
+            <div class="supprimerImage">
                 <form method="POST" action="#">
                     <input name="supprimerVideo" type="submit" value="X">
                     <input name="numVideoASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
@@ -161,8 +165,10 @@ if( !empty($message) ){
             </div>
         <?php
         }
-         echo "<video controls src=\"" . $image->getSrc() . $image->getNom() . "\">" . $image->getDescription() . "</video>";
+        echo "<video controls src=\"" . $image->getSrc() . $image->getNom() . "\">" . $image->getDescription() . "</video>";
+          echo "</div>";
       }
+
     }
   }
   if(isset($_SESSION["login"])){
