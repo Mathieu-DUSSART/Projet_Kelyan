@@ -127,7 +127,7 @@ if(isset($_SESSION["login"]) && empty($_POST["selectPoint"]) && empty($_POST["nu
   </div>
 
 <?php
-
+}
 if(isset($_SESSION["login"]) && isset($_POST["selectPoint"]) && isset($_POST["numPointDeCollecteAModifier"]) && isset($_POST["dateModif"])){
 
 
