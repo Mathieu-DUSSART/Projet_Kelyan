@@ -49,14 +49,15 @@ header h1{
 nav{
     position: relative;
     z-index:9;
-    height:8vh;
+    height:7vh;
     background-color: white;
     /*background-color: #2185C5;*/
     box-shadow: 0px 2px 5px black;
+    font-size: 0;
 }
 
 nav ul{
-    height: 8vh;
+    height: 7vh;
     list-style: none;
     margin: 0;
     padding-left: 0vw;
@@ -65,29 +66,30 @@ nav ul{
 nav ul li{
     position: relative;
     display:inline-block;
-    height:8vh;
+    height:7vh;
 }
 
 nav ul li a{
-    font-size:120%;
+    font-size:1.1rem;
+    letter-spacing: -0.7px;
     /*font-family: AutourOne;*/
     display:block;
     color:#3E454C;
     background-color:white;
     text-decoration: none;
-    padding:2vh 2vw 0 2vw;
-    height:6vh;
+    padding:1.5vh 2vw 0 2vw;
+    height:5.5vh;
     transition: background-color 0.2s;
 }
 
 nav ul li a p{
     margin: 0;
-    padding: 0 1vw 0.5vh 1vw;
+    padding: 0 0.8vw 0.3vh 0.8vw;
     transition: border 0.3s ease;
 }
 
 nav ul li a:hover p{
-    border-width: 2vh;
+    border-width: 1.8vh;
 }
 
 .page1{
@@ -107,8 +109,8 @@ nav ul li a:hover p{
 }
 .active p{
     margin: 0;
-    padding: 0 1vw 0.5vh 1vw;
-    border-width: 2vh;
+    padding: 0 1vw 0.3vh 1vw;
+    border-width: 1.8vh;
 }
 
 .active{
@@ -208,7 +210,7 @@ footer a{
 /* ---ARTICLE--- */
 article{
     position: relative;
-    z-index: 15;
+    z-index: 8;
     display: inline-block;
     background-color: white;
     width:80vw;
@@ -245,7 +247,7 @@ article p{
     position: relative;
     display: inline-block;
     vertical-align: top;
-    z-index: 10;
+    z-index: 7;
     width:3vw;
     height:50px;
     margin-top: 2vh;
@@ -458,7 +460,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 
 .imgGalerie img{
     position: relative;
-    z-index: 11;
+    z-index: 8;
     width: 20vw;
     border-radius:5px;
     border:1px solid black;
@@ -471,7 +473,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     position: absolute;
     display: inline-block;
     vertical-align: top;
-    z-index: 10;
+    z-index: 7;
     width:3vw;
     height:25px;
     top: 0;
@@ -689,7 +691,22 @@ fieldset{
 }
 
 #menu{
+    position: absolute;
     vertical-align: top;
-    width: 3vw;
-    border: 1px solid red;
+    right: 0;
+    width: 8vh;
+    background-color: #F1F1F1;
+    background-image: url("../image/icon/menu.png");
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+    background-position: center;
+}
+
+#menuDeroulant{
+    display: none;
+    position: absolute;
+    z-index: 100;
+    top: 8vh;
+    right: 0;
+    border: 1px solid blue;
 }

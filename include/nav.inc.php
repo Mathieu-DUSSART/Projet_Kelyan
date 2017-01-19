@@ -3,64 +3,9 @@ if (!empty($_GET["page"])){
     $numPage=$_GET["page"];}
 else{
     $numPage=1;
-}?>
+}
 
-<ul>
-    <?php
-    foreach($managerPage->getAllPage() as $page){
-        if(isset($_POST["modifierPage"]) && $_POST['numPageAModifier'] == $page->getNum()){
-            $_SESSION["numPageAModifier"]=$page->getNum();
-            $_SESSION["nomPageAvantModif"]=$page->getNom();
-            ?>
-            <li>
-                <form action="#" method="POST">
-                    <input name="nomPageModifie" type="text" value=" <?php echo $page->getNom();?>" required><br>
-                    <input type="submit" value="Valider">
-                </form>
-            </li>
-        <?php
-        }else{
-            if($numPage==$page->getNum()){
-                echo "<li><a href=\"index.php?page=" . $page->getNum() . "\" class=\"active\"><p class=\"page" . $page->getNum()%5 . "\">" . $page->getNom() . "</p></a>";
-            }else{
-                echo "<li><a href=\"index.php?page=" . $page->getNum() . "\"><p class=\"page" . $page->getNum()%5 . "\">" . $page->getNom() . "</p></a>";
-            }
-        }
-        if(isset($_SESSION["login"]) && $managerPage->estSupprimable($page->getNum())){
-            if(!isset($_POST["modifierPage"]) || (isset($_POST["modifierPage"]) && $_POST["numPageAModifier"]!=$page->getNum())){?>
-                <div class="divSupprimerPage">
-                    <form class="supprimerArticle" method="POST" action="#">
-                        <input name="supprimerPage" type="submit" value="X">
-                        <input name="numPageASupprimer" type="hidden" value="<?php echo $page->getNum(); ?>">
-                    </form>
-                    <form class="modifierArticle" method="POST" action="#">
-                        <input name="modifierPage" type="submit" value="M">
-                        <input name="numPageAModifier" type="hidden" value="<?php echo $page->getNum(); ?>">
-                    </form>
-                </div>
-            <?php
-            }
-        }?>
 
-        </li>
-    <?php
-    }?>
-    <li id="menu">v</li>
-    <?php
-    if(isset($_SESSION["login"])){?>
-        <li id="ongletAjoutPage"><input id="boutonAjoutPage" type="button" value="">
-            <div id="divAjoutPage">
-                <form action="#" method="POST">
-                    <input name="nomPage" type="text" placeholder="Nom de la page..." required>
-                    <input type="submit" value="Valider">
-                </form>
-            </div>
-        </li>
-    <?php
-    } ?>
-</ul>
-
-<?php
 //Permet d'ajouter la nouvelle page dans la BD et de créer
 //le fichier correspondant dans le dossier "include/pages"
 if(isset($_POST["nomPage"])){
@@ -105,3 +50,63 @@ if(isset($_POST["supprimerPage"])){
     exit;
 }
 ?>
+
+<ul>
+    <?php
+    foreach($managerPage->getAllPage() as $page){
+        if(isset($_POST["modifierPage"]) && $_POST['numPageAModifier'] == $page->getNum()){
+            $_SESSION["numPageAModifier"]=$page->getNum();
+            $_SESSION["nomPageAvantModif"]=$page->getNom();
+            ?>
+            <li>
+                <form action="#" method="POST">
+                    <input name="nomPageModifie" type="text" value=" <?php echo $page->getNom();?>" required><br>
+                    <input type="submit" value="Valider">
+                </form>
+            </li>
+        <?php
+        }else{
+            if($numPage==$page->getNum()){
+                echo "<li><a href=\"index.php?page=" . $page->getNum() . "\" class=\"active\"><p class=\"page" . $page->getNum()%5 . "\">" . $page->getNom() . "</p></a>";
+            }else{
+                echo "<li><a href=\"index.php?page=" . $page->getNum() . "\"><p class=\"page" . $page->getNum()%5 . "\">" . $page->getNom() . "</p></a>";
+            }
+        }
+        if(isset($_SESSION["login"]) && $managerPage->estSupprimable($page->getNum())){
+            if(!isset($_POST["modifierPage"]) || (isset($_POST["modifierPage"]) && $_POST["numPageAModifier"]!=$page->getNum())){?>
+                <div class="divSupprimerPage">
+                    <form class="supprimerArticle" method="POST" action="#">
+                        <input name="supprimerPage" type="submit" value="X">
+                        <input name="numPageASupprimer" type="hidden" value="<?php echo $page->getNum(); ?>">
+                    </form>
+                    <form class="modifierArticle" method="POST" action="#">
+                        <input name="modifierPage" type="submit" value="M">
+                        <input name="numPageAModifier" type="hidden" value="<?php echo $page->getNum(); ?>">
+                    </form>
+                </div>
+            <?php
+            }
+        }?>
+
+        </li>
+    <?php
+    }?>
+    <li id="menu">v
+        <div id="menuDeroulant">
+
+        </div>
+    </li>
+
+    <?php
+    if(isset($_SESSION["login"])){?>
+        <li id="ongletAjoutPage"><input id="boutonAjoutPage" type="button" value="">
+            <div id="divAjoutPage">
+                <form action="#" method="POST">
+                    <input name="nomPage" type="text" placeholder="Nom de la page..." required>
+                    <input type="submit" value="Valider">
+                </form>
+            </div>
+        </li>
+    <?php
+    } ?>
+</ul>
