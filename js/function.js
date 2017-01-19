@@ -50,7 +50,7 @@ function changerCouleur(){
   var couleurBackGround = document.getElementById("couleurFontPage").value;
   var couleurFooter = document.getElementById("couleurFooter").value;
   //var body = document.getElementTagName("body");
-  var footer = document.getElementsByTagName("footer");
+  var footer = document.getElementById("footer");
   footer.style.backgroundColor=couleurFooter;
   document.body.style.backgroundColor=couleurBackGround;
 }
