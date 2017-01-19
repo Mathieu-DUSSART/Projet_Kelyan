@@ -92,10 +92,12 @@ if(isset($_POST["supprimerPage"])){
                 </div>
             <?php
             }
-        }?>
-
-        </li>
-    <?php
+        }
+        if($page->getNom()!="Statistique"){
+            if(!isset($_SESSION["login"])){
+                echo "</li>";
+            }
+        }
     }?>
     <li id="menu">v
         <div id="menuDeroulant">

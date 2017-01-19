@@ -101,7 +101,7 @@ if(isset($_POST["supprimerImage"])){
 //Affiche les logos des partenaires
 foreach ($managerImage->getAllImage("/Projet_Kelyan/image/partenaire/") as $image) { ?>
   <div class="img">
-  <?php  echo "<a href=\"" . $image->getLien() . "\"><img class=\"imgPartenaire\" src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
+  <?php  echo "<a href=\"" . $image->getLien() . "\"><img class=\"imgPartenaire\" src=\"" . $image->getSrc() . $image->getNom() . "\" alt=\"\"></a>";
     if(isset($_SESSION["login"])){ ?>
         <div class="supprimerImage">
             <form method="POST" action="#">

@@ -58,7 +58,7 @@ foreach ($managerArticle->getAllArticle(1) as $article) {
   }else{?>
     <article>
         <?php
-        echo "<h1><div class=\"icon" . $article->getNum() ."\"></div>" . $article->getTitre() . "</h1>\n";
+        echo "<h1><span class=\"icon" . $article->getNum() ."\"></span>" . $article->getTitre() . "</h1>\n";
         echo "<p>" . $article->getTexte() . "</p>\n";
         ?>
     </article>

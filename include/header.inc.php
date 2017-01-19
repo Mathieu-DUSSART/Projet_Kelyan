@@ -1,6 +1,3 @@
-
-
-
   <?php
   // Constantes
   define('TARGET_RESEAUX_SOCIAUX', 'image/reseaux_sociaux/');    // Repertoire cible
@@ -92,7 +89,7 @@
 	  foreach ($managerImage->getAllImage("/Projet_Kelyan/image/reseaux_sociaux/") as $image) { ?>
 		<div class="divLogoReseauxSociaux">
 	    	<?php
-			echo "<a href=\"" . $image->getLien() . "\"><img class=\"logoReseauxSociaux\" src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
+			echo "<a href=\"" . $image->getLien() . "\"><img class=\"logoReseauxSociaux\" src=\"" . $image->getSrc() . $image->getNom() . "\" alt=\"\"></a>";
 			if(isset($_SESSION["login"])){ ?>
 				<div class="supprimerLogo">
 					<form method="POST" action="#">
@@ -121,7 +118,7 @@
 			</div>
 			<?php
 		}?>
-		<a href="index.php?page=10"><input id="boutonInscrireNews" type="button" value="S'inscrire à la newsletter"></a>
+		<a href="index.php?page=10" id="boutonInscrireNews">S'inscrire à la newsletter</a>
 	</div>
 
 	<a href="index.php?page=1"><img id="logo" src="image/logo.jpeg" alt=""></a>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <?php
     session_start();
     require_once("include/config.inc.php");
@@ -31,10 +31,10 @@
         <script src="js/function.js"></script>
 
           <!-- Add mousewheel plugin (this is optional) -->
-          <script type="text/javascript" src="fancyBox\fancyBox-master\lib\jquery.mousewheel.pack.js?v=3.1.3"></script>
-
+          <script type="text/javascript" src="fancyBox/fancyBox-master/lib/jquery.mousewheel.pack.js?v=3.1.3"></script>
+          <link rel="stylesheet" type="text/css" href="fancyBox/fancyBox-master/source/jquery.fancybox.css?v=2.1.5" media="screen" />
           <!-- Add fancyBox main JS and CSS files -->
-          <script type="text/javascript" src="fancyBox\fancyBox-master\source\jquery.fancybox.pack.js?v=2.1.5"></script>
+          <script type="text/javascript" src="fancyBox/fancyBox-master/source/jquery.fancybox.pack.js?v=2.1.5"></script>
     </head>
     <body>
         <header>

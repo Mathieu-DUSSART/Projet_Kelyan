@@ -62,7 +62,7 @@ foreach ($managerArticle->getAllArticle(2) as $article) {
             <article>
                 <?php
                 echo "<h1>" . $article->getTitre() . "</h1>";
-                echo "<p class=\"dateArticle\">" . $date . "</h1>";
+                echo "<p class=\"dateArticle\">" . $date . "</p>";
                 echo "<p>" . $article->getTexte() . "</p>";
                 ?>
             </article>

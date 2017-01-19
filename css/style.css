@@ -578,10 +578,6 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     background-size: 100%;
 }
 
-fieldset{
-  display: hidden;
-}
-
 #divReseauxSociaux{
     position: absolute;
     top:0;
@@ -663,6 +659,10 @@ fieldset{
 
 #boutonInscrireNews{
     position: absolute;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    font: 13.3333px Arial;
     right: 2vw;
     bottom: 2vh;
     padding: 10px;

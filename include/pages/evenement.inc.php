@@ -103,7 +103,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
         <article>
             <?php
             echo "<h1>" . $evenement->getTitre() . "</h1>";
-            echo "<p class=\"dateEvenement\">" . "Le " . $date . "</h1>";
+            echo "<p class=\"dateEvenement\">" . "Le " . $date . "</p>";
             echo "<p class=\"detailEvenement\">" . "À partir de " . $heure . "</p>";
             echo "<p class=\"detailEvenement\">" . "À " . $evenement->getVille() . "</p>";
             echo "<p>" . $evenement->getTexte() . "</p>";
