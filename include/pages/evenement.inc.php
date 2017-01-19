@@ -93,7 +93,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                 <input type="text" name="villeModifie" value="<?php echo $evenement->getVille();?>" required>
                 <br>
                 <label>Texte:</label>
-                <textarea name="texteModifie" rows="8" required><?php echo $evenement->getTexte();?></textarea>
+                <textarea name="texteModifie" class="texteArea" rows="8" required><?php echo $evenement->getTexte();?></textarea>
                 <br>
                 <input class="bouton" type="submit" value="Modifier l'évènement">
             </form>
@@ -193,7 +193,7 @@ if(isset($_SESSION["login"])){?>
             <input type="text" name="ville" placeholder="Ville..." required>
             <br>
             <label>Texte:</label>
-            <textarea name="texte" placeholder="Description de l'évènement..." rows="8" required></textarea>
+            <textarea name="texte" class="texteArea" placeholder="Description de l'évènement..." rows="8" required></textarea>
             <br>
             <input class="bouton" type="submit" value="Ajouter l'évènement">
         </form>
