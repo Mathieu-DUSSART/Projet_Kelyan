@@ -7,9 +7,9 @@ class StatistiqueManager{
   }
 
   public function add($statistique){
-    $sql="INSERT INTO statistique VALUES(:num, :pointCollecte,:stat_date)";
+    $sql="INSERT INTO statistique(statistique,point_num,statistique_date) VALUES(:stat,:pointCollecte,:stat_date)";
     $req=$this->db->prepare($sql);
-    $req->bindValue(":num", $statistique->getStatistique(),PDO::PARAM_STR);
+    $req->bindValue(":stat", $statistique->getStatistique(),PDO::PARAM_STR);
     $req->bindValue(":pointCollecte", $statistique->getPoint(),PDO::PARAM_INT);
     $req->bindValue(":stat_date", $statistique->getDate(),PDO::PARAM_STR);
     $req->execute();
@@ -27,20 +27,31 @@ class StatistiqueManager{
     return $tabObj;
   }
 
-  public function deleteStatistique($stat){
-    $sql="DELETE FROM statistique WHERE statistique_date=:dateStat AND statistique=:stat AND point_num =:point_num";
+  public function getStatistiqueByNum($num){
+    $sql="SELECT * FROM statistique WHERE stat_num = :num";
     $req=$this->db->prepare($sql);
-    $req->bindValue(":dateStat", $stat->getDate(),PDO::PARAM_STR);
-    $req->bindValue(":stat", $stat->getStatistique(),PDO::PARAM_STR);
-    $req->bindValue(":point_num", $stat->getPoint(),PDO::PARAM_INT);
+    $req->bindValue(":num", $num,PDO::PARAM_INT);
+    $req->execute();
+    while($ligne=$req->fetch(PDO::FETCH_OBJ)){
+      $tabObj = new Statistique($ligne);
+    }
+    return $tabObj;
+  }
+
+  public function deleteStatistique($stat){
+    $sql="DELETE FROM statistique WHERE stat_num=:stat_num";
+    $req=$this->db->prepare($sql);
+    $req->bindValue(":stat_num", $stat,PDO::PARAM_INT);
     $req->execute();
   }
 
-  public function modifierStatistique($statistique,$point_num,$dateStat,$point_numPrecedant,$datePrecedant)	{
-		$sql="UPDATE statistique SET statistique=:statistique ,point_num=:point_num , statistique_date=:dateStat  WHERE point_num=:point_numPrecedant AND statistique_date=datePrecedant";
+  public function modifierStatistique($statistique,$point_num,$dateStat,$stat_num)	{
+		$sql="UPDATE statistique SET statistique=:statistique ,point_num=:point_num , statistique_date=:dateStat  WHERE stat_num=:stat_num ";
 		$req=$this->db->prepare($sql);
-		$req->bindValue(':num', $num, PDO::PARAM_INT);
-		$req->bindValue(':nom', $nom, PDO::PARAM_STR);
+		$req->bindValue(':statistique', $statistique, PDO::PARAM_STR);
+		$req->bindValue(':point_num', $point_num, PDO::PARAM_INT);
+    $req->bindValue(':dateStat', $dateStat, PDO::PARAM_STR);
+    $req->bindValue(':stat_num', $stat_num, PDO::PARAM_INT);
 		$req->execute();
 	}
 }

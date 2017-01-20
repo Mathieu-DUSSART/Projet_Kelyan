@@ -15,23 +15,19 @@ foreach ($tabVille as $ville) {
       ?>
       <form class="supprimerStatistique" method="POST" action="#">
           <input name="supprimerStatistique" type="submit" value="X">
-          <input name="numPointDeCollecteASupprimer" type="hidden" value="<?php echo $stat->getPoint();?>">
-          <input name="dateStatASupprimer" type="hidden" value="<?php echo $stat->getDate(); ?>">
-          <input name="statSupprimer" type="hidden" value="<?php echo $stat->getStatistique(); ?>">
+          <input name="numStatSupprimer" type="hidden" value="<?php echo $stat->getNum();?>">
         </form>
         <form class="modifierPointDeCollecte" method="POST" action="#">
           <input name="modifierPointDeCollecte" type="submit" value="M">
+          <input name="numStatModifier" type="hidden" value="<?php echo $stat->getNum();?>">
           <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $stat->getPoint();?>">
-          <input name="dateStatAModifier" type="hidden" value="<?php echo $stat->getDate(); ?>">
-          <input name="statModifier" type="hidden" value="<?php echo $stat->getStatistique(); ?>">
-
         </form>
         <?php
       }
     }
 }
 
-if(isset($_SESSION["login"]) && empty($_POST["numPointDeCollecteAModifier"]) ){
+if(isset($_SESSION["login"]) && empty($_POST["numStatModifier"]) ){
 
   if(empty($_POST['selectVilleAjout'])){
 
@@ -77,7 +73,7 @@ if(isset($_SESSION["login"]) && empty($_POST["numPointDeCollecteAModifier"]) ){
 <?php
 }
 }
-if(isset($_SESSION["login"]) && isset($_POST["selectPoint"]) && empty($_POST["numPointDeCollecteASupprimer"]) && empty($_POST["numPointDeCollecteAModifier"]) ){
+if(isset($_SESSION["login"]) && isset($_POST["selectPoint"]) && empty($_POST["numStatSupprimer"]) && empty($_POST["numStatModifier"]) ){
 
   $tab=array();
   $tab["statistique"]=$_POST["valeurStatistique"];
@@ -88,26 +84,22 @@ if(isset($_SESSION["login"]) && isset($_POST["selectPoint"]) && empty($_POST["nu
   $managerStatistique->add($statistique);
 }
 
-if(isset($_SESSION["login"]) && empty($_POST["selectPoint"]) && isset($_POST["numPointDeCollecteASupprimer"]) && empty($_POST["numPointDeCollecteAModifier"])){
-
-  $tabSuppr=array();
-  $tabSuppr["statistique"]=$_POST["statSupprimer"];
-  $tabSuppr["point_num"]=$_POST["numPointDeCollecteASupprimer"];
-  $tabSuppr["statistique_date"]=$_POST["dateStatASupprimer"];
-  $statistiqueSuppr = new Statistique($tabSuppr);
-  $managerStatistique->deleteStatistique($statistiqueSuppr);
+if(isset($_SESSION["login"]) && empty($_POST["selectPoint"]) && isset($_POST["numStatSupprimer"]) && empty($_POST["numStatModifier"])){
+  $managerStatistique->deleteStatistique($_POST["numStatSupprimer"]);
 
 
 }
 
-if(isset($_SESSION["login"]) && empty($_POST["selectPoint"]) && empty($_POST["numPointDeCollecteASupprimer"]) && isset($_POST["numPointDeCollecteAModifier"])){
+if(isset($_SESSION["login"]) && empty($_POST["selectPoint"]) && empty($_POST["numStatSupprimer"]) && isset($_POST["numStatModifier"])){
 
   $vilNum=$managerPointsDeCollecte->getVilleParPointNum($_POST["numPointDeCollecteAModifier"]);
+  $statModifer=$managerStatistique->getStatistiqueByNum($_POST["numStatModifier"]);
+  $tabPoint = $managerPointsDeCollecte->getPointByVille($vilNum->getPointVille());
 ?>
   <div id="ajouterStatistique">
   <form method="POST" action="#">
     <label>Point de collecte : <label>
-      <select id="selectPointCollecte" name="selectPoint">
+      <select id="selectPointCollecte" name="selectPointModif">
         <?php
           foreach ($tabPoint as $point) {
             $num = $point->getPointVille();
@@ -117,18 +109,22 @@ if(isset($_SESSION["login"]) && empty($_POST["selectPoint"]) && empty($_POST["nu
       </select>
 
       <label>Statistique :</label>
-       <?php echo $_POST["statModifier"]; ?>
-      <input type="number" name="valeurStatistiqueModif"  value ="<?php echo $_POST["statModifier"] ; ?>">
+      <input type="number" name="valeurStatistiqueModif"  value ="<?php echo $statModifer->getStatistique() ; ?>">
+      <input type="hidden" name="numStatistiqueModif"  value ="<?php echo $_POST["numStatModifier"] ; ?>">
 
       <label>Date : </label>
-      <input type="text" class="datepicker" name="dateModif" value ="<?php echo $_POST["dateStatAModifier"] ;?>">
+      <input type="text" class="datepicker" name="dateModif" value ="<?php echo $statModifer->getDate() ;?>">
       <input name="validerStatistique" type="submit" value="valider">
   </form>
   </div>
 
 <?php
 }
-if(isset($_SESSION["login"]) && isset($_POST["selectPoint"]) && isset($_POST["numPointDeCollecteAModifier"]) && isset($_POST["dateModif"])){
+
+if(isset($_SESSION["login"]) && isset($_POST["selectPointModif"]) && empty($_POST["numStatSupprimer"]) && isset($_POST["dateModif"])){
+  echo "stat_num";
+  echo $_POST["numStatistiqueModif"];
+  $managerStatistique->modifierStatistique($_POST["valeurStatistiqueModif"],$_POST["selectPointModif"],$_POST["dateModif"],$_POST["numStatistiqueModif"]);
 
 
 }

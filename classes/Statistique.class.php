@@ -1,5 +1,6 @@
 <?php
 class Statistique {
+  private $num;
   private $statistique;
   private $point;
   private $date;
@@ -13,6 +14,8 @@ class Statistique {
   public function affecte($valeurs = array()){
     foreach($valeurs as $attribut => $donnee){
       switch($attribut){
+        case "stat_num" : $this->setNum($donnee);
+          break;
         case "statistique" : $this->setStatistique($donnee);
           break;
         case "point_num" : $this->setPoint($donnee);
@@ -21,6 +24,10 @@ class Statistique {
           break;
       }
     }
+  }
+
+  public function setNum($num){
+    $this->num = $num;
   }
 
   public function setStatistique($num){
@@ -33,6 +40,10 @@ class Statistique {
 
   public function getDate(){
     return $this->date;
+  }
+
+  public function getNum(){
+    return $this->num;
   }
 
   public function setPoint($point){
