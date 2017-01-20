@@ -124,8 +124,8 @@ if(isset($_SESSION["login"]) && empty($_POST["selectPoint"]) && empty($_POST["nu
 if(isset($_SESSION["login"]) && isset($_POST["selectPointModif"]) && empty($_POST["numStatSupprimer"]) && isset($_POST["dateModif"])){
   echo "stat_num";
   echo $_POST["numStatistiqueModif"];
-  $managerStatistique->modifierStatistique($_POST["valeurStatistiqueModif"],$_POST["selectPointModif"],$_POST["dateModif"],$_POST["numStatistiqueModif"]);
-
+  $managerStatistique->modifierStatistique($_POST["valeurStatistiqueModif"],$_POST["selectPointModif"],getEnglishDate($_POST["dateModif"]),$_POST["numStatistiqueModif"]);
+  header("Location: index.php?page=10");
 
 }
  ?>
