@@ -38,6 +38,7 @@
                            $tabImg=Array();
                            $tabImg["img_src"]="/Projet_Kelyan/image/reseaux_sociaux/";
                            $tabImg["img_nom"]=$nomImage;
+                           $tabImg["img_type"]=0;
                            $tabImg["img_description"]=null;
                            $tabImg["img_lien"]=$_POST["lien"];
                            $image=new Image($tabImg);
