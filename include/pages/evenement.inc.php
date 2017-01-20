@@ -31,8 +31,8 @@ if(isset($_POST["titreModifie"])){
 }
 
 //Supprime un évènement
-if(isset($_POST["supprimerArticle"])){
-    $managerEvenement->deleteEvenement($_POST["numArticleASupprimer"]);
+if(isset($_POST["numEventASupprimer"])){
+    $managerEvenement->deleteEvenement($_POST["numEventASupprimer"]);
     header("Location: index.php?page=3");
     exit;
 }
@@ -75,13 +75,13 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
     //Récupère l'heure de l'évènement au format 14h59
     $heure= date_format($heureEvent, 'H:i');
 
-    if(isset($_POST["modifierArticle"]) && $_POST["numEventAModifier"]==$evenement->getNum()){
+    if(isset($_POST["modifierEvent"]) && $_POST["numEventAModifier"]==$evenement->getNum()){
       $_SESSION["numEventAModifier"]=$evenement->getNum();
         ?>
         <div id="formulaireAjoutEvenement">
-            <form method="POST" action="#">
+            <form class="modifier" method="POST" action="#">
                 <label>Titre de l'évènement:</label>
-                <input type="text" name="titreModifie" value="<?php echo $evenement->getTitre();?>" required>
+                <input type="text" name="titreModifie" value="<?php echo $evenement->getTitre();?>" required autofocus>
                 <br>
                 <label>Date de l'évènement:</label>
                 <input type="text" class="datepicker" name="dateModifie" min="<?php echo date('Y-m-j'); ?>" value="<?php echo getFrenchDate($evenement->getDate());?>" required>
@@ -95,7 +95,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                 <label>Texte:</label>
                 <textarea name="texteModifie" class="texteArea" rows="8" required><?php echo $evenement->getTexte();?></textarea>
                 <br>
-                <input class="bouton" type="submit" value="Modifier l'évènement">
+                <input class="boutonModifier" type="button" value="Modifier l'évènement">
             </form>
         </div>
         <?php
@@ -161,15 +161,15 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
     }
 
     if(isset($_SESSION["login"])){
-        if(!isset($_POST["modifierArticle"]) || (isset($_POST["modifierArticle"]) && $_POST["numEventAModifier"]!=$evenement->getNum())){?>
+        if(!isset($_POST["modifierEvent"]) || (isset($_POST["modifierEvent"]) && $_POST["numEventAModifier"]!=$evenement->getNum())){?>
             <div class="voletGestionArticle">
-                <form class="supprimerArticle" method="POST" action="#">
-                    <input name="supprimerArticle" type="submit" value="X">
-                    <input name="numArticleASupprimer" type="hidden" value="<?php echo $evenement->getNum(); ?>">
+                <form class="supprimer" method="POST" action="#">
+                  <input class="boutonSuppr" name="supprimerEvent" type="button" value="X">
+                    <input class="num" name="numEventASupprimer" type="hidden" value="<?php echo $evenement->getNum(); ?>">
                 </form>
-                <form class="modifierArticle" method="POST" action="#">
-                    <input name="modifierArticle" type="submit" value="M">
-                    <input name="numEventAModifier" type="hidden" value="<?php echo $evenement->getNum(); ?>">
+                <form class="modifierEvent" method="POST" action="#">
+                    <input class="boutonModif" name="modifierEvent" type="submit" value="M">
+                    <input class="numModif" name="numEventAModifier" type="hidden" value="<?php echo $evenement->getNum(); ?>">
                 </form>
             </div>
         <?php
@@ -179,7 +179,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
 
 if(isset($_SESSION["login"])){?>
     <div id="formulaireAjoutEvenement">
-        <form method="POST" action="#">
+        <form method="POST" action="#" novalidate>
             <label>Titre de l'évènement:</label>
             <input type="text" name="titre" placeholder="Titre de l'évènement..." required>
             <br>
