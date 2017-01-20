@@ -71,8 +71,13 @@ $villeTab = $managerVille->getAllVille();?>
         <select name="selectVillePoint">
             <?php
             foreach($villeTab as $ville){
+              if ($ville->getVilNum()==$_POST["selectVillePoint"]){
+
+                  echo "<option value=\"" . $ville->getVilNum() . "\" selected=\"selected\" >" . $ville->getVilNom() . "</option>";
+              }else{
                 echo "<option value=\"" . $ville->getVilNum() . "\">" . $ville->getVilNom() . "</option>";
-            }?>
+            }
+          }?>
         </select>
         <input type="submit" value="Valider">
     </form>
@@ -87,26 +92,8 @@ if(isset($_POST["selectVillePoint"])){
     echo "<p class=\"lieuxPoint\">Aucun point de collecte dans cette ville</p>";
     }
     foreach($AllPoint as $point){
-        if(isset($_POST["modifierPointDeCollecte"]) && $_POST["numPointDeCollecteAModifier"]==$point->getPointNum()){
-            $_SESSION["numPointDeCollecteAModifier"]=$point->getPointNum();
-            ?>
-            <div id="ajouterArticle">
-                <form method="POST" action="#">
-                    <label>Ville du point de collecte:</label>
-                    <input  type="text" name="VilleModifie" value="<?php echo $managerVille->getVilNomByNum($point->getPointVille())->getVilNom(); ?>" required>
-                    <br>
-                    <label>Visibilité:</label>
-                    <input name="visibilitePointDeCollecteModifier" type="radio" value="0" <?php if($point->getPointVisibilite()==0){echo "checked";}?>>non</input>
-                    <input name="visibilitePointDeCollecteModifier" type="radio" value="1"  <?php if($point->getPointVisibilite()==1){echo "checked";}?>>oui</input>
-                    <textarea name="lieuModifie" rows="8" required><?php echo $point->getPointLieu(); ?></textarea>
-                    <br>
-                    <input class="bouton" type="submit" value="Modifier le point de collecte">
-                </form>
-            </div>
-        <?php
-        }else{
+
             echo "<p class=\"lieuxPoint\"> - " . $point->getPointLieu() ."</p>";
-        }
 
         if(isset($_SESSION["login"])){
             if(!isset($_POST["modifierPointDeCollecte"]) || (isset($_POST["modifierPointDeCollecte"]) && $_POST["numPointDeCollecteAModifier"]!=$point->getPointNum())){?>
@@ -137,6 +124,26 @@ if(isset($_SESSION["login"])){?>
             <textarea name="adresse" placeholder="lieu ..." rows="2" required></textarea>
             <br>
             <input class="bouton" type="submit" value="Ajouter le point de collecte">
+        </form>
+    </div>
+<?php
+}
+
+if(isset($_POST["numPointDeCollecteAModifier"]) ){
+    $point=$managerPointsDeCollecte->getPointByNum($_POST["numPointDeCollecteAModifier"]);
+    $_SESSION["numPointDeCollecteAModifier"]=$point->getPointNum();
+    ?>
+    <div id="ajouterArticle">
+        <form method="POST" action="#">
+            <label>Ville du point de collecte:</label>
+            <input  type="text" name="VilleModifie" value="<?php echo $managerVille->getVilNomByNum($point->getPointVille())->getVilNom(); ?>" required>
+            <br>
+            <label>Visibilité:</label>
+            <input name="visibilitePointDeCollecteModifier" type="radio" value="0" <?php if($point->getPointVisibilite()==0){echo "checked";}?>>non</input>
+            <input name="visibilitePointDeCollecteModifier" type="radio" value="1"  <?php if($point->getPointVisibilite()==1){echo "checked";}?>>oui</input>
+            <textarea name="lieuModifie" rows="8" required><?php echo $point->getPointLieu(); ?></textarea>
+            <br>
+            <input class="bouton" type="submit" value="Modifier le point de collecte">
         </form>
     </div>
 <?php
