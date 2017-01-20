@@ -133,8 +133,6 @@ function calculNav(){
 }
 
 $(function(){
-
-
     calculNav();
     centrerNav();
 });
@@ -175,7 +173,6 @@ $(function(){
     $("#boutonMenu").bind("click", function(){
         var nav = $("nav");
 
-
         if(nav.hasClass("cacherNav")){
             nav.removeClass("cacherNav");
         }else{
@@ -184,7 +181,66 @@ $(function(){
     });
 });
 
+//popup de confirmation de suppression
+$(document).ready(function() {
+  var dialogSuppr = $('#dialog-confirm-suppr');
 
+  $(".boutonSuppr").click(function (e) {
+    e.preventDefault();
+    numObjet = $(this).next("input").val();
+    dialogSuppr.dialog("open");
+  });
+  dialogSuppr.dialog({
+     resizable: false,
+     draggable : false,
+     height:200,
+     width:500,
+     autoOpen: false,
+     modal: true,
+     buttons: {
+         "Oui": function() {
+           $(".supprimer").each(function(){
+             if($("input", this).next(".num").val()==numObjet){
+                $("#ok").slideUp();
+               $(this).submit();
+             }
+           });
+           $( this ).dialog( "close" );
+
+         },
+         "Annuler": function() {
+             $( this ).dialog( "close" );
+         }
+      }
+ });
+
+//popup de confirmation de modification
+  var dialogModif = $('#dialog-confirm-modif');
+
+  $(".boutonModifier").click(function (e) {
+    e.preventDefault();
+    dialogModif.dialog("open");
+  });
+
+  dialogModif.dialog({
+     resizable: false,
+     draggable : false,
+     height:200,
+     width:500,
+     autoOpen: false,
+     modal: true,
+     buttons: {
+         "Oui": function() {
+
+           $(".modifier").submit();
+           $( this ).dialog( "close" );
+         },
+         "Annuler": function() {
+             $( this ).dialog( "close" );
+         }
+      }
+ });
+});
 
 window.onload=function(){
     //test();

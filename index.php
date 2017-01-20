@@ -58,6 +58,15 @@
             <?php
             require_once("include/contenu.inc.php");
             ?>
+
+          <div id="dialog-confirm-suppr" title="Supprimer">
+            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Voulez-vous vraiment supprimer ?</p>
+          </div>
+
+          <div id="dialog-confirm-modif" title="Modification">
+            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Voulez-vous vraiment apporter ces modifications ?</p>
+          </div>
+
         </div>
 
         <footer id="footer">

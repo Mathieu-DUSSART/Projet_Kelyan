@@ -27,7 +27,7 @@ if(isset($_POST["titreModifie"])){
 }
 
 //Supprime un article
-if(isset($_POST["supprimerArticle"])){
+if(isset($_POST["numArticleASupprimer"])){
     $managerArticle->deleteArticle($_POST["numArticleASupprimer"]);
     header('Location: index.php?page=2');
     exit;
@@ -47,14 +47,14 @@ foreach ($managerArticle->getAllArticle(2) as $article) {
             $_SESSION["numArticleAModifier"]=$article->getNum();
             ?>
             <div id="ajouterArticle">
-                <form method="POST" action="#">
+                <form class="modifier" method="POST" action="#">
                     <label>Titre de l'article:</label>
                     <input  type="text" name="titreModifie" value="<?php echo $article->getTitre(); ?>" required>
                     <br>
                     <label>Texte:</label>
                     <textarea name="texteModifie" class ="texteArea" rows="8" required><?php echo $article->getTexte(); ?></textarea>
                     <br>
-                    <input class="bouton" type="submit" value="Modifier l'article">
+                    <input class="boutonModifier" type="button" value="Modifier l'article">
                 </form>
             </div>
         <?php
@@ -76,14 +76,14 @@ foreach ($managerArticle->getAllArticle(2) as $article) {
     if(isset($_SESSION["login"])){
         if(!isset($_POST["modifierArticle"]) || (isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]!=$article->getNum())){?>
             <div class="voletGestionArticle">
-                <form class="supprimerArticle" method="POST" action="#">
-                    <input name="supprimerArticle" type="submit" value="X">
-                    <input name="numArticleASupprimer" type="hidden" value="<?php echo $article->getNum(); ?>">
-                </form>
-                <form class="modifierArticle" method="POST" action="#">
-                    <input name="modifierArticle" type="submit" value="M">
-                    <input name="numArticleAModifier" type="hidden" value="<?php echo $article->getNum(); ?>">
-                </form>
+              <form class="supprimer" method="POST" action="">
+                  <input class="boutonSuppr" name="supprimerArticle" type="button" value="X">
+                  <input class="num" name="numArticleASupprimer" type="hidden" value="<?php echo $article->getNum(); ?>">
+              </form>
+              <form class="modifierArticle" method="POST" action="#">
+                  <input class="boutonModif" name="modifierArticle" type="submit" value="M">
+                  <input class="numModif" name="numArticleAModifier" type="hidden" value="<?php echo $article->getNum(); ?>">
+              </form>
             </div>
         <?php
         }
