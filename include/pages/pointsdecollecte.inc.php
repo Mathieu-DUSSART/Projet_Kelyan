@@ -98,7 +98,6 @@ if(isset($_POST["selectVillePoint"])){
         if(isset($_SESSION["login"])){
             if(!isset($_POST["modifierPointDeCollecte"]) || (isset($_POST["modifierPointDeCollecte"]) && $_POST["numPointDeCollecteAModifier"]!=$point->getPointNum())){?>
                 <div class="voletGestionPointdeCollecte">
-                  <label > t mort</label>
                     <form class="supprimerPointDeCollecte" method="POST" action="#">
                         <input name="supprimerPointDeCollecte" type="submit" value="X">
                         <input name="numPointDeCollecteASupprimer" type="hidden" value="<?php echo $point->getPointNum(); ?>">
@@ -132,6 +131,7 @@ if(isset($_SESSION["login"])){?>
 
 if(isset($_POST["numPointDeCollecteAModifier"]) ){
     $point=$managerPointsDeCollecte->getPointByNum($_POST["numPointDeCollecteAModifier"]);
+    $_SESSION["numPointDeCollecteAModifier"]=$point->getPointNum();
     ?>
     <div id="ajouterArticle">
         <form method="POST" action="#">
