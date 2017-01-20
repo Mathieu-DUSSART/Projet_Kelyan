@@ -26,13 +26,14 @@ if(!empty($_POST)){
                     // On renomme le fichier
                     $nomImage = md5(uniqid()) .'.'. $extension;
                      // Si c'est OK, on teste l'upload
-                     if(move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET.$nomImage))
+                     if(move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET_PARTENAIRE.$nomImage))
                      {
                          $tabImg=Array();
                          $tabImg["img_src"]="/Projet_Kelyan/image/partenaire/";
                          $tabImg["img_nom"]=$nomImage;
                          $tabImg["img_description"]=null;
                          $tabImg["img_lien"]=$_POST["lien"];
+                         $tabImg["img_type"]=0;
                          $image=new Image($tabImg);
                          $managerImage->add($image);
                          $message = 'Upload réussi !';
@@ -68,7 +69,7 @@ if(isset($_POST["numImageASupprimer"])){
    $image=$managerImage->getImage($_POST["numImageASupprimer"]);
    $managerImage->deleteImage($image->getNum());
    //Fichier à supprimer
-   $fichier = TARGET . $image->getNom();
+   $fichier = TARGET_PARTENAIRE.$image->getNom();
    //Si le fichier existe, on le supprime
    if(file_exists($fichier)){
     unlink($fichier);
@@ -105,7 +106,7 @@ foreach ($managerImage->getAllImage("/Projet_Kelyan/image/partenaire/") as $imag
     if(isset($_SESSION["login"])){ ?>
         <div class="supprimerImage">
             <form class="supprimer" method="POST" action="#">
-                <input class="boutonSuppr" name="supprimerImage" type="submit" value="X">
+                <input class="boutonSupprimer" name="supprimerImage" type="submit" value="X">
                 <input class="num" name="numImageASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
             </form>
         </div>
@@ -115,7 +116,7 @@ foreach ($managerImage->getAllImage("/Projet_Kelyan/image/partenaire/") as $imag
   <?php }
 
 if(isset($_SESSION["login"])){?>
-<div id="ajouterImage">
+<div id="ajouterPartenaire">
   <form enctype="multipart/form-data" id="ajouterArticle" method="POST" action="#">
     <label>Image du partenaire :</label>
     <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_SIZE; ?>" />

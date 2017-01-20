@@ -2,6 +2,7 @@
   // Constantes
   define('TARGET_RESEAUX_SOCIAUX', 'image/reseaux_sociaux/');    // Repertoire cible
   define('TARGET_GALERIE', 'image/galerie/');    // Repertoire cible
+  define('TARGET_PARTENAIRE', 'image/partenaire/'); 
   define('TARGET_VIDEO', 'video/');    // Repertoire cible
   define('MAX_SIZE', 10000000);    // Taille max en octets du fichier
   define('WIDTH_MAX', 50000);    // Largeur max de l'image en pixels

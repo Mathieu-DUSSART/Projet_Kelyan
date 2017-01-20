@@ -49,7 +49,7 @@ foreach ($managerArticle->getAllArticle(1) as $article) {
               <input  type="text" name="titreModifie" value="<?php echo $article->getTitre(); ?>" required>
               <br>
               <label>Texte:</label>
-              <textarea name="texteModifie" rows="8" required><?php echo $article->getTexte(); ?></textarea>
+              <textarea name="texteModifie" class="texteArea" rows="8" required><?php echo $article->getTexte(); ?></textarea>
               <br>
               <input class="boutonModifier" type="submit" value="Modifier l'article">
           </form>
@@ -90,7 +90,7 @@ if(isset($_SESSION["login"])){?>
         <input  type="text" name="titre" placeholder="Titre de l'article..." required>
         <br>
         <label>Texte:</label>
-        <textarea name="texte" placeholder="Ecrivez votre article ici..." rows="8" required></textarea>
+        <textarea name="texte" class="texteArea" placeholder="Ecrivez votre article ici..." rows="8" required></textarea>
         <br>
         <input class="bouton" type="submit" value="Ajouter l'article">
     </form>
