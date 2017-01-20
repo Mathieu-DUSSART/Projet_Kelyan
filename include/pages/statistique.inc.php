@@ -14,11 +14,11 @@ foreach ($tabVille as $ville) {
       echo "<dd> <p> statistique du ".$stat->getDate()." nombre de bouchons récoltés : " . $stat->getStatistique() . "</p>";
       ?>
       <form class="supprimerStatistique" method="POST" action="#">
-          <input name="supprimerStatistique" type="submit" value="X">
+          <input class="boutonSupprimer" name="supprimerStatistique" type="submit" value="X">
           <input name="numStatSupprimer" type="hidden" value="<?php echo $stat->getNum();?>">
         </form>
         <form class="modifierPointDeCollecte" method="POST" action="#">
-          <input name="modifierPointDeCollecte" type="submit" value="M">
+          <input class="boutonModifier" name="modifierPointDeCollecte" type="submit" value="M">
           <input name="numStatModifier" type="hidden" value="<?php echo $stat->getNum();?>">
           <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $stat->getPoint();?>">
         </form>

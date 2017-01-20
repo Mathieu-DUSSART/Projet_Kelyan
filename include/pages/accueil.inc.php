@@ -70,11 +70,11 @@ if(isset($_SESSION["login"])){
     if(!isset($_POST["modifierArticle"]) || (isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]!=$article->getNum())){?>
         <div class="voletGestionArticle">
             <form class="supprimerArticle" method="POST" action="#">
-                <input name="supprimerArticle" type="submit" value="X">
+                <input name="supprimerArticle" class="boutonSupprimer" type="submit" value="X">
                 <input name="numArticleASupprimer" type="hidden" value="<?php echo $article->getNum(); ?>">
             </form>
             <form class="modifierArticle" method="POST" action="#">
-                <input name="modifierArticle" type="submit" value="M">
+                <input name="modifierArticle" class="boutonModifier" type="submit" value="M">
                 <input name="numArticleAModifier" type="hidden" value="<?php echo $article->getNum(); ?>">
             </form>
         </div>

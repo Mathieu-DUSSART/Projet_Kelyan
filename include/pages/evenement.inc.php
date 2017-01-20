@@ -164,11 +164,11 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
         if(!isset($_POST["modifierEvent"]) || (isset($_POST["modifierEvent"]) && $_POST["numEventAModifier"]!=$evenement->getNum())){?>
             <div class="voletGestionArticle">
                 <form class="supprimer" method="POST" action="#">
-                  <input class="boutonSuppr" name="supprimerEvent" type="button" value="X">
+                  <input name="supprimerEvent" class="boutonSupprimer" type="button" value="X">
                     <input class="num" name="numEventASupprimer" type="hidden" value="<?php echo $evenement->getNum(); ?>">
                 </form>
                 <form class="modifierEvent" method="POST" action="#">
-                    <input class="boutonModif" name="modifierEvent" type="submit" value="M">
+                    <input name="modifierEvent" class="boutonModifier" type="submit" value="M">
                     <input class="numModif" name="numEventAModifier" type="hidden" value="<?php echo $evenement->getNum(); ?>">
                 </form>
             </div>
