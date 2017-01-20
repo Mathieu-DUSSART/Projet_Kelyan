@@ -289,7 +289,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     border:none;
 }
 
-.supprimerArticle input{
+.boutonSuppr{
     background-color: red;
 }
 
@@ -787,4 +787,25 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 
 .fixNavigationHeader{
     padding-top: 7vh;
+}
+
+
+
+
+#divChoixVillePoint{
+    display: inline-block;
+    margin-left: 15vw;
+}
+
+#divChoixVillePoint select{
+    padding :5px;
+    border-radius: 2px 5px;
+}
+
+#divChoixVillePoint form{
+    display: inline-block;
+}
+
+.lieuxPoint{
+    margin-left: 20vw;
 }

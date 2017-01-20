@@ -122,7 +122,7 @@ if(isset($_SESSION["login"])){?>
     <input name="fichier" type="file" id="fichier_a_uploader" />
     <label>Lien vers le site du partenaire : </label>
     <input type="url" name="lien">
-      <input type="submit" value="Valider">
+    <input type="submit" value="Valider">
 </form>
 </div>
 <?php } ?>
