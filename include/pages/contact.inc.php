@@ -64,7 +64,7 @@ if(!empty($_POST)){
     }
 }
 //Supprime une image
-if(isset($_POST["supprimerImage"])){
+if(isset($_POST["numImageASupprimer"])){
    $image=$managerImage->getImage($_POST["numImageASupprimer"]);
    $managerImage->deleteImage($image->getNum());
    //Fichier à supprimer
@@ -104,9 +104,9 @@ foreach ($managerImage->getAllImage("/Projet_Kelyan/image/partenaire/") as $imag
   <?php  echo "<a href=\"" . $image->getLien() . "\"><img class=\"imgPartenaire\" src=\"" . $image->getSrc() . $image->getNom() . "\" alt=\"\"></a>";
     if(isset($_SESSION["login"])){ ?>
         <div class="supprimerImage">
-            <form method="POST" action="#">
-                <input name="supprimerImage" type="submit" value="X">
-                <input name="numImageASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
+            <form class="supprimer" method="POST" action="#">
+                <input class="boutonSuppr" name="supprimerImage" type="submit" value="X">
+                <input class="num" name="numImageASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
             </form>
         </div>
     <?php
