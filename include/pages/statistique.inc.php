@@ -3,27 +3,43 @@
 //Listage des statistique par Point de Collecte
 $tabVille = $managerVille->getAllVille();
 
-foreach ($tabVille as $ville) {
-  echo "<h2>".$ville->getVilNom()." : </h2>";
-  echo "<br / >";
-  $tabPoint = $managerPointsDeCollecte->getPointByVille($ville->getVilNum());
-  foreach ($tabPoint as $point) {
-    echo "<dd> <h3>". $point->getPointLieu() . " : </h2>";
-    $tabStatistique=$managerStatistique->getStatistiqueByPoint($point->getPointNum());
-    foreach ($tabStatistique as $stat) {
-      echo "<dd> <p> statistique du ".$stat->getDate()." nombre de bouchons récoltés : " . $stat->getStatistique() . "</p>";
-      ?>
-      <form class="supprimer" method="POST" action="#">
-          <input class="boutonSuppr" name="supprimerStatistique" type="submit" value="X">
-          <input class="num" name="numStatSupprimer" type="hidden" value="<?php echo $stat->getNum();?>">
-        </form>
-        <form class="modifierPointDeCollecte" method="POST" action="#">
-          <input name="modifierPointDeCollecte" type="submit" value="M">
-          <input class="numModif" name="numStatModifier" type="hidden" value="<?php echo $stat->getNum();?>">
-          <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $stat->getPoint();?>">
-        </form>
+
+$villeTab = array();
+$villeTab = $managerVille->getAllVille();?>
+<div id="divChoixVillePoint">
+<form action="#" method="POST">
+    <label>Ville : </label>
+    <select name="selectVillePoint">
         <?php
-      }
+        foreach($villeTab as $ville){
+            echo "<option value=\"" . $ville->getVilNum() . "\">" . $ville->getVilNom() . "</option>";
+        }?>
+    </select>
+    <input type="submit" value="Valider">
+</form>
+</div>
+
+<?php
+if(isset($_POST["selectVillePoint"])){
+    $AllPoint = array();
+    $AllPoint = $managerPointsDeCollecte->getPointByVille($_POST["selectVillePoint"]);
+    foreach ($AllPoint as $point) {
+        echo "<dd> <h3>". $point->getPointLieu() . " : </h2>";
+        $tabStatistique=$managerStatistique->getStatistiqueByPoint($point->getPointNum());
+        foreach ($tabStatistique as $stat) {
+          echo "<dd> <p> statistique du ".$stat->getDate()." nombre de bouchons récoltés : " . $stat->getStatistique() . "</p>";
+          ?>
+          <form class="supprimer" method="POST" action="#">
+              <input class="boutonSuppr" name="supprimerStatistique" type="submit" value="X">
+              <input class="num" name="numStatSupprimer" type="hidden" value="<?php echo $stat->getNum();?>">
+            </form>
+            <form class="modifierPointDeCollecte" method="POST" action="#">
+              <input name="modifierPointDeCollecte" type="submit" value="M">
+              <input class="numModif" name="numStatModifier" type="hidden" value="<?php echo $stat->getNum();?>">
+              <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $stat->getPoint();?>">
+            </form>
+            <?php
+        }
     }
 }
 

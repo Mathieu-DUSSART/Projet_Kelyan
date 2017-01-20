@@ -44,7 +44,7 @@ foreach ($managerArticle->getAllArticle(1) as $article) {
       $_SESSION["numArticleAModifier"]=$article->getNum();
       ?>
       <div id="formulaireAjoutArticle">
-          <form class="modifier" method="POST" action="#">
+          <form class="modifier" method="POST" action="#" novalidate>
               <label>Titre de l'article:</label>
               <input  type="text" name="titreModifie" value="<?php echo $article->getTitre(); ?>" required>
               <br>
@@ -85,7 +85,7 @@ if(isset($_SESSION["login"])){
 
 if(isset($_SESSION["login"])){?>
 <div id="formulaireAjoutArticle">
-    <form method="POST" action="#">
+    <form method="POST" action="#" novalidate>
         <label>Titre de l'article:</label>
         <input  type="text" name="titre" placeholder="Titre de l'article..." required>
         <br>
