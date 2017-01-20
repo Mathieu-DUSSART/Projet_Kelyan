@@ -13,13 +13,13 @@ foreach ($tabVille as $ville) {
     foreach ($tabStatistique as $stat) {
       echo "<dd> <p> statistique du ".$stat->getDate()." nombre de bouchons récoltés : " . $stat->getStatistique() . "</p>";
       ?>
-      <form class="supprimerStatistique" method="POST" action="#">
-          <input class="boutonSupprimer" name="supprimerStatistique" type="submit" value="X">
-          <input name="numStatSupprimer" type="hidden" value="<?php echo $stat->getNum();?>">
+      <form class="supprimer" method="POST" action="#">
+          <input class="boutonSuppr" name="supprimerStatistique" type="submit" value="X">
+          <input class="num" name="numStatSupprimer" type="hidden" value="<?php echo $stat->getNum();?>">
         </form>
         <form class="modifierPointDeCollecte" method="POST" action="#">
-          <input class="boutonModifier" name="modifierPointDeCollecte" type="submit" value="M">
-          <input name="numStatModifier" type="hidden" value="<?php echo $stat->getNum();?>">
+          <input name="modifierPointDeCollecte" type="submit" value="M">
+          <input class="numModif" name="numStatModifier" type="hidden" value="<?php echo $stat->getNum();?>">
           <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $stat->getPoint();?>">
         </form>
         <?php
@@ -97,7 +97,7 @@ if(isset($_SESSION["login"]) && empty($_POST["selectPoint"]) && empty($_POST["nu
   $tabPoint = $managerPointsDeCollecte->getPointByVille($vilNum->getPointVille());
 ?>
   <div id="ajouterStatistique">
-  <form method="POST" action="#">
+  <form class="modifier" method="POST" action="#">
     <label>Point de collecte : <label>
       <select id="selectPointCollecte" name="selectPointModif">
         <?php
@@ -114,7 +114,7 @@ if(isset($_SESSION["login"]) && empty($_POST["selectPoint"]) && empty($_POST["nu
 
       <label>Date : </label>
       <input type="text" class="datepicker" name="dateModif" value ="<?php echo $statModifer->getDate() ;?>">
-      <input name="validerStatistique" type="submit" value="valider">
+      <input class="boutonModifier" type="button" name="validerStatistique" value="valider">
   </form>
   </div>
 
