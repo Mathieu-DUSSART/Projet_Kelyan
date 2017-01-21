@@ -74,7 +74,11 @@ function clickBoutonChangerCouleur(){
    });
 });*/
 
-
+$(function(){
+    $(".album").bind("mouseenter mouseleave", function(){
+        $(".titreAlbum", this).fadeToggle(200).toggleClass("titreAlbumAfficher");
+    });
+})
 
 function fancyboxQuiMarche(){
     $('.fancybox').fancybox();
@@ -185,7 +189,7 @@ $(function(){
 $(document).ready(function() {
   var dialogSuppr = $('#dialog-confirm-suppr');
 
-  $(".boutonSuppr").click(function (e) {
+  $(".boutonSupprimer").click(function (e) {
     e.preventDefault();
     numObjet = $(this).next("input").val();
     dialogSuppr.dialog("open");
@@ -251,3 +255,14 @@ window.onload=function(){
     clickBoutonChangerCouleur();
     initEditText();
 }
+
+$(window).load(function () {
+    var intervalFunc = function () {
+        $('#file-name').html($('#fichier_a_uploader').val());
+    };
+    $('#browse-click').on('click', function () { // use .live() for older versions of jQuery
+        $('#fichier_a_uploader').click();
+        setInterval(intervalFunc, 1);
+        return false;
+    });
+});

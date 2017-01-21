@@ -441,7 +441,6 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     display:inline-block;
     width:25vw;
     height: 10vw;
-
 }
 
 
@@ -457,14 +456,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 }
 
 /* ---IMAGE GALERIE--- */
-.img{
-    display:inline-block;
-    position: relative;
-    width: 27vw;
-    margin-left: 4vw;
-    margin-right: -0.25em;
-    margin-bottom: 50px;
-}
+
 
 .imgGalerie{
     width: 100%;
@@ -510,7 +502,6 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     width: 100%;
     height: 100%;
     border:none;
-
 }
 
 #ajouterImage{
@@ -810,6 +801,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 }
 
 .boutonSupprimer{
+    z-index: 1;
     background-color: #9F051F;
     border-radius: 20%;
     cursor:pointer  ;
@@ -817,15 +809,13 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     display: inline-block;
     border:none;
     margin-left: 10px;
-    z-index: 1;
-
-
 }
 
 .supprimerImage{
     opacity: .99;
 
 }
+
 .boutonModifier{
     background-color: #63ACE7;
     border-radius: 20%;
@@ -850,12 +840,90 @@ input{
 }
 
 
+.album, .img{
+    position: relative;
+    display: inline-block;
+    width: 20vw;
+    margin-left: 4vw;
+    margin-right: -0.25em;
+    margin-bottom: 4vw;
+}
 
-#ajouterPartenaire{
+.album img, .album video, .img img, .img video{
+    width: 20vw;
+    height: 15vw;
+}
+
+.titreAlbum{
+    display: none;
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.titreAlbumAfficher{
+    display: block;
+}
+
+#ajouterImageDansAlbum{
     display: inline-block;
     vertical-align: top;
-    width: 40vw;
-    height: 40vh;
+    width: 20vw;
+    height: 15vw;
+    margin-left: 4vw;
+    background-color: #E5E5E5;
+    border-radius:5px;
+    box-shadow:
+    0px 2px 2px 0px rgba(0, 0, 0, 0.5),
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+#ajouterImageDansAlbum form{
+    width: 100%;
+    height: 100%;
+}
+
+#ajouterImageDansAlbum label{
+    display: block;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-decoration: underline;
+}
+
+#ajouterImageDansAlbum input{
+    background-color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#ajouterImageDansAlbum input[type=submit]{
+    width: 30%;
+    margin-top: 5%;
+    margin-left: 35%;
+}
+
+#ajouterImageDansAlbum input[type=file]{
+    display: none;
+}
+
+#ajouterImageDansAlbum input[type=button]{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#ajouterImageDansAlbum p{
+    width: 90%;
+    height: 40px;
+    margin-left: 5%;
+}
+
+ajouterPartenaire{
+    display: inline-block;
+    vertical-align: top;
     margin-left: 30vw;
     background-color: #6FC0F4 ;
     border-radius:5px;
@@ -867,11 +935,9 @@ input{
 #ajouterPartenaire form{
     width: 100%;
     height: 100%;
-
 }
 
 #ajouterPartenaire label{
-
     display: block;
     text-align: center;
     font-weight: bold;
@@ -883,8 +949,6 @@ input{
     width: 30%;
     margin-left: 35%;
     background-color: #EC7F66;
-
-
 }
 #ajouterPartenaire input[type=url]{
     margin-left: 25%;
