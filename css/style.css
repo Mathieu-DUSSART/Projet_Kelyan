@@ -921,7 +921,7 @@ input{
     margin-left: 5%;
 }
 
-ajouterPartenaire{
+#ajouterPartenaire{
     display: inline-block;
     vertical-align: top;
     margin-left: 30vw;

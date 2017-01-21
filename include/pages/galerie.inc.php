@@ -241,23 +241,23 @@ if(isset($_SESSION["login"])){?>
 
  <?php
 
- if(isset($_POST["AjoutGroupe"]) && isset($_SESSION["login"])){
-   $newGroup=array();
-   $newGroup["group_nom"]=$_POST["AjoutGroupe"];
-   $group=new Groupe($newGroup);
-   $managerGroup->add($group);
- }
+if(isset($_POST["AjoutGroupe"]) && isset($_SESSION["login"])){
+    $newGroup=array();
+    $newGroup["group_nom"] = $_POST["AjoutGroupe"];
+    $group = new Groupe($newGroup);
+    $managerGroup->add($group);
+}
 
- if(isset($_POST["ModifierGroup"]) && isset($_SESSION["login"])){
-   $group=$managerGroup->getGroupByNum($_POST["ModifierGroupNum"]);
-   echo "test modifier";
-   echo $group->getGroupNum();
-   echo $_POST["ModifierGroup"];
-   $managerGroup->modifierGroupe($group->getGroupNum(),$_POST["ModifierGroup"]);
- }
+if(isset($_POST["ModifierGroup"]) && isset($_SESSION["login"])){
+    $group=$managerGroup->getGroupByNum($_POST["ModifierGroupNum"]);
+    echo "test modifier";
+    echo $group->getGroupNum();
+    echo $_POST["ModifierGroup"];
+    $managerGroup->modifierGroupe($group->getGroupNum(), $_POST["ModifierGroup"]);
+}
+
 if(isset($_POST["numGroupASupprimer"]) && isset($_SESSION["login"])){
-
-  $managerGroup->deleteGroup($_POST["numGroupASupprimer"]);
+    $managerGroup->deleteGroup($_POST["numGroupASupprimer"]);
 }
 
 ?>
