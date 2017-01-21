@@ -464,18 +464,8 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 
 }
 
-.imgGalerie img{
-    position: relative;
-    z-index: 8;
-    width: 20vw;
-    border-radius:5px;
-    border:1px solid black;
-    box-shadow:
-    0px 2px 2px 0px rgba(0, 0, 0, 0.5),
-    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
-}
 
-.supprimerImage{
+.supprimerImageVideo{
     position: absolute;
     display: inline-block;
     vertical-align: top;
@@ -483,24 +473,25 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     width:3vw;
     height:25px;
     top: 0;
-    right: 3vw;
+    right: 2vw;
     transition: right 0.3s;
 }
 
-.img:hover .supprimerImage, .supprimerImage:hover{
-    right: -2vw;
+.img:hover .supprimerImageVideo, .album:hover .supprimerImageVideo, .supprimerImageVideo:hover{
+    right: -3vw;
 }
 
-.supprimerImage form{
+.supprimerImageVideo form{
     width: 100%;
     height: 100%;
     margin: 0;
 }
 
-.supprimerImage input{
+.supprimerImageVideo input{
     display:block;
     width: 100%;
     height: 100%;
+    margin: 0;
     border:none;
 }
 
@@ -811,7 +802,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     margin-left: 10px;
 }
 
-.supprimerImage{
+.supprimerImageVideo{
     opacity: .99;
 
 }
@@ -850,13 +841,21 @@ input{
 }
 
 .album img, .album video, .img img, .img video{
+    position: relative;
+    z-index: 8;
     width: 20vw;
     height: 15vw;
+    border-radius:5px;
+    border:1px solid black;
+    box-shadow:
+    0px 2px 2px 0px rgba(0, 0, 0, 0.5),
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
 }
 
 .titreAlbum{
     display: none;
     position: absolute;
+    z-index: 9;
     top: 45%;
     width: 100%;
     text-align: center;
@@ -885,7 +884,7 @@ input{
     height: 100%;
 }
 
-#ajouterImageDansAlbum label{
+#ajouterImageDansAlbum label:not(#boutonParcourirFichier){
     display: block;
     text-align: center;
     margin-top: 5%;
@@ -920,6 +919,37 @@ input{
     height: 40px;
     margin-left: 5%;
 }
+
+#boutonParcourirFichier{
+    display: block;
+    width: 30%;
+    margin-left: 35%;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 5px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5), 0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+#divTitreAlbum *{
+    display: inline-block;
+}
+
+#divTitreAlbum a{
+    margin: 1vh 1vw 0.83em 4vw;
+    color: inherit;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-decoration: underline;
+}
+
+#divTitreAlbum span{
+    margin-left: 1vw;
+    font-weight: bold;
+}
+
+/**********************************/
 
 #ajouterPartenaire{
     display: inline-block;

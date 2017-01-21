@@ -255,14 +255,3 @@ window.onload=function(){
     clickBoutonChangerCouleur();
     initEditText();
 }
-
-$(window).load(function () {
-    var intervalFunc = function () {
-        $('#file-name').html($('#fichier_a_uploader').val());
-    };
-    $('#browse-click').on('click', function () { // use .live() for older versions of jQuery
-        $('#fichier_a_uploader').click();
-        setInterval(intervalFunc, 1);
-        return false;
-    });
-});

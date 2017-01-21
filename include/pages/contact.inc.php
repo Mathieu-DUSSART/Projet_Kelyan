@@ -104,7 +104,7 @@ foreach ($managerImage->getAllImage("/Projet_Kelyan/image/partenaire/") as $imag
   <div class="img">
   <?php  echo "<a href=\"" . $image->getLien() . "\"><img class=\"imgPartenaire\" src=\"" . $image->getSrc() . $image->getNom() . "\" alt=\"\"></a>";
     if(isset($_SESSION["login"])){ ?>
-        <div class="supprimerImage">
+        <div class="supprimerImageVideo">
             <form class="supprimer" method="POST" action="#">
                 <input class="boutonSupprimer" name="supprimerImage" type="button" value="X">
                 <input class="num" name="numImageASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
