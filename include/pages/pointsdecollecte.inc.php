@@ -39,13 +39,11 @@ if(isset($_POST["VilleModifie"])){
     if($nbLieuVille==0){
       $managerVille->delete($villePoint);
     }
-
-
     header('Location: index.php?page=8');
     exit;
 }
 //Supprime un point de collecte
-if(isset($_POST["supprimerPointDeCollecte"])){
+if(isset($_POST["numPointDeCollecteASupprimer"])){
     $villePoint=$managerPointsDeCollecte->getVilleParPointNum($_POST["numPointDeCollecteASupprimer"])->getPointVille();
 
     $managerPointsDeCollecte->deletePointDeCollecte($_POST["numPointDeCollecteASupprimer"]);
@@ -98,12 +96,12 @@ if(isset($_POST["selectVillePoint"])){
         if(isset($_SESSION["login"])){
             if(!isset($_POST["modifierPointDeCollecte"]) || (isset($_POST["modifierPointDeCollecte"]) && $_POST["numPointDeCollecteAModifier"]!=$point->getPointNum())){?>
                 <div class="voletGestionPointdeCollecte">
-                    <form class="supprimerPointDeCollecte" method="POST" action="#">
-                        <input name="supprimerPointDeCollecte" type="submit" value="X">
-                        <input name="numPointDeCollecteASupprimer" type="hidden" value="<?php echo $point->getPointNum(); ?>">
+                    <form class="supprimerPointDeCollecte supprimer" method="POST" action="#">
+                        <input class="boutonSupprimer" name="supprimerPointDeCollecte" type="button" value="X">
+                        <input class="num" name="numPointDeCollecteASupprimer" type="hidden" value="<?php echo $point->getPointNum(); ?>">
                     </form>
                     <form class="modifierPointDeCollecte" method="POST" action="#">
-                        <input name="modifierPointDeCollecte" type="submit" value="M">
+                        <input class="boutonModifier" name="modifierPointDeCollecte" type="submit" value="M">
                         <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $point->getPointNum() ;?>">
                     </form>
                 </div>
@@ -114,7 +112,9 @@ if(isset($_POST["selectVillePoint"])){
 }
 
 
-if(isset($_SESSION["login"])){?>
+if(isset($_SESSION["login"])){
+  //Attention au nom de variable !!!
+  ?>
     <div id="formulaireAjoutArticle">
         <form method="POST" action="#">
             <label>Ville:</label>
@@ -134,7 +134,7 @@ if(isset($_POST["numPointDeCollecteAModifier"]) ){
     $_SESSION["numPointDeCollecteAModifier"]=$point->getPointNum();
     ?>
     <div id="ajouterArticle">
-        <form method="POST" action="#">
+        <form class="modifier" method="POST" action="#">
             <label>Ville du point de collecte:</label>
             <input  type="text" name="VilleModifie" value="<?php echo $managerVille->getVilNomByNum($point->getPointVille())->getVilNom(); ?>" required>
             <br>
@@ -143,7 +143,7 @@ if(isset($_POST["numPointDeCollecteAModifier"]) ){
             <input name="visibilitePointDeCollecteModifier" type="radio" value="1"  <?php if($point->getPointVisibilite()==1){echo "checked";}?>>oui</input>
             <textarea name="lieuModifie" rows="8" required><?php echo $point->getPointLieu(); ?></textarea>
             <br>
-            <input class="bouton" type="submit" value="Modifier le point de collecte">
+            <input class="boutonModifierFinal" type="submit" value="Modifier le point de collecte">
         </form>
     </div>
 <?php

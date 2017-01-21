@@ -54,7 +54,7 @@ foreach ($managerArticle->getAllArticle(2) as $article) {
                     <label>Texte:</label>
                     <textarea name="texteModifie" class ="texteArea" rows="8" required><?php echo $article->getTexte(); ?></textarea>
                     <br>
-                    <input class="boutonModifier" type="button" value="Modifier l'article">
+                    <input class="boutonModifierFinal" type="button" value="Modifier l'article">
                 </form>
             </div>
         <?php

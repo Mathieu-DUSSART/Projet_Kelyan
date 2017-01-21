@@ -221,7 +221,7 @@ $(document).ready(function() {
 //popup de confirmation de modification
   var dialogModif = $('#dialog-confirm-modif');
 
-  $(".boutonModifier").click(function (e) {
+  $(".boutonModifierFinal").click(function (e) {
     e.preventDefault();
     dialogModif.dialog("open");
   });

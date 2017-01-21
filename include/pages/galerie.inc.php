@@ -79,7 +79,7 @@
 
 
  //Supprime une image
-if(isset($_POST["supprimerImage"])){
+if(isset($_POST["numImageASupprimer"])){
     $image=$managerImage->getImage($_POST["numImageASupprimer"]);
     $managerContenu->deleteContenu($image->getNum());
     $managerImage->deleteImage($image->getNum());
@@ -93,7 +93,7 @@ if(isset($_POST["supprimerImage"])){
     exit;
 }
 //Supprime une vidéo
-if(isset($_POST["supprimerVideo"])){
+if(isset($_POST["numVideoASupprimer"])){
     $video=$managerImage->getImage($_POST["numVideoASupprimer"]);
     $managerContenu->deleteContenu($video->getNum());
     $managerImage->deleteImage($video->getNum());
@@ -131,9 +131,9 @@ if(!isset($_GET["album"])){
                     echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\" width=\"300\" height=\"200\"></a>";
                     if(isset($_SESSION["login"])){?>
                         <div class="supprimerImage">
-                            <form method="POST" action="#">
-                                <input name="supprimerImage" type="submit" value="X">
-                                <input name="numImageASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
+                            <form class="supprimer" method="POST" action="#">
+                                <input name="supprimerImage" class="boutonSupprimer" type="button" value="X">
+                                <input class="num" name="numImageASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
                             </form>
                         </div>
                     <?php
@@ -147,9 +147,9 @@ if(!isset($_GET["album"])){
                     echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><video src=\"" . $image->getSrc() . $image->getNom() . "\">" . $image->getDescription() . "</video></a>";
                     if(isset($_SESSION["login"])){?>
                         <div class="supprimerImage">
-                            <form method="POST" action="#">
-                                <input name="supprimerVideo" type="submit" value="X">
-                                <input name="numVideoASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
+                            <form class="supprimer" method="POST" action="#">
+                                <input class="boutonSupprimer" name="supprimerVideo" type="button" value="X">
+                                <input class="num" name="numVideoASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
                             </form>
                         </div>
                     <?php
@@ -187,9 +187,9 @@ if(!isset($_GET["album"])){
                 echo "<a class=\"fancybox\" href=\"" . $image->getSrc() . $image->getNom() . "\" data-fancybox-group=\"gallery\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\" width=\"300\" height=\"200\"></a>";
                 if(isset($_SESSION["login"])){?>
                     <div class="supprimerImage">
-                        <form method="POST" action="#">
-                            <input name="supprimerImage" type="submit" value="X">
-                            <input name="numImageASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
+                        <form class="supprimer" method="POST" action="#">
+                            <input class="boutonSupprimer" name="supprimerImage" type="button" value="X">
+                            <input class="num" name="numImageASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
                         </form>
                     </div>
                 <?php
@@ -199,10 +199,10 @@ if(!isset($_GET["album"])){
         }else{
             echo" <div class=\"img\">";
             if(isset($_SESSION["login"])){?>
-                <div class="supprimerImage">
-                    <form method="POST" action="#">
-                        <input name="supprimerVideo" type="submit" value="X">
-                        <input name="numVideoASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
+                <div class="supprimerVideo">
+                    <form class="supprimer" method="POST" action="#">
+                        <input class="boutonSupprimer" name="supprimerVideo" type="button" value="X">
+                        <input class="num" name="numVideoASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
                     </form>
                 </div>
             <?php

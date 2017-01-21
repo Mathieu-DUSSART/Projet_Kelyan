@@ -51,7 +51,7 @@ foreach ($managerArticle->getAllArticle(1) as $article) {
               <label>Texte:</label>
               <textarea name="texteModifie" class="texteArea" rows="8" required><?php echo $article->getTexte(); ?></textarea>
               <br>
-              <input class="boutonModifier" type="submit" value="Modifier l'article">
+              <input class="boutonModifierFinal" type="submit" value="Modifier l'article">
           </form>
       </div>
   <?php
@@ -69,7 +69,7 @@ foreach ($managerArticle->getAllArticle(1) as $article) {
 if(isset($_SESSION["login"])){
     if(!isset($_POST["modifierArticle"]) || (isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]!=$article->getNum())){?>
         <div class="voletGestionArticle">
-            <form class="supprimerArticle" method="POST" action="#">
+            <form class="supprimer" method="POST" action="#">
                 <input name="supprimerArticle" class="boutonSupprimer" type="button" value="X">
                 <input class="num" name="numArticleASupprimer" type="hidden" value="<?php echo $article->getNum(); ?>">
             </form>

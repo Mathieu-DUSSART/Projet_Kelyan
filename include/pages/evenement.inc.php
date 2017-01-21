@@ -95,7 +95,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                 <label>Texte:</label>
                 <textarea name="texteModifie" class="texteArea" rows="8" required><?php echo $evenement->getTexte();?></textarea>
                 <br>
-                <input class="boutonModifier" type="button" value="Modifier l'évènement">
+                <input class="boutonModifierFinal" type="button" value="Modifier l'évènement">
             </form>
         </div>
         <?php

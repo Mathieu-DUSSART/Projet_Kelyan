@@ -106,7 +106,7 @@ foreach ($managerImage->getAllImage("/Projet_Kelyan/image/partenaire/") as $imag
     if(isset($_SESSION["login"])){ ?>
         <div class="supprimerImage">
             <form class="supprimer" method="POST" action="#">
-                <input class="boutonSupprimer" name="supprimerImage" type="submit" value="X">
+                <input class="boutonSupprimer" name="supprimerImage" type="button" value="X">
                 <input class="num" name="numImageASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
             </form>
         </div>
