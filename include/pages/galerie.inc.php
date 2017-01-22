@@ -1,9 +1,4 @@
 <?php
- /************************************************************
-  * Definition des constantes / tableaux et variables
-  *************************************************************/
-
-
  // Tableaux de donnees
  $tabExtImg = array('jpg','gif','png','jpeg','mp4','avi','mkv','mpeg');    // Extensions autorisees
  $tabExtVideo = array('mp4','avi','mkv','mpeg');
@@ -77,10 +72,10 @@
  }
 
 
- //Supprime une image
+//Supprime une image
 if(isset($_POST["numImageASupprimer"])){
     $image=$managerImage->getImage($_POST["numImageASupprimer"]);
-    $managerContenu->deleteContenu($image->getNum());
+    $managerContenu->deleteContenu($_GET["album"], $image->getNum());
     $managerImage->deleteImage($image->getNum());
     //Fichier à supprimer
     $fichier = TARGET_GALERIE . $image->getNom();
@@ -91,10 +86,11 @@ if(isset($_POST["numImageASupprimer"])){
     header('Location: index.php?page=4&album=' . $_GET["album"]);
     exit;
 }
+
 //Supprime une vidéo
 if(isset($_POST["numVideoASupprimer"])){
     $video=$managerImage->getImage($_POST["numVideoASupprimer"]);
-    $managerContenu->deleteContenu($video->getNum());
+    $managerContenu->deleteContenu($_GET["album"], $video->getNum());
     $managerImage->deleteImage($video->getNum());
     //Fichier à supprimer
     $fichier = TARGET_VIDEO . $video->getNom();
@@ -131,10 +127,12 @@ if(isset($_POST["ModifierGroup"]) && isset($_SESSION["login"])){
 
 //Supprime un album
 if(isset($_POST["numGroupASupprimer"]) && isset($_SESSION["login"])){
-    echo "weshsqdqsdsqdqqqqqqqq";
-    /*TODO Supprimer toutes les images de l'album avant de supprimer l'album
-    Supprimer dans la table Contenu (foreign key)
-    */
+
+    $tabImg = $managerContenu->getImgDuGroupe($_POST["numGroupASupprimer"]);
+    foreach ($tabImg as $image){
+        $managerContenu->deleteContenu($_POST["numGroupASupprimer"], $image->getNum());
+        $managerImage->deleteImage($image->getNum());
+    }
    $managerGroup->deleteGroup($_POST["numGroupASupprimer"]);
 }
 
@@ -153,13 +151,13 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
     <?php
     foreach($groupTab as $group){
         $contenuTab = $managerContenu->getAllContenu($group->getGroupNum());
-        if(!empty($contenuTab)){
+        if(!empty($contenuTab)){  //Si l'album n'est pas vide, on affiche l'album avec sa première photo
             $image = $managerImage->getImage($contenuTab[0]->getImgNum());
-            if(!$image->getType()){?>
+            if(!$image->getType()){ //S'il s'agit d'une image?>
                 <div class="album">
                     <span class="titreAlbum"><?php echo $group->getGroupNom();?></span>
                     <?php
-                    echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\" width=\"300\" height=\"200\"></a>";
+                    echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
                     if(isset($_SESSION["login"])){?>
                         <div class="supprimerImageVideo">
                             <form class="supprimer" method="POST" action="#">
@@ -171,7 +169,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
                     }?>
                 </div>
             <?php
-            }else{?>
+        }else{ //S'il s'agit d'une vidéo?>
                 <div class="album">
                     <span class="titreAlbum"><?php echo $group->getGroupNom();?></span>
                     <?php
@@ -188,21 +186,37 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
                 </div>
             <?php
             }
+        }else{ //Si l'album est vide, on affiche l'album?>
+            <div class="album">
+                <span class="titreAlbum"><?php echo $group->getGroupNom();?></span>
+                <?php
+                echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><div class=\"albumVide\"></div></a>";
+                if(isset($_SESSION["login"])){?>
+                    <div class="supprimerImageVideo">
+                        <form class="supprimer" method="POST" action="#">
+                            <input name="supprimerImage" class="boutonSupprimer" type="button" value="X">
+                            <input class="num" name="numGroupASupprimer" type="hidden" value="<?php echo $group->getGroupNum(); ?>">
+                        </form>
+                    </div>
+                <?php
+                }?>
+            </div>
+        <?php
         }
     }
+    //Formulaire d'ajout d'album
     if(isset($_SESSION["login"])){?>
-        <h3>Ajouter un groupe </h3>
-        <form method="POST" action="#">
+        <form id="ajouterAlbum" method="POST" action="#">
             <?php
             if(isset($_POST["numGroupAModifier"]) && isset($_SESSION["login"])){
                 $group=$managerGroup->getGroupByNum($_POST["numGroupAModifier"]);?>
                 <input type="text" name="ModifierGroup" value="<?php echo $group->getGroupNom() ?>" >
                 <input type="hidden" name="ModifierGroupNum" value="<?php echo $group->getGroupNum() ?>" >
                 <input name="AjoutGroupeB" type="submit" value="Modifier un groupe"><?php
-            }
-            else{
-                echo "<input type=\"text\" name=\"AjoutGroupe\" >";
-                echo "<input name=\"AjoutGroupeB\" type=\"submit\" value=\"Ajouter un groupe\">";
+            }else{?>
+                <input type="text" name="AjoutGroupe" placeholder="Nom de l'album" required>
+                <input type="submit" name="AjoutGroupeB" value="Créer l'album">
+            <?php
             }?>
         </form>
         <?php
@@ -247,32 +261,23 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
         <?php
         }
     }
+    //Permet d'ajouter une image ou un vidéo dans un album
+    if(isset($_SESSION["login"])){?>
+        <div id="ajouterImageDansAlbum">
+            <form enctype="multipart/form-data" action="#" method="post">
+                <label for="fichier_a_uploader" title="Recherchez le fichier à uploader !">Envoyer le fichier:</label>
+                <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_SIZE; ?>" />
+
+                <label id="boutonParcourirFichier">
+                    <input name="fichier" id="fichier_a_uploader" type="file" />
+                    Parcourir
+                </label>
+                <p id="nomFichierAUploader"></p>
+
+                <input class="bouton" type="submit" name="formAjoutImage" value="Uploader" />
+            </form>
+        </div>
+     <?php
+     }
 }
 ?>
-
-
-
-
-
-
-<?php
-//Permet d'ajouter une image ou un vidéo dans un album
-if(isset($_SESSION["login"])){?>
-    <div id="ajouterImageDansAlbum">
-        <form enctype="multipart/form-data" action="#" method="post">
-            <label for="fichier_a_uploader" title="Recherchez le fichier à uploader !">Envoyer le fichier:</label>
-            <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_SIZE; ?>" />
-
-            <label id="boutonParcourirFichier">
-                <input name="fichier" id="fichier_a_uploader" type="file" />
-                Parcourir
-            </label>
-            <p id="nomFichierAUploader"></p>
-
-            <input class="bouton" type="submit" name="formAjoutImage" value="Uploader" />
-        </form>
-    </div>
- <?php
- }?>
-
-<!-------------------------------------------------------------------Video------------------------------------------------------------------------------------------------>

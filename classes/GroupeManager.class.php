@@ -6,24 +6,24 @@ class GroupeManager{
 		$this->db=$db;
 	}
 
-  public function getAllGroup(){
-    $tabObj = Array();
-    $sql="SELECT * FROM groupe";
-    $req=$this->db->prepare($sql);
-    $req->execute();
-    while($ligne=$req->fetch(PDO::FETCH_OBJ)){
-        $tabObj[]=new Groupe($ligne);
-    }
-    return $tabObj;
+	public function getAllGroup(){
+		$tabObj = Array();
+		$sql="SELECT * FROM groupe";
+		$req=$this->db->prepare($sql);
+		$req->execute();
+		while($ligne=$req->fetch(PDO::FETCH_OBJ)){
+			$tabObj[]=new Groupe($ligne);
+		}
+		return $tabObj;
 
-  }
+	}
 
-  public function add($groupe){
-    $sql="INSERT INTO `groupe` (group_nom) VALUES (:group_nom)";
-    $req=$this->db->prepare($sql);
-    $req->bindValue(':group_nom', $groupe->getGroupNom(), PDO::PARAM_STR);
-    $req->execute();
-  }
+	public function add($groupe){
+		$sql="INSERT INTO `groupe` (group_nom) VALUES (:group_nom)";
+		$req=$this->db->prepare($sql);
+		$req->bindValue(':group_nom', $groupe->getGroupNom(), PDO::PARAM_STR);
+		$req->execute();
+	}
 
 	public function deleteGroup($num){
 		$sql="DELETE FROM groupe WHERE group_num=:num";
@@ -35,8 +35,8 @@ class GroupeManager{
 	public function getGroupByNum($num){
 		$sql="SELECT * FROM groupe WHERE group_num=:num";
 		$req=$this->db->prepare($sql);
-				$req->bindValue(':num', $num, PDO::PARAM_INT);
-				$req->execute();
+		$req->bindValue(':num', $num, PDO::PARAM_INT);
+		$req->execute();
 		$res=$req->fetch(PDO::FETCH_OBJ);
 		$group=new Groupe($res);
 
