@@ -176,7 +176,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
       ?>
           </article>
     <?php
-    }
+
 
     if(isset($_SESSION["login"])){
         if(!isset($_POST["modifierEvent"]) || (isset($_POST["modifierEvent"]) && $_POST["numEventAModifier"]!=$evenement->getNum())){?>
@@ -193,6 +193,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
         <?php
         }
     }
+}
 
 if(isset($_SESSION["login"])){?>
     <div id="formulaireAjoutEvenement">
