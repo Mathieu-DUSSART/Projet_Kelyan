@@ -142,11 +142,11 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
 
         }
         if(isset($_SESSION["login"])){ ?>
-          <a href="" id="boutonInscrire<?php echo $evenement->getNum();?>">Voir les personnes inscrite</a><br>
-          <label>Il y a <?php echo $managerPersonne->getNbPersonneInscrite($evenement->getNum()); ?> personnes inscrites.</label>
+          <label>Il y a <?php echo $managerPersonne->getNbPersonneInscrite($evenement->getNum()); ?> personnes inscrites.</label><br>
           <?php
           if($managerPersonne->getNbPersonneInscrite($evenement->getNum()) > 0){
           ?>
+          <a href="" id="boutonInscrire<?php echo $evenement->getNum();?>">Voir les personnes inscrites</a>
           <table id="tableInscris<?php echo $evenement->getNum();?>">
             <tr>
               <th>Prenom</th>
