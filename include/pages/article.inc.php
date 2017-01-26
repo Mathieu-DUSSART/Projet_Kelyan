@@ -92,7 +92,8 @@ foreach ($managerArticle->getAllArticle(2) as $article) {
 
 if(isset($_SESSION["login"])){?>
     <div id="formulaireAjoutArticle">
-        <form method="POST" action="#" novalidate>
+        <a href="" id="formulaireArticleLien">+</a>
+        <form method="POST" action="#" id="formulaireArticle" novalidate>
             <label>Titre de l'article:</label>
             <input  type="text" name="titre" placeholder="Titre de l'article..." required>
             <br>

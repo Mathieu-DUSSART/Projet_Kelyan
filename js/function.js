@@ -74,6 +74,18 @@ $(document).ready(function()
    });
 });
 
+$(document).ready(function()
+{
+   // On cache la zone de texte
+   $('#formulaireArticle').hide();
+   // toggle() lorsque le lien avec l'ID #toggler est cliqué
+   $('a#formulaireArticleLien').click(function()
+   {
+      $('#formulaireArticle').toggle(400);
+      return false;
+   });
+});
+
 $(function(){
     $(".album").bind("mouseenter mouseleave", function(){
         $(".titreAlbum", this).fadeToggle(200).toggleClass("titreAlbumAfficher");
