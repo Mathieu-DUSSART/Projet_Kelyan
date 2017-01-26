@@ -3,34 +3,34 @@
 $date = date('Y-m-d H:i:s');
 //Ajoute un article
 if(isset($_POST["titre"])){
-$tab=array();
-$tab["art_titre"]=$_POST["titre"];
-$tab["art_date"]=$date;
-$tab["art_texte"]=$_POST["texte"];
-$tab["page_num"]=$_GET["page"];
-$article=new Article($tab);
-$managerArticle->add($article);
-header('Location: index.php?page=1');
-exit;
+    $tab=array();
+    $tab["art_titre"]=$_POST["titre"];
+    $tab["art_date"]=$date;
+    $tab["art_texte"]=$_POST["texte"];
+    $tab["page_num"]=$_GET["page"];
+    $article=new Article($tab);
+    $managerArticle->add($article);
+    header('Location: index.php?page=1');
+    exit;
 }
 
 //Modifie un article
 if(isset($_POST["titreModifie"])){
-$tab=array();
-$tab["art_num"]=$_SESSION["numArticleAModifier"];
-$tab["art_titre"]=$_POST["titreModifie"];
-$tab["art_texte"]=$_POST["texteModifie"];
-$article=new Article($tab);
-$managerArticle->modifierArticle($article);
-header('Location: index.php?page=1');
-exit;
+    $tab=array();
+    $tab["art_num"]=$_SESSION["numArticleAModifier"];
+    $tab["art_titre"]=$_POST["titreModifie"];
+    $tab["art_texte"]=$_POST["texteModifie"];
+    $article=new Article($tab);
+    $managerArticle->modifierArticle($article);
+    header('Location: index.php?page=1');
+    exit;
 }
 
 //Supprime un article
 if(isset($_POST["numArticleASupprimer"])){
-$managerArticle->deleteArticle($_POST["numArticleASupprimer"]);
-header('Location: index.php?page=1');
-exit;
+    $managerArticle->deleteArticle($_POST["numArticleASupprimer"]);
+    header('Location: index.php?page=1');
+    exit;
 }
 ?>
 
