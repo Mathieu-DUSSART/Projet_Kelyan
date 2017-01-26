@@ -97,4 +97,12 @@ class PersonneManager{
 		$req->bindValue(':num', $personne->getPerNum(), PDO::PARAM_INT);
 		$req->execute();
 	}
+
+	public function setCle($mail,$cle){
+		$sql="UPDATE personne SET per_cle= :cle WHERE per_mail= :mail";
+		$req=$this->db->prepare($sql);
+		$req->bindValue(':mail',$mail,PDO::PARAM_STR);
+		$req->bindValue(':cle',$cle,PDO::PARAM_STR);
+		$req->execute();
+	}
 }
