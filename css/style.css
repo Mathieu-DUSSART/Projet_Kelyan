@@ -841,12 +841,12 @@ input{
 }
 
 .input_btn1{
-  margin: 3px auto 0 auto;
+  margin: 0 auto 10px auto;
   border-radius: 0 20% 0 0;
 }
 
 .input_btn2{
-  margin: 0 auto;
+  margin: 2px auto;
   border-radius: 0 0 20% 0;
 }
 
