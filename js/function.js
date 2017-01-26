@@ -112,6 +112,7 @@ $( function($) {
 function initEditText(){
   tinymce.init({
     selector : '.texteArea',
+    language : 'fr_FR',
     plugins: [
       'advlist autosave autolink link image lists charmap preview hr emoticons spellchecker colorpicker ',
       'searchreplace wordcount visualchars fullscreen media imagetools',
