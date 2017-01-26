@@ -84,9 +84,30 @@ function fancyboxQuiMarche(){
     $('.fancybox').fancybox();
 }
 
-$( function() {
-  $( ".datepicker" ).datepicker({ dateFormat: "dd/mm/yy" });
-} );
+$( function($) {
+  $.datepicker.regional['fr'] = {
+      closeText: 'Fermer',
+      prevText: '&#x3c;Préc',
+      nextText: 'Suiv&#x3e;',
+      currentText: 'Courant',
+      monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin',
+      'Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
+      monthNamesShort: ['Jan','Fév','Mar','Avr','Mai','Jun',
+      'Jul','Aoû','Sep','Oct','Nov','Déc'],
+      dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
+      dayNamesShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
+      dayNamesMin: ['Di','Lu','Ma','Me','Je','Ve','Sa'],
+      weekHeader: 'Sm',
+      //dateFormat: 'dd/mm/yy',
+                dateFormat: 'dd/mm/yy',
+      firstDay: 1,
+      isRTL: false,
+      showMonthAfterYear: false,
+      yearSuffix: ''};
+   $.datepicker.setDefaults($.datepicker.regional['fr']);
+   $(".datepicker").datepicker();
+});
+
 
 function initEditText(){
   tinymce.init({
@@ -100,7 +121,7 @@ function initEditText(){
      automatic_uploads: true,
     toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image | preview media fullpage | forecolor backcolor emoticons',
     autosave_ask_before_unload: false,
-    spellchecker_language: 'fr',
+    spellchecker_language: 'fr_FR',
 
   });
 
