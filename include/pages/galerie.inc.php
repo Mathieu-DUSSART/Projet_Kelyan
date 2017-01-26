@@ -261,7 +261,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
                 if(isset($_SESSION["login"])){?>
                     <div class="supprimerImageVideo">
                         <form class="supprimer" method="POST" action="#">
-                            <input class="boutonSupprimer" name="supprimerVideo" type="button" value="X">
+                            <input class="boutonSupprimer input_btn1" name="supprimerVideo" type="button">
                             <input class="num" name="numVideoASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
                         </form>
                     </div>
