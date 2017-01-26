@@ -2,7 +2,7 @@
   // Constantes
   define('TARGET_RESEAUX_SOCIAUX', 'image/reseaux_sociaux/');    // Repertoire cible
   define('TARGET_GALERIE', 'image/galerie/');    // Repertoire cible
-  define('TARGET_PARTENAIRE', 'image/partenaire/'); 
+  define('TARGET_PARTENAIRE', 'image/partenaire/');
   define('TARGET_VIDEO', 'video/');    // Repertoire cible
   define('MAX_SIZE', 10000000);    // Taille max en octets du fichier
   define('WIDTH_MAX', 50000);    // Largeur max de l'image en pixels
@@ -22,6 +22,7 @@
           // Recuperation de l'extension du fichier
           $extension  = pathinfo($_FILES['fichierReseauxSociaux']['name'], PATHINFO_EXTENSION);
           // On verifie l'extension du fichier
+          echo "<p>" . in_array(strtolower($extension),$tabExt) . "</p>";
           if(in_array(strtolower($extension),$tabExt)){
               // On recupere les dimensions du fichier
               $infosImg = getimagesize($_FILES['fichierReseauxSociaux']['tmp_name']);
@@ -113,7 +114,7 @@
 						<label>Logo:</label>
 						<input name="fichierReseauxSociaux" type="file" id="fichier_a_uploader" />
 						<label>Lien: </label>
-						<input type="url" name="lien">
+						<input type="url" name="lien" value="http://">
 						<input type="submit" value="Valider">
 					</form>
 				</div>
