@@ -196,7 +196,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
                 </div>
             <?php
             }
-        }else{ //Si l'album est vide, on affiche l'album?>
+        }elseif(isset($_SESSION["login"])){ //Si l'album est vide, on affiche l'album?>
             <div class="album">
                 <span class="titreAlbum"><?php echo $group->getGroupNom();?></span>
                 <?php
