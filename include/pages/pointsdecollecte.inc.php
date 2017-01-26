@@ -89,26 +89,32 @@ if(isset($_POST["selectVillePoint"])){
     if(empty($AllPoint)){
     echo "<p class=\"lieuxPoint\">Aucun point de collecte dans cette ville</p>";
     }
+    echo "<table>";
     foreach($AllPoint as $point){
-
-            echo "<p class=\"lieuxPoint\"> - " . $point->getPointLieu() ."</p>";
+        echo "<tr>";
+            echo "<td> <p class=\"lieuxPoint\"> - " . $point->getPointLieu() ."</p> </td>";
 
         if(isset($_SESSION["login"])){
             if(!isset($_POST["modifierPointDeCollecte"]) || (isset($_POST["modifierPointDeCollecte"]) && $_POST["numPointDeCollecteAModifier"]!=$point->getPointNum())){?>
                 <div class="voletGestionPointdeCollecte">
+                    <td>
                     <form class="supprimerPointDeCollecte supprimer" method="POST" action="#">
-                        <input name="supprimerArticle" class="boutonSupprimer" id="input_btn1" type="button" value="">
+                        <input name="supprimerArticle" class="boutonSupprimer " type="button" value="">
                         <input class="num" name="numPointDeCollecteASupprimer" type="hidden" value="<?php echo $point->getPointNum(); ?>">
                     </form>
+                </td>
+                <td>
                     <form class="modifierPointDeCollecte" method="POST" action="#">
-                        <input name="modifierArticle" class="boutonModifier" id="input_btn2" type="submit" value="" >
+                        <input name="modifierArticle" class="boutonModifier " type="submit" value="" >
                         <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $point->getPointNum() ;?>">
                     </form>
+                </td>
                 </div>
             <?php
             }
         }
     }
+    echo "</table>";
 }
 
 

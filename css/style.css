@@ -157,8 +157,11 @@ nav ul li a:hover{
 }
 
 #divAjoutPage input[type=submit]{
-    width: 50%;
-    margin: 10px 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px 15px;
+    margin: 10px 0;
 }
 
 #boutonAjoutPage{
@@ -361,9 +364,9 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 }
 #formulaireAjoutArticle input[type=submit], #formulaireAjoutEvenement input[type=submit]{
     display: block;
-    width: 15%;
-    min-width: 180px;
-    padding:10px 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px 15px;
     margin: 15px auto;
     background-color:#FF7E65;
     color:#3E454C;
@@ -416,9 +419,10 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 }
 
 #formContact input[type=submit]{
-    width:30%;
-    padding:10px 0;
-    margin-left:35%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px 15px;
     background-color:#FF7F66;
     color:#3E454C;
     font-size:110%;
@@ -521,9 +525,11 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 }
 
 #ajouterImage input[type=submit]{
-    width: 30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px 15px;
     margin-top: 25%;
-    margin-left: 35%;
 }
 
 .titreJaune{
@@ -733,10 +739,11 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 }
 
 #formConnexion input[type=submit]{
-    width:30%;
-    padding:10px 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px 15px;
     margin-top: 25px;
-    margin-left:35%;
     background-color:#FF7F66;
     color:#3E454C;
     font-size:110%;
@@ -929,9 +936,11 @@ input{
 }
 
 #ajouterImageDansAlbum input[type=submit]{
-    width: 30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px 15px;
     margin-top: 5%;
-    margin-left: 35%;
 }
 
 #ajouterImageDansAlbum input[type=file]{
@@ -1019,8 +1028,10 @@ input{
 }
 
 #ajouterAlbum input[type=submit]{
-    width: 74%;
-    margin-left: 13%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px 15px;
 }
 
 /**********************************/
@@ -1050,8 +1061,10 @@ input{
 }
 
 #ajouterPartenaire input[type=submit]{
-    width: 30%;
-    margin-left: 35%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px 15px;
     background-color: #EC7F66;
 }
 #ajouterPartenaire input[type=url]{
