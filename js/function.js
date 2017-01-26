@@ -62,17 +62,17 @@ function clickBoutonChangerCouleur(){
   }
 }
 
-/*$(document).ready(function()
+$(document).ready(function()
 {
    // On cache la zone de texte
-   $('fieldset').hide();
+   $('#formulaireAccueil').hide();
    // toggle() lorsque le lien avec l'ID #toggler est cliqué
-   $('a#boutonInscrire').click(function()
-  {
-      $('fieldset').toggle(400);
+   $('a#formulaireAccueilLien').click(function()
+   {
+      $('#formulaireAccueil').toggle(400);
       return false;
    });
-});*/
+});
 
 $(function(){
     $(".album").bind("mouseenter mouseleave", function(){

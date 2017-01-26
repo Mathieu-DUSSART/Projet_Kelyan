@@ -85,7 +85,8 @@ if(isset($_SESSION["login"])){
 
 if(isset($_SESSION["login"])){?>
 <div id="formulaireAjoutArticle">
-    <form method="POST" action="#" novalidate>
+    <a href="" id="formulaireAccueilLien">+</a>
+    <form method="POST" action="#" id="formulaireAccueil" novalidate>
         <label>Titre de l'article:</label>
         <input  type="text" name="titre" placeholder="Titre de l'article..." required>
         <br>
