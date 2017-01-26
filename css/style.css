@@ -1077,3 +1077,7 @@ input{
     background-color: #E5E5E5;
     color: grey;
 }
+
+footer form{
+    display :none;
+}
