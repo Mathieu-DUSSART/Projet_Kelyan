@@ -840,12 +840,12 @@ input{
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
 }
 
-#input_btn1{
+.input_btn1{
   margin: 3px auto 0 auto;
   border-radius: 0 20% 0 0;
 }
 
-#input_btn2{
+.input_btn2{
   margin: 0 auto;
   border-radius: 0 0 20% 0;
 }
