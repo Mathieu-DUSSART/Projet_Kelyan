@@ -54,5 +54,20 @@ class StatistiqueManager{
     $req->bindValue(':stat_num', $stat_num, PDO::PARAM_INT);
 		$req->execute();
 	}
+    public function getStateParMois($mois,$annee){
+        $sql="SELECT sum(statistique) as nbStat FROM statistique WHERE MONTH(statistique_date)=:mois and year(statistique_date)=:annee";
+        $req=$this->db->prepare($sql);
+        $req->bindValue(":mois", $mois ,PDO::PARAM_INT);
+        $req->bindValue(":annee", $annee ,PDO::PARAM_INT);
+        $req->execute();
+
+        if($req->nbstat!=NULL){
+            return $req->nbstat;
+        }else{
+            return 0;
+        }
+    }
+
 }
+
  ?>

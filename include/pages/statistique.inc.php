@@ -1,8 +1,19 @@
 <h1>Statistique</h1>
+
 <?php
 //Listage des statistique par Point de Collecte
 $tabVille = $managerVille->getAllVille();
-
+if(isset($_POST["selectVillePoint"] ) || isset($_SESSION["Numville"])){
+    if((isset($_POST["selectVillePoint"]))){
+        if( $_SESSION["Numville"]!=$_POST["selectVillePoint"]){
+            $_SESSION["Numville"]=$_POST["selectVillePoint"];
+        }
+    }else{
+        if (!isset($_SESSION["Numville"])){
+            $_SESSION["Numville"]=$_POST["selectVillePoint"];
+        }
+    }
+}
 
 $villeTab = array();
 $villeTab = $managerVille->getAllVille();?>
@@ -11,37 +22,76 @@ $villeTab = $managerVille->getAllVille();?>
     <label>Ville : </label>
     <select name="selectVillePoint">
         <?php
+        if(isset($_POST["selectVillePoint"] ) || isset($_SESSION["Numville"])){
+        echo "<option value=\"" . $_SESSION["Numville"]. "\" selected=\"selected\">" . $managerVille->getVilNomByNum($_SESSION["Numville"])->getVilNom() . "</option>";
+    }
+
         foreach($villeTab as $ville){
             echo "<option value=\"" . $ville->getVilNum() . "\">" . $ville->getVilNom() . "</option>";
         }?>
     </select>
     <input type="submit" value="Valider">
+    <div id="choixVue">
+        <form action="#" method="POST">
+            <input type=radio name="choixVue" value="annee" checked>Année
+            <input type=radio name="choixVue" value="mois">Mois
+            <input type=radio name="choixVue" value="total">Total
+            <input type="submit" value="Valider">
+        </form>
+    </div>
 </form>
 </div>
 
 <?php
 if(isset($_POST["selectVillePoint"])){
+switch ($_POST["choixVue"]) {
+    case 'mois':
     $AllPoint = array();
-    $AllPoint = $managerPointsDeCollecte->getPointByVille($_POST["selectVillePoint"]);
-    foreach ($AllPoint as $point) {
-        echo "<dd> <h3>". $point->getPointLieu() . " : </h2>";
-        $tabStatistique=$managerStatistique->getStatistiqueByPoint($point->getPointNum());
-        foreach ($tabStatistique as $stat) {
-          echo "<dd> <p> statistique du ".$stat->getDate()." nombre de bouchons récoltés : " . $stat->getStatistique() . "</p>";
-          ?>
-          <form class="supprimer" method="POST" action="#">
-              <input class="boutonSuppr" name="supprimerStatistique" type="submit" value="X">
-              <input class="num" name="numStatSupprimer" type="hidden" value="<?php echo $stat->getNum();?>">
-            </form>
-            <form class="modifierPointDeCollecte" method="POST" action="#">
-              <input name="modifierPointDeCollecte" type="submit" value="M">
-              <input class="numModif" name="numStatModifier" type="hidden" value="<?php echo $stat->getNum();?>">
-              <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $stat->getPoint();?>">
-            </form>
-            <?php
+    $AllPoint = $managerPointsDeCollecte->getPointByVille($_SESSION["Numville"]);
+    $ville=$managerVille->getVilNomByNum($_SESSION["Numville"])->getVilNom();
+    echo "<h2>".$ville."</h2>";
+    
+        break;
+
+    case 'total':
+        $AllPoint = array();
+        $AllPoint = $managerPointsDeCollecte->getPointByVille($_SESSION["Numville"]);
+        $ville=$managerVille->getVilNomByNum($_SESSION["Numville"])->getVilNom();
+        echo "<h2>".$ville."</h2>";
+        foreach ($AllPoint as $point) {
+            echo "<blockquote> <h3>". $point->getPointLieu() . " : </h3></blockquote>";
+            $tabStatistique=$managerStatistique->getStatistiqueByPoint($point->getPointNum());
+            foreach ($tabStatistique as $stat) {
+              echo "<dd> <p> statistique du ".$stat->getDate()." nombre de bouchons récoltés : " . $stat->getStatistique() . "</p>";
+              ?>
+              <form class="supprimer" method="POST" action="#">
+                  <input class="boutonSuppr" name="supprimerStatistique" type="submit" value="X">
+                  <input class="num" name="numStatSupprimer" type="hidden" value="<?php echo $stat->getNum();?>">
+                </form>
+                <form class="modifierPointDeCollecte" method="POST" action="#">
+                  <input name="modifierPointDeCollecte" type="submit" value="M">
+                  <input class="numModif" name="numStatModifier" type="hidden" value="<?php echo $stat->getNum();?>">
+                  <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $stat->getPoint();?>">
+                </form>
+                <?php
+            }
         }
-    }
+        break;
+
+    case 'annee':
+        $AllPoint = array();
+        $AllPoint = $managerPointsDeCollecte->getPointByVille($_SESSION["Numville"]);
+        $ville=$managerVille->getVilNomByNum($_SESSION["Numville"])->getVilNom();
+        echo "<h2>".$ville."</h2>";
+        foreach ($AllPoint as $point) {
+            echo "<blockquote> <h3>". $point->getPointLieu() . " : </h3></blockquote>";
+
+        }
+        break;
+
 }
+}
+
 
 if(isset($_SESSION["login"]) && empty($_POST["numStatModifier"]) ){
 
