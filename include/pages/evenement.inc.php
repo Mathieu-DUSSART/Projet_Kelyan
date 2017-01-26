@@ -197,7 +197,8 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
 
 if(isset($_SESSION["login"])){?>
     <div id="formulaireAjoutEvenement">
-        <form method="POST" action="#" novalidate>
+        <a href="" id="formulaireEvenementLien">+</a>
+        <form method="POST" action="#" id="formulaireEvenement" novalidate>
             <label>Titre de l'évènement:</label>
             <input type="text" name="titre" placeholder="Titre de l'évènement..." required>
             <br>
