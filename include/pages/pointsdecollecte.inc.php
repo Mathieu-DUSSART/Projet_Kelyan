@@ -97,11 +97,11 @@ if(isset($_POST["selectVillePoint"])){
             if(!isset($_POST["modifierPointDeCollecte"]) || (isset($_POST["modifierPointDeCollecte"]) && $_POST["numPointDeCollecteAModifier"]!=$point->getPointNum())){?>
                 <div class="voletGestionPointdeCollecte">
                     <form class="supprimerPointDeCollecte supprimer" method="POST" action="#">
-                        <input name="supprimerArticle" class="boutonSupprimer" id="input_btn1" type="button" value="">
+                        <input name="supprimerArticle" class="boutonSupprimer input_btn1" type="button" value="">
                         <input class="num" name="numPointDeCollecteASupprimer" type="hidden" value="<?php echo $point->getPointNum(); ?>">
                     </form>
                     <form class="modifierPointDeCollecte" method="POST" action="#">
-                        <input name="modifierArticle" class="boutonModifier" id="input_btn2" type="submit" value="" >
+                        <input name="modifierArticle" class="boutonModifier input_btn2" type="submit" value="" >
                         <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $point->getPointNum() ;?>">
                     </form>
                 </div>
