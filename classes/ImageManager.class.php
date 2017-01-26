@@ -62,7 +62,7 @@ class ImageManager{
 	Retourne : l'Image qui correspond au numéro
 	*/
 	public function getImage($num){
-		$sql="SELECT * FROM image WHERE img_num=:num";
+		$sql="SELECT * FROM image WHERE img_num = :num";
 		$req=$this->db->prepare($sql);
         $req->bindValue(':num', $num, PDO::PARAM_INT);
         $req->execute();

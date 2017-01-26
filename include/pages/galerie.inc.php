@@ -118,22 +118,32 @@ if(isset($_POST["AjoutGroupe"]) && isset($_SESSION["login"])){
 
 //Modifie un album
 if(isset($_POST["ModifierGroup"]) && isset($_SESSION["login"])){
-   $group=$managerGroup->getGroupByNum($_POST["ModifierGroupNum"]);
-   echo "test modifier";
-   echo $group->getGroupNum();
-   echo $_POST["ModifierGroup"];
-   $managerGroup->modifierGroupe($group->getGroupNum(), $_POST["ModifierGroup"]);
+    $group=$managerGroup->getGroupByNum($_POST["ModifierGroupNum"]);
+    echo $group->getGroupNum();
+    echo $_POST["ModifierGroup"];
+    $managerGroup->modifierGroupe($group->getGroupNum(), $_POST["ModifierGroup"]);
 }
 
 //Supprime un album
 if(isset($_POST["numGroupASupprimer"]) && isset($_SESSION["login"])){
-
     $tabImg = $managerContenu->getImgDuGroupe($_POST["numGroupASupprimer"]);
     foreach ($tabImg as $image){
         $managerContenu->deleteContenu($_POST["numGroupASupprimer"], $image->getNum());
+        $imageASuppr = $managerImage->getImage($image->getNum());
         $managerImage->deleteImage($image->getNum());
+
+        if(!$imageASuppr->getType()){
+            $fichier = TARGET_GALERIE . $imageASuppr->getNom();
+        }else{
+            $fichier = TARGET_VIDEO . $imageASuppr->getNom();
+        }
+
+        if(file_exists($fichier)){
+            unlink($fichier);
+        }
     }
-   $managerGroup->deleteGroup($_POST["numGroupASupprimer"]);
+
+    $managerGroup->deleteGroup($_POST["numGroupASupprimer"]);
 }
 
 
@@ -161,7 +171,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
                     if(isset($_SESSION["login"])){?>
                         <div class="supprimerImageVideo">
                             <form class="supprimer" method="POST" action="#">
-                                <input name="supprimerImage" class="boutonSupprimer" type="button" value="X">
+                                <input name="supprimerImage " class="boutonSupprimer input_btn1" type="button">
                                 <input class="num" name="numGroupASupprimer" type="hidden" value="<?php echo $group->getGroupNum(); ?>">
                             </form>
                         </div>
@@ -177,7 +187,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
                     if(isset($_SESSION["login"])){?>
                         <div class="supprimerImageVideo">
                             <form class="supprimer" method="POST" action="#">
-                                <input class="boutonSupprimer" name="supprimerVideo" type="button" value="X">
+                                <input class="boutonSupprimer input_btn1" name="supprimerVideo" type="button">
                                 <input class="num" name="numGroupASupprimer" type="hidden" value="<?php echo $group->getGroupNum(); ?>">
                             </form>
                         </div>
@@ -194,7 +204,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
                 if(isset($_SESSION["login"])){?>
                     <div class="supprimerImageVideo">
                         <form class="supprimer" method="POST" action="#">
-                            <input name="supprimerImage" class="boutonSupprimer" type="button" value="X">
+                            <input name="supprimerImage input_btn1" class="boutonSupprimer" type="button">
                             <input class="num" name="numGroupASupprimer" type="hidden" value="<?php echo $group->getGroupNum(); ?>">
                         </form>
                     </div>
@@ -236,7 +246,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
                 if(isset($_SESSION["login"])){?>
                     <div class="supprimerImageVideo">
                         <form class="supprimer" method="POST" action="#">
-                            <input class="boutonSupprimer" name="supprimerImage" type="button" value="X">
+                            <input class="boutonSupprimer input_btn1" name="supprimerImage" type="button">
                             <input class="num" name="numImageASupprimer" type="hidden" value="<?php echo $image->getNum(); ?>">
                         </form>
                     </div>
