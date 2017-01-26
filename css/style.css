@@ -262,8 +262,8 @@ article p{
     display: inline-block;
     vertical-align: top;
     z-index: 7;
-    width:3vw;
-    height:50px;
+    width:4vw;
+    height:100px;
     margin-top: 2vh;
     margin-left: -10vw;
     transition: margin 0.3s;
@@ -792,30 +792,40 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 }
 
 .boutonSupprimer{
-    z-index: 1;
-    background-color: #9F051F;
-    border-radius: 20%;
+    background-repeat: no-repeat;
+    background-size: 80% 80%;
+    background-position: center;
+    background-color: white;
+    background-image: url("../image/icon/delete.png");
+    border-radius: 0% 20% 20% 0%;
     cursor:pointer  ;
-    width:30px;
+    width:70px;
     display: inline-block;
     border:none;
     margin-left: 10px;
+    z-index: 1;
+    margin-top: 0px;
+    margin-bottom: 0;
+
 }
 
-.supprimerImageVideo{
+.supprimerImage{
     opacity: .99;
 
 }
-
 .boutonModifier{
-    background-color: #63ACE7;
-    border-radius: 20%;
-    cursor:pointer  ;
-    width:30px;
-    display: inline-block;
-    margin-top: 1px;
-    border:none;
-    margin-left: 10px;
+  background-repeat: no-repeat;
+  background-size: 80% 80%;
+  background-position: center;
+  background-color: white;
+  background-image: url("../image/icon/edit.png");
+  border-radius: 0% 20% 20% 0%;
+  cursor:pointer  ;
+  width:70px;
+  display: inline-block;
+  border:none;
+  margin-left: 10px;
+  z-index: 1;
 }
 
 input{
@@ -828,6 +838,16 @@ input{
     box-shadow:
     0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+#input_btn1{
+  margin: 3px auto 0 auto;
+  border-radius: 0 20% 0 0;
+}
+
+#input_btn2{
+  margin: 0 auto;
+  border-radius: 0 0 20% 0;
 }
 
 
