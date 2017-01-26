@@ -46,7 +46,7 @@ foreach ($managerArticle->getAllArticle(2) as $article) {
         if(isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]==$article->getNum()){
             $_SESSION["numArticleAModifier"]=$article->getNum();
             ?>
-            <div id="ajouterArticle">
+            <div id="formulaireAjoutArticle">
                 <form class="modifier" method="POST" action="#">
                     <label>Titre de l'article:</label>
                     <input  type="text" name="titreModifie" value="<?php echo $article->getTitre(); ?>" required>
