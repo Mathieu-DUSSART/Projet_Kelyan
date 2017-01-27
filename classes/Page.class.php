@@ -3,7 +3,6 @@ class Page{
     private $num;
     private $nom;
     private $hidden = 0;
-    private $supprimable = 1;
 
     public function __construct($valeurs = array()){
         if(!empty($valeurs)){
@@ -19,8 +18,6 @@ class Page{
 				case 'page_nom' : $this->setNom($valeurs);
 					break;
                 case 'page_hidden' : $this->setHidden($valeurs);
-					break;
-                case 'page_supprimable' : $this->setSupprimable($valeurs);
 					break;
 			}
 		}
@@ -38,10 +35,6 @@ class Page{
         $this->hidden=$hidden;
     }
 
-    public function setSupprimable($supprimable){
-        $this->supprimable=$supprimable;
-    }
-
 
 
 
@@ -56,9 +49,5 @@ class Page{
     public function getHidden(){
 		return $this->hidden;
 	}
-
-    public function getSupprimable(){
-        return $this->supprimable;
-    }
 }
 ?>

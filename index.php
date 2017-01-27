@@ -19,6 +19,15 @@
     $managerPersonne = new PersonneManager($pdo);
     ?>
     <head>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
         <title>Association Kelyan</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -59,14 +68,13 @@
             require_once("include/contenu.inc.php");
             ?>
 
-          <div id="dialog-confirm-suppr" title="Supprimer">
-            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Voulez-vous vraiment supprimer ?</p>
-          </div>
+            <div id="dialog-confirm-suppr" title="Supprimer">
+                <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Voulez-vous vraiment supprimer ?</p>
+            </div>
 
-          <div id="dialog-confirm-modif" title="Modification">
-            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Voulez-vous vraiment apporter ces modifications ?</p>
-          </div>
-
+            <div id="dialog-confirm-modif" title="Modification">
+                <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Voulez-vous vraiment apporter ces modifications ?</p>
+            </div>
         </div>
 
         <footer id="footer">
