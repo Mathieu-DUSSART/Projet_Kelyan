@@ -34,9 +34,12 @@
         <link rel="stylesheet" media="only screen and (max-width: 1000px)" href="css/style_responsive.css" type="text/css" />
 
         <meta name="viewport" content="width=device-width" />
-        <script src="/Projet_Kelyan/js/jquery.js"></script>
-        <script src="/Projet_Kelyan/js/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="/Projet_Kelyan/js/jquery-ui.min.css">
+        <!-- Import JQuery-->
+        <script src="/Projet_Kelyan/js/jquery-3.1.1.min.js"></script>
+
+        <!-- Import JQueryUI-->
+        <script src="/Projet_Kelyan/js/JQueryUI/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="/Projet_Kelyan/js/JQueryUI/jquery-ui.min.css">
 
         <script src='tinymce/js/tinymce/tinymce.min.js'></script>
 
