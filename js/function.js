@@ -74,25 +74,21 @@ $(document).ready(function()
    });
 });
 
-$(document).ready(function()
-{
+$(document).ready(function(){
    // On cache la zone de texte
    $('#formulaireArticle').hide();
    // toggle() lorsque le lien avec l'ID #toggler est cliqué
-   $('a#formulaireArticleLien').click(function()
-   {
+   $('#formulaireArticleLien').click(function(){
       $('#formulaireArticle').toggle(400);
       return false;
    });
 });
 
-$(document).ready(function()
-{
+$(document).ready(function(){
    // On cache la zone de texte
    $('#formulaireEvenement').hide();
    // toggle() lorsque le lien avec l'ID #toggler est cliqué
-   $('a#formulaireEvenementLien').click(function()
-   {
+   $('#formulaireEvenementLien').click(function(){
       $('#formulaireEvenement').toggle(400);
       return false;
    });
@@ -152,8 +148,7 @@ function initEditText(){
 
 }
 
-
-
+//Fonction qui centre les onglets de la barre de navigation
 function centrerNav(){
     var largeur_fenetre = $(window).width();
 
@@ -165,6 +160,7 @@ function centrerNav(){
     }
 }
 
+//Fonction qui calcule la largeur des onglets de la barre de navigation
 function calculNav(){
     sommeLargeur = 0;
     nbElem = $('nav ul li').length;
