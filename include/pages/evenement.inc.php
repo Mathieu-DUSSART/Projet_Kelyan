@@ -75,7 +75,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
     //Récupère l'heure de l'évènement au format 14h59
     $heure= date_format($heureEvent, 'H:i');
 
-    if(isset($_POST["modifierEvent"]) && $_POST["numEventAModifier"]==$evenement->getNum()){
+    if(isset($_POST["numEventAModifier"]) && $_POST["numEventAModifier"]==$evenement->getNum()){
       $_SESSION["numEventAModifier"]=$evenement->getNum();
         ?>
         <div id="formulaireAjoutEvenement">
@@ -141,7 +141,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
        }
 
         }
-        if(isset($_SESSION["login"])){ ?>
+        if(isset($_SESSION["login"]) && !isset($_POST["numEventAModifier"])){ ?>
           <label>Il y a <?php echo $managerPersonne->getNbPersonneInscrite($evenement->getNum()); ?> personnes inscrites.</label><br>
           <?php
           if($managerPersonne->getNbPersonneInscrite($evenement->getNum()) > 0){

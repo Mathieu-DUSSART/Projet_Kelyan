@@ -158,7 +158,7 @@ function centrerNav(){
     var largeur_fenetre = $(window).width();
 
     if(largeur_fenetre > "1000"){
-        var paddingGauche = largeurNav - (sommeLargeur-largeurBouton);
+        var paddingGauche = largeurNav - sommeLargeur;
         $("nav ul").css( "padding-left", paddingGauche/2 );
     }else{
         $("nav ul").css( "padding-left", "0");
@@ -169,16 +169,9 @@ function calculNav(){
     sommeLargeur = 0;
     nbElem = $('nav ul li').length;
     largeurNav = $('nav').width();
-    largeurBouton = $('#ongletAjoutPage').width() + $('#menu').width();
 
     $("nav li").each(function(){
         sommeLargeur = sommeLargeur + $(this).width();
-
-        if(sommeLargeur > (largeurNav-largeurBouton) && $(this).attr("id")!="menu" && $(this).attr("id")!="ongletAjoutPage"){
-            //test(this);
-        }else{
-
-        }
     });
 }
 
