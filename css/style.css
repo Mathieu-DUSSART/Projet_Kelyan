@@ -457,11 +457,22 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 
 /* ---PARTENAIRE CONTACT--- */
 .imgPartenaire{
+    position: relative;
     display:inline-block;
-    width:25vw;
-    height: 10vw;
+    width: 20vw;
+    height: auto;
+    margin-left: 4vw;
+    margin-right: -0.25em;
+    margin-bottom: 4vw;
 }
 
+.imgPartenaire img{
+    position: relative;
+    z-index: 8;
+    width: 100%;
+    border-radius:5px;
+    border:1px solid black;
+}
 
 /* ---EVENEMENT--- */
 .dateEvenement{
@@ -477,13 +488,6 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 /* ---IMAGE GALERIE--- */
 
 
-.imgGalerie{
-    width: 100%;
-    height: 100%;
-
-}
-
-
 .supprimerImageVideo{
     position: absolute;
     display: inline-block;
@@ -496,7 +500,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     transition: right 0.3s;
 }
 
-.img:hover .supprimerImageVideo, .album:hover .supprimerImageVideo, .supprimerImageVideo:hover{
+.imgGalerie:hover .supprimerImageVideo, .albumGalerie:hover .supprimerImageVideo, .supprimerImageVideo:hover, .imgPartenaire:hover .supprimerImageVideo{
     right: -3vw;
 }
 
@@ -873,7 +877,7 @@ input{
 }
 
 
-.album, .img{
+.albumGalerie, .imgGalerie{
     position: relative;
     display: inline-block;
     vertical-align: middle;
@@ -884,7 +888,7 @@ input{
     margin-bottom: 4vw;
 }
 
-.album img, .album video, .img img, .img video{
+.albumGalerie img, .albumGalerie video, .imgGalerie img, .imgGalerie video{
     position: relative;
     z-index: 8;
     width: 20vw;
@@ -897,7 +901,7 @@ input{
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
 }
 
-.album img:hover, .album video:hover{
+.albumGalerie img:hover, .albumGalerie video:hover{
     filter: grayscale(100%);
 }
 

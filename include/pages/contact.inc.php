@@ -101,8 +101,8 @@ if(isset($_POST["numImageASupprimer"])){
 <?php
 //Affiche les logos des partenaires
 foreach ($managerImage->getAllImage("/Projet_Kelyan/image/partenaire/") as $image) { ?>
-  <div class="img">
-  <?php  echo "<a href=\"" . $image->getLien() . "\"><img class=\"imgPartenaire\" src=\"" . $image->getSrc() . $image->getNom() . "\" alt=\"\"></a>";
+  <div class="imgPartenaire">
+  <?php  echo "<a href=\"" . $image->getLien() . "\"><img src=\"" . $image->getSrc() . $image->getNom() . "\" alt=\"\"></a>";
     if(isset($_SESSION["login"])){ ?>
         <div class="supprimerImageVideo">
             <form class="supprimer" method="POST" action="#">
@@ -116,14 +116,16 @@ foreach ($managerImage->getAllImage("/Projet_Kelyan/image/partenaire/") as $imag
   <?php }
 
 if(isset($_SESSION["login"])){?>
-<div id="ajouterPartenaire">
-  <form enctype="multipart/form-data" id="ajouterArticle" method="POST" action="#">
-    <label>Image du partenaire :</label>
-    <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_SIZE; ?>" />
-    <input name="fichier" type="file" id="fichier_a_uploader" />
-    <label>Lien vers le site du partenaire : </label>
-    <input type="url" name="lien" value="http://">
-    <input type="submit" value="Valider">
-</form>
-</div>
-<?php } ?>
+    <div id="ajouterPartenaire">
+        <form enctype="multipart/form-data" id="ajouterArticle" method="POST" action="#">
+            <label>Image du partenaire :</label>
+            <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_SIZE; ?>" />
+            <input name="fichier" type="file" id="fichier_a_uploader" />
+
+            <label>Lien vers le site du partenaire : </label>
+            <input type="url" name="lien" value="http://">
+            <input type="submit" value="Valider">
+        </form>
+    </div>
+<?php
+} ?>

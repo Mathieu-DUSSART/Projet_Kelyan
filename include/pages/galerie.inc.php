@@ -164,7 +164,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
         if(!empty($contenuTab)){  //Si l'album n'est pas vide, on affiche l'album avec sa première photo
             $image = $managerImage->getImage($contenuTab[0]->getImgNum());
             if(!$image->getType()){ //S'il s'agit d'une image?>
-                <div class="album">
+                <div class="albumGalerie">
                     <span class="titreAlbum"><?php echo $group->getGroupNom();?></span>
                     <?php
                     echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
@@ -180,7 +180,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
                 </div>
             <?php
         }else{ //S'il s'agit d'une vidéo?>
-                <div class="album">
+                <div class="albumGalerie">
                     <span class="titreAlbum"><?php echo $group->getGroupNom();?></span>
                     <?php
                     echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><video src=\"" . $image->getSrc() . $image->getNom() . "\">" . $image->getDescription() . "</video></a>";
@@ -197,7 +197,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
             <?php
             }
         }elseif(isset($_SESSION["login"])){ //Si l'album est vide, on affiche l'album?>
-            <div class="album">
+            <div class="albumGalerie">
                 <span class="titreAlbum"><?php echo $group->getGroupNom();?></span>
                 <?php
                 echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><div class=\"albumVide\"></div></a>";
@@ -240,7 +240,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
         $image=$managerImage->getImage($contenu->getImgNum());
 
         if(!$image->getType()){?>
-            <div class="img">
+            <div class="imgGalerie">
                 <?php
                 echo "<a class=\"fancybox\" href=\"" . $image->getSrc() . $image->getNom() . "\" data-fancybox-group=\"gallery\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
                 if(isset($_SESSION["login"])){?>
@@ -255,7 +255,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
             </div>
         <?php
         }else{?>
-            <div class="img">
+            <div class="imgGalerie">
                 <?php
                 echo "<video controls src=\"" . $image->getSrc() . $image->getNom() . "\">" . $image->getDescription() . "</video>";
                 if(isset($_SESSION["login"])){?>

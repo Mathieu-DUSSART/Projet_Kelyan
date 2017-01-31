@@ -95,7 +95,7 @@ $(document).ready(function(){
 });
 
 $(function(){
-    $(".album").bind("mouseenter mouseleave", function(){
+    $(".albumGalerie").bind("mouseenter mouseleave", function(){
         $(".titreAlbum", this).fadeToggle(200).toggleClass("titreAlbumAfficher");
     });
 })
