@@ -68,6 +68,28 @@ class StatistiqueManager{
         }
     }
 
+    public function getStateParAnnee($annee){
+        $sql="SELECT sum(statistique) as nbStat FROM statistique WHERE year(statistique_date)=:annee";
+        $req=$this->db->prepare($sql);
+        $req->bindValue(":annee", $annee ,PDO::PARAM_STR);
+        $req->execute();
+        $res=$req->fetch(PDO::FETCH_OBJ);
+        if(isset($res->nbStat)){
+            return $res->nbStat;
+        }else{
+            return 0;
+        }
+    }
+
+
+    public function getNbAnneeStat(){
+        $sql="SELECT COUNT(t1.annee) as nbAnnee FROM (SELECT YEAR(statistique_date) as annee FROM statistique GROUP BY annee) t1 ";
+        $req=$this->db->prepare($sql);
+        $req->execute();
+        $res=$req->fetch(PDO::FETCH_OBJ);
+        return $res->nbAnnee;
+    }
+
 }
 
  ?>

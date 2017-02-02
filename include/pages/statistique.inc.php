@@ -45,20 +45,34 @@ $villeTab = $managerVille->getAllVille();?>
 if(isset($_POST["selectVillePoint"])){
     switch ($_POST["choixVue"]) {
         case 'mois':
-        echo "<h2> Vue par mois </h2>";
-        $Mois = array(
-            array("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"),
-            array("","","","","","","","","","","",""),
-        );
-        for ($i=1;$i<13;$i++){
-            $Mois[1][$i]=$managerStatistique->getStateParMois($i,2017);
-            echo $Mois[1][$i]." | ";
+            echo "<h2> Vue par mois </h2>";
+            $Mois = array(
+                array("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"),
+                array("","","","","","","","","","","",""),
+            );
+            $anneeActuel=2017;
+            echo "nombre anneé :";
+            echo $managerStatistique->getNbAnneeStat();
+            echo "<table>";
 
-        }
-        echo "<br>";
-        for ($i=0;$i<12;$i++){
-        print $Mois[0][$i]." | ";
-        }
+            for ($j=0;$j<$managerStatistique->getNbAnneeStat();$j++){
+                echo "<tr>";
+                echo "<td>";
+                echo $anneeActuel-$j;
+                echo "</td>";
+
+                for ($i=1;$i<13;$i++){
+                    echo "<td>";
+                    echo $managerStatistique->getStateParMois($i,$anneeActuel-$j);
+                    echo $Mois[0][$i-1];
+                    echo "</td>";
+
+                }
+                echo "</tr>";
+
+            }
+            echo "</table>";
+            echo "<br>";
         break;
 
         case 'total':
@@ -92,15 +106,23 @@ if(isset($_POST["selectVillePoint"])){
             break;
 
         case 'annee':
-            $AllPoint = array();
-            $AllPoint = $managerPointsDeCollecte->getPointByVille($_SESSION["Numville"]);
-            $ville=$managerVille->getVilNomByNum($_SESSION["Numville"])->getVilNom();
-            echo "<h2>".$ville."</h2>";
-            foreach ($AllPoint as $point) {
-                echo "<blockquote> <h3>". $point->getPointLieu() . " : </h3></blockquote>";
+        $anneeActuel=2017;
+        echo "<table>";
 
-            }
-            break;
+        for ($j=0;$j<$managerStatistique->getNbAnneeStat();$j++){
+            echo "<tr>";
+            echo "<td>";
+            echo "annee : ";
+            echo $anneeActuel-$j;
+            echo "<td>";
+            echo "<td>";
+            echo $managerStatistique->getStateParAnnee(($anneeActuel-$j));
+            echo "<td>";
+            echo "<tr>";
+        }
+        echo "</table>";
+
+        break;
 
 }
 }
