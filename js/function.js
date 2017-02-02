@@ -67,7 +67,7 @@ $(document).ready(function()
    // On cache la zone de texte
    $('#formulaireAccueil').hide();
    // toggle() lorsque le lien avec l'ID #toggler est cliqué
-   $('a#formulaireAccueilLien').click(function()
+   $('#boutonPlusFormulaireAjout').click(function()
    {
       $('#formulaireAccueil').toggle(400);
       return false;
@@ -78,7 +78,7 @@ $(document).ready(function(){
    // On cache la zone de texte
    $('#formulaireArticle').hide();
    // toggle() lorsque le lien avec l'ID #toggler est cliqué
-   $('#formulaireArticleLien').click(function(){
+   $('#boutonPlusFormulaireAjout').click(function(){
       $('#formulaireArticle').toggle(400);
       return false;
    });
@@ -88,7 +88,7 @@ $(document).ready(function(){
    // On cache la zone de texte
    $('#formulaireEvenement').hide();
    // toggle() lorsque le lien avec l'ID #toggler est cliqué
-   $('#formulaireEvenementLien').click(function(){
+   $('#boutonPlusFormulaireAjout').click(function(){
       $('#formulaireEvenement').toggle(400);
       return false;
    });
