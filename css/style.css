@@ -903,7 +903,7 @@ input{
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
 }
 
-.albumGalerie img:hover, .albumGalerie video:hover{
+.albumGalerie:hover img, .albumGalerie:hover video{
     filter: grayscale(100%);
 }
 
@@ -918,6 +918,7 @@ input{
     font-size: 120%;
     font-weight: bold;
     text-shadow: 0 0 7px rgba(0,0,0, 0.5);
+    cursor: pointer;
 }
 
 .titreAlbumAfficher{

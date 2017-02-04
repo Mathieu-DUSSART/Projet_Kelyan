@@ -165,9 +165,8 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
             $image = $managerImage->getImage($contenuTab[0]->getImgNum());
             if(!$image->getType()){ //S'il s'agit d'une image?>
                 <div class="albumGalerie">
-                    <span class="titreAlbum"><?php echo $group->getGroupNom();?></span>
                     <?php
-                    echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
+                    echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><span class=\"titreAlbum\">" . $group->getGroupNom() . "</span><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
                     if(isset($_SESSION["login"])){?>
                         <div class="supprimerImageVideo">
                             <form class="supprimer" method="POST" action="#">
@@ -181,9 +180,8 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
             <?php
         }else{ //S'il s'agit d'une vidéo?>
                 <div class="albumGalerie">
-                    <span class="titreAlbum"><?php echo $group->getGroupNom();?></span>
                     <?php
-                    echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><video src=\"" . $image->getSrc() . $image->getNom() . "\">" . $image->getDescription() . "</video></a>";
+                    echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><span class=\"titreAlbum\">" . $group->getGroupNom() . "</span><video src=\"" . $image->getSrc() . $image->getNom() . "\">" . $image->getDescription() . "</video></a>";
                     if(isset($_SESSION["login"])){?>
                         <div class="supprimerImageVideo">
                             <form class="supprimer" method="POST" action="#">
@@ -198,9 +196,8 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
             }
         }elseif(isset($_SESSION["login"])){ //Si l'album est vide, on affiche l'album?>
             <div class="albumGalerie">
-                <span class="titreAlbum"><?php echo $group->getGroupNom();?></span>
                 <?php
-                echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><div class=\"albumVide\"></div></a>";
+                echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><span class=\"titreAlbum\">" . $group->getGroupNom() . "</span><div class=\"albumVide\"></div></a>";
                 if(isset($_SESSION["login"])){?>
                     <div class="supprimerImageVideo">
                         <form class="supprimer" method="POST" action="#">
