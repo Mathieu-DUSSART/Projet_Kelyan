@@ -57,7 +57,7 @@ class EvenementManager{
 	*/
 	public function getAllEvenement(){
 		$tabObj=Array();
-		$sql="SELECT * FROM evenement ORDER BY event_date, event_heure";
+		$sql="SELECT * FROM evenement ORDER BY event_date desc, event_heure";
 		$req=$this->db->prepare($sql);
         $req->execute();
 		while($ligne=$req->fetch(PDO::FETCH_OBJ)){
