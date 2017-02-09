@@ -10,7 +10,7 @@ if(isset($_POST["selectVillePoint"] ) || isset($_SESSION["Numville"])){
         }
     }else{
         if (!isset($_SESSION["Numville"])){
-            $_SESSION["Numville"]=$_POST["selectVillePoint"];
+        //    $_SESSION["Numville"]=$_POST["selectVillePoint"];
         }
     }
 }
