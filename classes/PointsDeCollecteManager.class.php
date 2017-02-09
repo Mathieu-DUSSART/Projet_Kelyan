@@ -114,4 +114,15 @@ class PointsDeCollecteManager{
 		return $obj;
 
 }
+
+	public function getPointByStatistique($month,$annee){
+	  $sql="SELECT s.point_num FROM pointdecollecte p INNER JOIN statistique s ON s.point_num=p.point_num WHERE MONTH(statistique_date)=:mois and year(statistique_date)=:annee ";
+	  $req=$this->db->prepare($sql);
+	  $req->bindValue(":mois", $month ,PDO::PARAM_STR);
+	  $req->bindValue(":annee", $annee ,PDO::PARAM_STR);
+	  $req->execute();
+	  $res=$req->fetch(PDO::FETCH_OBJ);
+	  $obj=new PointsDeCollecte($res);
+	  return $obj;
+	}
 }
