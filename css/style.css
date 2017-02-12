@@ -1115,3 +1115,28 @@ input{
     width: 17vw;
     height: 25vh;
 }
+
+
+.lienInscrire{
+    text-decoration: none;
+    color: inherit;
+}
+.imgInscrire{
+    padding: 5px;
+    box-shadow: 1px 1px 3px black;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+.inscrire{
+    margin-top: 10px;
+    font-weight: bold;
+    display: block;
+}
+
+.divInscription{
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
