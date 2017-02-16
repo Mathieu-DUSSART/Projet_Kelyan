@@ -69,7 +69,7 @@ foreach ($managerArticle->getAllArticle(1) as $article) {
 if(isset($_SESSION["login"])){
     if(!isset($_POST["modifierArticle"]) || (isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]!=$article->getNum())){?>
       <div class="voletGestionArticle">
-          <form class="supprimerArticle" method="POST" action="#">
+          <form class="supprimer" method="POST" action="#">
               <input name="supprimerArticle" class="boutonSupprimer input_btn1" type="button" value="">
               <input class="num" name="numArticleASupprimer" type="hidden" value="<?php echo $article->getNum(); ?>">
           </form>

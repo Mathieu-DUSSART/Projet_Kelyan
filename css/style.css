@@ -215,7 +215,16 @@ footer{
 
 footer p{
     margin-bottom: 0;
-    padding:1vh 0 4vh 0;
+    padding:1vh 0 2vh 0;
+    text-align:center;
+    color:#F1F1F1;
+}
+
+#mentions{
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 2vh;
+    display: block;
     text-align:center;
     color:#F1F1F1;
 }
@@ -1114,4 +1123,29 @@ input{
     right:0;
     width: 17vw;
     height: 25vh;
+}
+
+
+.lienInscrire{
+    text-decoration: none;
+    color: inherit;
+}
+.imgInscrire{
+    padding: 5px;
+    box-shadow: 1px 1px 3px black;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+.inscrire{
+    margin-top: 10px;
+    font-weight: bold;
+    display: block;
+}
+
+.divInscription{
+    position: absolute;
+    top: 20px;
+    right: 10px;
 }

@@ -119,10 +119,14 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
 
             //Inscription d'une personne à event
             if(!isset($_SESSION["login"]) && ($next > $now)){ ?>
-                <label>S'incrire !</label>
-              <a href="" id="boutonInscrire<?php echo $evenement->getNum();?>">
-                  <img src="./image/icon/inscrire.png" alt="S'inscrire">
-              </a>
+                <div class="divInscription">
+                    <a href="" class="lienInscrire" id="boutonInscrire<?php echo $evenement->getNum();?>">
+                        <img class="imgInscrire" src="./image/icon/inscrire.png" alt="S'inscrire">
+                        <span class="inscrire">S'inscrire</span>
+                    </a>
+                </div>
+                <br>
+              <a href="" id="desinscrire">Se désinscrire</a>
               <form id="formInscription<?php echo $evenement->getNum()?>" method="POST" action="#">
                 <label>Nom :</label>
                 <input type="text" name="nomParticipant" required><br>
