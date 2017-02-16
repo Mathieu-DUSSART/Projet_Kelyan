@@ -14,21 +14,12 @@ function clickBoutonAjoutPage(){
   }
 }
 
-function ajouterLogoReseauxSociaux(){
-    var div = document.getElementById("divAjouterLogo");
-    if(div.style.display=="block"){
-        div.style.display="none";
-    }else{
-        div.style.display="block";
-    }
-}
-
-function clickBoutonAjoutLogoReseauxSociaux(){
-    var bouton = document.getElementById("boutonAjoutReseauSocial");
-     if(bouton != null){
-    bouton.addEventListener("click", ajouterLogoReseauxSociaux, false);
-  }
-}
+//Fonction pour afficher ou cacher la div d'ajout de logo de réseaux sociaux
+$(function(){
+    $("#boutonAjoutReseauSocial").on("click", function(){
+        $("#divAjouterLogo").toggle(500);
+    });
+});
 
 function afficherMenuDeroulant(){
     var div = document.getElementById("menuDeroulant");
@@ -285,8 +276,6 @@ window.onload=function(){
     //test();
     clickBoutonAfficherMenuDeroulant();
     fancyboxQuiMarche();
-    clickBoutonAjoutPage();
-    clickBoutonAjoutLogoReseauxSociaux();
     clickBoutonChangerCouleur();
     initEditText();
 }
