@@ -1,6 +1,7 @@
 <h1>Statistique</h1>
 
 <?php
+$anneeActuel=2017;
 //Listage des statistique par Point de Collecte
 $tabVille = $managerVille->getAllVille();
 if(isset($_POST["selectVillePoint"] ) || isset($_SESSION["Numville"])){
@@ -35,6 +36,7 @@ $villeTab = $managerVille->getAllVille();?>
                 <input type=radio name="choixVue" value="annee" checked>Année
                 <input type=radio name="choixVue" value="mois">Mois
                 <input type=radio name="choixVue" value="total">Total
+                <input type=radio name="choixVue" value="test">Test
                 <input type="submit" value="Valider">
             </form>
         </div>
@@ -106,7 +108,7 @@ if(isset($_POST["selectVillePoint"])){
             break;
 
         case 'annee':
-        $anneeActuel=2017;
+
         echo "<table>";
 
         for ($j=0;$j<$managerStatistique->getNbAnneeStat();$j++){
@@ -114,20 +116,111 @@ if(isset($_POST["selectVillePoint"])){
             echo "<td>";
             echo "annee : ";
             echo $anneeActuel-$j;
-            echo "<td>";
+            echo "</td>";
             echo "<td>";
             echo $managerStatistique->getStateParAnnee(($anneeActuel-$j));
-            echo "<td>";
-            echo "<tr>";
+            echo "</td>";
+            echo "</tr>";
         }
         echo "</table>";
 
         break;
 
-}
-}
+        case 'test':
+
+        $anneeActuel=2017;
+        echo "nombre anneé :";
+        echo $managerStatistique->getNbAnneeStat();
+                echo "<table>";
+                for ($j=0;$j<$managerStatistique->getNbAnneeStat();$j++){
+
+                    echo "<tr>";
+                    echo "<td>";
+                    echo "annee : ";
+                    echo $anneeActuel-$j;
+                    echo "</td>";
+                    echo "<td>";
+                    echo $managerStatistique->getStateParAnnee(($anneeActuel-$j));
+                    echo "</td>";
+                    echo "<td>";
+                    ?>
+                    <form class="modifierPointDeCollecte" method="POST" action="#">
+                      <input name="PlusDeDetail" type="submit" value="M">
+                      <input class="numModif" name="AnneePlusDetail" type="hidden" value="<?php echo $anneeActuel-$j;?>">
+                    </form>
+                    <?php
+                    echo "</td>";
+                    echo "</tr>";
+
+                }
+                echo "</table>";
+                break;
 
 
+}
+}
+    if (isset($_POST['PlusDeDetail'])){
+
+    $Mois = array(
+    array("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"),
+    array("","","","","","","","","","","",""),
+    );
+    echo "<table>";
+
+    for ($i=1;$i<13;$i++){
+        echo "<tr>";
+        echo "<td>";
+        echo $managerStatistique->getStateParMois($i,$_POST['AnneePlusDetail']);
+        echo $Mois[0][$i-1];
+        echo "</td>";
+        echo "<td>";
+        ?>
+        <form class="modifierPointDeCollecte" method="POST" action="#">
+          <input name="PlusDeDetailMois" type="submit" value="M">
+          <input class="numModif" name="AnneePointPlusDetail" type="hidden" value="<?php echo $_POST['AnneePlusDetail'];?>">
+           <input class="numModif" name="MoisPlusDetail" type="hidden" value="<?php echo $i;?>">
+        </form>
+        <?php
+        echo "</td>";
+        echo "</tr>";
+
+    }
+
+    echo "</table>";
+    echo "<br>";
+
+}
+
+    if (isset($_POST['PlusDeDetailMois'])){
+
+            $numPoint = $managerPointsDeCollecte->getPointByStatistique($_POST['MoisPlusDetail'],$_POST['AnneePointPlusDetail']);
+            $point = $managerPointsDeCollecte->getPointByNum($numPoint->getPointNum());
+            $ville=$managerPointsDeCollecte->getVilleParPointNum($point->getPointNum());
+            $villeNom=$managerVille->getVilNomByNum($ville->getPointVille());
+            echo "<h2>".$villeNom->getVilNom()."</h2>";
+            echo "<blockquote> <h3>". $point->getPointLieu() . " : </h3></blockquote>";
+            $tabStatistique=$managerStatistique->getStatistiqueByPoint($point->getPointNum());
+            foreach ($tabStatistique as $stat) {
+                $dateEvent=date_create($stat->getDate());
+                //Récupère le nom du mois en fonction de son numéro
+                $mois=getMois(date_format($dateEvent, 'm'));
+                //Récupère la date de l'évènement au format 23 Septembre 2016
+                $date = date_format($dateEvent, 'd ') . $mois . date_format($dateEvent, ' Y');
+                echo "<dd> <p> statistique du ".$date." nombre de bouchons récoltés : " . $stat->getStatistique() . "</p>";
+              ?>
+              <form class="supprimer" method="POST" action="#">
+                  <input class="boutonSuppr" name="supprimerStatistique" type="submit" value="X">
+                  <input class="num" name="numStatSupprimer" type="hidden" value="<?php echo $stat->getNum();?>">
+                </form>
+                <form class="modifierPointDeCollecte" method="POST" action="#">
+                  <input name="modifierPointDeCollecte" type="submit" value="M">
+                  <input class="numModif" name="numStatModifier" type="hidden" value="<?php echo $stat->getNum();?>">
+                  <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $stat->getPoint();?>">
+                </form>
+                <?php
+        }
+
+}
 if(isset($_SESSION["login"]) && empty($_POST["numStatModifier"]) ){
 
   if(empty($_POST['selectVilleAjout'])){

@@ -111,14 +111,18 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
             $now = date('Y-m-d');
             $next = $evenement->getDate();
 
-            // test
+            // Pour voir si la personne peut s'inscrire ou pas. Si event passé.
             $now = new DateTime( $now );
             $now = $now->format('Ymd');
             $next = new DateTime( $next );
             $next = $next->format('Ymd');
 
+            //Inscription d'une personne à event
             if(!isset($_SESSION["login"]) && ($next > $now)){ ?>
-              <a href="" id="boutonInscrire<?php echo $evenement->getNum();?>">s'inscrire</a>
+                <label>S'incrire !</label>
+              <a href="" id="boutonInscrire<?php echo $evenement->getNum();?>">
+                  <img src="./image/icon/inscrire.png" alt="S'inscrire">
+              </a>
               <form id="formInscription<?php echo $evenement->getNum()?>" method="POST" action="#">
                 <label>Nom :</label>
                 <input type="text" name="nomParticipant" required><br>
@@ -146,7 +150,9 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
           <?php
           if($managerPersonne->getNbPersonneInscrite($evenement->getNum()) > 0){
           ?>
-          <a href="" id="boutonInscrire<?php echo $evenement->getNum();?>">Voir les personnes inscrites</a>
+          <a href="" id="boutonInscrire<?php echo $evenement->getNum();?>">
+              <img src="./image/icon/voir.png" alt="Voir les personnes inscrites">
+          </a>
           <table id="tableInscris<?php echo $evenement->getNum();?>">
             <tr>
               <th>Prenom</th>

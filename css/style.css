@@ -220,7 +220,7 @@ footer p{
     color:#F1F1F1;
 }
 
-footer a{
+#connexion{
     position: absolute;
     right:3vw;
     bottom:5vh;
@@ -601,18 +601,18 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 }
 
 #divReseauxSociaux{
-    position: absolute;
-    top:0;
-    right:0;
-    width: 15vw;
-    height: 25vh;
+    display: inline-block;
+    vertical-align: top;
+    width: 25vw;
+    height: 130px;
+    margin-top: 3vh;
 }
 
 .divLogoReseauxSociaux{
     position: relative;
     display:inline-block;
     width: 25%;
-    margin-top: 8vh;
+    margin-top: 5%;
     margin-left: 5%;
 }
 
@@ -621,21 +621,20 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     z-index: 11;
     width: 100%;
 }
-
 .supprimerLogo{
     position: absolute;
     display: inline-block;
     vertical-align: top;
-    z-index: 10;
-    width:45%;
+    z-index: 7;
+    width:3vw;
     height:25px;
     top: 0;
-    right: 10%;
+    right: 2vw;
     transition: right 0.3s;
 }
 
 .divLogoReseauxSociaux:hover .supprimerLogo, .supprimerLogo:hover{
-    right: -40%;
+    right: -3vw;
 }
 
 .supprimerLogo form{
@@ -648,18 +647,18 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     display:block;
     width: 100%;
     height: 100%;
-    padding-left: 40%;
+    margin: 0;
     border:none;
-    background-color: red;
 }
+
 
 #divAjoutReseauxSociaux{
     position: relative;
-    display:inline-block;
+    display: inline-block;
     vertical-align: top;
     width: 25%;
     height: 25%;
-    margin-top: 8vh;
+    margin-top: 5vh;
     margin-left: 5%;
 }
 
@@ -1101,12 +1100,18 @@ input{
     color: grey;
 }
 
-footer form{
-    display :none;
+.divPluginReseauxSociaux{
+    display: inline-block;
+    width: 340px;
+    height: 130px;
+    margin-left: calc(50vw - 170px);
+    margin-top: 3vh;
 }
 
-.divPluginReseauxSociaux{
-    width: 340px;
-    margin: 0 auto;
-    padding-top: 3vh;
+#divInscrireNews{
+    position: absolute;
+    top:0;
+    right:0;
+    width: 17vw;
+    height: 25vh;
 }

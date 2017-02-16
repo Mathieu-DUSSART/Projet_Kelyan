@@ -90,6 +90,9 @@ class StatistiqueManager{
         return $res->nbAnnee;
     }
 
+
+
+
 }
 
  ?>
