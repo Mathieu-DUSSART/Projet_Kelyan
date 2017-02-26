@@ -1,41 +1,10 @@
-function ajouterPage(){
-    var div = document.getElementById("divAjoutPage");
-    if(div.style.display=="block"){
-        div.style.display="none";
-    }else{
-        div.style.display="block";
-    }
-}
-
-function clickBoutonAjoutPage(){
-    var bouton = document.getElementById("boutonAjoutPage");
-     if(bouton != null){
-    bouton.addEventListener("click", ajouterPage, false);
-  }
-}
-
 //Fonction pour afficher ou cacher la div d'ajout de logo de réseaux sociaux
 $(function(){
     $("#boutonAjoutReseauSocial").on("click", function(){
         $("#divAjouterLogo").toggle(500);
+        $("#boutonAjoutReseauSocial").toggleClass("bordureCarrée");
     });
 });
-
-function afficherMenuDeroulant(){
-    var div = document.getElementById("menuDeroulant");
-    if(div.style.display=="block"){
-        div.style.display="none";
-    }else{
-        div.style.display="block";
-    }
-}
-
-function clickBoutonAfficherMenuDeroulant(){
-    var bouton = document.getElementById("menu");
-     if(bouton != null){
-    bouton.addEventListener("click", afficherMenuDeroulant, false);
-  }
-}
 
 function changerCouleur(){
   var couleurBackGround = document.getElementById("couleurFontPage").value;
@@ -172,19 +141,6 @@ $(window).resize(function(){
     centrerNav();
 });
 
-function test(onglet){
-    //var onglet = $('nav ul li').get(n);
-    $("#menuDeroulant").append(onglet);
-    /*onglet.style.position = "absolute";
-    onglet.style.bottom = "-8vh";
-    onglet.style.right = "0";*/
-    /*$("#menuDeroulant").append(onglet);
-    var onglet2 = $('nav ul li').get(2);
-    $("#menuDeroulant").append(onglet2);
-    var onglet3 = $('nav ul li').get(3);
-    $("#menuDeroulant").append(onglet3);*/
-}
-
 //Fonction pour fixer la nav quand on scroll
 $(function(){
   $(window).scroll(function () {//Au scroll dans la fenetre on déclenche la fonction
@@ -273,8 +229,6 @@ $(document).ready(function() {
 });
 
 window.onload=function(){
-    //test();
-    clickBoutonAfficherMenuDeroulant();
     fancyboxQuiMarche();
     clickBoutonChangerCouleur();
     initEditText();

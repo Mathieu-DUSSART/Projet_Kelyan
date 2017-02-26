@@ -135,60 +135,6 @@ nav ul li a:hover{
     font-style: italic;
 }
 
-#ongletAjoutPage{
-    vertical-align: top;
-}
-
-#divAjoutPage{
-    display: none;
-    position: absolute;
-    width: 200px;
-    height: auto;
-    right: 0;
-    top: 0;
-    margin-top: 9vh;
-    border: 1px solid black;
-    background-color: blue;
-}
-
-#divAjoutPage input[type=text]{
-    width: 80%;
-    margin: 10px 10% 0 10%;
-}
-
-#divAjoutPage input[type=submit]{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding:10px 15px;
-    margin: 10px 0;
-}
-
-#boutonAjoutPage{
-    width: 5vw;
-    height: 100%;
-    border: none;
-    background-color: white;
-    background-image: url("../image/icon/boutonAjouter.png");
-    background-size: 50%;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-}
-
-.divSupprimerPage{
-    position: absolute;
-    top: 100%;
-    right: 0;
-}
-
-.divSupprimerPage input{
-    display:block;
-    width: 100%;
-    height: 100%;
-    border:none;
-}
-
 /* ---CORPS--- */
 #corps{
     padding-bottom:2vh;
@@ -211,6 +157,7 @@ footer{
     margin-top: 3vh;
     background-color:#2185C5;
     box-shadow: 0px -2px 5px black;
+    text-align: center;
 }
 
 footer p{
@@ -277,7 +224,9 @@ article p{
     vertical-align: top;
     z-index: 7;
     width:4vw;
+    max-width: 60px;
     height:8vw;
+    max-height: 120px;
     margin-top: 2vh;
     margin-left: -10vw;
     transition: margin 0.3s;
@@ -605,38 +554,41 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 #divReseauxSociaux{
     display: inline-block;
     vertical-align: top;
-    width: 25vw;
-    height: 130px;
-    margin-top: 3vh;
+    width: auto;
+    height: auto;
+    margin: 3vh auto 0 auto;
+    padding-right: 32px;
 }
 
 .divLogoReseauxSociaux{
     position: relative;
     display:inline-block;
-    width: 25%;
+    width: 96px;
     margin-top: 5%;
-    margin-left: 5%;
+    margin-left: 32px;
 }
 
 .logoReseauxSociaux{
     position: relative;
     z-index: 11;
     width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 .supprimerLogo{
     position: absolute;
     display: inline-block;
     vertical-align: top;
     z-index: 7;
-    width:3vw;
-    height:25px;
+    width:28px;
+    height:28px;
     top: 0;
     right: 2vw;
     transition: right 0.3s;
 }
 
 .divLogoReseauxSociaux:hover .supprimerLogo, .supprimerLogo:hover{
-    right: -3vw;
+    right: -28px;
 }
 
 .supprimerLogo form{
@@ -651,6 +603,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     height: 100%;
     margin: 0;
     border:none;
+    border-radius: 0 5px 5px 0;
 }
 
 
@@ -658,10 +611,10 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     position: relative;
     display: inline-block;
     vertical-align: top;
-    width: 25%;
-    height: 25%;
-    margin-top: 5vh;
-    margin-left: 5%;
+    width: 96px;
+    height: 96px;
+    margin-top: 5%;
+    margin-left: 32px;
 }
 
 #boutonAjoutReseauSocial{
@@ -669,15 +622,18 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     z-index: 51;
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
     cursor: pointer;
     outline: none;
+    transition: border-radius 0.5s;
 }
 
 #divAjouterLogo{
     display:none;
     position: absolute;
     z-index: 50;
-    bottom: 15px;
+    bottom: 96px;
     right:0;
     padding: 8px;
     color: inherit;
@@ -1169,4 +1125,8 @@ input[type=submit]{
     position: absolute;
     top: 20px;
     right: 10px;
+}
+
+.bordureCarrée{
+    border-radius: 0 0 5px 5px;
 }
