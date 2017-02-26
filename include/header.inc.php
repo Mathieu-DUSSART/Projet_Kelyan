@@ -95,4 +95,3 @@
 </div>
 
 <a href="index.php?page=1"><img id="logo" src="image/logo.jpeg" alt=""></a>
-<h1>Association Kélyan</h1>
