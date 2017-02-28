@@ -1,9 +1,16 @@
 header{
-    height: 25vw;
+    height: 24vw;
+    min-height: 100px;
+    max-height: 146px;
+    background-position: center center;
+    background-size:auto 100%;
 }
 
 #logo{
-    height: 25vw;
+    display: none;
+    height: 24vw;
+    min-height: 116px;
+    max-height: 165px;
 }
 
 header h1{
@@ -34,17 +41,151 @@ header h1{
 nav{
     position: fixed;
     height: auto;
+    max-height: none;
 }
 
 nav ul{
     height: auto;
     padding: 0;
+    padding-left: 5vw;
 }
 
 nav ul li{
     display: block;
 }
 
+nav ul li a{
+    padding-bottom: 5px;
+}
+
+nav ul li a p{
+    border: 1px solid black;
+}
+
+nav ul li a:hover p{
+    border-width: 0;
+}
+
+.active p{
+    padding-left: 5vw;
+    border-width: 0;
+}
+
+.page1{
+    border-width: 0;
+}
+.page2{
+    border-width: 0;
+}
+.page3{
+    border-width: 0;
+}
+.page4{
+    border-width: 0;
+}
+.page0{
+    border-width: 0;
+}
+
 .cacherNav{
     display: none;
+}
+
+#divInscrireNews{
+    position: absolute;
+    top:0;
+    right:0;
+    width: 50vw;
+    height: 24vw;
+    min-height: 100px;
+    max-height: 146px;
+}
+
+#boutonInscrireNews{
+    position: absolute;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    font: 13.3333px Arial;
+    right: 2vw;
+    bottom: -45px;
+    padding: 10px 0 10px 25px;
+    border: none;
+    border-radius: 5px;
+    background-image: url("../image/icon/newsletter2.png");
+    background-repeat: no-repeat;
+    background-position: left 2% center;
+    background-size: 15% 80%;
+    background-color: white;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5),
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+    box-sizing: content-box;
+    width: 160px;
+}
+
+article{
+    width:90vw;
+    margin-left: 5vw;
+}
+
+#formulaireAjoutArticle, #formulaireAjoutEvenement{
+    display: inline-block;
+    box-sizing: border-box;
+    background-color: #E5E5E5;
+    width: 90vw;
+    margin-top: 2vh;
+    margin-left: 5vw;
+    padding: 0 10px 10px 10px;
+    border-radius: 5px;
+    box-shadow:
+    0px 2px 2px 0px rgba(0, 0, 0, 0.5),
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+
+#formulaireAjoutArticle form, #formulaireAjoutEvenement form{
+    position:relative;
+    width: 100%;
+}
+#formulaireAjoutArticle form label, #formulaireAjoutEvenement form label{
+    position:absolute;
+    right:67%;
+    margin-top:15px;
+    display:none;
+}
+#formulaireAjoutArticle form input[type=text], #formulaireAjoutEvenement form input[type=text]{
+    display: block;
+    width: 75%;
+    margin: 15px auto;
+}
+
+#formulaireAjoutEvenement form input[type=text]:nth-of-type(1){
+    display: block;
+    width: 75%;
+    margin: 15px auto;
+ }
+
+
+
+.imgGalerie, .albumGalerie{
+    position: relative;
+    display: block;
+    width: 64vw;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4vw;
+}
+
+.albumGalerie img, .albumGalerie video, .imgGalerie img, .imgGalerie video{
+    position: relative;
+    z-index: 8;
+    width: 64vw;
+    height: 48vw;
+    border-radius:5px;
+    border:1px solid black;
+    background-color: #DDDDDD;
+    box-shadow:
+    0px 2px 2px 0px rgba(0, 0, 0, 0.5),
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
 }

@@ -115,8 +115,6 @@ function centrerNav(){
     if(largeur_fenetre > "1000"){
         var paddingGauche = largeurNav - sommeLargeur;
         $("nav ul").css( "padding-left", paddingGauche/2 );
-    }else{
-        $("nav ul").css( "padding-left", "0");
     }
 }
 
