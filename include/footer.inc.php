@@ -2,7 +2,7 @@
 <div id="divReseauxSociaux">
     <?php
     //Récupère tous les logos des réseaux sociaux
-    foreach ($managerImage->getAllImage("/Projet_Kelyan/image/reseaux_sociaux/") as $image) { ?>
+    foreach ($managerImage->getAllImage("image/reseaux_sociaux/") as $image) { ?>
       <div class="divLogoReseauxSociaux">
           <?php
           echo "<a href=\"" . $image->getLien() . "\"><img class=\"logoReseauxSociaux\" src=\"" . $image->getSrc() . $image->getNom() . "\" alt=\"\"></a>";

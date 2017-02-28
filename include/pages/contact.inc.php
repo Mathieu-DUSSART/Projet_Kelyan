@@ -29,7 +29,7 @@ if(!empty($_POST)){
                      if(move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET_PARTENAIRE.$nomImage))
                      {
                          $tabImg=Array();
-                         $tabImg["img_src"]="/Projet_Kelyan/image/partenaire/";
+                         $tabImg["img_src"]="image/partenaire/";
                          $tabImg["img_nom"]=$nomImage;
                          $tabImg["img_description"]=null;
                          $tabImg["img_lien"]=$_POST["lien"];
@@ -100,7 +100,7 @@ if(isset($_POST["numImageASupprimer"])){
 
 <?php
 //Affiche les logos des partenaires
-foreach ($managerImage->getAllImage("/Projet_Kelyan/image/partenaire/") as $image) { ?>
+foreach ($managerImage->getAllImage("image/partenaire/") as $image) { ?>
   <div class="imgPartenaire">
   <?php  echo "<a href=\"" . $image->getLien() . "\"><img src=\"" . $image->getSrc() . $image->getNom() . "\" alt=\"\"></a>";
     if(isset($_SESSION["login"])){ ?>
