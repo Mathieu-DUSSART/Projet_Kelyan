@@ -26,11 +26,11 @@
 
         <meta name="viewport" content="width=device-width" />
         <!-- Import JQuery-->
-        <script src="/Projet_Kelyan/js/jquery-3.1.1.min.js"></script>
+        <script src="js/jquery-3.1.1.min.js"></script>
 
         <!-- Import JQueryUI-->
-        <script src="/Projet_Kelyan/js/JQueryUI/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="/Projet_Kelyan/js/JQueryUI/jquery-ui.min.css">
+        <script src="js/JQueryUI/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="js/JQueryUI/jquery-ui.min.css">
 
         <script src='tinymce/js/tinymce/tinymce.min.js'></script>
 
