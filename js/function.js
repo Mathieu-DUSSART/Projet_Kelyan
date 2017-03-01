@@ -56,7 +56,10 @@ $(document).ready(function(){
 
 $(function(){
     $(".albumGalerie").bind("mouseenter mouseleave", function(){
-        $(".titreAlbum", this).fadeToggle(200).toggleClass("titreAlbumAfficher");
+        if($(window).width() > "1000"){
+            $(".titreAlbum", this).fadeToggle(200).toggleClass("titreAlbumAfficher");
+        }
+
     });
 })
 

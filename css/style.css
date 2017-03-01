@@ -205,6 +205,12 @@ article{
     box-sizing: border-box;
 }
 
+article p img{
+    max-width: 95%;
+    height: auto;
+}
+
+
 article h1{
     display:inline-block;
     /*font-family: Aclonica;*/

@@ -128,6 +128,11 @@ article{
     margin-left: 5vw;
 }
 
+article p img{
+    max-width: 95%;
+    height: auto;
+}
+
 #formulaireAjoutArticle, #formulaireAjoutEvenement{
     display: inline-block;
     box-sizing: border-box;
@@ -172,9 +177,10 @@ article{
     display: block;
     width: 64vw;
     height: auto;
+    margin-top: 4vw;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 4vw;
+    margin-bottom: 8vh;
 }
 
 .albumGalerie img, .albumGalerie video, .imgGalerie img, .imgGalerie video{
@@ -185,6 +191,22 @@ article{
     border-radius:5px;
     border:1px solid black;
     background-color: #DDDDDD;
+    box-shadow:
+    0px 2px 2px 0px rgba(0, 0, 0, 0.5),
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+.titreAlbum{
+    position: absolute;
+    z-index: 7;
+    display: block;
+    top: auto;
+    bottom: 99%;
+    padding: 1% 0 2% 0;
+    color: #3E454C;
+    border: 1px solid #E5E5E5;
+    border-radius: 15px 15px 0 0;
+    background-color: #E5E5E5;
     box-shadow:
     0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
