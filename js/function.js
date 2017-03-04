@@ -133,25 +133,27 @@ function calculNav(){
 }
 
 $(function(){
-    calculNav();
-    centrerNav();
+    /*calculNav();
+    centrerNav();*/
 });
 
 $(window).resize(function(){
-    calculNav();
-    centrerNav();
+    /*calculNav();
+    centrerNav();*/
 });
 
 //Fonction pour fixer la nav quand on scroll
 $(function(){
   $(window).scroll(function () {//Au scroll dans la fenetre on déclenche la fonction
-     if ($(this).scrollTop() > $('header').height()) { //si on a défilé de plus de 150px du haut vers le bas
-         $('nav').addClass("fixNavigation"); //on ajoute la classe "fixNavigation" à <div id="navigation">
-         $('#corps').addClass("fixNavigationHeader");
-     } else {
-         $('nav').removeClass("fixNavigation");//sinon on retire la classe "fixNavigation" à <div id="navigation">
-         $('#corps').removeClass("fixNavigationHeader");
-     }
+        if($(window).width() > "1000"){
+            if ($(this).scrollTop() > $('header').height()) { //si on a défilé de plus de 150px du haut vers le bas
+                $('nav').addClass("fixNavigation"); //on ajoute la classe "fixNavigation" à <div id="navigation">
+                $('#corps').addClass("fixNavigationHeader");
+            } else {
+                $('nav').removeClass("fixNavigation");//sinon on retire la classe "fixNavigation" à <div id="navigation">
+                $('#corps').removeClass("fixNavigationHeader");
+            }
+        }
   });
 });
 
