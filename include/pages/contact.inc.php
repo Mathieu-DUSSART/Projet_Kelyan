@@ -83,16 +83,16 @@ if(isset($_POST["numImageASupprimer"])){
 <form id="formContact" method="POST" action="traitement_formulaire.php">
     <label>Nom:</label>
     <input  type="text" name="nomContact" required>
-    <br>
+
     <label>Email:</label>
     <input  type="email" name="mailContact" required>
-    <br>
+
     <label>Sujet:</label>
     <input  type="text" name="sujetContact" required>
-    <br>
+
     <label>Message:</label>
     <textarea name="messageContact" rows="8" cols="45" placeholder="Écrivez votre message ici..." required></textarea>
-    <br>
+
     <input name="envoi" type="submit" value="Envoyer">
 </form>
 

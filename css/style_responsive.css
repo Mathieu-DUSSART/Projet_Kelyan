@@ -207,13 +207,56 @@ article p img{
     z-index: 7;
     display: block;
     top: auto;
-    bottom: 99%;
+    bottom: 100%;
     padding: 1% 0 2% 0;
     color: #3E454C;
     border: 1px solid #E5E5E5;
     border-radius: 15px 15px 0 0;
     background-color: #E5E5E5;
+    text-shadow: none;
     box-shadow:
     0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+#ajouterAlbum{
+    position: relative;
+    display: inline-block;
+    width: 64vw;
+    height: auto;
+    margin: 0 auto 4vw 18vw;
+    box-sizing: border-box;
+}
+
+#ajouterAlbum input[type=text]{
+    width: 50%;
+    margin: 5% auto 15% auto;
+}
+
+/* ---FORMULAIRE CONTACT--- */
+#formContact{
+    width: 100vw;
+}
+
+/* ---PARTENAIRE CONTACT--- */
+.imgPartenaire{
+    position: relative;
+    display: block;
+    width: 60vw;
+    height: auto;
+    margin: 0 auto 4vw auto;
+}
+
+.imgPartenaire img{
+    position: relative;
+    z-index: 8;
+    width: 100%;
+    border-radius:5px;
+    /*border: 1px solid black;*/
+}
+
+/* ---FORMULAIRE CONNEXION--- */
+#formConnexion{
+    width: 80vw;
+    max-width: 500px;
 }
