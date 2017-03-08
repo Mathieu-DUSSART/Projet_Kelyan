@@ -56,31 +56,33 @@ foreach ($managerArticle->getAllArticle(1) as $article) {
       </div>
   <?php
   }else{?>
-    <article>
+      <div class="divArticle">
+          <article>
+              <?php
+              echo "<h1><span class=\"icon" . $article->getNum() ."\"></span>" . $article->getTitre() . "</h1>\n";
+              echo "<p>" . $article->getTexte() . "</p>\n";
+              ?>
+        </article>
         <?php
-        echo "<h1><span class=\"icon" . $article->getNum() ."\"></span>" . $article->getTitre() . "</h1>\n";
-        echo "<p>" . $article->getTexte() . "</p>\n";
+        if(isset($_SESSION["login"])){
+            if(!isset($_POST["modifierArticle"]) || (isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]!=$article->getNum())){?>
+                <div class="voletGestionArticle">
+                    <form class="supprimer" method="POST" action="#">
+                        <input name="supprimerArticle" class="boutonSupprimer input_btn1" type="button" value="">
+                        <input class="num" name="numArticleASupprimer" type="hidden" value="<?php echo $article->getNum(); ?>">
+                    </form>
+                    <form class="modifierArticle" method="POST" action="#">
+                        <input name="modifierArticle" class="boutonModifier input_btn2" type="submit" value="" >
+                        <input name="numArticleAModifier" type="hidden" value="<?php echo $article->getNum(); ?>">
+                    </form>
+                </div>
+                <?php
+            }
+        }
         ?>
-    </article>
+    </div>
 <?php
-}
-
-
-if(isset($_SESSION["login"])){
-    if(!isset($_POST["modifierArticle"]) || (isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]!=$article->getNum())){?>
-      <div class="voletGestionArticle">
-          <form class="supprimer" method="POST" action="#">
-              <input name="supprimerArticle" class="boutonSupprimer input_btn1" type="button" value="">
-              <input class="num" name="numArticleASupprimer" type="hidden" value="<?php echo $article->getNum(); ?>">
-          </form>
-          <form class="modifierArticle" method="POST" action="#">
-              <input name="modifierArticle" class="boutonModifier input_btn2" type="submit" value="" >
-              <input name="numArticleAModifier" type="hidden" value="<?php echo $article->getNum(); ?>">
-          </form>
-      </div>
-    <?php
     }
-}
 }
 
 if(isset($_SESSION["login"])){?>
