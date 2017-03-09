@@ -176,11 +176,15 @@ footer p{
 }
 
 #mentions{
+    display: block;
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 2vh;
-    display: block;
     text-align:center;
+}
+
+#mentions a{
+    text-decoration: none;
     color:#F1F1F1;
 }
 
@@ -222,9 +226,9 @@ article p img{
 article h1{
     display:inline-block;
     /*font-family: Aclonica;*/
-    width:auto;
-    margin-top:5px;
-    padding-top:5px;
+    width: auto;
+    margin-top: 5px;
+    padding-top: 5px;
     font-size: 170%;
     color:#1b6fa3;
     /*color: #3D444B;*/
@@ -236,6 +240,7 @@ article p{
 
 .dateArticle{
     float: right;
+    margin: 1em 0;
 }
 
 .voletGestionArticle{
@@ -834,6 +839,12 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 
 }
 
+.boutonModifier, .boutonSupprimer{
+    text-align: left;
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0);
+}
+
 .supprimerPointDeCollecte .boutonSupprimer, .modifierPointDeCollecte .boutonModifier{
     width: 40px;
     height: 40px;
@@ -1084,7 +1095,8 @@ input[type=submit]{
     width: 92vw;
     margin-left: auto;
     margin-right: auto;
-    background-color: #6FC0F4 ;
+    padding-top: 2%;
+    background-color: #E5E5E5 ;
     border-radius: 5px;
     box-shadow:
     0px 2px 2px 0px rgba(0, 0, 0, 0.5),
@@ -1120,14 +1132,6 @@ input[type=submit]{
     width:75%;
     background-color: #E5E5E5;
     color: grey;
-}
-
-.divPluginReseauxSociaux{
-    display: inline-block;
-    width: 340px;
-    height: 130px;
-    margin-left: calc(50vw - 170px);
-    margin-top: 3vh;
 }
 
 #divInscrireNews{

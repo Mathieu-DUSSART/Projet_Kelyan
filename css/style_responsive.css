@@ -39,7 +39,7 @@ header h1{
 }
 
 nav{
-    position: fixed;
+    position: relative;
     height: auto;
     max-height: none;
     text-align: left;
@@ -125,8 +125,15 @@ nav ul li a:hover p{
     width: 160px;
 }
 
+.divArticle{
+    display: block;
+    margin-top: calc(8vw + 3vh);
+}
+
 article{
-    width: 85vw;
+    width: 90vw;
+    margin-left: 5vw;
+    box-sizing: border-box;
 }
 
 article p img{
@@ -134,22 +141,84 @@ article p img{
     height: auto;
 }
 
+.dateArticle{
+    display: block;
+    font-style: italic;
+    float: none;
+    margin-top: -15px;
+    margin-bottom: 5%;
+}
+
 .voletGestionArticle{
-    right: 6vw;
-    box-sizing: border-box;
-    transition: right 0.3s;
-    /*box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5),
-                0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;*/
+    z-index: 10;
+    width: 90vw;
+    max-width: none;
+    height: 8vw;
+    min-height: 40px;
+    max-height: none;
+    top: -8vw;
+    left: 5vw;
+    border-radius: 5px 5px 0 0;
+    transition: left 0.3s;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5), 0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
 }
 
 article:hover + .voletGestionArticle, .voletGestionArticle:hover{
-    right: 1vw;
+    left: 5vw;
 }
+
+.voletGestionArticle form{
+    width: calc(50% - 0.5px);
+    height: 100%;
+    margin: 0;
+}
+
+.voletGestionArticle form:nth-of-type(1){
+    float: right;
+    border-left: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.voletGestionArticle form:nth-of-type(2){
+    float: left;
+}
+
+.voletGestionArticle input{
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+
+    background-color: #E5E5E5;
+}
+
+.boutonModifier, .boutonSupprimer{
+    text-align: left;
+    overflow: hidden;
+    padding-left: 20%;
+    background-size: 14%;
+    background-position: center left 5%;
+    box-shadow: none;
+    color: inherit;
+}
+
+.input_btn1, .input_btn2{
+    border-radius: 0;
+}
+
+.boutonModifier{
+    border-radius: 5px 0 0 0;
+}
+
+.boutonSupprimer{
+    border-radius: 0 5px 0 0;
+}
+
+
 
 #formulaireAjoutArticle, #formulaireAjoutEvenement{
-    width: 85vw;
+    width: 90vw;
+    margin-left: 5vw;
+    box-sizing: border-box;
 }
-
 
 #formulaireAjoutArticle form, #formulaireAjoutEvenement form{
     position:relative;
@@ -157,7 +226,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 }
 #formulaireAjoutArticle form label, #formulaireAjoutEvenement form label{
     position:absolute;
-    right:67%;
+    right: 67%;
     margin-top:15px;
     display:none;
 }
@@ -311,6 +380,42 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     width: 100%;
     border-radius:5px;
     /*border: 1px solid black;*/
+}
+
+/* ---Forulaire d'ajout de partenaire--- */
+#ajouterPartenaire{
+    width: 60vw;
+}
+
+#ajouterPartenaire form{
+    width: 100%;
+    height: 100%;
+}
+
+#ajouterPartenaire label{
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    margin:2% 0 4% 0;
+    text-decoration: underline;
+}
+
+#ajouterPartenaire input[type=submit]{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px 15px;
+    background-color: #EC7F66;
+}
+#ajouterPartenaire input[type=url]{
+    margin-left: 25%;
+    width:50%;
+}
+#ajouterPartenaire input[type=file]{
+    margin-left: 12.5%;
+    width:75%;
+    background-color: #E5E5E5;
+    color: grey;
 }
 
 /* ---FORMULAIRE CONNEXION--- */

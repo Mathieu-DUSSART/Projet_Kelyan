@@ -38,7 +38,7 @@
 </div>
 
 <p>© IUT du Limousin  DUT Informatique année 2016-2017</p>
-<a id="mentions" href="./include/pages/mention.html">Mentions légales</a>
+<span id="mentions"><a href="./include/pages/mention.html">Mentions légales</a></span>
 
 <?php
 if(isset($_SESSION["login"])){?>

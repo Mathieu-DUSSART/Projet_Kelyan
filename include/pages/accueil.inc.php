@@ -68,11 +68,11 @@ foreach ($managerArticle->getAllArticle(1) as $article) {
             if(!isset($_POST["modifierArticle"]) || (isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]!=$article->getNum())){?>
                 <div class="voletGestionArticle">
                     <form class="supprimer" method="POST" action="#">
-                        <input name="supprimerArticle" class="boutonSupprimer input_btn1" type="button" value="">
+                        <input name="supprimerArticle" class="boutonSupprimer input_btn1" type="button" value="Supprimer">
                         <input class="num" name="numArticleASupprimer" type="hidden" value="<?php echo $article->getNum(); ?>">
                     </form>
                     <form class="modifierArticle" method="POST" action="#">
-                        <input name="modifierArticle" class="boutonModifier input_btn2" type="submit" value="" >
+                        <input name="modifierArticle" class="boutonModifier input_btn2" type="submit" value="Modifier" >
                         <input name="numArticleAModifier" type="hidden" value="<?php echo $article->getNum(); ?>">
                     </form>
                 </div>
