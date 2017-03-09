@@ -222,16 +222,73 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 
 #ajouterAlbum{
     position: relative;
-    display: inline-block;
+    display: block;
     width: 64vw;
-    height: auto;
-    margin: 0 auto 4vw 18vw;
+    min-height: 200px;
+    margin: 0 auto 4vw auto;
+    padding-top: 5%;
     box-sizing: border-box;
 }
 
 #ajouterAlbum input[type=text]{
     width: 50%;
-    margin: 5% auto 15% auto;
+    margin: 0 auto;
+}
+
+#ajouterImageDansAlbum{
+    display: block;
+    width: 64vw;
+    min-height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #E5E5E5;
+    border-radius:5px;
+    box-shadow:
+    0px 2px 2px 0px rgba(0, 0, 0, 0.5),
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+#ajouterImageDansAlbum form{
+    width: 100%;
+    height: 100%;
+}
+
+#ajouterImageDansAlbum label:not(#boutonParcourirFichier){
+    display: block;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-decoration: underline;
+}
+
+#ajouterImageDansAlbum input{
+    background-color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#ajouterImageDansAlbum input[type=submit]{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px 15px;
+    margin-top: 5%;
+}
+
+#ajouterImageDansAlbum input[type=file]{
+    display: none;
+}
+
+#ajouterImageDansAlbum input[type=button]{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#ajouterImageDansAlbum p{
+    width: 90%;
+    height: 40px;
+    margin-left: 5%;
 }
 
 /* ---FORMULAIRE CONTACT--- */
