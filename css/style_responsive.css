@@ -23,14 +23,20 @@ header h1{
 }
 
 #boutonMenu{
+    position: absolute;
+    left: 4vw;
+    top: 50%;
     width: 7vh;
+    /*max-width: 49px;*/
     height: 7vh;
+    /*max-height: 49px;*/
     border: none;
     border-radius: 5px;
     /*box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;*/
-    margin-top: 1.5vh;
-    margin-left: 4vw;
+    margin-top: -3.5vh;
+    margin-bottom: 0;
+    /*margin-left: 4vw;*/
     background-color: white;
     background-image: url("../image/icon/menu.png");
     background-repeat: no-repeat;
@@ -190,7 +196,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     background-color: #E5E5E5;
 }
 
-.boutonModifier, .boutonSupprimer{
+.voletGestionArticle .boutonModifier, .voletGestionArticle .boutonSupprimer{
     text-align: left;
     overflow: hidden;
     padding-left: 20%;
@@ -249,10 +255,19 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     display: block;
     width: 64vw;
     height: auto;
-    margin-top: 4vw;
+    margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 8vh;
+    margin-bottom: 60px;
+}
+
+.imgGalerie{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.albumGalerie{
+    margin-top: 40px;
+    margin-bottom: 60px;
 }
 
 .albumGalerie img, .albumGalerie video, .imgGalerie img, .imgGalerie video{
@@ -272,6 +287,10 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     border-top: 0;
 }
 
+.albumGalerie:hover img, .albumGalerie:hover video{
+    filter: none;
+}
+
 .titreAlbum{
     position: absolute;
     z-index: 7;
@@ -287,6 +306,50 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     box-shadow:
     0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+.supprimerImageVideo{
+    position: absolute;
+    display: inline-block;
+    vertical-align: top;
+    z-index: 7;
+    width:12vw;
+    height: 12vw;
+    top: 0;
+    right: -12vw;
+    border-radius:  0 5px 5px 0;
+    transition: right 0.3s;
+    background-color: #E5E5E5;
+    box-shadow:
+    0px 2px 2px 0px rgba(0, 0, 0, 0.5),
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+.imgGalerie:hover .supprimerImageVideo, .albumGalerie:hover .supprimerImageVideo, .supprimerImageVideo:hover, .imgPartenaire:hover .supprimerImageVideo{
+    right: -12vw;
+}
+
+.supprimerImageVideo form{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.supprimerImageVideo input{
+    display:block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border:none;
+    border-radius: 0 20% 20% 0;
+}
+
+.supprimerImageVideo .boutonModifier, .supprimerImageVideo .boutonSupprimer{
+    padding-left: 20%;
+    background-color: inherit;
+    background-size: 85%;
+    background-position: center center;
+    box-shadow: none;
 }
 
 #ajouterAlbum{
@@ -384,7 +447,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 
 /* ---Forulaire d'ajout de partenaire--- */
 #ajouterPartenaire{
-    width: 60vw;
+    width: 80vw;
 }
 
 #ajouterPartenaire form{
