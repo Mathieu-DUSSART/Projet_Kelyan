@@ -19,27 +19,18 @@
     $managerPersonne = new PersonneManager($pdo);
     ?>
     <head>
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-
         <title>Association Kelyan</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" media="only screen and (max-width: 1000px)" href="css/style_responsive.css" type="text/css" />
 
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
         <!-- Import JQuery-->
-        <script src="/Projet_Kelyan/js/jquery-3.1.1.min.js"></script>
+        <script src="js/jquery-3.1.1.min.js"></script>
 
         <!-- Import JQueryUI-->
-        <script src="/Projet_Kelyan/js/JQueryUI/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="/Projet_Kelyan/js/JQueryUI/jquery-ui.min.css">
+        <script src="js/JQueryUI/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="js/JQueryUI/jquery-ui.min.css">
 
         <script src='tinymce/js/tinymce/tinymce.min.js'></script>
 

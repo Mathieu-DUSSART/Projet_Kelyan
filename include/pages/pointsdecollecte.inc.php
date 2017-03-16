@@ -98,17 +98,17 @@ if(isset($_POST["selectVillePoint"])){
             if(!isset($_POST["modifierPointDeCollecte"]) || (isset($_POST["modifierPointDeCollecte"]) && $_POST["numPointDeCollecteAModifier"]!=$point->getPointNum())){?>
                 <div class="voletGestionPointdeCollecte">
                     <td>
-                    <form class="supprimerPointDeCollecte supprimer" method="POST" action="#">
-                        <input name="supprimerArticle" class="boutonSupprimer " type="button" value="">
-                        <input class="num" name="numPointDeCollecteASupprimer" type="hidden" value="<?php echo $point->getPointNum(); ?>">
-                    </form>
-                </td>
-                <td>
-                    <form class="modifierPointDeCollecte" method="POST" action="#">
-                        <input name="modifierArticle" class="boutonModifier " type="submit" value="" >
-                        <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $point->getPointNum() ;?>">
-                    </form>
-                </td>
+                        <form class="modifierPointDeCollecte" method="POST" action="#">
+                            <input name="modifierArticle" class="boutonModifier " type="submit" value="" >
+                            <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $point->getPointNum() ;?>">
+                        </form>
+                    </td>
+                    <td>
+                        <form class="supprimerPointDeCollecte supprimer" method="POST" action="#">
+                            <input name="supprimerArticle" class="boutonSupprimer " type="button" value="">
+                            <input class="num" name="numPointDeCollecteASupprimer" type="hidden" value="<?php echo $point->getPointNum(); ?>">
+                        </form>
+                    </td>
                 </div>
                 <?php
                 // On prépare l'adresse à rechercher
@@ -120,7 +120,7 @@ if(isset($_POST["selectVillePoint"])){
                 // Pour cette exemple, je vais considérer que ma chaîne n'est pas
                 // en UTF8, le géocoder ne fonctionnant qu'avec du texte en UTF8
                 $url_address = utf8_encode($address);
-   
+
                 // Penser a encoder votre adresse
                 $url_address = urlencode($url_address);
 

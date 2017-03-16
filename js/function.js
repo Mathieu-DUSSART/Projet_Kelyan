@@ -1,50 +1,26 @@
-function ajouterPage(){
-    var div = document.getElementById("divAjoutPage");
-    if(div.style.display=="block"){
-        div.style.display="none";
+//Fonction pour afficher ou cacher la div d'ajout de logo de réseaux sociaux
+$(function(){
+    $("#boutonAjoutReseauSocial").on("click", function(){
+        $("#divAjouterLogo").toggle(500);
+        $("#boutonAjoutReseauSocial").toggleClass("bordureCarrée");
+    });
+});
+
+//Fonction permettant de changer le margin-top des articles en fonction de la présence des boutons supprimer/modifier (responsive)
+function marginTopArticle(){
+    if($(window).width() < "1000"){
+        if($(".voletGestionArticle").length != 0){
+            $('.divArticle').css('margin-top', 'calc(8vw + 3vh)');
+        }else{
+            $('.divArticle').css('margin-top', '2vh');
+        }
     }else{
-        div.style.display="block";
+        $('.divArticle').css('margin-top', '2vh');
     }
 }
+$(marginTopArticle);
+$(window).resize(marginTopArticle);
 
-function clickBoutonAjoutPage(){
-    var bouton = document.getElementById("boutonAjoutPage");
-     if(bouton != null){
-    bouton.addEventListener("click", ajouterPage, false);
-  }
-}
-
-function ajouterLogoReseauxSociaux(){
-    var div = document.getElementById("divAjouterLogo");
-    if(div.style.display=="block"){
-        div.style.display="none";
-    }else{
-        div.style.display="block";
-    }
-}
-
-function clickBoutonAjoutLogoReseauxSociaux(){
-    var bouton = document.getElementById("boutonAjoutReseauSocial");
-     if(bouton != null){
-    bouton.addEventListener("click", ajouterLogoReseauxSociaux, false);
-  }
-}
-
-function afficherMenuDeroulant(){
-    var div = document.getElementById("menuDeroulant");
-    if(div.style.display=="block"){
-        div.style.display="none";
-    }else{
-        div.style.display="block";
-    }
-}
-
-function clickBoutonAfficherMenuDeroulant(){
-    var bouton = document.getElementById("menu");
-     if(bouton != null){
-    bouton.addEventListener("click", afficherMenuDeroulant, false);
-  }
-}
 
 function changerCouleur(){
   var couleurBackGround = document.getElementById("couleurFontPage").value;
@@ -96,7 +72,10 @@ $(document).ready(function(){
 
 $(function(){
     $(".albumGalerie").bind("mouseenter mouseleave", function(){
-        $(".titreAlbum", this).fadeToggle(200).toggleClass("titreAlbumAfficher");
+        if($(window).width() > "1000"){
+            $(".titreAlbum", this).fadeToggle(200).toggleClass("titreAlbumAfficher");
+        }
+
     });
 })
 
@@ -147,7 +126,7 @@ function initEditText(){
   });
 
 }
-
+/*
 //Fonction qui centre les onglets de la barre de navigation
 function centrerNav(){
     var largeur_fenetre = $(window).width();
@@ -155,8 +134,6 @@ function centrerNav(){
     if(largeur_fenetre > "1000"){
         var paddingGauche = largeurNav - sommeLargeur;
         $("nav ul").css( "padding-left", paddingGauche/2 );
-    }else{
-        $("nav ul").css( "padding-left", "0");
     }
 }
 
@@ -169,41 +146,32 @@ function calculNav(){
     $("nav li").each(function(){
         sommeLargeur = sommeLargeur + $(this).width();
     });
-}
+}*/
 
 $(function(){
-    calculNav();
-    centrerNav();
+    /*calculNav();
+    centrerNav();*/
 });
 
 $(window).resize(function(){
-    calculNav();
-    centrerNav();
+    /*calculNav();
+    centrerNav();*/
 });
-
-function test(onglet){
-    //var onglet = $('nav ul li').get(n);
-    $("#menuDeroulant").append(onglet);
-    /*onglet.style.position = "absolute";
-    onglet.style.bottom = "-8vh";
-    onglet.style.right = "0";*/
-    /*$("#menuDeroulant").append(onglet);
-    var onglet2 = $('nav ul li').get(2);
-    $("#menuDeroulant").append(onglet2);
-    var onglet3 = $('nav ul li').get(3);
-    $("#menuDeroulant").append(onglet3);*/
-}
 
 //Fonction pour fixer la nav quand on scroll
 $(function(){
   $(window).scroll(function () {//Au scroll dans la fenetre on déclenche la fonction
-     if ($(this).scrollTop() > $('header').height()) { //si on a défilé de plus de 150px du haut vers le bas
-         $('nav').addClass("fixNavigation"); //on ajoute la classe "fixNavigation" à <div id="navigation">
-         $('#corps').addClass("fixNavigationHeader");
-     } else {
-         $('nav').removeClass("fixNavigation");//sinon on retire la classe "fixNavigation" à <div id="navigation">
-         $('#corps').removeClass("fixNavigationHeader");
-     }
+        if($(window).width() > "1000"){
+            if ($(this).scrollTop() > $('header').height()) { //si on a défilé de plus de 150px du haut vers le bas
+                $('nav').addClass("fixNavigation"); //on ajoute la classe "fixNavigation" à <div id="navigation">
+                //$('#corps').addClass("fixNavigationHeader");
+                $('#corps').css("paddingTop", $('nav').height());
+            } else {
+                $('nav').removeClass("fixNavigation");//sinon on retire la classe "fixNavigation" à <div id="navigation">
+                //$('#corps').removeClass("fixNavigationHeader");
+                $('#corps').css("paddingTop", "0");
+            }
+        }
   });
 });
 
@@ -282,11 +250,7 @@ $(document).ready(function() {
 });
 
 window.onload=function(){
-    //test();
-    clickBoutonAfficherMenuDeroulant();
     fancyboxQuiMarche();
-    clickBoutonAjoutPage();
-    clickBoutonAjoutLogoReseauxSociaux();
     clickBoutonChangerCouleur();
     initEditText();
 }
