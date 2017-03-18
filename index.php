@@ -24,7 +24,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" media="only screen and (max-width: 1000px)" href="css/style_responsive.css" type="text/css" />
 
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
         <!-- Import JQuery-->
         <script src="js/jquery-3.1.1.min.js"></script>
 

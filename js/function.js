@@ -6,6 +6,22 @@ $(function(){
     });
 });
 
+//Fonction permettant de changer le margin-top des articles en fonction de la présence des boutons supprimer/modifier (responsive)
+function marginTopArticle(){
+    if($(window).width() < "1000"){
+        if($(".voletGestionArticle").length != 0){
+            $('.divArticle').css('margin-top', 'calc(8vw + 3vh)');
+        }else{
+            $('.divArticle').css('margin-top', '2vh');
+        }
+    }else{
+        $('.divArticle').css('margin-top', '2vh');
+    }
+}
+$(marginTopArticle);
+$(window).resize(marginTopArticle);
+
+
 function changerCouleur(){
   var couleurBackGround = document.getElementById("couleurFontPage").value;
   var couleurFooter = document.getElementById("couleurFooter").value;
