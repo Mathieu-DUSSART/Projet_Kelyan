@@ -110,25 +110,7 @@ nav ul li a:hover p{
 }
 
 #boutonInscrireNews{
-    position: absolute;
-    text-decoration: none;
-    color: inherit;
-    text-align: center;
-    font: 13.3333px Arial;
-    right: 2vw;
     bottom: -45px;
-    padding: 10px 0 10px 25px;
-    border: none;
-    border-radius: 5px;
-    background-image: url("../image/icon/newsletter2.png");
-    background-repeat: no-repeat;
-    background-position: left 2% center;
-    background-size: 15% 80%;
-    background-color: white;
-    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5),
-    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
-    box-sizing: content-box;
-    width: 160px;
 }
 
 .divArticle{
@@ -174,7 +156,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 }
 
 .voletGestionArticle form{
-    width: calc(50% - 0.5px);
+    width: calc(50% - 1px);
     height: 100%;
     margin: 0;
 }

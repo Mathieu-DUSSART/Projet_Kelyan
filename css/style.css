@@ -26,8 +26,18 @@ header{
     background-image: url("../image/Banniere_Bouchons.jpg");
     background-repeat: no-repeat;
     background-position: center right;
-    background-size:90vw auto;
+    background-size: auto 100%;
 }
+
+@media screen and (max-width: 1380px){
+    header{
+        background-position: center center;
+        background-size: auto 100%;
+    }
+
+}
+
+
 #logo{
     position: absolute;
     height:24vh;
@@ -683,14 +693,14 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 
 #boutonInscrireNews{
     position: absolute;
+    width: 160px;
     text-decoration: none;
     color: inherit;
     text-align: center;
     font: 13.3333px Arial;
     right: 2vw;
     bottom: 2vh;
-    padding: 10px;
-    padding-left: 15%;
+    padding: 10px 0 10px 25px;
     border: none;
     border-radius: 5px;
     background-image: url("../image/icon/newsletter2.png");
@@ -700,6 +710,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     background-color: white;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+    box-sizing: content-box;
 }
 
 #boutonInscrireNews:hover{
