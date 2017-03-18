@@ -8,7 +8,7 @@ class ContenuManager{
 
 	public function getAllContenu($num){
 		$tabObj = Array();
-		$sql="SELECT * FROM Contenu WHERE group_num = :num";
+		$sql="SELECT * FROM contenu WHERE group_num = :num";
 		$req=$this->db->prepare($sql);
 		$req->bindValue(":num", $num, PDO::PARAM_INT);
 		$req->execute();

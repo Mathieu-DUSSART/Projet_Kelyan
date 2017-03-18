@@ -15,13 +15,13 @@ if(isset($_POST["login"])){
 <form id="formConnexion" method="POST" action="#" autocomplete="off">
     <label>Login :</label>
     <input  type="text" name="login" required>
-    <br>
+
     <label>Mot de passe :</label>
     <input  type="password" name="password" required>
     <?php
     if(isset($login) && isset($password) && !$managerAdministrateur->checkLoginPassword($login, $password)){
         echo "<p class=\"messageErreurLoginPassword\">L'identifiant ou le mot de passe est incorrecte</p>";
     }?>
-    <br>
+
     <input class="bouton" type="submit" value="Connexion">
 </form>

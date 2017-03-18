@@ -18,18 +18,20 @@ body{
 /* ---HEADER--- */
 header{
     position:relative;
-    z-index:10;
+    z-index:100;
     background-color:#F1F1F1;
     width:100%;
-    height:25vh;
-    background-image: url("../image/bouchons3.jpg");
+    height:24vh;
+    min-height: 116px;
+    background-image: url("../image/Banniere_Bouchons.jpg");
     background-repeat: no-repeat;
     background-position: center right;
     background-size:90vw auto;
 }
 #logo{
     position: absolute;
-    height:25vh;
+    height:24vh;
+    min-height: 116px;
 }
 
 header h1{
@@ -48,10 +50,13 @@ header h1{
 
 /* ---NAV--- */
 #barreNav{
+    position: relative;
     display: none;
     width: 100%;
     height: 10vh;
+    /*max-height: 70px;*/
     background-color: white;
+    box-shadow: 0px 2px 5px black;
 }
 
 .cacherNav{
@@ -61,17 +66,21 @@ header h1{
 nav{
     display: block;
     position: relative;
-    z-index:9;
+    z-index:99;
     width: 100%;
     height:7vh;
+    min-height: 44px;
+    max-height: 60px;
     background-color: white;
     /*background-color: #2185C5;*/
     box-shadow: 0px 2px 5px black;
     font-size: 0;
+    text-align: center;
 }
 
 nav ul{
-    height: 7vh;
+    display: inline-block;
+    height: 100%;
     list-style: none;
     margin: 0;
     padding-left: 0vw;
@@ -80,7 +89,7 @@ nav ul{
 nav ul li{
     position: relative;
     display:inline-block;
-    height:7vh;
+    height:100%;
 }
 
 nav ul li a{
@@ -91,40 +100,41 @@ nav ul li a{
     color:#3E454C;
     background-color:white;
     text-decoration: none;
-    padding:1.5vh 2vw 0 2vw;
-    height:5.5vh;
-    transition: background-color 0.2s;
+    padding:1.6vh 2vw 0 2vw;
+    height:100%;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 nav ul li a p{
     margin: 0;
     padding: 0 0.8vw 0.3vh 0.8vw;
-    transition: border 0.3s ease;
+    transition: border 0.5s ease;
 }
 
 nav ul li a:hover p{
-    border-width: 1.8vh;
+    border-width: 31px;
 }
 
 .page1{
-    border-bottom: 1vh solid #FFF159;
+    border-bottom: 6px solid #FFF159;
 }
 .page2{
-    border-bottom: 1vh solid #FF7E65;
+    border-bottom: 6px solid #FF7E65;
 }
 .page3{
-    border-bottom: 1vh solid #95CC47;
+    border-bottom: 6px solid #95CC47;
 }
 .page4{
-    border-bottom: 1vh solid #FFB86E;
+    border-bottom: 6px solid #FFB86E;
 }
 .page0{
-    border-bottom: 1vh solid #4ADBFF;
+    border-bottom: 6px solid #4ADBFF;
 }
 .active p{
     margin: 0;
     padding: 0 1vw 0.3vh 1vw;
-    border-width: 1.8vh;
+    border-width: 31px;
 }
 
 .active{
@@ -133,60 +143,6 @@ nav ul li a:hover p{
 
 nav ul li a:hover{
     font-style: italic;
-}
-
-#ongletAjoutPage{
-    vertical-align: top;
-}
-
-#divAjoutPage{
-    display: none;
-    position: absolute;
-    width: 200px;
-    height: auto;
-    right: 0;
-    top: 0;
-    margin-top: 9vh;
-    border: 1px solid black;
-    background-color: blue;
-}
-
-#divAjoutPage input[type=text]{
-    width: 80%;
-    margin: 10px 10% 0 10%;
-}
-
-#divAjoutPage input[type=submit]{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding:10px 15px;
-    margin: 10px 0;
-}
-
-#boutonAjoutPage{
-    width: 5vw;
-    height: 100%;
-    border: none;
-    background-color: white;
-    background-image: url("../image/icon/boutonAjouter.png");
-    background-size: 50%;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-}
-
-.divSupprimerPage{
-    position: absolute;
-    top: 100%;
-    right: 0;
-}
-
-.divSupprimerPage input{
-    display:block;
-    width: 100%;
-    height: 100%;
-    border:none;
 }
 
 /* ---CORPS--- */
@@ -211,6 +167,7 @@ footer{
     margin-top: 3vh;
     background-color:#2185C5;
     box-shadow: 0px -2px 5px black;
+    text-align: center;
 }
 
 footer p{
@@ -221,11 +178,15 @@ footer p{
 }
 
 #mentions{
+    display: block;
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 2vh;
-    display: block;
     text-align:center;
+}
+
+#mentions a{
+    text-decoration: none;
     color:#F1F1F1;
 }
 
@@ -236,28 +197,40 @@ footer p{
 }
 
 /* ---ARTICLE--- */
+.divArticle{
+    position: relative;
+    width: 100%;
+    margin-top: 2vh;
+    box-sizing: border-box;
+}
+
 article{
     position: relative;
     z-index: 8;
-    display: inline-block;
+    display: block;
     background-color: white;
     width:80vw;
-    margin-top: 2vh;
-    margin-left: 10vw;
-    margin-right: 0;
+    margin: 0 auto;
     padding: 0 10px 10px 10px;
     border-radius: 5px;
     box-shadow:
     0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+
 }
+
+article p img{
+    max-width: 95%;
+    height: auto;
+}
+
 
 article h1{
     display:inline-block;
     /*font-family: Aclonica;*/
-    width:auto;
-    margin-top:5px;
-    padding-top:5px;
+    width: auto;
+    margin-top: 5px;
+    padding-top: 5px;
     font-size: 170%;
     color:#1b6fa3;
     /*color: #3D444B;*/
@@ -269,24 +242,26 @@ article p{
 
 .dateArticle{
     float: right;
+    margin: 1em 0;
 }
 
 .voletGestionArticle{
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
+    position: absolute;
+    display: block;
     z-index: 7;
-    width:50px;
-    height:100px;
-    margin-top: 2vh;
-    margin-left: -10vw;
-    transition: margin 0.3s;
+    width:4vw;
+    max-width: 60px;
+    height:8vw;
+    max-height: 120px;
+    top: 0;
+    left: 86vw;
+    transition: left 0.3s;
     /*box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5),
                 0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;*/
 }
 
 article:hover + .voletGestionArticle, .voletGestionArticle:hover{
-    margin-left: -1vw;
+    left: 90vw;
 }
 
 .voletGestionArticle form{
@@ -302,20 +277,13 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     border:none;
 }
 
-/*.boutonSuppr{
-    background-color: red;
-}
-
-.modifierArticle input{
-    background-color: blue;
-}*/
-
 #formulaireAjoutArticle, #formulaireAjoutEvenement{
-    display: inline-block;
+    display: block;
     background-color: #E5E5E5;
     width:80vw;
     margin-top: 2vh;
-    margin-left: 10vw;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0 10px 10px 10px;
     border-radius: 5px;
     box-shadow:
@@ -407,22 +375,24 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 
 /* ---FORMULAIRE CONTACT--- */
 #formContact{
+    display: block;
     position:relative;
-    width:40vw;
-    margin-left:30vw;
-    margin-bottom:100px;
+    width: 40vw;
+    max-width: 650px;
+    margin: 0 auto 100px auto;
 }
 
 #formContact label{
     position:absolute;
     right:77%;
-    margin-top:3px;
+    margin-top:0px;
 }
 
 #formContact input[type=text], #formContact input[type=email]{
+    display: block;
     width:50%;
     height:15px;
-    margin:5px 25%;
+    margin: 10px auto;
     border-radius:5px;
     border:1px solid #D3D3D3;
     box-shadow:
@@ -431,10 +401,9 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 }
 
 #formContact textarea{
+    display: block;
     width:50%;
-    margin-top:5px;
-    margin-left:25%;
-    margin-bottom:8px;
+    margin: 10px auto;
     padding:0;
     resize: none;
     border-radius:5px;
@@ -505,7 +474,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     vertical-align: top;
     z-index: 7;
     width:3vw;
-    height:25px;
+    height:3vw;
     top: 0;
     right: 2vw;
     transition: right 0.3s;
@@ -527,6 +496,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     height: 100%;
     margin: 0;
     border:none;
+    border-radius: 0 20% 20% 0;
 }
 
 #ajouterImage{
@@ -612,38 +582,41 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 #divReseauxSociaux{
     display: inline-block;
     vertical-align: top;
-    width: 25vw;
-    height: 130px;
-    margin-top: 3vh;
+    width: auto;
+    height: auto;
+    margin: 3vh auto 0 auto;
+    padding-right: 32px;
 }
 
 .divLogoReseauxSociaux{
     position: relative;
     display:inline-block;
-    width: 25%;
+    width: 96px;
     margin-top: 5%;
-    margin-left: 5%;
+    margin-left: 32px;
 }
 
 .logoReseauxSociaux{
     position: relative;
     z-index: 11;
     width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 .supprimerLogo{
     position: absolute;
     display: inline-block;
     vertical-align: top;
     z-index: 7;
-    width:3vw;
-    height:25px;
+    width:28px;
+    height:28px;
     top: 0;
     right: 2vw;
     transition: right 0.3s;
 }
 
 .divLogoReseauxSociaux:hover .supprimerLogo, .supprimerLogo:hover{
-    right: -3vw;
+    right: -28px;
 }
 
 .supprimerLogo form{
@@ -658,6 +631,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     height: 100%;
     margin: 0;
     border:none;
+    border-radius: 0 5px 5px 0;
 }
 
 
@@ -665,26 +639,46 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     position: relative;
     display: inline-block;
     vertical-align: top;
-    width: 25%;
-    height: 25%;
-    margin-top: 5vh;
-    margin-left: 5%;
+    width: 96px;
+    height: 96px;
+    margin-top: 5%;
+    margin-left: 32px;
 }
 
 #boutonAjoutReseauSocial{
+    position: relative;
+    z-index: 51;
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
     cursor: pointer;
+    outline: none;
+    transition: border-radius 0.5s;
 }
 
 #divAjouterLogo{
     display:none;
     position: absolute;
     z-index: 50;
+    bottom: 96px;
     right:0;
-    padding: 5px;
-    color:white;
-    background-color: blue;
+    padding: 8px;
+    color: inherit;
+    background-color: #E5E5E5;
+    border-radius: 5px 5px 0 5px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5), 0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+#divAjouterLogo label{
+    display: block;
+    text-align: center;
+}
+
+#divAjouterLogo input{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #boutonInscrireNews{
@@ -744,22 +738,24 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 
 
 #formConnexion{
-    position:relative;
-    width:30vw;
-    margin-left:35vw;
-    margin-bottom:100px;
+    display: block;
+    position: relative;
+    width: 40vw;
+    margin: 0 auto 100px auto;
 }
 
 #formConnexion label{
     position:absolute;
-    right:72%;
-    margin-top:3px;
+    right: 72%;
+    margin-top: 0px;
+    white-space: nowrap;
 }
 
 #formConnexion input[type=text], #formConnexion input[type=password]{
+    display: block;
     width:40%;
     height:15px;
-    margin:5px 30%;
+    margin:10px auto;
     border-radius:5px;
     border:1px solid #D3D3D3;
     box-shadow:
@@ -834,15 +830,28 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     background-color: white;
     background-image: url("../image/icon/delete.png");
     border-radius: 0% 20% 20% 0%;
-    cursor:pointer  ;
-    width:70px;
+    cursor: pointer;
+    width: 70px;
     display: inline-block;
-    border:none;
+    border: none;
     margin-left: 10px;
     z-index: 1;
     margin-top: 0px;
     margin-bottom: 0;
 
+}
+
+.boutonModifier, .boutonSupprimer{
+    text-align: left;
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0);
+}
+
+.supprimerPointDeCollecte .boutonSupprimer, .modifierPointDeCollecte .boutonModifier{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5), 0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
 }
 
 .supprimerImage{
@@ -874,6 +883,10 @@ input{
     box-shadow:
     0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+input[type=submit]{
+    cursor: pointer;
 }
 
 .input_btn1{
@@ -992,7 +1005,9 @@ input{
 #boutonParcourirFichier{
     display: block;
     width: 30%;
-    margin-left: 35%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
     background-color: white;
     border-radius: 5px;
     overflow: hidden;
@@ -1042,6 +1057,8 @@ input{
     margin-right: -0.25em;
     margin-bottom: 4vw;
     background-color: #F1F1F1;
+    border-radius: 5px;
+    box-sizing: border-box;
     box-shadow:
     0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
@@ -1053,15 +1070,24 @@ input{
 }
 
 #ajouterAlbum input[type=text]{
+    display: block;
     width: 70%;
-    margin-left: 15%;
+    margin: 10% auto;
 }
 
 #ajouterAlbum input[type=submit]{
+    position: absolute;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding:10px 15px;
+    margin: 0 auto;
+    padding: 10px 15px;
+    left: 50%;
+    right: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    bottom: 10%;
 }
 
 /**********************************/
@@ -1071,7 +1097,8 @@ input{
     width: 92vw;
     margin-left: auto;
     margin-right: auto;
-    background-color: #6FC0F4 ;
+    padding-top: 2%;
+    background-color: #E5E5E5 ;
     border-radius: 5px;
     box-shadow:
     0px 2px 2px 0px rgba(0, 0, 0, 0.5),
@@ -1109,14 +1136,6 @@ input{
     color: grey;
 }
 
-.divPluginReseauxSociaux{
-    display: inline-block;
-    width: 340px;
-    height: 130px;
-    margin-left: calc(50vw - 170px);
-    margin-top: 3vh;
-}
-
 #divInscrireNews{
     position: absolute;
     top:0;
@@ -1148,4 +1167,8 @@ input{
     position: absolute;
     top: 20px;
     right: 10px;
+}
+
+.bordureCarrée{
+    border-radius: 0 0 5px 5px;
 }

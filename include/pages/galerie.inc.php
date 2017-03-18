@@ -31,9 +31,9 @@
                  if(move_uploaded_file($_FILES['fichier']['tmp_name'], $target.$nomImage)){
                      $tabImg=Array();
                      if(in_array(strtolower($extension),$tabExtVideo)){
-                         $tabImg["img_src"]="/Projet_Kelyan/video/";
+                         $tabImg["img_src"]="video/";
                      }else{
-                         $tabImg["img_src"]="/Projet_Kelyan/image/galerie/";
+                         $tabImg["img_src"]="image/galerie/";
                      }
                      $tabImg["img_nom"]=$nomImage;
                      $tabImg["img_description"]=null;

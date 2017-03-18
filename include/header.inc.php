@@ -38,7 +38,7 @@
                        if(move_uploaded_file($_FILES['fichierReseauxSociaux']['tmp_name'], TARGET_RESEAUX_SOCIAUX.$nomImage))
                        {
                            $tabImg=Array();
-                           $tabImg["img_src"]="/Projet_Kelyan/image/reseaux_sociaux/";
+                           $tabImg["img_src"]="image/reseaux_sociaux/";
                            $tabImg["img_nom"]=$nomImage;
                            $tabImg["img_type"]=0;
                            $tabImg["img_description"]=null;
@@ -95,4 +95,3 @@
 </div>
 
 <a href="index.php?page=1"><img id="logo" src="image/logo.jpeg" alt=""></a>
-<h1>Association Kélyan</h1>

@@ -1,9 +1,16 @@
 header{
-    height: 25vw;
+    height: 24vw;
+    min-height: 100px;
+    max-height: 146px;
+    background-position: center center;
+    background-size:auto 100%;
 }
 
 #logo{
-    height: 25vw;
+    display: none;
+    height: 24vw;
+    min-height: 116px;
+    max-height: 165px;
 }
 
 header h1{
@@ -11,23 +18,25 @@ header h1{
     font-size: 120%;
 }
 
-#divReseauxSociaux{
-    display: none;
-}
-
 #barreNav{
     display: block;
 }
 
 #boutonMenu{
+    position: absolute;
+    left: 4vw;
+    top: 50%;
     width: 7vh;
+    /*max-width: 49px;*/
     height: 7vh;
+    /*max-height: 49px;*/
     border: none;
     border-radius: 5px;
     /*box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;*/
-    margin-top: 1.5vh;
-    margin-left: 4vw;
+    margin-top: -3.5vh;
+    margin-bottom: 0;
+    /*margin-left: 4vw;*/
     background-color: white;
     background-image: url("../image/icon/menu.png");
     background-repeat: no-repeat;
@@ -36,19 +45,473 @@ header h1{
 }
 
 nav{
-    position: fixed;
+    position: relative;
     height: auto;
+    max-height: none;
+    text-align: left;
 }
 
 nav ul{
+    display: block;
     height: auto;
     padding: 0;
+    padding-left: 5vw;
 }
 
 nav ul li{
     display: block;
 }
 
+nav ul li a{
+    padding-bottom: 5px;
+}
+
+nav ul li a p{
+    border: 1px solid black;
+}
+
+nav ul li a:hover p{
+    border-width: 0;
+}
+
+.active p{
+    padding-left: 5vw;
+    border-width: 0;
+}
+
+.page1{
+    border-width: 0;
+}
+.page2{
+    border-width: 0;
+}
+.page3{
+    border-width: 0;
+}
+.page4{
+    border-width: 0;
+}
+.page0{
+    border-width: 0;
+}
+
 .cacherNav{
     display: none;
+}
+
+#divInscrireNews{
+    position: absolute;
+    top:0;
+    right:0;
+    width: 50vw;
+    height: 24vw;
+    min-height: 100px;
+    max-height: 146px;
+}
+
+#boutonInscrireNews{
+    position: absolute;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    font: 13.3333px Arial;
+    right: 2vw;
+    bottom: -45px;
+    padding: 10px 0 10px 25px;
+    border: none;
+    border-radius: 5px;
+    background-image: url("../image/icon/newsletter2.png");
+    background-repeat: no-repeat;
+    background-position: left 2% center;
+    background-size: 15% 80%;
+    background-color: white;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5),
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+    box-sizing: content-box;
+    width: 160px;
+}
+
+.divArticle{
+    display: block;
+    margin-top: calc(8vw + 3vh);
+}
+
+article{
+    width: 90vw;
+    margin-left: 5vw;
+    box-sizing: border-box;
+}
+
+article p img{
+    max-width: 95%;
+    height: auto;
+}
+
+.dateArticle{
+    display: block;
+    font-style: italic;
+    float: none;
+    margin-top: -15px;
+    margin-bottom: 5%;
+}
+
+.voletGestionArticle{
+    z-index: 10;
+    width: 90vw;
+    max-width: none;
+    height: 8vw;
+    min-height: 40px;
+    max-height: none;
+    top: -8vw;
+    left: 5vw;
+    border-radius: 5px 5px 0 0;
+    transition: left 0.3s;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5), 0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+article:hover + .voletGestionArticle, .voletGestionArticle:hover{
+    left: 5vw;
+}
+
+.voletGestionArticle form{
+    width: calc(50% - 0.5px);
+    height: 100%;
+    margin: 0;
+}
+
+.voletGestionArticle form:nth-of-type(1){
+    float: right;
+    border-left: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.voletGestionArticle form:nth-of-type(2){
+    float: left;
+}
+
+.voletGestionArticle input{
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+
+    background-color: #E5E5E5;
+}
+
+.voletGestionArticle .boutonModifier, .voletGestionArticle .boutonSupprimer{
+    text-align: left;
+    overflow: hidden;
+    padding-left: 20%;
+    background-size: 14%;
+    background-position: center left 5%;
+    box-shadow: none;
+    color: inherit;
+}
+
+.input_btn1, .input_btn2{
+    border-radius: 0;
+}
+
+.boutonModifier{
+    border-radius: 5px 0 0 0;
+}
+
+.boutonSupprimer{
+    border-radius: 0 5px 0 0;
+}
+
+
+
+#formulaireAjoutArticle, #formulaireAjoutEvenement{
+    width: 90vw;
+    margin-left: 5vw;
+    box-sizing: border-box;
+}
+
+#formulaireAjoutArticle form, #formulaireAjoutEvenement form{
+    position:relative;
+    width: 100%;
+}
+#formulaireAjoutArticle form label, #formulaireAjoutEvenement form label{
+    position:absolute;
+    right: 67%;
+    margin-top:15px;
+    display:none;
+}
+#formulaireAjoutArticle form input[type=text], #formulaireAjoutEvenement form input[type=text]{
+    display: block;
+    width: 75%;
+    margin: 15px auto;
+}
+
+#formulaireAjoutEvenement form input[type=text]:nth-of-type(1){
+    display: block;
+    width: 75%;
+    margin: 15px auto;
+ }
+
+
+
+.imgGalerie, .albumGalerie{
+    position: relative;
+    display: block;
+    width: 64vw;
+    height: auto;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+}
+
+.imgGalerie{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.albumGalerie{
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.albumGalerie img, .albumGalerie video, .imgGalerie img, .imgGalerie video{
+    position: relative;
+    z-index: 8;
+    width: 64vw;
+    height: 48vw;
+    border:1px solid black;
+    background-color: #DDDDDD;
+    box-shadow:
+    0px 2px 2px 0px rgba(0, 0, 0, 0.5),
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+.albumGalerie img, .albumGalerie video{
+    border-radius:0 0 5px 5px;
+    border-top: 0;
+}
+
+.albumGalerie:hover img, .albumGalerie:hover video{
+    filter: none;
+}
+
+.titreAlbum{
+    position: absolute;
+    z-index: 7;
+    display: block;
+    top: auto;
+    bottom: 100%;
+    padding: 1% 0 2% 0;
+    color: #3E454C;
+    border: 1px solid #E5E5E5;
+    border-radius: 15px 15px 0 0;
+    background-color: #E5E5E5;
+    text-shadow: none;
+    box-shadow:
+    0px 2px 2px 0px rgba(0, 0, 0, 0.5),
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+.supprimerImageVideo{
+    position: absolute;
+    display: inline-block;
+    vertical-align: top;
+    z-index: 7;
+    width:12vw;
+    height: 12vw;
+    top: 0;
+    right: -12vw;
+    border-radius:  0 5px 5px 0;
+    transition: right 0.3s;
+    background-color: #E5E5E5;
+    box-shadow:
+    0px 2px 2px 0px rgba(0, 0, 0, 0.5),
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+.imgGalerie:hover .supprimerImageVideo, .albumGalerie:hover .supprimerImageVideo, .supprimerImageVideo:hover, .imgPartenaire:hover .supprimerImageVideo{
+    right: -12vw;
+}
+
+.supprimerImageVideo form{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.supprimerImageVideo input{
+    display:block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border:none;
+    border-radius: 0 20% 20% 0;
+}
+
+.supprimerImageVideo .boutonModifier, .supprimerImageVideo .boutonSupprimer{
+    padding-left: 20%;
+    background-color: inherit;
+    background-size: 85%;
+    background-position: center center;
+    box-shadow: none;
+}
+
+#ajouterAlbum{
+    position: relative;
+    display: block;
+    width: 64vw;
+    min-height: 200px;
+    margin: 0 auto 4vw auto;
+    padding-top: 5%;
+    box-sizing: border-box;
+}
+
+#ajouterAlbum input[type=text]{
+    width: 50%;
+    margin: 0 auto;
+}
+
+#ajouterImageDansAlbum{
+    display: block;
+    width: 64vw;
+    min-height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #E5E5E5;
+    border-radius:5px;
+    box-shadow:
+    0px 2px 2px 0px rgba(0, 0, 0, 0.5),
+    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+#ajouterImageDansAlbum form{
+    width: 100%;
+    height: 100%;
+}
+
+#ajouterImageDansAlbum label:not(#boutonParcourirFichier){
+    display: block;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-decoration: underline;
+}
+
+#ajouterImageDansAlbum input{
+    background-color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#ajouterImageDansAlbum input[type=submit]{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px 15px;
+    margin-top: 5%;
+}
+
+#ajouterImageDansAlbum input[type=file]{
+    display: none;
+}
+
+#ajouterImageDansAlbum input[type=button]{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#ajouterImageDansAlbum p{
+    width: 90%;
+    height: 40px;
+    margin-left: 5%;
+}
+
+/* ---FORMULAIRE CONTACT--- */
+#formContact{
+    width: 100vw;
+}
+
+/* ---PARTENAIRE CONTACT--- */
+.imgPartenaire{
+    position: relative;
+    display: block;
+    width: 60vw;
+    height: auto;
+    margin: 0 auto 4vw auto;
+}
+
+.imgPartenaire img{
+    position: relative;
+    z-index: 8;
+    width: 100%;
+    border-radius:5px;
+    /*border: 1px solid black;*/
+}
+
+/* ---Forulaire d'ajout de partenaire--- */
+#ajouterPartenaire{
+    width: 80vw;
+}
+
+#ajouterPartenaire form{
+    width: 100%;
+    height: 100%;
+}
+
+#ajouterPartenaire label{
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    margin:2% 0 4% 0;
+    text-decoration: underline;
+}
+
+#ajouterPartenaire input[type=submit]{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px 15px;
+    background-color: #EC7F66;
+}
+#ajouterPartenaire input[type=url]{
+    margin-left: 25%;
+    width:50%;
+}
+#ajouterPartenaire input[type=file]{
+    margin-left: 12.5%;
+    width:75%;
+    background-color: #E5E5E5;
+    color: grey;
+}
+
+/* ---FORMULAIRE CONNEXION--- */
+#formConnexion{
+    width: 80vw;
+    max-width: 500px;
+}
+
+@media screen and (max-width: 444px){
+    /* ---DIV AJOUTERLOGO--- */
+    #divAjouterLogo{
+        max-width: 80vw;
+        bottom: 96px;
+        left: 50%;
+        right: initial;
+        margin-left: -40vw;
+        padding: 8px;
+        color: inherit;
+        background-color: #E5E5E5;
+        border-radius: 5px;
+        box-sizing: border-box;
+        box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5), 0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+    }
+
+    #divAjouterLogo label{
+        display: block;
+        text-align: center;
+    }
+
+    #divAjouterLogo input{
+        display: block;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }

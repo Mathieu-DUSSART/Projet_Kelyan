@@ -1,16 +1,8 @@
 
-<!-- Plugin Facebook -->
-<div class="divPluginReseauxSociaux">
-    <div class="fb-page" data-href="https://www.facebook.com/Association-K%C3%A9lyan-940734619334207/?fref=ts" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
-        <blockquote cite="https://www.facebook.com/Association-K%C3%A9lyan-940734619334207/?fref=ts" class="fb-xfbml-parse-ignore">
-            <a href="https://www.facebook.com/Association-K%C3%A9lyan-940734619334207/?fref=ts">Association Kélyan</a>
-        </blockquote>
-    </div>
-</div>
 <div id="divReseauxSociaux">
     <?php
     //Récupère tous les logos des réseaux sociaux
-    foreach ($managerImage->getAllImage("/Projet_Kelyan/image/reseaux_sociaux/") as $image) { ?>
+    foreach ($managerImage->getAllImage("image/reseaux_sociaux/") as $image) { ?>
       <div class="divLogoReseauxSociaux">
           <?php
           echo "<a href=\"" . $image->getLien() . "\"><img class=\"logoReseauxSociaux\" src=\"" . $image->getSrc() . $image->getNom() . "\" alt=\"\"></a>";
@@ -46,7 +38,7 @@
 </div>
 
 <p>© IUT du Limousin  DUT Informatique année 2016-2017</p>
-<a id="mentions" href="./include/pages/mention.html">Mentions légales</a>
+<span id="mentions"><a href="./include/pages/mention.html">Mentions légales</a></span>
 
 <?php
 if(isset($_SESSION["login"])){?>
