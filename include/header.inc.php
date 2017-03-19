@@ -91,7 +91,7 @@
   ?>
 
 <div id="divInscrireNews">
-    <a href="index.php?page=10" id="boutonInscrireNews">S'inscrire à la newsletter</a>
+    <a href="index.php?page=9" id="boutonInscrireNews">S'inscrire à la newsletter</a>
 </div>
 
 <a href="index.php?page=1"><img id="logo" src="image/logo.jpeg" alt=""></a>
