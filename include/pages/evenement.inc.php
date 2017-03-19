@@ -107,7 +107,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                 echo "<p class=\"dateEvenement\">" . "Le " . $date . "</p>";
                 echo "<p class=\"detailEvenement\">" . "À partir de " . $heure . "</p>";
                 echo "<p class=\"detailEvenement\">" . "À " . $evenement->getVille() . "</p>";
-                echo "<p>" . $evenement->getTexte() . "</p>";
+                echo $evenement->getTexte();
 
                 $now = date('Y-m-d');
                 $next = $evenement->getDate();
@@ -127,31 +127,32 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                         </a>
                     </div>
                     <br>
-                  <form id="formInscription<?php echo $evenement->getNum()?>" method="POST" action="#">
-                    <label>Nom :</label>
-                    <input type="text" name="nomParticipant" required><br>
-                    <label>Prenom :</label>
-                    <input type="text" name="prenomParticipant" required><br>
-                    <label>Mail :</label>
-                    <input type="email" name="mailParticipant" required>
-                    <input name="numEventInscription" type="hidden" value="<?php echo $evenement->getNum(); ?>">
-                    <input type="submit" name="inscription">
-                  </form>
-            <?php
-            echo "<script>$(document).ready(function(){
-              $('#formInscription" . $evenement->getNum() . "').hide();
-              $('a#boutonInscrire" . $evenement->getNum() . "').click(function()
-             {
-                 $('#formInscription" . $evenement->getNum() . "').toggle(400);
-                 return false;
-              });
-           });</script>";
-       }else{ ?>
-           <div class="divInscription">
-           <img class="imgInscrire" id="inscritGris" src="./image/icon/inscrire.png" alt="S'inscrire">
-           <span class="inscrire">S'inscrire</span>
-       </div>
-     <?php }
+                    <form id="formInscription<?php echo $evenement->getNum()?>" method="POST" action="#">
+                        <label>Nom :</label>
+                        <input type="text" name="nomParticipant" required><br>
+                        <label>Prenom :</label>
+                        <input type="text" name="prenomParticipant" required><br>
+                        <label>Mail :</label>
+                        <input type="email" name="mailParticipant" required>
+                        <input name="numEventInscription" type="hidden" value="<?php echo $evenement->getNum(); ?>">
+                        <input type="submit" name="inscription">
+                    </form>
+                    <?php
+                    echo "<script>$(document).ready(function(){
+                      $('#formInscription" . $evenement->getNum() . "').hide();
+                      $('a#boutonInscrire" . $evenement->getNum() . "').click(function()
+                     {
+                         $('#formInscription" . $evenement->getNum() . "').toggle(400);
+                         return false;
+                      });
+                   });</script>";
+               }else if(!isset($_SESSION["login"])){ ?>
+                   <div class="divInscription">
+                   <img class="imgInscrire inscritGris" src="./image/icon/inscrire.png" alt="S'inscrire">
+                   <span class="inscrire">S'inscrire</span>
+                   </div>
+                <?php
+                }
             }
             if(isset($_SESSION["login"]) && !isset($_POST["numEventAModifier"])){ ?>
               <label>Il y a <?php echo $managerPersonne->getNbPersonneInscrite($evenement->getNum()); ?> personnes inscrites.</label><br>

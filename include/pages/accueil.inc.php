@@ -60,7 +60,7 @@ foreach ($managerArticle->getAllArticle(1) as $article) {
           <article>
               <?php
               echo "<h1><span class=\"icon" . $article->getNum() ."\"></span>" . $article->getTitre() . "</h1>\n";
-              echo "<p>" . $article->getTexte() . "</p>\n";
+              echo $article->getTexte();
               ?>
         </article>
         <?php

@@ -21,13 +21,26 @@ header{
     z-index:100;
     background-color:#F1F1F1;
     width:100%;
-    height: 256px;
-    background-image: url("../image/Banniere_Bouchons.jpg");
-    background-repeat: no-repeat;
-    background-position: center right;
+    height:24vh;
+    min-height: 116px;
+    background-image: url("../image/banniere_fond.jpg");
+    background-repeat: repeat-x;
+    background-position: center center;
     background-size: auto 100%;
 }
 
+#divTitreHeader{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../image/banniere_titre.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 100%;
+}
+/*
 @media screen and (min-width: 1250px) and (max-width: 1580px){
     header{
         background-position: center center;
@@ -41,7 +54,7 @@ header{
         background-size: auto 100%;
     }
 }
-
+*/
 
 #logo{
     position: absolute;
@@ -112,20 +125,26 @@ nav ul li a{
     color:#3E454C;
     background-color:white;
     text-decoration: none;
-    padding:1.6vh 2vw 0 2vw;
+    padding:16px 2vw 0 2vw;
     height:100%;
     box-sizing: border-box;
     overflow: hidden;
 }
+@media screen and (max-width: 1200px){
+    nav ul li a{
+        padding-left: 1.3vw;
+        padding-right: 1.3vw;
+    }
+}
 
 nav ul li a p{
     margin: 0;
-    padding: 0 0.8vw 0.3vh 0.8vw;
+    padding: 0 0.8vw 3px 0.8vw;
     transition: border 0.5s ease;
 }
 
 nav ul li a:hover p{
-    border-width: 31px;
+    border-width: 25px;
 }
 
 .page1{
@@ -145,8 +164,8 @@ nav ul li a:hover p{
 }
 .active p{
     margin: 0;
-    padding: 0 1vw 0.3vh 1vw;
-    border-width: 31px;
+    padding: 0 1vw 3px 1vw;
+    border-width: 25px;
 }
 
 .active{
@@ -472,8 +491,8 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     margin-top:-10px;
 }
 
-#inscritGris{
-    -webkit-filter: grayscale(100%); 
+.inscritGris{
+    -webkit-filter: grayscale(100%);
 }
 
 .detailEvenement{

@@ -8,9 +8,9 @@ $(function(){
 
 //Fonction permettant de changer le margin-top des articles en fonction de la présence des boutons supprimer/modifier (responsive)
 function marginTopArticle(){
-    if($(window).width() < "1000"){
+    if( ( $(window).width() < "1000" && mobile == false ) || mobile == true){
         if($(".voletGestionArticle").length != 0){
-            $('.divArticle').css('margin-top', 'calc(8vw + 3vh)');
+            $('.divArticle').css('margin-top', 'calc(55px + 3vh)');
         }else{
             $('.divArticle').css('margin-top', '2vh');
         }
@@ -122,46 +122,15 @@ function initEditText(){
     toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image | preview media fullpage | forecolor backcolor emoticons',
     autosave_ask_before_unload: false,
     spellchecker_language: 'fr_FR',
-
+    resize: false
   });
 
 }
-/*
-//Fonction qui centre les onglets de la barre de navigation
-function centrerNav(){
-    var largeur_fenetre = $(window).width();
-
-    if(largeur_fenetre > "1000"){
-        var paddingGauche = largeurNav - sommeLargeur;
-        $("nav ul").css( "padding-left", paddingGauche/2 );
-    }
-}
-
-//Fonction qui calcule la largeur des onglets de la barre de navigation
-function calculNav(){
-    sommeLargeur = 0;
-    nbElem = $('nav ul li').length;
-    largeurNav = $('nav').width();
-
-    $("nav li").each(function(){
-        sommeLargeur = sommeLargeur + $(this).width();
-    });
-}*/
-
-$(function(){
-    /*calculNav();
-    centrerNav();*/
-});
-
-$(window).resize(function(){
-    /*calculNav();
-    centrerNav();*/
-});
 
 //Fonction pour fixer la nav quand on scroll
 $(function(){
   $(window).scroll(function () {//Au scroll dans la fenetre on déclenche la fonction
-        if($(window).width() > "1000"){
+        if(mobile == false && $(window).width() > "1000"){
             if ($(this).scrollTop() > $('header').height()) { //si on a défilé de plus de 150px du haut vers le bas
                 $('nav').addClass("fixNavigation"); //on ajoute la classe "fixNavigation" à <div id="navigation">
                 //$('#corps').addClass("fixNavigationHeader");

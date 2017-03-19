@@ -111,7 +111,7 @@ nav ul li a:hover p{
 
 .divArticle{
     display: block;
-    margin-top: calc(8vw + 3vh);
+    margin-top: calc(55px + 3vh);
 }
 
 article{
@@ -137,12 +137,11 @@ article p img{
     z-index: 10;
     width: 90vw;
     max-width: none;
-    height: 8vw;
-    min-height: 40px;
-    max-height: none;
-    top: -8vw;
+    height: 55px;
+    top: -54px;
     left: 5vw;
     border-radius: 5px 5px 0 0;
+    background-color: #E5E5E5;
     transition: left 0.3s;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5), 0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
 }
@@ -177,8 +176,8 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 .voletGestionArticle .boutonModifier, .voletGestionArticle .boutonSupprimer{
     text-align: left;
     overflow: hidden;
-    padding-left: 20%;
-    background-size: 14%;
+    padding-left: calc(5% + 50px);
+    background-size:  auto 45px;
     background-position: center left 5%;
     box-shadow: none;
     color: inherit;

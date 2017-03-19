@@ -89,6 +89,10 @@
   }
 
   ?>
+<div id="divTitreHeader">
+    
+</div>
+
 
 <div id="divInscrireNews">
     <a href="index.php?page=9" id="boutonInscrireNews">S'inscrire à la newsletter</a>

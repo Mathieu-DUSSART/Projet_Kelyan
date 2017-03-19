@@ -149,7 +149,6 @@ if(isset($_POST["numGroupASupprimer"]) && isset($_SESSION["login"])){
 
 
 ?>
-<link rel="stylesheet" type="text/css" href="fancyBox\fancyBox-master\source\jquery.fancybox.css?v=2.1.5" media="screen" />
 <h1>Galerie</h1>
 <div id="divTitreAlbum"><a href="index.php?page=4">Album :</a>
 
@@ -166,7 +165,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
             if(!$image->getType()){ //S'il s'agit d'une image?>
                 <div class="albumGalerie">
                     <?php
-                    echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><span class=\"titreAlbum\">" . $group->getGroupNom() . "</span><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
+                    echo "<a href=\"index.php?page=4&album=" . $group->getGroupNum() . "\"><span class=\"titreAlbum\">" . $group->getGroupNom() . "</span><img src=\"" . $image->getSrc() . $image->getNom() . "\" alt=\"\"></a>";
                     if(isset($_SESSION["login"])){?>
                         <div class="supprimerImageVideo">
                             <form class="supprimer" method="POST" action="#">
@@ -239,7 +238,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
         if(!$image->getType()){?>
             <div class="imgGalerie">
                 <?php
-                echo "<a class=\"fancybox\" href=\"" . $image->getSrc() . $image->getNom() . "\" data-fancybox-group=\"gallery\"><img src=\"" . $image->getSrc() . $image->getNom() . "\"alt=\"\"></a>";
+                echo "<a class=\"fancybox\" href=\"" . $image->getSrc() . $image->getNom() . "\" data-fancybox-group=\"gallery\"><img src=\"" . $image->getSrc() . $image->getNom() . "\" alt=\"\"></a>";
                 if(isset($_SESSION["login"])){?>
                     <div class="supprimerImageVideo">
                         <form class="supprimer" method="POST" action="#">
