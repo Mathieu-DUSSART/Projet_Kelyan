@@ -155,38 +155,50 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                 }
             }
             if(isset($_SESSION["login"]) && !isset($_POST["numEventAModifier"])){ ?>
-              <label>Il y a <?php echo $managerPersonne->getNbPersonneInscrite($evenement->getNum()); ?> personnes inscrites.</label><br>
-              <?php
-              if($managerPersonne->getNbPersonneInscrite($evenement->getNum()) > 0){
-              ?>
-              <a href="" id="boutonInscrire<?php echo $evenement->getNum();?>">
-                  <img src="./image/icon/voir.png" alt="Voir les personnes inscrites">
-              </a>
-              <table id="tableInscris<?php echo $evenement->getNum();?>">
-                <tr>
-                  <th>Prenom</th>
-                  <th>Nom</th>
-                  <th>Mail</th>
-                </tr>
-              <?php foreach ($managerPersonne->getPersonneInscriteEvent($evenement->getNum()) as $personne){ ?>
-                  <tr>
-                    <td><?php echo $personne->getPerPrenom(); ?></td>
-                    <td><?php echo $personne->getPerNom(); ?></td>
-                    <td><?php echo $personne->getPerMail(); ?></td>
-                  </tr>
 
-            <?php  } ?>
-            </table>
-          <?php
-         echo "<script>$(document).ready(function(){
-           $('#tableInscris" . $evenement->getNum() . "').hide();
-           $('a#boutonInscrire" . $evenement->getNum() . "').click(function()
-           {
-              $('#tableInscris" . $evenement->getNum() . "').toggle(400);
-              return false;
-           });
-          });</script>";
-          }
+                <?php
+                if($managerPersonne->getNbPersonneInscrite($evenement->getNum()) > 0){?>
+                    <a class="lienPersonneInscrite" href="" id="boutonInscrire<?php echo $evenement->getNum();?>">
+                        <img src="./image/icon/voir.png" alt="Voir les personnes inscrites">
+                    </a>
+
+                    <label class="lblPersonneInscrite"><?php echo $managerPersonne->getNbPersonneInscrite($evenement->getNum()); ?>
+                    <?php
+                    if($managerPersonne->getNbPersonneInscrite($evenement->getNum()) > 1){
+                        echo "personnes inscrites</label>";
+                    }else{
+                        echo "personne inscrite</label>";
+                    }
+                    ?>
+
+                    <div class="divPersonneInscrite">
+                        <table id="tableInscris<?php echo $evenement->getNum();?>">
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Mail</th>
+                            </tr>
+                            <?php
+                            foreach ($managerPersonne->getPersonneInscriteEvent($evenement->getNum()) as $personne){ ?>
+                                <tr>
+                                    <td><?php echo $personne->getPerNom(); ?></td>
+                                    <td><?php echo $personne->getPerPrenom(); ?></td>
+                                    <td><?php echo $personne->getPerMail(); ?></td>
+                                </tr>
+                            <?php
+                            } ?>
+                        </table>
+                    </div>
+                    <?php
+                    echo "<script>$(document).ready(function(){
+                    $('#tableInscris" . $evenement->getNum() . "').hide();
+                    $('a#boutonInscrire" . $evenement->getNum() . "').click(function()
+                    {
+                    $('#tableInscris" . $evenement->getNum() . "').toggle(400);
+                    return false;
+                    });
+                    });</script>";
+                }
         }
           ?>
               </article>

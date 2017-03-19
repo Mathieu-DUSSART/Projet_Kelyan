@@ -34,8 +34,6 @@
             </script>
         <?php
         }else{?>
-            <link rel="stylesheet" type="text/css" href="css/style.css">
-            <link rel="stylesheet" media="only screen and (max-width: 1000px)" href="css/style_responsive.css" type="text/css" />
             <script type="text/javascript">
                 mobile = false
             </script>

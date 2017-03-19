@@ -132,9 +132,10 @@ $(function(){
   $(window).scroll(function () {//Au scroll dans la fenetre on déclenche la fonction
         if(mobile == false && $(window).width() > "1000"){
             if ($(this).scrollTop() > $('header').height()) { //si on a défilé de plus de 150px du haut vers le bas
+                $('#corps').css("paddingTop", $('nav').height());
                 $('nav').addClass("fixNavigation"); //on ajoute la classe "fixNavigation" à <div id="navigation">
                 //$('#corps').addClass("fixNavigationHeader");
-                $('#corps').css("paddingTop", $('nav').height());
+
             } else {
                 $('nav').removeClass("fixNavigation");//sinon on retire la classe "fixNavigation" à <div id="navigation">
                 //$('#corps').removeClass("fixNavigationHeader");
@@ -223,3 +224,8 @@ window.onload=function(){
     clickBoutonChangerCouleur();
     initEditText();
 }
+
+
+$(function(){
+    $("#corps").css("paddingBottom", $("footer").outerHeight(true));
+})
