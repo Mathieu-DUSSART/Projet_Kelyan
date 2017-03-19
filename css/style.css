@@ -472,6 +472,10 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     margin-top:-10px;
 }
 
+#inscritGris{
+    -webkit-filter: grayscale(100%); 
+}
+
 .detailEvenement{
     font-weight: bold;
     margin-top:-5px;

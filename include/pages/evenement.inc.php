@@ -127,7 +127,6 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                         </a>
                     </div>
                     <br>
-                  <a href="" id="desinscrire">Se désinscrire</a>
                   <form id="formInscription<?php echo $evenement->getNum()?>" method="POST" action="#">
                     <label>Nom :</label>
                     <input type="text" name="nomParticipant" required><br>
@@ -147,8 +146,12 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                  return false;
               });
            });</script>";
-           }
-
+       }else{ ?>
+           <div class="divInscription">
+           <img class="imgInscrire" id="inscritGris" src="./image/icon/inscrire.png" alt="S'inscrire">
+           <span class="inscrire">S'inscrire</span>
+       </div>
+     <?php }
             }
             if(isset($_SESSION["login"]) && !isset($_POST["numEventAModifier"])){ ?>
               <label>Il y a <?php echo $managerPersonne->getNbPersonneInscrite($evenement->getNum()); ?> personnes inscrites.</label><br>
