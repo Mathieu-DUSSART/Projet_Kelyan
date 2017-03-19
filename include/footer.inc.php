@@ -47,9 +47,9 @@ if(isset($_SESSION["login"])){?>
       <input type="color" id="couleurFontPage">
       <input type="button" value="valider" id="changerCouleur">
   </form>-->
-    <a id="connexion" href="index.php?page=7">Déconnexion</a>
+    <a id="connexion" href="index.php?page=11">Déconnexion</a>
 <?php
 }else{?>
-    <a id="connexion" href="index.php?page=6">Admin !</a>
+    <a id="connexion" href="index.php?page=10">Admin !</a>
 <?php
 }?>
