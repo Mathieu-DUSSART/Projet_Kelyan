@@ -1,3 +1,23 @@
+//Fonction pour cacher ou afficher la nav en version mobile
+function navBar(){
+    var nav = $("nav");
+    //Si on est en responsive
+    if($('#boutonMenu').css("display") != "none"){
+        nav.css('display', 'none');
+    }else{
+        nav.css('display', 'block');
+    }
+}
+$(navBar);
+$(window).resize(navBar);
+
+$(function(){
+    var nav = $("nav");
+    $("#boutonMenu").bind("click", function(){
+        nav.toggle("blind", 200);
+    });
+})
+
 //Fonction pour afficher ou cacher la div d'ajout de logo de réseaux sociaux
 $(function(){
     $("#boutonAjoutReseauSocial").on("click", function(){
@@ -145,18 +165,7 @@ $(function(){
   });
 });
 
-//Fonction pour cacher ou afficher la nav en version mobile
-$(function(){
-    $("#boutonMenu").bind("click", function(){
-        var nav = $("nav");
 
-        if(nav.hasClass("cacherNav")){
-            nav.removeClass("cacherNav");
-        }else{
-            nav.addClass("cacherNav");
-        }
-    });
-});
 
 //popup de confirmation de suppression
 $(document).ready(function() {

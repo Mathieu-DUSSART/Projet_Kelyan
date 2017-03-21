@@ -67,7 +67,7 @@
         <div id="barreNav">
             <input type="button" id="boutonMenu" value="">
         </div>
-        <nav class="cacherNav">
+        <nav>
             <?php
             require_once("include/nav.inc.php");
             ?>

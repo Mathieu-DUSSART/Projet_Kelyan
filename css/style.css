@@ -88,9 +88,10 @@ header h1{
     box-shadow: 0px 2px 5px black;
 }
 
-.cacherNav{
-    display: block;
+#boutonMenu{
+    display: none;
 }
+
 
 nav{
     display: block;
