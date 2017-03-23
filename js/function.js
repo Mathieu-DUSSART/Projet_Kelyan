@@ -241,6 +241,9 @@ $(function(){
     $('.lienPersonneInscrite').on('click', function(){
         $("~ .divPersonneInscrite", this).toggle("blind", 200);
     })
+    $('.lblPersonneInscrite').on('click', function(){
+        $("~ .divPersonneInscrite", this).toggle("blind", 200);
+    })
 })
 
 function positionerFooter(){
