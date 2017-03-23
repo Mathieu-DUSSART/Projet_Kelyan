@@ -241,6 +241,12 @@ $(function(){
 
 $(function(){
     $('.lienPersonneInscrite').on('click', function(){
-        $(this, "~ .divPersonneInscrite").show();
+        $("~ .divPersonneInscrite", this).toggle(200);
     })
 })
+
+$(window).resize(function(){
+    $(function(){
+        $("#corps").css("paddingBottom", $("footer").outerHeight(true));
+    })
+});

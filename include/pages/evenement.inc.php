@@ -159,15 +159,13 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                 //Affiche un évènement en mode admin
                 if(isset($_SESSION["login"]) && !isset($_POST["numEventAModifier"])){
                     if($managerPersonne->getNbPersonneInscrite($evenement->getNum()) > 0){?>
-                        <input type="button" class="lienPersonneInscrite" id="boutonInscrire<?php echo $evenement->getNum();?>">
-                            <!--<img src="./image/icon/voir.png" alt="Voir les personnes inscrites">-->
-
+                        <input type="button" class="lienPersonneInscrite">
 
                         <label class="lblPersonneInscrite"><?php echo $managerPersonne->getNbPersonneInscrite($evenement->getNum());
                             if($managerPersonne->getNbPersonneInscrite($evenement->getNum()) > 1){
-                                echo "personnes inscrites";
+                                echo " personnes inscrites";
                             }else{
-                                echo "personne inscrite";
+                                echo " personne inscrite";
                             }
                             ?>
                         </label>
@@ -190,14 +188,6 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                             </table>
                         </div>
                         <?php
-                        /*echo "<script>$(document).ready(function(){
-                        $('#tableInscris" . $evenement->getNum() . "').hide();
-                        $('a#boutonInscrire" . $evenement->getNum() . "').click(function()
-                        {
-                        $('#tableInscris" . $evenement->getNum() . "').toggle(400);
-                        return false;
-                        });
-                    });</script>";*/
                     }
                 }?>
             </article>
