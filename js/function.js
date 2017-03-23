@@ -65,7 +65,7 @@ $(document).ready(function()
    // toggle() lorsque le lien avec l'ID #toggler est cliqué
    $('#boutonPlusFormulaireAjout').click(function()
    {
-      $('#formulaireAccueil').toggle(400);
+      $('#formulaireAccueil').toggle("blind", 400);
       return false;
    });
 });
@@ -75,7 +75,7 @@ $(document).ready(function(){
    $('#formulaireArticle').hide();
    // toggle() lorsque le lien avec l'ID #toggler est cliqué
    $('#boutonPlusFormulaireAjout').click(function(){
-      $('#formulaireArticle').toggle(400);
+      $('#formulaireArticle').toggle("blind", 400);
       return false;
    });
 });
@@ -85,7 +85,7 @@ $(document).ready(function(){
    $('#formulaireEvenement').hide();
    // toggle() lorsque le lien avec l'ID #toggler est cliqué
    $('#boutonPlusFormulaireAjout').click(function(){
-      $('#formulaireEvenement').toggle(400);
+      $('#formulaireEvenement').toggle("blind", 400);
       return false;
    });
 });
@@ -239,7 +239,7 @@ window.onload=function(){
 
 $(function(){
     $('.lienPersonneInscrite').on('click', function(){
-        $("~ .divPersonneInscrite", this).toggle(200);
+        $("~ .divPersonneInscrite", this).toggle("blind", 200);
     })
 })
 
