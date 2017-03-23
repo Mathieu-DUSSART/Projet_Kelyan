@@ -32,6 +32,7 @@ if(isset($_POST["titreModifie"])){
 
 //Supprime un évènement
 if(isset($_POST["numEventASupprimer"])){
+    $managerPersonne->deletePersonneInscrit($_POST["numEventASupprimer"]);
     $managerEvenement->deleteEvenement($_POST["numEventASupprimer"]);
     header("Location: index.php?page=3");
     exit;
@@ -46,15 +47,14 @@ if(!isset($_SESSION["login"]) && isset($_POST["inscription"])){
    $personne = new Personne($tab);
    echo $personne->getPerNum();
    if(!($managerPersonne->existe($_POST["mailParticipant"]))){
-     echo "cette personne n'existe pas";
      $managerPersonne->add($personne);
      $managerPersonne->ajouterUneInscription($personne->getPerNum(),$_POST["numEventInscription"]);
    }else{
-     echo "cette personne existe";
      $personne = $managerPersonne->getPersonne($_POST["mailParticipant"]);
      if(!($managerPersonne->dejaInscrit($personne->getPerNum(),$_POST["numEventInscription"]))){
       $managerPersonne->ajouterUneInscription($personne->getPerNum(),$_POST["numEventInscription"]);
      }else{
+         //TODO mettre en valeur ce message d'erreur
        echo "cette personne est déjà inscrite !";
      }
    }

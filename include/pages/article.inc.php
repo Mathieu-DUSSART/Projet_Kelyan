@@ -41,7 +41,7 @@ if(isset($_POST["numArticleASupprimer"])){
 foreach ($managerArticle->getAllArticle(2) as $article) {
     //Récupère la date de l'article au format 23/09/2016
     $date = date_format(date_create($article->getDate()), 'd/m/Y H:i');
-    
+
         if(isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]==$article->getNum()){
             $_SESSION["numArticleAModifier"]=$article->getNum();
             ?>
@@ -94,7 +94,7 @@ if(isset($_SESSION["login"])){?>
         <input type="button" id="boutonPlusFormulaireAjout" value="+">
         <form method="POST" action="#" id="formulaireArticle" novalidate>
             <label>Titre de l'article:</label>
-            <input  type="text" name="titre" placeholder="Titre de l'article..." required>
+            <input type="text" name="titre" placeholder="Titre de l'article..." required>
             <br>
             <label>Texte:</label>
             <textarea name="texte" class ="texteArea" placeholder="Ecrivez votre article ici..." rows="8" required></textarea>

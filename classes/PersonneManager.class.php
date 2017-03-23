@@ -105,4 +105,11 @@ class PersonneManager{
 		$req->bindValue(':cle',$cle,PDO::PARAM_STR);
 		$req->execute();
 	}
+
+	public function deletePersonneInscrit($event){
+		$sql = "DELETE FROM inscritevent WHERE event_num = :event";
+		$req=$this->db->prepare($sql);
+		$req->bindValue(':event',$event,PDO::PARAM_INT);
+		$req->execute();
+	}
 }
