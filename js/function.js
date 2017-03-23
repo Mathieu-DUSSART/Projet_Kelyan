@@ -235,6 +235,17 @@ window.onload=function(){
 }
 
 
+
+
 $(function(){
-    $("#corps").css("paddingBottom", $("footer").outerHeight(true));
+    $('.lienPersonneInscrite').on('click', function(){
+        $("~ .divPersonneInscrite", this).toggle(200);
+    })
 })
+
+function positionerFooter(){
+    $("#corps").css("paddingBottom", $("footer").outerHeight(true));
+}
+
+$(positionerFooter);
+$(window).resize(positionerFooter);
