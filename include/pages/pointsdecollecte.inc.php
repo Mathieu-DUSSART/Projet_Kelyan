@@ -92,6 +92,7 @@ if(isset($_POST["selectVillePoint"])){
     echo "<table>";
     $i = 0;
     $ville=[];
+    $points = [];
     foreach($AllPoint as $point){
         echo "<tr>";
             echo "<td> <p class=\"lieuxPoint\"> - " . $point->getPointLieu() ."</p> </td>";
@@ -113,8 +114,8 @@ if(isset($_POST["selectVillePoint"])){
                     </td>
                 </div>
                 <?php
-                $address = $point->getPointLieu()." ".$managerVille->getVilNomByNum($_POST["selectVillePoint"])->getVilNom();
-
+                $address = $point->getPointLieu().", ".$managerVille->getVilNomByNum($_POST["selectVillePoint"])->getVilNom();
+                $points[$i]=$address;
                 // On prépare l'URL du géocodeur
                 $geocoder = "http://maps.googleapis.com/maps/api/geocode/xml?address=%s&sensor=false";
 
@@ -162,28 +163,40 @@ if(isset($_POST["selectVillePoint"])){
         <?php
 
          for ( $j = 0; $j <  count($ville)   ; $j++) {
-
-             echo "var pointdecollecte= {lat: ".$ville[$j][0][0].", lng: ".$ville[$j][1][0]." };";
-             echo "var Marker".$j ."= new google.maps.Marker({
+             ?>
+            var infoWindow = new google.maps.InfoWindow();
+            var pointdecollecte= {lat:<?php echo $ville[$j][0][0]?>, lng: <?php echo $ville[$j][1][0]?> };
+                var <?php echo "Marker".$j ?> = new google.maps.Marker({
                     map: map,
-                    position: pointdecollecte ,
+                    position: pointdecollecte
+
+                });
+                (function(<?php $j?>) {
+                        google.maps.event.addListener(<?php echo "Marker".$j ?>,"mouseover", function() {
+                       infoWindow.close();
+                       infoWindow.setContent(<?php echo " \" ".$points[$j]." \" " ?>);
+
+                      infoWindow.open(map, this);
+
+
+
+                   });
+               })(<?php $j?>);
+               (function(<?php $j?>) {
+                       google.maps.event.addListener(<?php echo "Marker".$j ?>,"mouseout", function() {
         
 
 
-               });";
-               /*var Marker = new google.maps.Marker({
-                   map: map,
-                   position : point,
-               });
-               var Marker2 = new google.maps.Marker({
-                   map: map,
-                   position : point2,
-               });*/
+                     infoWindow.close(map, this);
 
 
 
-       };
-       ?>
+                  });
+              })(<?php $j?>);
+
+        <?php
+          };
+          ?>
     };
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS7YM6Xo11hhqBf94DFmJ8rZUGNV7PrXM&callback=initMap"
