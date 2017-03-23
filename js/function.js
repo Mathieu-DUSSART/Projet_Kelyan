@@ -238,3 +238,9 @@ window.onload=function(){
 $(function(){
     $("#corps").css("paddingBottom", $("footer").outerHeight(true));
 })
+
+$(function(){
+    $('.lienPersonneInscrite').on('click', function(){
+        $(this, "~ .divPersonneInscrite").show();
+    })
+})

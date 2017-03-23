@@ -505,7 +505,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 }
 
 .divPersonneInscrite{
-
+    display: none;
 }
 
 .divPersonneInscrite table{
@@ -535,10 +535,14 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     vertical-align: middle;
     text-decoration: none;
     width: 60px;
-    height: 60;
+    height: 60px;
     margin-bottom: 10px;
     margin-right: 10px;
     padding: 2px;
+    background-image: url("../image/icon/voir.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 90%;
     box-sizing: border-box;
     border-radius: 5px;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5),

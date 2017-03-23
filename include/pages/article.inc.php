@@ -40,9 +40,8 @@ if(isset($_POST["numArticleASupprimer"])){
 //Affiche les articles de la page Article
 foreach ($managerArticle->getAllArticle(2) as $article) {
     //Récupère la date de l'article au format 23/09/2016
-    $date = date_format(date_create($article->getDate()), 'd/m/Y H:i');?>
-
-        <?php
+    $date = date_format(date_create($article->getDate()), 'd/m/Y H:i');
+    
         if(isset($_POST["modifierArticle"]) && $_POST["numArticleAModifier"]==$article->getNum()){
             $_SESSION["numArticleAModifier"]=$article->getNum();
             ?>
