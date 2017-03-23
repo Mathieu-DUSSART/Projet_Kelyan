@@ -21,17 +21,31 @@ header{
     z-index:100;
     background-color:#F1F1F1;
     width:100%;
-    height:24vh;
-    min-height: 116px;
+    height: 256px;
     background-image: url("../image/Banniere_Bouchons.jpg");
     background-repeat: no-repeat;
     background-position: center right;
-    background-size:90vw auto;
+    background-size: auto 100%;
 }
+
+@media screen and (min-width: 1250px) and (max-width: 1580px){
+    header{
+        background-position: center center;
+        background-size: auto 100%;
+    }
+}
+
+@media screen and (max-width: 1249px){
+    header{
+        background-position: center left -330px;
+        background-size: auto 100%;
+    }
+}
+
+
 #logo{
     position: absolute;
-    height:24vh;
-    min-height: 116px;
+    height:100%;
 }
 
 header h1{
@@ -53,7 +67,7 @@ header h1{
     position: relative;
     display: none;
     width: 100%;
-    height: 10vh;
+    height: 60px;
     /*max-height: 70px;*/
     background-color: white;
     box-shadow: 0px 2px 5px black;
@@ -68,9 +82,7 @@ nav{
     position: relative;
     z-index:99;
     width: 100%;
-    height:7vh;
-    min-height: 44px;
-    max-height: 60px;
+    height: 55px;
     background-color: white;
     /*background-color: #2185C5;*/
     box-shadow: 0px 2px 5px black;
@@ -460,6 +472,10 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     margin-top:-10px;
 }
 
+#inscritGris{
+    -webkit-filter: grayscale(100%); 
+}
+
 .detailEvenement{
     font-weight: bold;
     margin-top:-5px;
@@ -683,14 +699,14 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 
 #boutonInscrireNews{
     position: absolute;
+    width: 160px;
     text-decoration: none;
     color: inherit;
     text-align: center;
     font: 13.3333px Arial;
     right: 2vw;
-    bottom: 2vh;
-    padding: 10px;
-    padding-left: 15%;
+    bottom: 20px;
+    padding: 10px 0 10px 25px;
     border: none;
     border-radius: 5px;
     background-image: url("../image/icon/newsletter2.png");
@@ -700,6 +716,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     background-color: white;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+    box-sizing: content-box;
 }
 
 #boutonInscrireNews:hover{
@@ -1141,7 +1158,7 @@ input[type=submit]{
     top:0;
     right:0;
     width: 17vw;
-    height: 25vh;
+    height: 100%;
 }
 
 
