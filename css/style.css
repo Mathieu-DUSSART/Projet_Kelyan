@@ -893,7 +893,16 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 }
 
 
+/***********Statistisque************/
 
+#bouteille{
+    width: 10em;
+    height: 15em;
+}
+#tabStat td {
+    text-align: center;
+
+}
 
 #divChoixVillePoint{
     display: inline-block;
