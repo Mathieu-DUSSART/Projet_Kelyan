@@ -1,3 +1,23 @@
+//Fonction pour cacher ou afficher la nav en version mobile
+function navBar(){
+    var nav = $("nav");
+    //Si on est en responsive
+    if($('#boutonMenu').css("display") != "none"){
+        nav.css('display', 'none');
+    }else{
+        nav.css('display', 'block');
+    }
+}
+$(navBar);
+$(window).resize(navBar);
+
+$(function(){
+    var nav = $("nav");
+    $("#boutonMenu").bind("click", function(){
+        nav.toggle("blind", 200);
+    });
+})
+
 //Fonction pour afficher ou cacher la div d'ajout de logo de réseaux sociaux
 $(function(){
     $("#boutonAjoutReseauSocial").on("click", function(){
@@ -8,9 +28,9 @@ $(function(){
 
 //Fonction permettant de changer le margin-top des articles en fonction de la présence des boutons supprimer/modifier (responsive)
 function marginTopArticle(){
-    if($(window).width() < "1000"){
+    if( ( $(window).width() < "1000" && mobile == false ) || mobile == true){
         if($(".voletGestionArticle").length != 0){
-            $('.divArticle').css('margin-top', 'calc(8vw + 3vh)');
+            $('.divArticle').css('margin-top', 'calc(55px + 3vh)');
         }else{
             $('.divArticle').css('margin-top', '2vh');
         }
@@ -122,50 +142,20 @@ function initEditText(){
     toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image | preview media fullpage | forecolor backcolor emoticons',
     autosave_ask_before_unload: false,
     spellchecker_language: 'fr_FR',
-
+    resize: false
   });
 
 }
-/*
-//Fonction qui centre les onglets de la barre de navigation
-function centrerNav(){
-    var largeur_fenetre = $(window).width();
-
-    if(largeur_fenetre > "1000"){
-        var paddingGauche = largeurNav - sommeLargeur;
-        $("nav ul").css( "padding-left", paddingGauche/2 );
-    }
-}
-
-//Fonction qui calcule la largeur des onglets de la barre de navigation
-function calculNav(){
-    sommeLargeur = 0;
-    nbElem = $('nav ul li').length;
-    largeurNav = $('nav').width();
-
-    $("nav li").each(function(){
-        sommeLargeur = sommeLargeur + $(this).width();
-    });
-}*/
-
-$(function(){
-    /*calculNav();
-    centrerNav();*/
-});
-
-$(window).resize(function(){
-    /*calculNav();
-    centrerNav();*/
-});
 
 //Fonction pour fixer la nav quand on scroll
 $(function(){
   $(window).scroll(function () {//Au scroll dans la fenetre on déclenche la fonction
-        if($(window).width() > "1000"){
+        if(mobile == false && $(window).width() > "1000"){
             if ($(this).scrollTop() > $('header').height()) { //si on a défilé de plus de 150px du haut vers le bas
+                $('#corps').css("paddingTop", $('nav').height());
                 $('nav').addClass("fixNavigation"); //on ajoute la classe "fixNavigation" à <div id="navigation">
                 //$('#corps').addClass("fixNavigationHeader");
-                $('#corps').css("paddingTop", $('nav').height());
+
             } else {
                 $('nav').removeClass("fixNavigation");//sinon on retire la classe "fixNavigation" à <div id="navigation">
                 //$('#corps').removeClass("fixNavigationHeader");
@@ -175,18 +165,7 @@ $(function(){
   });
 });
 
-//Fonction pour cacher ou afficher la nav en version mobile
-$(function(){
-    $("#boutonMenu").bind("click", function(){
-        var nav = $("nav");
 
-        if(nav.hasClass("cacherNav")){
-            nav.removeClass("cacherNav");
-        }else{
-            nav.addClass("cacherNav");
-        }
-    });
-});
 
 //popup de confirmation de suppression
 $(document).ready(function() {
@@ -254,3 +233,8 @@ window.onload=function(){
     clickBoutonChangerCouleur();
     initEditText();
 }
+
+
+$(function(){
+    $("#corps").css("paddingBottom", $("footer").outerHeight(true));
+})

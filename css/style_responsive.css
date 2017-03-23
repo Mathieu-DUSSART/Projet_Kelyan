@@ -23,20 +23,16 @@ header h1{
 }
 
 #boutonMenu{
-    position: absolute;
-    left: 4vw;
-    top: 50%;
-    width: 7vh;
-    /*max-width: 49px;*/
-    height: 7vh;
-    /*max-height: 49px;*/
+    display: inline-block;
+    width: 46px;
+    height: 46px;
     border: none;
     border-radius: 5px;
+    box-sizing: border-box;
     /*box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;*/
-    margin-top: -3.5vh;
-    margin-bottom: 0;
-    /*margin-left: 4vw;*/
+    margin-top: 7px;
+    margin-left: 2vw;
     background-color: white;
     background-image: url("../image/icon/menu.png");
     background-repeat: no-repeat;
@@ -95,9 +91,6 @@ nav ul li a:hover p{
     border-width: 0;
 }
 
-.cacherNav{
-    display: none;
-}
 
 #divInscrireNews{
     position: absolute;
@@ -110,30 +103,12 @@ nav ul li a:hover p{
 }
 
 #boutonInscrireNews{
-    position: absolute;
-    text-decoration: none;
-    color: inherit;
-    text-align: center;
-    font: 13.3333px Arial;
-    right: 2vw;
     bottom: -45px;
-    padding: 10px 0 10px 25px;
-    border: none;
-    border-radius: 5px;
-    background-image: url("../image/icon/newsletter2.png");
-    background-repeat: no-repeat;
-    background-position: left 2% center;
-    background-size: 15% 80%;
-    background-color: white;
-    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5),
-    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
-    box-sizing: content-box;
-    width: 160px;
 }
 
 .divArticle{
     display: block;
-    margin-top: calc(8vw + 3vh);
+    margin-top: calc(55px + 3vh);
 }
 
 article{
@@ -159,12 +134,11 @@ article p img{
     z-index: 10;
     width: 90vw;
     max-width: none;
-    height: 8vw;
-    min-height: 40px;
-    max-height: none;
-    top: -8vw;
+    height: 55px;
+    top: -54px;
     left: 5vw;
     border-radius: 5px 5px 0 0;
+    background-color: #E5E5E5;
     transition: left 0.3s;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5), 0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
 }
@@ -174,7 +148,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 }
 
 .voletGestionArticle form{
-    width: calc(50% - 0.5px);
+    width: calc(50% - 1px);
     height: 100%;
     margin: 0;
 }
@@ -199,8 +173,8 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 .voletGestionArticle .boutonModifier, .voletGestionArticle .boutonSupprimer{
     text-align: left;
     overflow: hidden;
-    padding-left: 20%;
-    background-size: 14%;
+    padding-left: calc(5% + 50px);
+    background-size:  auto 45px;
     background-position: center left 5%;
     box-shadow: none;
     color: inherit;
