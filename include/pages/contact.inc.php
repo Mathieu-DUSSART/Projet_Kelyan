@@ -79,7 +79,7 @@ if(isset($_POST["numImageASupprimer"])){
 }
 ?>
 
-<h1 class="titreBleu">Nous contacter</h1>
+<h1 id="titreContact">Nous contacter</h1>
 <form id="formContact" method="POST" action="traitement_formulaire.php">
     <label>Nom:</label>
     <input  type="text" name="nomContact" required>

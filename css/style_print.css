@@ -1,0 +1,66 @@
+nav, #barreNav{
+    display: none !important;
+}
+
+form{
+    display: none !important;
+}
+
+header{
+    display: none !important;
+}
+
+footer{
+    display: none !important;
+}
+
+#formulaireAjoutArticle, #formulaireAjoutEvenement, .voletGestionArticle, input{
+    display: none !important;
+}
+
+.divPersonneInscrite table{
+    border-collapse: collapse;
+    margin: 10px;
+}
+
+.divPersonneInscrite table *{
+    border: 1px solid black;
+    padding: 5px;
+}
+
+
+
+
+.titreAlbum{
+    display: block !important;
+}
+
+video{
+    display: none;
+}
+
+.imgGalerie{
+    display: inline-block !important;
+    width: 49%;
+}
+
+.imgGalerie img{
+    width: 100%;
+}
+
+.imgPartenaire img{
+    max-width: 40%;
+}
+
+.divArticle{
+    margin-top: 40px !important;
+    border-bottom: 1px solid black
+}
+
+.divInscription{
+    display: none !important;
+}
+
+#titreContact{
+    display: none;
+}

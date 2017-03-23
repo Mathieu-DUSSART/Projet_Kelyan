@@ -235,9 +235,7 @@ window.onload=function(){
 }
 
 
-$(function(){
-    $("#corps").css("paddingBottom", $("footer").outerHeight(true));
-})
+
 
 $(function(){
     $('.lienPersonneInscrite').on('click', function(){
@@ -245,8 +243,9 @@ $(function(){
     })
 })
 
-$(window).resize(function(){
-    $(function(){
-        $("#corps").css("paddingBottom", $("footer").outerHeight(true));
-    })
-});
+function positionerFooter(){
+    $("#corps").css("paddingBottom", $("footer").outerHeight(true));
+}
+
+$(positionerFooter);
+$(window).resize(positionerFooter);

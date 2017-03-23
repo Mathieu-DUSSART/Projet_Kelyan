@@ -21,14 +21,15 @@
     <head>
         <title>Association Kelyan</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" media="only screen" type="text/css" href="css/style.css">
         <link rel="stylesheet" media="only screen and (max-width: 1000px)" href="css/style_responsive.css" type="text/css" />
+        <link rel="stylesheet" href="css/style_print.css" type="text/css" media="only print" />
 
         <?php
         $detect = new Mobile_Detect();
         //Si l'utilisateur est sur un mobile ou une tablette
         if ($detect->isMobile()){?>
-            <link rel="stylesheet" href="css/style_responsive.css" type="text/css" />
+            <link rel="stylesheet" media="only screen" href="css/style_responsive.css" type="text/css" />
             <script type="text/javascript">
                 mobile = true
             </script>
