@@ -75,8 +75,9 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
     //Récupère l'heure de l'évènement au format 14h59
     $heure= date_format($heureEvent, 'H:i');
 
-    if(isset($_POST["numEventAModifier"]) && $_POST["numEventAModifier"]==$evenement->getNum()){
-      $_SESSION["numEventAModifier"]=$evenement->getNum();
+    //Affiche l'évènement à modifier
+    if(isset($_POST["numEventAModifier"]) && $_POST["numEventAModifier"] == $evenement->getNum()){
+        $_SESSION["numEventAModifier"]=$evenement->getNum();
         ?>
         <div id="formulaireAjoutEvenement">
             <form class="modifier" method="POST" action="#">
@@ -99,6 +100,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
             </form>
         </div>
         <?php
+    //Sinon affiche l'évènement
     }else{?>
         <div class="divArticle">
             <article>
@@ -107,7 +109,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                 echo "<p class=\"dateEvenement\">" . "Le " . $date . "</p>";
                 echo "<p class=\"detailEvenement\">" . "À partir de " . $heure . "</p>";
                 echo "<p class=\"detailEvenement\">" . "À " . $evenement->getVille() . "</p>";
-                echo "<p>" . $evenement->getTexte() . "</p>";
+                echo $evenement->getTexte();
 
                 $now = date('Y-m-d');
                 $next = $evenement->getDate();
@@ -127,89 +129,91 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                         </a>
                     </div>
                     <br>
-                  <form id="formInscription<?php echo $evenement->getNum()?>" method="POST" action="#">
-                    <label>Nom :</label>
-                    <input type="text" name="nomParticipant" required><br>
-                    <label>Prenom :</label>
-                    <input type="text" name="prenomParticipant" required><br>
-                    <label>Mail :</label>
-                    <input type="email" name="mailParticipant" required>
-                    <input name="numEventInscription" type="hidden" value="<?php echo $evenement->getNum(); ?>">
-                    <input type="submit" name="inscription">
-                  </form>
-            <?php
-            echo "<script>$(document).ready(function(){
-              $('#formInscription" . $evenement->getNum() . "').hide();
-              $('a#boutonInscrire" . $evenement->getNum() . "').click(function()
-             {
-                 $('#formInscription" . $evenement->getNum() . "').toggle(400);
-                 return false;
-              });
-           });</script>";
-       }else{ ?>
-           <div class="divInscription">
-           <img class="imgInscrire" id="inscritGris" src="./image/icon/inscrire.png" alt="S'inscrire">
-           <span class="inscrire">S'inscrire</span>
-       </div>
-     <?php }
-            }
-            if(isset($_SESSION["login"]) && !isset($_POST["numEventAModifier"])){ ?>
-              <label>Il y a <?php echo $managerPersonne->getNbPersonneInscrite($evenement->getNum()); ?> personnes inscrites.</label><br>
-              <?php
-              if($managerPersonne->getNbPersonneInscrite($evenement->getNum()) > 0){
-              ?>
-              <a href="" id="boutonInscrire<?php echo $evenement->getNum();?>">
-                  <img src="./image/icon/voir.png" alt="Voir les personnes inscrites">
-              </a>
-              <table id="tableInscris<?php echo $evenement->getNum();?>">
-                <tr>
-                  <th>Prenom</th>
-                  <th>Nom</th>
-                  <th>Mail</th>
-                </tr>
-              <?php foreach ($managerPersonne->getPersonneInscriteEvent($evenement->getNum()) as $personne){ ?>
-                  <tr>
-                    <td><?php echo $personne->getPerPrenom(); ?></td>
-                    <td><?php echo $personne->getPerNom(); ?></td>
-                    <td><?php echo $personne->getPerMail(); ?></td>
-                  </tr>
+                    <form id="formInscription<?php echo $evenement->getNum()?>" method="POST" action="#">
+                        <label>Nom :</label>
+                        <input type="text" name="nomParticipant" required><br>
+                        <label>Prenom :</label>
+                        <input type="text" name="prenomParticipant" required><br>
+                        <label>Mail :</label>
+                        <input type="email" name="mailParticipant" required>
+                        <input name="numEventInscription" type="hidden" value="<?php echo $evenement->getNum(); ?>">
+                        <input type="submit" name="inscription">
+                    </form>
+                    <?php
+                    echo "<script>$(document).ready(function(){
+                      $('#formInscription" . $evenement->getNum() . "').hide();
+                      $('a#boutonInscrire" . $evenement->getNum() . "').click(function()
+                     {
+                         $('#formInscription" . $evenement->getNum() . "').toggle(400);
+                         return false;
+                      });
+                   });</script>";
+                }else if(!isset($_SESSION["login"])){ ?>
+                   <div class="divInscription">
+                       <img class="imgInscrire inscritGris" src="./image/icon/inscrire.png" alt="S'inscrire">
+                       <span class="inscrire">S'inscrire</span>
+                   </div>
+                <?php
+                }
 
-            <?php  } ?>
-            </table>
-          <?php
-         echo "<script>$(document).ready(function(){
-           $('#tableInscris" . $evenement->getNum() . "').hide();
-           $('a#boutonInscrire" . $evenement->getNum() . "').click(function()
-           {
-              $('#tableInscris" . $evenement->getNum() . "').toggle(400);
-              return false;
-           });
-          });</script>";
-          }
-        }
-          ?>
-              </article>
-              <?php
-              if(isset($_SESSION["login"])){
-                  if(!isset($_POST["modifierEvent"]) || (isset($_POST["modifierEvent"]) && $_POST["numEventAModifier"]!=$evenement->getNum())){?>
-                      <div class="voletGestionArticle">
-                          <form class="supprimer" method="POST" action="#">
+                //Affiche un évènement en mode admin
+                if(isset($_SESSION["login"]) && !isset($_POST["numEventAModifier"])){
+                    if($managerPersonne->getNbPersonneInscrite($evenement->getNum()) > 0){?>
+                        <input type="button" class="lienPersonneInscrite">
+
+                        <label class="lblPersonneInscrite"><?php echo $managerPersonne->getNbPersonneInscrite($evenement->getNum());
+                            if($managerPersonne->getNbPersonneInscrite($evenement->getNum()) > 1){
+                                echo " personnes inscrites";
+                            }else{
+                                echo " personne inscrite";
+                            }
+                            ?>
+                        </label>
+                        <div class="divPersonneInscrite">
+                            <table id="tableInscris<?php echo $evenement->getNum();?>">
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Prenom</th>
+                                    <th>Mail</th>
+                                </tr>
+                                <?php
+                                foreach ($managerPersonne->getPersonneInscriteEvent($evenement->getNum()) as $personne){ ?>
+                                    <tr>
+                                        <td><?php echo $personne->getPerNom(); ?></td>
+                                        <td><?php echo $personne->getPerPrenom(); ?></td>
+                                        <td><?php echo $personne->getPerMail(); ?></td>
+                                    </tr>
+                                <?php
+                                } ?>
+                            </table>
+                        </div>
+                        <?php
+                    }
+                }?>
+            </article>
+            <?php
+            if(isset($_SESSION["login"])){
+                if(!isset($_POST["numEventAModifier"])){?>
+                    <div class="voletGestionArticle">
+                        <form class="supprimer" method="POST" action="#">
                             <input name="supprimerArticle" class="boutonSupprimer input_btn1" type="button" value="Supprimer">
-                              <input class="num" name="numEventASupprimer" type="hidden" value="<?php echo $evenement->getNum(); ?>">
-                          </form>
-                          <form class="modifierEvent" method="POST" action="#">
-                              <input name="modifierArticle" class="boutonModifier input_btn2" type="submit" value="Modifier" >
-                              <input class="numModif" name="numEventAModifier" type="hidden" value="<?php echo $evenement->getNum(); ?>">
-                          </form>
-                      </div>
-                  <?php
-                  }
-              }
-              ?>
-          </div>
+                            <input class="num" name="numEventASupprimer" type="hidden" value="<?php echo $evenement->getNum(); ?>">
+                        </form>
+                        <form class="modifierEvent" method="POST" action="#">
+                            <input name="modifierArticle" class="boutonModifier input_btn2" type="submit" value="Modifier" >
+                            <input class="numModif" name="numEventAModifier" type="hidden" value="<?php echo $evenement->getNum(); ?>">
+                        </form>
+                    </div>
+                    <?php
+                }
+            }
+            ?>
+        </div>
 <?php
+    }
 }
 
+//Affiche le formulaire pour ajouter un évènement
 if(isset($_SESSION["login"])){?>
     <div id="formulaireAjoutEvenement">
         <input type="button" id="boutonPlusFormulaireAjout" value="+">

@@ -24,6 +24,22 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" media="only screen and (max-width: 1000px)" href="css/style_responsive.css" type="text/css" />
 
+        <?php
+        $detect = new Mobile_Detect();
+        //Si l'utilisateur est sur un mobile ou une tablette
+        if ($detect->isMobile()){?>
+            <link rel="stylesheet" href="css/style_responsive.css" type="text/css" />
+            <script type="text/javascript">
+                mobile = true
+            </script>
+        <?php
+        }else{?>
+            <script type="text/javascript">
+                mobile = false
+            </script>
+        <?php
+        }?>
+
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
         <!-- Import JQuery-->
         <script src="js/jquery-3.1.1.min.js"></script>
@@ -49,9 +65,9 @@
             ?>
         </header>
         <div id="barreNav">
-            <input type="button" id="boutonMenu">
+            <input type="button" id="boutonMenu" value="">
         </div>
-        <nav class="cacherNav">
+        <nav>
             <?php
             require_once("include/nav.inc.php");
             ?>

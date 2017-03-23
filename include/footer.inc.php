@@ -24,9 +24,9 @@
           <div id="divAjoutReseauxSociaux">
               <input id="boutonAjoutReseauSocial" type="button" value="+">
               <div id="divAjouterLogo">
-                  <form enctype="multipart/form-data" id="ajouterArticle" method="POST" action="#">
+                  <form enctype="multipart/form-data" id="ajouterLogo" method="POST" action="#">
                       <label>Logo:</label>
-                      <input name="fichierReseauxSociaux" type="file" id="fichier_a_uploader" />
+                      <input name="fichierReseauxSociaux" type="file" id="logo_a_uploader" />
                       <label>Lien: </label>
                       <input type="url" name="lien" value="http://">
                       <input type="submit" value="Valider">
