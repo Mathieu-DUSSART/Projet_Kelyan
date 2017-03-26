@@ -14,6 +14,7 @@ $(window).resize(navBar);
 $(function(){
     var nav = $("nav");
     $("#boutonMenu").bind("click", function(){
+        nav.removeClass();
         nav.toggle("blind", 200);
     });
 })

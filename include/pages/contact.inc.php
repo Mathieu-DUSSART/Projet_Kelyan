@@ -124,7 +124,7 @@ if(isset($_SESSION["login"])){?>
                 <input name="fichier" id="fichier_a_uploader" type="file" />
                 Parcourir
             </label>
-            <p id="nomFichierAUploader"></p>
+            <p id="nomFichierAUploader">Aucun fichier choisi</p>
 
             <label>Lien: </label>
             <input type="url" name="lien" value="http://">

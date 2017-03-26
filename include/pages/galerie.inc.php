@@ -281,7 +281,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
                     <input name="fichier" id="fichier_a_uploader" type="file" />
                     Parcourir
                 </label>
-                <p id="nomFichierAUploader"></p>
+                <p id="nomFichierAUploader">Aucun fichier choisi</p>
 
                 <input class="bouton" type="submit" name="formAjoutImage" value="Uploader" />
             </form>
