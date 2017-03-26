@@ -14,7 +14,7 @@ if(isset($_POST["ville"])){
     $tab['point_lieu']=$_POST["adresse"];
     $pointdecollecte=new PointsDeCollecte($tab);
     $managerPointsDeCollecte->add($pointdecollecte);
-    header('Location: index.php?page=8');
+    header('Location: index.php?page=5');
     exit;
 }
 
@@ -39,7 +39,7 @@ if(isset($_POST["VilleModifie"])){
     if($nbLieuVille==0){
       $managerVille->delete($villePoint);
     }
-    header('Location: index.php?page=8');
+    header('Location: index.php?page=5');
     exit;
 }
 //Supprime un point de collecte
@@ -55,7 +55,7 @@ if(isset($_POST["numPointDeCollecteASupprimer"])){
     }
 
 
-    header('Location: index.php?page=8');
+    header('Location: index.php?page=5');
     exit;
 }
 
@@ -184,7 +184,7 @@ if(isset($_POST["selectVillePoint"])){
                })(<?php $j?>);
                (function(<?php $j?>) {
                        google.maps.event.addListener(<?php echo "Marker".$j ?>,"mouseout", function() {
-        
+
 
 
                      infoWindow.close(map, this);
