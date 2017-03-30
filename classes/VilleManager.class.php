@@ -24,7 +24,7 @@ class VilleManager{
 		}
 
 		public function existe($nom){
-			$sql="SELECT * FROM ville WHERE vil_nom ='".$nom."' ";
+			$sql="SELECT * FROM ville WHERE vil_nom =\"".$nom."\"";
 			$req = $this->db->query($sql);
 			$resu=$req->fetch(PDO::FETCH_OBJ);
 			if($resu == NULL){
