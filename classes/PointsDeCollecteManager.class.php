@@ -37,14 +37,14 @@ class PointsDeCollecteManager{
   	}
 
     public function deletePoint($num){
-      $sql="DELETE FROM pointsdecollecte WHERE point_num=:num";
+      $sql="DELETE FROM pointdecollecte WHERE point_num=:num";
       $req=$this->db->prepare($sql);
       $req->bindValue(':num', $num, PDO::PARAM_INT);
       $req->execute();
     }
 
 		public function getAllLieux(){
-			$sql="SELECT lieu FROM pointsdecollecte";
+			$sql="SELECT lieu FROM pointdecollecte";
 			$req=$this->db->query($sql);
 			while($ligne=$req->fetch(PDO::FETCH_OBJ)){
 				$tabObj[]=new PointsDeCollecte($ligne);
@@ -124,5 +124,32 @@ class PointsDeCollecteManager{
 	  $res=$req->fetch(PDO::FETCH_OBJ);
 	  $obj=new PointsDeCollecte($res);
 	  return $obj;
+	}
+
+
+	public function existe($nom){
+		$sql="SELECT * FROM pointdecollecte WHERE point_lieu =\"".$nom."\"";
+		echo $sql;
+		$req = $this->db->query($sql);
+		$resu=$req->fetch(PDO::FETCH_OBJ);
+		if($resu == NULL){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+
+	public function getNbLieuVisibleParVille($num){
+		$sql = "SELECT count(point_lieu)as nbLieu FROM pointdecollecte WHERE vil_num=:num and point_visibilite=1";
+		echo $sql;
+		$req=$this->db->prepare($sql);
+		$req->bindValue(':num', $num, PDO::PARAM_INT);
+		$req->execute();
+		$resu = $req->fetch(PDO::FETCH_OBJ);
+		echo $resu->nbLieu;
+	 	if($resu != NULL){
+			return $resu->nbLieu;
+	  	}
 	}
 }

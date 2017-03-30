@@ -50,6 +50,9 @@
         <link rel="stylesheet" href="js/JQueryUI/jquery-ui.min.css">
 
         <script src='tinymce/js/tinymce/tinymce.min.js'></script>
+        
+        <!-- Ajout Capcha Google -->
+        <script src='https://www.google.com/recaptcha/api.js'></script>
 
         <script src="js/function.js"></script>
 

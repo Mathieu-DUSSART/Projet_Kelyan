@@ -1,5 +1,27 @@
 <?php
 
+require 'recaptchalib.php';
+//On met les clé API pour le capcha
+$siteKey = '6Ld85BoUAAAAAEhy7F5X9ZsLvY2u-tQ_JhD9pWsb'; //clé publique
+$secret = '6Ld85BoUAAAAANYhCWyYpebDKyxI2yNYLyoJxQJx'; //clé privée
+
+// Paramètre renvoyé par le recaptcha
+$response = $_POST['g-recaptcha-response'];
+
+// On récupère l'IP de l'utilisateur
+$remoteip = $_SERVER['REMOTE_ADDR'];
+
+$api_url = "https://www.google.com/recaptcha/api/siteverify?secret=" . $secret . "&response=" . $response . "&remoteip=" . $remoteip ;
+
+$decode = json_decode(file_get_contents($api_url), true);
+
+//On vérifie le captcha
+if ($decode['success'] == true) {
+    $action = "traitement_formulaire.php";
+}else{
+    $action = "#";
+}
+
 // Tableaux de donnees
 $tabExt = array('jpg','gif','png','jpeg');    // Extensions autorisees
 $infosImg = array();
@@ -77,10 +99,11 @@ if(isset($_POST["numImageASupprimer"])){
    header('Location: index.php?page=8');
    exit;
 }
+
 ?>
 
 <h1 id="titreContact">Nous contacter</h1>
-<form id="formContact" method="POST" action="traitement_formulaire.php">
+<form id="formContact" method="POST" action="<?php $action ?>">
     <label>Nom:</label>
     <input  type="text" name="nomContact" required>
 
@@ -92,7 +115,7 @@ if(isset($_POST["numImageASupprimer"])){
 
     <label>Message:</label>
     <textarea name="messageContact" rows="8" cols="45" placeholder="Écrivez votre message ici..." required></textarea>
-
+    <div class="g-recaptcha" data-sitekey="<?php echo $siteKey; ?>"></div>
     <input name="envoi" type="submit" value="Envoyer">
 </form>
 

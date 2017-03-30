@@ -1263,6 +1263,7 @@ input[type=submit]{
 
 #ajouterPartenaire input[type=file]{
     display: none;
+
 }
 
 
@@ -1313,8 +1314,6 @@ input[type=submit]{
 #nomFichierAUploader{
     font-style: italic;
 }
-
-
 
 .bouteille{
     position: relative;
@@ -1370,4 +1369,9 @@ input[type=submit]{
 
 .modifierPointDeCollecte{
     display: none;
+}
+/***********point de collecte***************/
+
+#modifierPoint{
+    text-align: center;
 }
