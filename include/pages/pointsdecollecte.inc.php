@@ -171,7 +171,6 @@ if(isset($_POST["selectVillePoint"])){
     if($i==0){
         echo "il n'y a pas de point de collecte à ".$managerVille->getVilNomByNum($_POST["selectVillePoint"])->getVilNom();
     };
-};
 
 ?>
 </tr>
@@ -231,7 +230,7 @@ if(isset($_POST["selectVillePoint"])){
     async defer></script>
 
 <?php
-
+    };
         if(isset($_SESSION["login"])){
             if(!isset($_POST["modifierPointDeCollecte"]) || (isset($_POST["modifierPointDeCollecte"]) && $_POST["numPointDeCollecteAModifier"]!=$point->getPointNum())){
                 if ($managerPointsDeCollecte->getNbLieuParVille($_POST["selectVillePoint"]) > 0){?>
@@ -252,8 +251,6 @@ if(isset($_POST["selectVillePoint"])){
 
                 <?php
             };
-
-
 
 };
 };
