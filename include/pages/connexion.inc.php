@@ -25,6 +25,7 @@ if ($decode['success'] == true) {*/
         }
     }
 //}
+
 ?>
 
 <h1>Se connecter</h1>
