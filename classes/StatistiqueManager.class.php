@@ -54,7 +54,7 @@ class StatistiqueManager{
         $req->bindValue(':stat_num', $stat_num, PDO::PARAM_INT);
 		$req->execute();
 	}
-    public function getStateParMois($mois,$annee){
+    public function getStateParMois($mois, $annee){
         $sql="SELECT sum(statistique) as nbStat FROM statistique WHERE MONTH(statistique_date)=:mois and year(statistique_date)=:annee";
         $req=$this->db->prepare($sql);
         $req->bindValue(":mois", $mois ,PDO::PARAM_STR);
@@ -90,6 +90,19 @@ class StatistiqueManager{
         return $res->nbAnnee;
     }
 
+    public function getStatistiqueByPointAndDate($num,$mois,$annee){
+      $tabObj = array();
+      $sql="SELECT * FROM statistique WHERE point_num = :num AND MONTH(statistique_date)=:mois and year(statistique_date)=:annee";
+      $req=$this->db->prepare($sql);
+      $req->bindValue(":num", $num,PDO::PARAM_INT);
+      $req->bindValue(":mois", $mois,PDO::PARAM_INT);
+      $req->bindValue(":annee", $annee,PDO::PARAM_INT);
+      $req->execute();
+      while($ligne=$req->fetch(PDO::FETCH_OBJ)){
+        $tabObj[] = new Statistique($ligne);
+      }
+      return $tabObj;
+    }
 
 
 

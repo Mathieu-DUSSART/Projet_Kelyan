@@ -258,3 +258,112 @@ $(function(){
         $('#nomFichierAUploader').html($('#fichier_a_uploader').val())
     });
 })
+
+
+//fonction pour remplir les bouteilles
+
+//var remplissage = 0;
+function transforme(mois, id, id2){
+  ajaxMois(mois, id, id2);
+
+  //updateBouteille(pourcentage, id, id2);
+}
+function updateBouteille(height, id, id2){
+  $('#'+id2+'').hide();
+  for (var i = 0 ; i < height ; i++){
+    var vide = 100 - i;
+    var hauteur = i + '%';
+    vide = vide + '%';
+    $('#'+id+'').css({height: vide});
+    $('#'+id2+'').css({height: hauteur});
+  }
+  $('.eau').toggle(500);
+}
+
+// Requête ajax pour récupérer les bouchons
+function ajaxMois(mois, id, id2, annee){
+    $.ajax({
+        async : false,
+        data : 'mois=' + mois,
+        url : 'requetesPHP.php',
+        dataType : 'json',
+        data : {annee: annee},
+        success : function(data){
+            for(temp in data){
+                if(data[temp].id==mois && data[temp].mois==1){
+                 var remplissage = data[temp].stat;
+                 console.log(remplissage);
+                }
+            }
+            console.log(data);
+            var cap_bouteille = 500;
+            var height = remplissage*100/cap_bouteille;
+
+
+            for (var i = 0 ; i < height ; i++){
+                var vide = 100 - i;
+                var hauteur = i + '%';
+                vide = vide + '%';
+                var z_index=50;
+
+                $("#" + id).css("height", vide);
+                $("#" + id).css({"z-index": z_index});
+                $("#" + id).css({"background-color": "white"});
+
+                $("#" + id2).css({"height": hauteur});
+                $("#" + id2).css({"z-index": z_index});
+                $("#" + id2).css({"background-color": "blue"});
+            }
+      },
+      error : function(error){
+          console.log('erreur');
+      }
+    });
+}
+function ajaxAnnee(annee, id, id2){
+    $.ajax({
+        async : false,
+        data : 'annee=' + 2017-annee,
+        url : 'requetesPHP.php',
+        dataType : 'json',
+        success : function(data){
+            for(temp in data){
+                if(data[temp].id==annee && data[temp].annee==1){
+                 var remplissage = data[temp].stat;
+                }
+            }
+            var cap_bouteille = 500;
+            var height = remplissage*100/cap_bouteille;
+
+
+            for (var i = 0 ; i < height ; i++){
+                var vide = 100 - i;
+                var hauteur = i + '%';
+                vide = vide + '%';
+                var z_index=50;
+
+                $("#" + id).css("height", vide);
+                $("#" + id).css({"z-index": z_index});
+                $("#" + id).css({"background-color": "white"});
+
+                $("#" + id2).css({"height": hauteur});
+                $("#" + id2).css({"z-index": z_index});
+                $("#" + id2).css({"background-color": "blue"});
+            }
+      },
+      error : function(error){
+          console.log(error);
+      }
+  });
+}
+
+
+$(function(){
+    $(".bouteille").on("click", function(){
+        var valeur =  $(".anneeStat", this).text();
+
+
+        $(".modifierPointDeCollecte input:nth-of-type(2)").val(valeur);
+        $(".modifierPointDeCollecte").submit();
+    })
+})
