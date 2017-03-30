@@ -9,8 +9,8 @@
 }
 body{
     font-family: Verdana;
-    background-color: #d8f0ff;
-    /*background-color: #F1F1F1;*/
+    /*background-color: #d8f0ff;*/
+    background-color: #B3E5FC;
     color:#3E454C;
     margin:0;
     position: relative;
@@ -314,7 +314,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 
 #formulaireAjoutArticle, #formulaireAjoutEvenement{
     display: block;
-    background-color: #E5E5E5;
+    background-color: #E0E0E0;
     width:80vw;
     margin-top: 2vh;
     margin-left: auto;
@@ -397,7 +397,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 #boutonPlusFormulaireAjout{
     width: calc(100% + 20px);
     height: calc(100% + 20px);
-    background-color: #E5E5E5;
+    background-color: #E0E0E0;
     margin: 0;
     margin-left: -10px;
     padding: 10px 10px 0px 10px;
@@ -520,7 +520,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
 .divPersonneInscrite table *{
     padding: 10px;
     margin: 2px;
-    background-color: #E5E5E5;
+    background-color: #E0E0E0;
     border: 1px solid black;
 }
 
@@ -528,6 +528,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     display: inline-block;
     vertical-align: middle;
     font-size: 2em;
+    cursor: pointer;
 }
 
 .lienPersonneInscrite{
@@ -563,11 +564,14 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     display: inline-block;
     vertical-align: top;
     z-index: 7;
-    width:3vw;
-    height:3vw;
+    width: 3vw;
+    height: 3vw;
+    padding-left: 1vw;
     top: 0;
     right: 2vw;
     transition: right 0.3s;
+    background-color: white;
+    border-radius: 0 20% 20% 0;
 }
 
 .imgGalerie:hover .supprimerImageVideo, .albumGalerie:hover .supprimerImageVideo, .supprimerImageVideo:hover, .imgPartenaire:hover .supprimerImageVideo{
@@ -578,6 +582,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     width: 100%;
     height: 100%;
     margin: 0;
+    border-radius: 0 20% 20% 0;
 }
 
 .supprimerImageVideo input{
@@ -587,6 +592,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     margin: 0;
     border:none;
     border-radius: 0 20% 20% 0;
+    background-color: inherit;
 }
 
 #ajouterImage{
@@ -595,7 +601,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     width: 20vw;
     height: 15vw;
     margin-left: 4vw;
-    background-color: #E5E5E5;
+    background-color: #E0E0E0;
     border-radius:5px;
     box-shadow:
     0px 2px 2px 0px rgba(0, 0, 0, 0.5),
@@ -620,6 +626,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     margin-right: auto;
     padding:10px 15px;
     margin-top: 25%;
+    background-color:#FF7F66;
 }
 
 .titreJaune{
@@ -755,7 +762,7 @@ article:hover + .voletGestionArticle, .voletGestionArticle:hover{
     right:0;
     padding: 8px;
     color: inherit;
-    background-color: #E5E5E5;
+    background-color: #E0E0E0;
     border-radius: 5px 5px 0 5px;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5), 0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
 }
@@ -980,6 +987,7 @@ input{
     font-weight:bold;
     border-radius:5px;
     border:none;
+    outline: none;
     box-shadow:
     0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
@@ -1006,7 +1014,7 @@ input[type=submit]{
     vertical-align: middle;
     width: 20vw;
     height: auto;
-    margin-left: 4vw;
+    margin-left: 3.9vw;
     margin-right: -0.25em;
     margin-bottom: 4vw;
 }
@@ -1022,6 +1030,10 @@ input[type=submit]{
     box-shadow:
     0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+.albumGalerie video, .imgGalerie video{
+    background-color: black;
 }
 
 .albumGalerie:hover img, .albumGalerie:hover video{
@@ -1054,7 +1066,7 @@ input[type=submit]{
     height: 15vw;
     margin-left: 4vw;
     text-align: center;
-    background-color: #E5E5E5;
+    background-color: #E0E0E0;
     border-radius:5px;
     box-shadow:
     0px 2px 2px 0px rgba(0, 0, 0, 0.5),
@@ -1085,8 +1097,8 @@ input[type=submit]{
     display: block;
     margin: 0 auto;
     padding: 10px 15px;
+    background-color:#FF7F66;
     left: 50%;
-    right: 50%;
     -webkit-transform: translate(-50%, 0);
     -moz-transform: translate(-50%, 0);
     -ms-transform: translate(-50%, 0);
@@ -1189,6 +1201,7 @@ input[type=submit]{
     display: block;
     margin: 0 auto;
     padding: 10px 15px;
+    background-color:#FF7F66;
     left: 50%;
     right: 50%;
     -webkit-transform: translate(-50%, 0);
@@ -1202,16 +1215,21 @@ input[type=submit]{
 /**********************************/
 
 #ajouterPartenaire{
-    display: block;
-    width: 92vw;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 2%;
-    background-color: #E5E5E5 ;
-    border-radius: 5px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 20vw;
+    height: auto;
+    margin-left: 4vw;
+    padding-top: 10px;
+    padding-bottom: calc(5%);
+    background-color: #E0E0E0;
+    text-align: center;
+    border-radius:5px;
     box-shadow:
     0px 2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+
 }
 
 #ajouterPartenaire form{
@@ -1219,32 +1237,42 @@ input[type=submit]{
     height: 100%;
 }
 
-#ajouterPartenaire label{
+#ajouterPartenaire label:not(#boutonParcourirFichier){
     display: block;
     text-align: center;
-    font-weight: bold;
-    margin:2% 0 4% 0;
+    margin-top: 0;
+    margin-bottom: 5%;
     text-decoration: underline;
 }
 
+
 #ajouterPartenaire input[type=submit]{
+    position: absolute;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding:10px 15px;
-    background-color: #EC7F66;
-}
-#ajouterPartenaire input[type=url]{
-    margin-left: 25%;
-    width:50%;
-}
-#ajouterPartenaire input[type=file]{
-    margin-left: 12.5%;
-    width:75%;
-    background-color: #E5E5E5;
-    color: grey;
+    margin: 0 auto;
+    padding: 10px 15px;
+    left: 50%;
+    background-color: #FF7F66;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    bottom: 5%;
 }
 
+#ajouterPartenaire input[type=file]{
+    display: none;
+}
+
+
+#ajouterPartenaire input[type=url]{
+    display: inline-block;
+    width: 60%;
+    margin: 0;
+}
+
+/*******/
 #divInscrireNews{
     position: absolute;
     top:0;
@@ -1280,4 +1308,8 @@ input[type=submit]{
 
 .bordureCarrée{
     border-radius: 0 0 5px 5px;
+}
+
+#nomFichierAUploader{
+    font-style: italic;
 }

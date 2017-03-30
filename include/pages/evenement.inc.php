@@ -137,7 +137,7 @@ foreach ($managerEvenement->getAllEvenement() as $evenement) {
                         <label>Mail :</label>
                         <input type="email" name="mailParticipant" required>
                         <input name="numEventInscription" type="hidden" value="<?php echo $evenement->getNum(); ?>">
-                        <input type="submit" name="inscription">
+                        <input type="submit" name="inscription" value="Valider">
                     </form>
                     <?php
                     echo "<script>$(document).ready(function(){
