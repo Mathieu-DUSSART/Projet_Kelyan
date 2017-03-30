@@ -1314,3 +1314,9 @@ input[type=submit]{
 #nomFichierAUploader{
     font-style: italic;
 }
+
+/***********point de collecte***************/
+
+.modifier{
+    text-align: center;
+}

@@ -2,7 +2,6 @@
 <h1>Liste des points de collecte</h1>
 <?php
 
-
 //Ajoute un point de collecte
 if(isset($_POST["ville"])){
     $tab=array();
@@ -83,7 +82,6 @@ $villeTab = $managerVille->getAllVille();?>
                     echo "<option value=\"" . $ville->getVilNum() . "\">" . $ville->getVilNom() . "</option>";
                     };
                 };
-
           }?>
         </select>
         <input type="submit" value="Valider">
@@ -99,7 +97,7 @@ if(isset($_POST["selectVillePoint"])){
         echo "<p class=\"lieuxPoint\">Aucun point de collecte dans cette ville</p>";
 
           $managerVille->delete($_POST["selectVillePoint"]);
-          header('Location: index.php?page=8');
+          header('Location: index.php?page=5');
           exit;
 
     }
@@ -145,6 +143,28 @@ if(isset($_POST["selectVillePoint"])){
                     if(isset($_SESSION["login"])){
                         echo "<tr>";
                         echo "<td> <p class=\"lieuxPoint\"> - " . $point->getPointLieu() ."</p> </td>";
+                        if(isset($_SESSION["login"])){
+                            if(!isset($_POST["modifierPointDeCollecte"]) || (isset($_POST["modifierPointDeCollecte"]) && $_POST["numPointDeCollecteAModifier"]!=$point->getPointNum())){
+                                if ($managerPointsDeCollecte->getNbLieuParVille($_POST["selectVillePoint"]) > 0){?>
+                                    <div class="voletGestionPointdeCollecte">
+                                        <td>
+                                            <form class="modifierPointDeCollecte" method="POST" action="#">
+                                                <input name="modifierArticle" class="boutonModifier " type="submit" value="" >
+                                                <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $point->getPointNum() ;?>">
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form class="supprimerPointDeCollecte supprimer" method="POST" action="#">
+                                                <input name="supprimerArticle" class="boutonSupprimer " type="button" value="">
+                                                <input class="num" name="numPointDeCollecteASupprimer" type="hidden" value="<?php echo $point->getPointNum(); ?>">
+                                            </form>
+                                        </td>
+                                    </div>
+
+                                <?php
+                                };
+                            };
+                        };
                     }
 
 
@@ -163,9 +183,9 @@ if(isset($_POST["selectVillePoint"])){
                   };
                 };
             };
+
+
         };
-
-
     };
     echo "<div id=\"map\" style =\"height:80vh; width: 44vw;margin:5% 0 0 28%\"></div>";
     if($i==0){
@@ -199,61 +219,49 @@ if(isset($_POST["selectVillePoint"])){
 
             });
             (function(<?php $j?>) {
-                    google.maps.event.addListener(<?php echo "Marker".$j ?>,"mouseover", function() {
-                   infoWindow.close();
-                   infoWindow.setContent(<?php echo " \" ".$points[$j][1].",".$points[$j][0]." \" " ?>);
-
+                google.maps.event.addListener(<?php echo "Marker".$j ?>,"mouseover", function() {
+                  infoWindow.close();
+                  infoWindow.setContent(<?php echo " \" ".$points[$j][1].",".$points[$j][0]." \" " ?>);
                   infoWindow.open(map, this);
-
-
-                   });
-               })(<?php $j?>);
-               (function(<?php $j?>) {
-                       google.maps.event.addListener(<?php echo "Marker".$j ?>,"mouseout", function() {
-
-
-
-
-                 infoWindow.close(map, this);
-
-
-
-              });
-          })(<?php $j?>);
-
+                });
+            })(<?php $j?>);
+            (function(<?php $j?>) {
+                google.maps.event.addListener(<?php echo "Marker".$j ?>,"mouseout", function() {
+                       infoWindow.close(map, this);
+                });
+            })(<?php $j?>);
     <?php
       };
       ?>
     };
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS7YM6Xo11hhqBf94DFmJ8rZUGNV7PrXM&callback=initMap"
-    async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS7YM6Xo11hhqBf94DFmJ8rZUGNV7PrXM&callback=initMap" async defer></script>
 
 <?php
-    };
-        if(isset($_SESSION["login"])){
-            if(!isset($_POST["modifierPointDeCollecte"]) || (isset($_POST["modifierPointDeCollecte"]) && $_POST["numPointDeCollecteAModifier"]!=$point->getPointNum())){
-                if ($managerPointsDeCollecte->getNbLieuParVille($_POST["selectVillePoint"]) > 0){?>
-                    <div class="voletGestionPointdeCollecte">
-                        <td>
-                            <form class="modifierPointDeCollecte" method="POST" action="#">
-                                <input name="modifierArticle" class="boutonModifier " type="submit" value="" >
-                                <input name="numPointDeCollecteAModifier" type="hidden" value="<?php echo $point->getPointNum() ;?>">
-                            </form>
-                        </td>
-                        <td>
-                            <form class="supprimerPointDeCollecte supprimer" method="POST" action="#">
-                                <input name="supprimerArticle" class="boutonSupprimer " type="button" value="">
-                                <input class="num" name="numPointDeCollecteASupprimer" type="hidden" value="<?php echo $point->getPointNum(); ?>">
-                            </form>
-                        </td>
-                    </div>
-
-                <?php
-            };
 
 };
-};
+
+if(isset($_POST["numPointDeCollecteAModifier"]) ){
+    $point=$managerPointsDeCollecte->getPointByNum($_POST["numPointDeCollecteAModifier"]);
+    $_SESSION["numPointDeCollecteAModifier"]=$point->getPointNum();
+    ?>
+    <div id="modifierPoint">
+        <form class="modifier" method="POST" action="#">
+            <label>Ville du point de collecte:</label>
+            <input  type="text" name="VilleModifie" value="<?php echo $managerVille->getVilNomByNum($point->getPointVille())->getVilNom(); ?>" required>
+            <br>
+            <label>Visibilité:</label>
+            <input name="visibilitePointDeCollecteModifier" type="radio" value="0" <?php if($point->getPointVisibilite()==0){echo "checked";}?>>non</input>
+            <input name="visibilitePointDeCollecteModifier" type="radio" value="1"  <?php if($point->getPointVisibilite()==1){echo "checked";}?>>oui</input>
+            <br>
+            <textarea name="lieuModifie" rows="8" required><?php echo $point->getPointLieu(); ?></textarea>
+            <br>
+            <input class="boutonModifierFinal" type="submit" value="Modifier le point de collecte">
+        </form>
+    </div>
+<?php
+}
+
 if(isset($_SESSION["login"])){
   //Attention au nom de variable !!!
   ?>
@@ -270,24 +278,3 @@ if(isset($_SESSION["login"])){
     </div>
 <?php
 }
-
-if(isset($_POST["numPointDeCollecteAModifier"]) ){
-    $point=$managerPointsDeCollecte->getPointByNum($_POST["numPointDeCollecteAModifier"]);
-    $_SESSION["numPointDeCollecteAModifier"]=$point->getPointNum();
-    ?>
-    <div id="ajouterArticle">
-        <form class="modifier" method="POST" action="#">
-            <label>Ville du point de collecte:</label>
-            <input  type="text" name="VilleModifie" value="<?php echo $managerVille->getVilNomByNum($point->getPointVille())->getVilNom(); ?>" required>
-            <br>
-            <label>Visibilité:</label>
-            <input name="visibilitePointDeCollecteModifier" type="radio" value="0" <?php if($point->getPointVisibilite()==0){echo "checked";}?>>non</input>
-            <input name="visibilitePointDeCollecteModifier" type="radio" value="1"  <?php if($point->getPointVisibilite()==1){echo "checked";}?>>oui</input>
-            <textarea name="lieuModifie" rows="8" required><?php echo $point->getPointLieu(); ?></textarea>
-            <br>
-            <input class="boutonModifierFinal" type="submit" value="Modifier le point de collecte">
-        </form>
-    </div>
-<?php
-}
-?>
