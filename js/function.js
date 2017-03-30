@@ -14,6 +14,7 @@ $(window).resize(navBar);
 $(function(){
     var nav = $("nav");
     $("#boutonMenu").bind("click", function(){
+        nav.removeClass();
         nav.toggle("blind", 200);
     });
 })
@@ -43,23 +44,22 @@ $(window).resize(marginTopArticle);
 
 
 function changerCouleur(){
-  var couleurBackGround = document.getElementById("couleurFontPage").value;
-  var couleurFooter = document.getElementById("couleurFooter").value;
-  //var body = document.getElementTagName("body");
-  var footer = document.getElementById("footer");
-  footer.style.backgroundColor=couleurFooter;
-  document.body.style.backgroundColor=couleurBackGround;
+    var couleurBackGround = document.getElementById("couleurFontPage").value;
+    var couleurFooter = document.getElementById("couleurFooter").value;
+    //var body = document.getElementTagName("body");
+    var footer = document.getElementById("footer");
+    footer.style.backgroundColor=couleurFooter;
+    document.body.style.backgroundColor=couleurBackGround;
 }
 
 function clickBoutonChangerCouleur(){
-  var bouton = document.getElementById("changerCouleur");
-  if(bouton != null){
-    bouton.addEventListener("click", changerCouleur, false);
-  }
+    var bouton = document.getElementById("changerCouleur");
+    if(bouton != null){
+        bouton.addEventListener("click", changerCouleur, false);
+    }
 }
 
-$(document).ready(function()
-{
+$(function(){
    // On cache la zone de texte
    $('#formulaireAccueil').hide();
    // toggle() lorsque le lien avec l'ID #toggler est cliqué
@@ -70,7 +70,7 @@ $(document).ready(function()
    });
 });
 
-$(document).ready(function(){
+$(function(){
    // On cache la zone de texte
    $('#formulaireArticle').hide();
    // toggle() lorsque le lien avec l'ID #toggler est cliqué
@@ -80,7 +80,7 @@ $(document).ready(function(){
    });
 });
 
-$(document).ready(function(){
+$(function(){
    // On cache la zone de texte
    $('#formulaireEvenement').hide();
    // toggle() lorsque le lien avec l'ID #toggler est cliqué
@@ -168,64 +168,63 @@ $(function(){
 
 
 //popup de confirmation de suppression
-$(document).ready(function() {
-  var dialogSuppr = $('#dialog-confirm-suppr');
+$(function() {
+    var dialogSuppr = $('#dialog-confirm-suppr');
 
-  $(".boutonSupprimer").click(function (e) {
-    e.preventDefault();
-    numObjet = $(this).next("input").val();
-    dialogSuppr.dialog("open");
-  });
-  dialogSuppr.dialog({
-     resizable: false,
-     draggable : false,
-     height:200,
-     width:500,
-     autoOpen: false,
-     modal: true,
-     buttons: {
-         "Oui": function() {
-           $(".supprimer").each(function(){
-             if($("input", this).next(".num").val()==numObjet){
-                $("#ok").slideUp();
-               $(this).submit();
-             }
-           });
-           $( this ).dialog( "close" );
+    $(".boutonSupprimer").click(function (e) {
+        e.preventDefault();
+        numObjet = $(this).next("input").val();
+        dialogSuppr.dialog("open");
+    });
+    dialogSuppr.dialog({
+        resizable: false,
+        draggable : false,
+        height:200,
+        width:500,
+        autoOpen: false,
+        modal: true,
+        buttons: {
+            "Oui": function() {
+                $(".supprimer").each(function(){
+                    if($("input", this).next(".num").val()==numObjet){
+                        $("#ok").slideUp();
+                        $(this).submit();
+                    }
+                });
+                $( this ).dialog( "close" );
 
-         },
-         "Annuler": function() {
-             $( this ).dialog( "close" );
-         }
-      }
- });
+            },
+            "Annuler": function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
 
-//popup de confirmation de modification
-  var dialogModif = $('#dialog-confirm-modif');
+    //popup de confirmation de modification
+    var dialogModif = $('#dialog-confirm-modif');
 
-  $(".boutonModifierFinal").click(function (e) {
-    e.preventDefault();
-    dialogModif.dialog("open");
-  });
+    $(".boutonModifierFinal").click(function (e) {
+        e.preventDefault();
+        dialogModif.dialog("open");
+    });
 
-  dialogModif.dialog({
-     resizable: false,
-     draggable : false,
-     height:200,
-     width:500,
-     autoOpen: false,
-     modal: true,
-     buttons: {
-         "Oui": function() {
-
-           $(".modifier").submit();
-           $( this ).dialog( "close" );
-         },
-         "Annuler": function() {
-             $( this ).dialog( "close" );
-         }
-      }
- });
+    dialogModif.dialog({
+        resizable: false,
+        draggable : false,
+        height:200,
+        width:500,
+        autoOpen: false,
+        modal: true,
+        buttons: {
+            "Oui": function() {
+                $(".modifier").submit();
+                $( this ).dialog( "close" );
+            },
+            "Annuler": function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
 });
 
 window.onload=function(){
@@ -241,6 +240,9 @@ $(function(){
     $('.lienPersonneInscrite').on('click', function(){
         $("~ .divPersonneInscrite", this).toggle("blind", 200);
     })
+    $('.lblPersonneInscrite').on('click', function(){
+        $("~ .divPersonneInscrite", this).toggle("blind", 200);
+    })
 })
 
 function positionerFooter(){
@@ -249,3 +251,10 @@ function positionerFooter(){
 
 $(positionerFooter);
 $(window).resize(positionerFooter);
+
+
+$(function(){
+    $('#boutonParcourirFichier').on('change', function(){
+        $('#nomFichierAUploader').html($('#fichier_a_uploader').val())
+    });
+})

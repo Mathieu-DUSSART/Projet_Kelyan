@@ -13,6 +13,7 @@ if(isset($_POST["ville"])){
     $tab["vil_num"]=$ville;
     $tab['point_lieu']=$_POST["adresse"];
 
+
     if(!($managerPointsDeCollecte->existe($tab['point_lieu']))){
 
 
@@ -20,6 +21,7 @@ if(isset($_POST["ville"])){
         $managerPointsDeCollecte->add($pointdecollecte);
     }
     $_POST["selectVillePoint"] = $ville;
+
 }
 
 //Modifie un point de collecte
@@ -43,7 +45,7 @@ if(isset($_POST["VilleModifie"])){
     if($nbLieuVille==0){
       $managerVille->delete($villePoint);
     }
-    header('Location: index.php?page=8');
+    header('Location: index.php?page=5');
     exit;
 }
 //Supprime un point de collecte
@@ -59,7 +61,7 @@ if(isset($_POST["numPointDeCollecteASupprimer"])){
     }
 
 
-    header('Location: index.php?page=8');
+    header('Location: index.php?page=5');
     exit;
 }
 

@@ -38,7 +38,7 @@ if(!empty($_POST)){
                          $managerImage->add($image);
                          $message = 'Upload réussi !';
 
-                         header('Location: index.php?page=5');
+                         header('Location: index.php?page=8');
                          exit;
                      }else{
                        // Sinon on affiche une erreur systeme
@@ -74,7 +74,7 @@ if(isset($_POST["numImageASupprimer"])){
    if(file_exists($fichier)){
     unlink($fichier);
    }
-   header('Location: index.php?page=5');
+   header('Location: index.php?page=8');
    exit;
 }
 ?>
@@ -118,11 +118,15 @@ foreach ($managerImage->getAllImage("image/partenaire/") as $image) { ?>
 if(isset($_SESSION["login"])){?>
     <div id="ajouterPartenaire">
         <form enctype="multipart/form-data" id="ajouterArticle" method="POST" action="#">
-            <label>Image du partenaire :</label>
+            <label>Logo:</label>
             <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_SIZE; ?>" />
-            <input name="fichier" type="file" id="fichier_a_uploader" />
+            <label id="boutonParcourirFichier">
+                <input name="fichier" id="fichier_a_uploader" type="file" />
+                Parcourir
+            </label>
+            <p id="nomFichierAUploader">Aucun fichier choisi</p>
 
-            <label>Lien vers le site du partenaire : </label>
+            <label>Lien: </label>
             <input type="url" name="lien" value="http://">
             <input type="submit" value="Valider">
         </form>

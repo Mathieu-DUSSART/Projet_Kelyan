@@ -150,12 +150,13 @@ if(isset($_POST["numGroupASupprimer"]) && isset($_SESSION["login"])){
 
 ?>
 <h1>Galerie</h1>
-<div id="divTitreAlbum"><a href="index.php?page=4">Album :</a>
+<div id="divTitreAlbum">
 
 <?php
 $groupTab=$managerGroup->getAllGroup();
 $contenuTab = array();
 if(!isset($_GET["album"])){ //Affiche tous les albums ?>
+        <a href="index.php?page=4">Album :</a>
     </div>
     <?php
     foreach($groupTab as $group){
@@ -230,7 +231,9 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
 }else{ //Affiche les images de l'album sélectionné
     $contenuTab = $managerContenu->getAllContenu($_GET["album"]);
     $album = $managerGroup->getGroupByNum($_GET["album"]);?>
-    <span class="nomAlbum"><?php echo $album->getGroupNom();?></span></div>
+        <a href="index.php?page=4">&larr; Albums :</a>
+        <span class="nomAlbum"><?php echo $album->getGroupNom();?></span>
+    </div>
     <?php
     foreach($contenuTab as $contenu){
         $image=$managerImage->getImage($contenu->getImgNum());
@@ -278,7 +281,7 @@ if(!isset($_GET["album"])){ //Affiche tous les albums ?>
                     <input name="fichier" id="fichier_a_uploader" type="file" />
                     Parcourir
                 </label>
-                <p id="nomFichierAUploader"></p>
+                <p id="nomFichierAUploader">Aucun fichier choisi</p>
 
                 <input class="bouton" type="submit" name="formAjoutImage" value="Uploader" />
             </form>

@@ -348,7 +348,7 @@ if(isset($_SESSION["login"]) && isset($_POST["selectPointModif"]) && empty($_POS
   echo "stat_num";
   echo $_POST["numStatistiqueModif"];
   $managerStatistique->modifierStatistique($_POST["valeurStatistiqueModif"],$_POST["selectPointModif"],getEnglishDate($_POST["dateModif"]),$_POST["numStatistiqueModif"]);
-  header("Location: index.php?page=10");
+  header("Location: index.php?page=6");
 
 }
  ?>
